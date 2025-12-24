@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx } from "hono/jsx";
-import { Search } from "./Search.js";
+import { Search } from "./Search.jsx";
 
 export const Layout = ({ children, title }) => {
   return (

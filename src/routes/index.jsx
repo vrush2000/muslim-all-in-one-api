@@ -1,9 +1,9 @@
 /** @jsx jsx */
 import { Hono } from 'hono';
 import { jsx } from 'hono/jsx';
-import { Layout } from '../components/Layout.js';
-import { Home } from '../components/Home.js';
-import { Other } from '../components/Other.js';
+import { Layout } from '../components/Layout.jsx';
+import { Home } from '../components/Home.jsx';
+import { Other } from '../components/Other.jsx';
 
 const router = new Hono();
 
