@@ -2,7 +2,7 @@
   "name": "muslim-api",
   "version": "1.0.0",
   "description": "Quran, Doa, Dzikir, Hadits Api",
-  "main": "server.js",
+  "main": "src/app.jsx",
   "type": "module",
   "scripts": {
     "start": "tsx server.js",
