@@ -4,14 +4,14 @@
     <strong>API Keislaman All-in-One: Al-Quran (Tafsir & Audio), Jadwal Sholat, Kalender Hijriah/Jawa, Dzikir, Doa, Hadits, serta Sistem Integritas Data Modern.</strong>
   </p>
    <p align="center">
-    <a href="https://muslim-api.vercel.app"><strong>Dokumentasi</strong></a> · <a href="https://github.com/vrush2000/muslim-api/issues"><strong>Laporkan Bug</strong></a> · <a href="https://github.com/vrush2000/muslim-api/issues"><strong>Request Fitur</strong></a>
+    <a href="https://muslim-api.vercel.app"><strong>Dokumentasi</strong></a> · <a href="https://github.com/vrush2000/muslim-all-in-one-api/issues"><strong>Laporkan Bug</strong></a> · <a href="https://github.com/vrush2000/muslim-all-in-one-api/issues"><strong>Request Fitur</strong></a>
   </p>
   <div align="center">
-    <img alt="GitHub contributors" src="https://img.shields.io/github/contributors/vrush2000/muslim-api">
-    <img alt="GitHub forks" src="https://img.shields.io/github/forks/vrush2000/muslim-api">
-    <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/vrush2000/muslim-api">
-    <img alt="GitHub issues" src="https://img.shields.io/github/issues/vrush2000/muslim-api">
-    <img alt="GitHub license" src="https://img.shields.io/github/license/vrush2000/muslim-api">
+    <img alt="GitHub contributors" src="https://img.shields.io/github/contributors/vrush2000/muslim-all-in-one-api">
+    <img alt="GitHub forks" src="https://img.shields.io/github/forks/vrush2000/muslim-all-in-one-api">
+    <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/vrush2000/muslim-all-in-one-api">
+    <img alt="GitHub issues" src="https://img.shields.io/github/issues/vrush2000/muslim-all-in-one-api">
+    <img alt="GitHub license" src="https://img.shields.io/github/license/vrush2000/muslim-all-in-one-api">
   </div>
   <br />
   <div align="center">
@@ -57,7 +57,7 @@ Ikuti langkah berikut untuk menjalankan project di komputer Anda:
 
 1. **Clone Repository**
    ```bash
-   git clone https://github.com/vrush2000/muslim-api.git
+   git clone https://github.com/vrush2000/muslim-all-in-one-api.git
    cd muslim-api
    ```
 

@@ -177,7 +177,7 @@ export const Layout = ({ children, title }) => {
                 <div class="space-y-2 text-sm text-slate-500">
                   <p>
                     <a
-                      href="https://github.com/vrush2000/muslim-api"
+                      href="https://github.com/vrush2000/muslim-all-in-one-api"
                       target="_blank"
                       class="hover:text-emerald-600"
                     >

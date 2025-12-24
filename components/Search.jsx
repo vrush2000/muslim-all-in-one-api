@@ -48,7 +48,7 @@ export const Search = () => {
           { title: 'Murottal by Surah', path: '/other#murottal', category: 'Other', endpoint: '/murotal?surahId=1' },
           { title: 'FAQ', path: '/#faq', category: 'General' },
           { title: 'Other Resources', path: '/other', category: 'Resources' },
-          { title: 'GitHub Repository', path: 'https://github.com/vrush2000/muslim-api', category: 'External' }
+          { title: 'GitHub Repository', path: 'https://github.com/vrush2000/muslim-all-in-one-api', category: 'External' }
         ];
 
         var selectedIndex = -1;
