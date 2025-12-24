@@ -1,5 +1,6 @@
-import { handle } from 'hono/vercel';
+import { handle } from '@hono/node-server/vercel';
 import app from './src/app.jsx';
 
-// Hono Vercel Adapter secara otomatis menangani URL dan Header jika digunakan langsung
+// Menggunakan adapter dari @hono/node-server/vercel yang lebih stabil untuk Node.js runtime di Vercel
+// Ini memperbaiki error "this.raw.headers.get is not a function"
 export default handle(app);
