@@ -41,8 +41,10 @@ try {
   
   db = new Database(dbFile, { 
     readonly: isProduction,
-    fileMustExist: false // Don't crash immediately if not found, handle later
+    fileMustExist: false
   });
+  
+  console.log('Database connection established successfully');
   
   if (!isProduction) {
     db.pragma('journal_mode = WAL');

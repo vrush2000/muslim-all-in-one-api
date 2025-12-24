@@ -7,7 +7,7 @@
   "scripts": {
     "start": "tsx server.js",
     "dev": "vite",
-    "build": "esbuild vercel-entry.js --bundle --platform=node --target=node20 --format=esm --outfile=api/index.js --external:better-sqlite3"
+    "build": "esbuild vercel-entry.js --bundle --platform=node --target=node20 --format=esm --outfile=api/index.js --external:better-sqlite3 --external:hono --external:hono/*"
   },
   "dependencies": {
     "@hono/node-server": "^1.19.7",
