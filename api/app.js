@@ -3,7 +3,7 @@ import { trimTrailingSlash } from 'hono/trailing-slash';
 import { logger } from 'hono/logger';
 import { cors } from 'hono/cors';
 
-import apiRouter from '../routes/index.jsx';
+import apiRouter from '../routes/index.js';
 import apiV1Router from '../routes/muslim/v1/index.js';
 
 const app = new Hono();

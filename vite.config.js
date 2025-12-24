@@ -7,6 +7,11 @@ export default defineConfig({
       entry: 'api/app.js',
     }),
   ],
+  esbuild: {
+    loader: 'jsx',
+    include: /src\/.*\.js$|api\/.*\.js$|routes\/.*\.js$|components\/.*\.js$/,
+    exclude: [],
+  },
   server: {
     port: 3000,
   },
