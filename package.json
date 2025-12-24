@@ -2,10 +2,12 @@
   "name": "muslim-api",
   "version": "1.0.0",
   "description": "Quran, Doa, Dzikir, Hadits Api",
+  "main": "api/app.js",
   "type": "module",
   "scripts": {
-    "start": "node --env-file=.env api/index.js",
-    "dev": "vite"
+    "start": "node --env-file=.env api/app.js",
+    "dev": "vite",
+    "build": "echo 'No build needed'"
   },
   "dependencies": {
     "@hono/node-server": "^1.19.7",

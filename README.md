@@ -140,11 +140,16 @@ Ya, teks dan terjemahan mengikuti standar Mushaf Al-Quran Standar Indonesia (MSI
 
 Project ini merupakan hasil pengembangan lanjut (migrasi & modernisasi) dari project asli yang dibangun oleh **[Otang45](https://github.com/Otang45)**. 
 
-Kami memberikan apresiasi setinggi-tingginya kepada:
-- **[Otang45](https://github.com/Otang45)**: Atas penyediaan dataset keislaman (SQLite) dan logika dasar API yang sangat bermanfaat.
-- **[equran.id](https://equran.id)**: Atas penyediaan API v2 dan Content Delivery Network (CDN) untuk data murottal audio (6 Qari) yang sangat membantu dalam melengkapi fitur audio di project ini.
+Kami memberikan apresiasi setinggi-tingginya kepada para penyedia data dan sumber inspirasi:
 
-Tanpa kontribusi dari pihak-pihak di atas, project modern ini tidak akan selengkap dan secepat ini. Terima kasih atas inspirasi dan kerja kerasnya!
+- **[Kemenag RI](https://quran.kemenag.go.id/)**: Atas penyediaan data Al-Quran, Terjemahan, dan Tafsir resmi.
+- **[Otang45](https://github.com/Otang45)**: Atas penyediaan dataset keislaman (SQLite) dan logika dasar API yang menjadi fondasi project ini.
+- **[equran.id](https://equran.id)**: Atas penyediaan API v2 dan Content Delivery Network (CDN) untuk data murottal audio (6 Qari).
+- **[MyQuran (SutanLab)](https://api.myquran.com/)**: Atas penyediaan dataset jadwal sholat akurat untuk seluruh wilayah Indonesia.
+- **[Hadith Gading](https://api.hadith.gading.dev/)**: Atas penyediaan koleksi hadits digital yang sangat lengkap.
+- **[Designstub](http://www.designstub.com/)**: Atas inspirasi desain template UI yang modern dan bersih.
+
+Tanpa kontribusi dan sumber daya terbuka dari pihak-pihak di atas, project modern ini tidak akan mungkin terwujud. Terima kasih atas inspirasi dan kerja kerasnya bagi ekosistem pengembang aplikasi Islami!
 
 ---
 
