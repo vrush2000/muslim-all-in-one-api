@@ -31,10 +31,10 @@
 Project ini telah dimigrasi dari Express ke **Hono Node.js** untuk performa yang lebih baik dan kesiapan deployment (seperti Vercel).
 
 - **Backend**: [Hono](https://hono.dev/) (Fast, Lightweight, and Web-standard)
-- **Frontend**: [Hono JSX](https://hono.dev/middleware/builtin/jsx) + [Tailwind CSS](https://tailwindcss.com/)
+- **Frontend**: [Hono JSX](https://hono.dev/middleware/builtin/jsx) + [Tailwind CSS](https://tailwindcss.com/) (Bundled with Esbuild for Vercel)
 - **Database**: [SQLite](https://www.sqlite.org/) dengan [better-sqlite3](https://github.com/WiseLibs/node-better-sqlite3)
 - **Runtime**: Node.js (ES Modules)
-- **Deployment**: [Vercel](https://vercel.com/)
+- **Deployment**: [Vercel](https://vercel.com/) (Using zero-config with bundled logic)
 
 ## ✨ Fitur Utama
 

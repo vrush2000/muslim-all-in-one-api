@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "start": "node --env-file=.env api/index.js",
-    "dev": "vite"
+    "dev": "vite",
+    "build": "esbuild api/vercel.js --bundle --platform=node --target=node20 --format=esm --outfile=api/dist/index.js --external:better-sqlite3"
   },
   "dependencies": {
     "@hono/node-server": "^1.19.7",
@@ -16,6 +17,7 @@
   "devDependencies": {
     "@hono/vite-dev-server": "^0.23.0",
     "@types/node": "^25.0.3",
+    "esbuild": "^0.27.2",
     "tsx": "^4.21.0",
     "vite": "^7.3.0"
   }
