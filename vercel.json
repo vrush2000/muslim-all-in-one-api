@@ -1,5 +1,11 @@
 {
   "version": 2,
+  "functions": {
+    "api/index.js": {
+      "runtime": "vercel-node@latest",
+      "includeFiles": "src/database/alquran.db"
+    }
+  },
   "rewrites": [
     {
       "source": "/(.*)",

@@ -2,12 +2,12 @@
   "name": "muslim-api",
   "version": "1.0.0",
   "description": "Quran, Doa, Dzikir, Hadits Api",
-  "main": "api/index.js",
+  "main": "server.js",
   "type": "module",
   "scripts": {
     "start": "tsx server.js",
     "dev": "vite",
-    "build": "esbuild vercel-entry.js --bundle --platform=node --target=node20 --format=esm --outfile=api/index.js --external:better-sqlite3 --external:hono --external:hono/*"
+    "build": "echo 'No build step needed for Vercel native'"
   },
   "dependencies": {
     "@hono/node-server": "^1.19.7",
