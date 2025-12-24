@@ -4,7 +4,7 @@ import devServer from '@hono/vite-dev-server';
 export default defineConfig({
   plugins: [
     devServer({
-      entry: 'api/index.js',
+      entry: 'api/app.js',
     }),
   ],
   server: {
