@@ -5813,11 +5813,11 @@ var getDbPath = () => {
   console.log("__dirname:", __dirname);
   console.log("process.cwd():", cwd);
   const paths = [
-    { name: "Vercel Standard", path: "/var/task/src/database/alquran.db" },
+    { name: "Vercel /var/task Root", path: "/var/task/alquran.db" },
+    { name: "Vercel /var/task/src/database", path: "/var/task/src/database/alquran.db" },
     { name: "CWD Root", path: join(cwd, "alquran.db") },
     { name: "CWD Database", path: join(cwd, "src", "database", "alquran.db") },
-    { name: "Bundled Relative", path: join(__dirname, "..", "src", "database", "alquran.db") },
-    { name: "Bundled Same Dir", path: join(__dirname, "alquran.db") }
+    { name: "Bundled Relative", path: join(__dirname, "..", "src", "database", "alquran.db") }
   ];
   for (const p of paths) {
     const exists = fs.existsSync(p.path);
@@ -5836,14 +5836,12 @@ try {
     fileMustExist: false,
     timeout: 1e4
   });
-  console.log("Database connection established successfully");
-  if (!isProduction) {
-    try {
-      db.pragma("journal_mode = WAL");
-      db.pragma("synchronous = NORMAL");
-    } catch (e) {
-      console.warn("Could not set PRAGMA:", e);
-    }
+  try {
+    db.pragma("journal_mode = DELETE");
+    db.pragma("synchronous = OFF");
+    db.pragma("temp_store = MEMORY");
+  } catch (e) {
+    console.warn("Could not set PRAGMA:", e);
   }
 } catch (error) {
   console.error("FAILED TO INITIALIZE DATABASE:", error);

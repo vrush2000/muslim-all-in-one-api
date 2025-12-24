@@ -16,11 +16,11 @@ const getDbPath = () => {
   console.log('process.cwd():', cwd);
 
   const paths = [
-    { name: 'Vercel Standard', path: '/var/task/src/database/alquran.db' },
+    { name: 'Vercel /var/task Root', path: '/var/task/alquran.db' },
+    { name: 'Vercel /var/task/src/database', path: '/var/task/src/database/alquran.db' },
     { name: 'CWD Root', path: join(cwd, 'alquran.db') },
     { name: 'CWD Database', path: join(cwd, 'src', 'database', 'alquran.db') },
-    { name: 'Bundled Relative', path: join(__dirname, '..', 'src', 'database', 'alquran.db') },
-    { name: 'Bundled Same Dir', path: join(__dirname, 'alquran.db') }
+    { name: 'Bundled Relative', path: join(__dirname, '..', 'src', 'database', 'alquran.db') }
   ];
 
   for (const p of paths) {
@@ -44,16 +44,13 @@ try {
     timeout: 10000
   });
   
-  console.log('Database connection established successfully');
-  
-  // Optimization for better-sqlite3 - NEVER use WAL in production/Vercel
-  if (!isProduction) {
-    try {
-      db.pragma('journal_mode = WAL');
-      db.pragma('synchronous = NORMAL');
-    } catch (e) {
-      console.warn('Could not set PRAGMA:', e);
-    }
+  // Set PRAGMA yang aman untuk environment read-only
+  try {
+    db.pragma('journal_mode = DELETE');
+    db.pragma('synchronous = OFF');
+    db.pragma('temp_store = MEMORY');
+  } catch (e) {
+    console.warn('Could not set PRAGMA:', e);
   }
 } catch (error) {
   console.error('FAILED TO INITIALIZE DATABASE:', error);

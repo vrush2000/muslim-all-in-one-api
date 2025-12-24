@@ -2,7 +2,7 @@
   "version": 2,
   "functions": {
     "api/index.js": {
-      "includeFiles": "src/database/alquran.db"
+      "includeFiles": "{src/database/alquran.db,alquran.db}"
     }
   },
   "rewrites": [
