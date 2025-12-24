@@ -1,9 +1,7 @@
 import { Hono } from 'hono';
-import { serve } from '@hono/node-server';
 import { trimTrailingSlash } from 'hono/trailing-slash';
 import { logger } from 'hono/logger';
 import { cors } from 'hono/cors';
-import { cache } from 'hono/cache';
 
 import apiRouter from '../routes/index.jsx';
 import apiV1Router from '../routes/muslim/v1/index.js';
@@ -73,18 +71,5 @@ app.onError((err, c) => {
   console.error(`${err}`);
   return c.json({ status: 500, message: err.message }, 500);
 });
-
-if (process.env.NODE_ENV !== 'production' && !process.env.VITE && !process.env.VITEST) {
-  const isVite = process.env.VITE === 'true' || process.argv.some(arg => arg.includes('vite'));
-  
-  if (!isVite) {
-    const port = 3000;
-    console.log(`Server is running on http://localhost:${port}`);
-    serve({
-      fetch: app.fetch,
-      port,
-    });
-  }
-}
 
 export default app;
