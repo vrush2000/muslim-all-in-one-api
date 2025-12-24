@@ -5806,22 +5806,26 @@ import { fileURLToPath } from "url";
 import fs from "fs";
 var isProduction = process.env.VERCEL === "1" || process.env.NODE_ENV === "production";
 var getDbPath = () => {
-  try {
-    const __filename = fileURLToPath(import.meta.url);
-    const __dirname = dirname(__filename);
-    const path1 = "/var/task/src/database/alquran.db";
-    if (fs.existsSync(path1)) return path1;
-    const path2 = join(process.cwd(), "src", "database", "alquran.db");
-    if (fs.existsSync(path2)) return path2;
-    const path3 = join(__dirname, "..", "src", "database", "alquran.db");
-    if (fs.existsSync(path3)) return path3;
-    const path4 = join(process.cwd(), "alquran.db");
-    if (fs.existsSync(path4)) return path4;
-    return path2;
-  } catch (e) {
-    console.error("Error finding database path:", e);
-    return join(process.cwd(), "src", "database", "alquran.db");
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = dirname(__filename);
+  const cwd = process.cwd();
+  console.log("--- DEBUG DATABASE PATH ---");
+  console.log("__dirname:", __dirname);
+  console.log("process.cwd():", cwd);
+  const paths = [
+    { name: "Vercel Standard", path: "/var/task/src/database/alquran.db" },
+    { name: "CWD Root", path: join(cwd, "alquran.db") },
+    { name: "CWD Database", path: join(cwd, "src", "database", "alquran.db") },
+    { name: "Bundled Relative", path: join(__dirname, "..", "src", "database", "alquran.db") },
+    { name: "Bundled Same Dir", path: join(__dirname, "alquran.db") }
+  ];
+  for (const p of paths) {
+    const exists = fs.existsSync(p.path);
+    console.log(`Checking ${p.name}: ${p.path} [${exists ? "EXISTS" : "NOT FOUND"}]`);
+    if (exists) return p.path;
   }
+  console.log("--- END DEBUG DATABASE PATH ---");
+  return join(cwd, "src", "database", "alquran.db");
 };
 var db;
 try {
@@ -5829,9 +5833,8 @@ try {
   console.log(`Initializing database at: ${dbFile}`);
   db = new Database(dbFile, {
     readonly: true,
-    // Paksa readonly di semua lingkungan untuk keamanan
     fileMustExist: false,
-    timeout: 5e3
+    timeout: 1e4
   });
   console.log("Database connection established successfully");
   if (!isProduction) {
@@ -7097,8 +7100,8 @@ app.use("/v1/*", async (c, next) => {
   console.log(`[HIT] ${(/* @__PURE__ */ new Date()).toISOString()} | IP: ${ip} | Method: ${method} | Path: ${path}`);
   await next();
 });
-app.route("/", routes_default);
 app.route("/v1", v1_default);
+app.route("/", routes_default);
 app.notFound((c) => {
   return c.json({ status: 404, message: "Not Found" }, 404);
 });

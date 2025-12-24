@@ -60,8 +60,8 @@ app.use('/v1/*', async (c, next) => {
   await next();
 });
 
-app.route('/', apiRouter);
 app.route('/v1', apiV1Router);
+app.route('/', apiRouter);
 
 app.notFound((c) => {
   return c.json({ status: 404, message: 'Not Found' }, 404);

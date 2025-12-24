@@ -5,33 +5,32 @@ import fs from 'fs';
 
 const isProduction = process.env.VERCEL === '1' || process.env.NODE_ENV === 'production';
 
-// Helper to find the database file
+// Helper to find the database file with detailed logging
 const getDbPath = () => {
-  try {
-    const __filename = fileURLToPath(import.meta.url);
-    const __dirname = dirname(__filename);
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = dirname(__filename);
+  const cwd = process.cwd();
 
-    // 1. Vercel Standard Path (Files included via includeFiles are usually at /var/task/src/database/alquran.db)
-    const path1 = '/var/task/src/database/alquran.db';
-    if (fs.existsSync(path1)) return path1;
+  console.log('--- DEBUG DATABASE PATH ---');
+  console.log('__dirname:', __dirname);
+  console.log('process.cwd():', cwd);
 
-    // 2. Relative to process.cwd() (Local and some Vercel environments)
-    const path2 = join(process.cwd(), 'src', 'database', 'alquran.db');
-    if (fs.existsSync(path2)) return path2;
+  const paths = [
+    { name: 'Vercel Standard', path: '/var/task/src/database/alquran.db' },
+    { name: 'CWD Root', path: join(cwd, 'alquran.db') },
+    { name: 'CWD Database', path: join(cwd, 'src', 'database', 'alquran.db') },
+    { name: 'Bundled Relative', path: join(__dirname, '..', 'src', 'database', 'alquran.db') },
+    { name: 'Bundled Same Dir', path: join(__dirname, 'alquran.db') }
+  ];
 
-    // 3. Relative to bundled file location
-    const path3 = join(__dirname, '..', 'src', 'database', 'alquran.db');
-    if (fs.existsSync(path3)) return path3;
-
-    // 4. Root fallback
-    const path4 = join(process.cwd(), 'alquran.db');
-    if (fs.existsSync(path4)) return path4;
-
-    return path2; // Default to standard local path
-  } catch (e) {
-    console.error('Error finding database path:', e);
-    return join(process.cwd(), 'src', 'database', 'alquran.db');
+  for (const p of paths) {
+    const exists = fs.existsSync(p.path);
+    console.log(`Checking ${p.name}: ${p.path} [${exists ? 'EXISTS' : 'NOT FOUND'}]`);
+    if (exists) return p.path;
   }
+
+  console.log('--- END DEBUG DATABASE PATH ---');
+  return join(cwd, 'src', 'database', 'alquran.db');
 };
 
 let db;
@@ -40,9 +39,9 @@ try {
   console.log(`Initializing database at: ${dbFile}`);
   
   db = new Database(dbFile, { 
-    readonly: true, // Paksa readonly di semua lingkungan untuk keamanan
+    readonly: true,
     fileMustExist: false,
-    timeout: 5000 
+    timeout: 10000
   });
   
   console.log('Database connection established successfully');
