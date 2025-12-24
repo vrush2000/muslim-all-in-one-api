@@ -5801,87 +5801,57 @@ var routes_default = router;
 
 // src/database/config.js
 import Database from "better-sqlite3";
-import { join, dirname } from "path";
-import { fileURLToPath } from "url";
+import { join } from "path";
 import fs from "fs";
-var isProduction = process.env.VERCEL === "1" || process.env.NODE_ENV === "production";
-var getDbPath = () => {
-  const __filename = fileURLToPath(import.meta.url);
-  const __dirname = dirname(__filename);
-  const cwd = process.cwd();
-  console.log("--- DEBUG DATABASE PATH ---");
-  console.log("__dirname:", __dirname);
-  console.log("process.cwd():", cwd);
-  const paths = [
-    { name: "Vercel Root", path: join(cwd, "alquran.db") },
-    { name: "Vercel /var/task Root", path: "/var/task/alquran.db" },
-    { name: "Vercel /var/task/src/database", path: "/var/task/src/database/alquran.db" },
-    { name: "CWD Database", path: join(cwd, "src", "database", "alquran.db") },
-    { name: "Bundled Relative", path: join(__dirname, "..", "src", "database", "alquran.db") }
-  ];
-  for (const p of paths) {
-    const exists = fs.existsSync(p.path);
-    console.log(`Checking ${p.name}: ${p.path} [${exists ? "EXISTS" : "NOT FOUND"}]`);
-    if (exists) return p.path;
-  }
-  console.log("--- END DEBUG DATABASE PATH ---");
-  return join(cwd, "src", "database", "alquran.db");
-};
+var isProduction = process.env.VERCEL === "1";
 var db;
-try {
-  const dbFile = getDbPath();
-  console.log(`Initializing database at: ${dbFile}`);
-  db = new Database(dbFile, {
-    readonly: true,
-    fileMustExist: false,
-    timeout: 2e4
-    // Tingkatkan lagi ke 20 detik
-  });
+var dbInitialized = false;
+var initializeDatabase = () => {
+  if (dbInitialized && db) return db;
   try {
+    let dbPath;
+    if (isProduction) {
+      const tmpDbPath = "/tmp/alquran.db";
+      const sourceDbPath = join(process.cwd(), "src", "database", "alquran.db");
+      console.log("Production mode - copying DB to /tmp");
+      if (!fs.existsSync(tmpDbPath)) {
+        if (!fs.existsSync(sourceDbPath)) {
+          throw new Error(`Source database not found: ${sourceDbPath}`);
+        }
+        fs.copyFileSync(sourceDbPath, tmpDbPath);
+        console.log("Database copied to /tmp");
+      }
+      dbPath = tmpDbPath;
+    } else {
+      dbPath = join(process.cwd(), "src", "database", "alquran.db");
+    }
+    console.log(`Initializing database at: ${dbPath}`);
+    db = new Database(dbPath, {
+      readonly: true,
+      fileMustExist: true
+    });
     db.pragma("journal_mode = OFF");
     db.pragma("query_only = ON");
     db.pragma("synchronous = OFF");
     db.pragma("temp_store = MEMORY");
-    db.pragma("cache_size = -2000");
-  } catch (e) {
-    console.warn("Could not set PRAGMA:", e);
+    db.pragma("cache_size = -8000");
+    dbInitialized = true;
+    console.log("Database initialized successfully");
+    return db;
+  } catch (error) {
+    console.error("Failed to initialize database:", error);
+    throw error;
   }
-} catch (error) {
-  console.error("FAILED TO INITIALIZE DATABASE:", error);
-  db = {
-    prepare: () => ({
-      all: () => {
-        throw new Error("Database not initialized: " + error.message);
-      },
-      get: () => {
-        throw new Error("Database not initialized: " + error.message);
-      }
-    }),
-    pragma: () => {
-    }
-  };
-}
-var query = (sql, params = []) => {
-  return new Promise((resolve, reject) => {
-    try {
-      const stmt = db.prepare(sql);
-      const rows = stmt.all(params);
-      resolve(rows);
-    } catch (err) {
-      reject(err);
-    }
-  });
 };
-var get = (sql, params = []) => {
-  return new Promise((resolve, reject) => {
-    try {
-      const stmt = db.prepare(sql);
-      const row = stmt.get(params);
-      resolve(row);
-    } catch (err) {
-      reject(err);
-    }
-  });
+var query = async (sql, params = []) => {
+  const database = initializeDatabase();
+  const stmt = database.prepare(sql);
+  return stmt.all(params);
+};
+var get = async (sql, params = []) => {
+  const database = initializeDatabase();
+  const stmt = database.prepare(sql);
+  return stmt.get(params);
 };
 
 // src/routes/muslim/v1/asbab.js
