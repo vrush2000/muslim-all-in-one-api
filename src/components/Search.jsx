@@ -154,8 +154,6 @@ export const Search = () => {
             window.hideResults();
           }
         });
-
-        console.log('Search Dropdown Ready');
       ` }} />
     </div>
   )
