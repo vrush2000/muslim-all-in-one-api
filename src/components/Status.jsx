@@ -107,77 +107,86 @@ export const Status = ({ baseUrl }) => {
       </div>
 
       <script dangerouslySetInnerHTML={{ __html: `
-        window.baseUrl = "${baseUrl}";
-        
-        async function checkStatus(card) {
-          const endpoint = card.dataset.endpoint;
-          const type = card.dataset.type;
+        (function() {
+          window.baseUrl = "${baseUrl}";
           
-          let fullUrl;
-          if (type === 'internal') {
-            // window.baseUrl is ".../v1"
-            const rootUrl = window.baseUrl.replace(/\/v1$/, '');
-            fullUrl = endpoint === '/health' ? rootUrl + '/health' : window.baseUrl + endpoint;
-          } else {
-            fullUrl = endpoint;
-          }
-          
-          const statusEl = card.querySelector('.status-indicator');
-          const textEl = card.querySelector('.status-text');
-          const latencyEl = card.querySelector('.latency-text');
-          const uptimeEl = card.querySelector('.uptime-bar');
-          
-          const start = performance.now();
-          try {
-            // Internal uses 'cors' to check status, external uses 'no-cors' to just check connectivity
-            const fetchOptions = type === 'internal' ? { mode: 'cors' } : { mode: 'no-cors' };
-            const response = await fetch(fullUrl, fetchOptions);
-            const latency = Math.round(performance.now() - start);
+          async function checkStatus(card) {
+            const endpoint = card.dataset.endpoint;
+            const type = card.dataset.type;
             
-            // For internal, we can check response.ok
-            const isOnline = type === 'internal' ? response.ok : true;
-            
-            if (isOnline) {
-              statusEl.className = 'status-indicator w-3 h-3 rounded-full bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.5)]';
-              textEl.innerText = 'Online';
-              textEl.className = 'status-text text-sm font-bold text-emerald-600';
-              latencyEl.innerText = latency + 'ms';
-              updateUptimeBar(uptimeEl, true);
+            let fullUrl;
+            if (type === 'internal') {
+              const rootUrl = window.baseUrl.replace(/\\/v1$/, '');
+              fullUrl = endpoint === '/health' ? rootUrl + '/health' : window.baseUrl + endpoint;
             } else {
-              throw new Error('Offline');
+              fullUrl = endpoint;
             }
-          } catch (error) {
-            statusEl.className = 'status-indicator w-3 h-3 rounded-full bg-red-500 shadow-[0_0_10px_rgba(239,68,68,0.5)]';
-            textEl.innerText = 'Offline';
-            textEl.className = 'status-text text-sm font-bold text-red-600';
-            latencyEl.innerText = '-- ms';
-            updateUptimeBar(uptimeEl, false);
+            
+            const statusEl = card.querySelector('.status-indicator');
+            const textEl = card.querySelector('.status-text');
+            const latencyEl = card.querySelector('.latency-text');
+            const uptimeEl = card.querySelector('.uptime-bar');
+            
+            const start = performance.now();
+            try {
+              const fetchOptions = type === 'internal' ? { mode: 'cors' } : { mode: 'no-cors' };
+              const response = await fetch(fullUrl, fetchOptions);
+              const latency = Math.round(performance.now() - start);
+              
+              const isOnline = type === 'internal' ? response.ok : true;
+              
+              if (isOnline) {
+                statusEl.className = 'status-indicator w-3 h-3 rounded-full bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.5)]';
+                textEl.innerText = 'Online';
+                textEl.className = 'status-text text-sm font-bold text-emerald-600';
+                latencyEl.innerText = latency + 'ms';
+                updateUptimeBar(uptimeEl, true);
+              } else {
+                throw new Error('Offline');
+              }
+            } catch (error) {
+              statusEl.className = 'status-indicator w-3 h-3 rounded-full bg-red-500 shadow-[0_0_10px_rgba(239,68,68,0.5)]';
+              textEl.innerText = 'Offline';
+              textEl.className = 'status-text text-sm font-bold text-red-600';
+              latencyEl.innerText = '-- ms';
+              updateUptimeBar(uptimeEl, false);
+            }
           }
-        }
 
-        function updateUptimeBar(el, isOnline) {
-          const dots = el.querySelectorAll('.uptime-dot');
-          const lastIndex = dots.length - 1;
-          
-          // Shift existing dots
-          for(let i = 0; i < lastIndex; i++) {
-            dots[i].className = dots[i+1].className;
+          function updateUptimeBar(el, isOnline) {
+            const dots = el.querySelectorAll('.uptime-dot');
+            const lastIndex = dots.length - 1;
+            for(let i = 0; i < lastIndex; i++) {
+              dots[i].className = dots[i+1].className;
+            }
+            dots[lastIndex].className = 'uptime-dot h-4 w-1 rounded-full ' + (isOnline ? 'bg-emerald-500' : 'bg-red-500');
+          }
+
+          function initStatus() {
+            const cards = document.querySelectorAll('.status-card');
+            cards.forEach(card => {
+              checkStatus(card);
+              setInterval(() => checkStatus(card), 30000);
+            });
+          }
+
+          if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initStatus);
+          } else {
+            initStatus();
           }
           
-          // Add new dot
-          dots[lastIndex].className = 'uptime-dot h-4 w-1 rounded-full ' + (isOnline ? 'bg-emerald-500' : 'bg-red-500');
-        }
-
-        function initStatus() {
-          const cards = document.querySelectorAll('.status-card');
-          cards.forEach(card => {
-            checkStatus(card);
-            // Refresh every 30 seconds
-            setInterval(() => checkStatus(card), 30000);
+          window.addEventListener('load', function() {
+            const cards = document.querySelectorAll('.status-card');
+            const firstCard = cards[0];
+            if (firstCard) {
+              const textEl = firstCard.querySelector('.status-text');
+              if (textEl && textEl.innerText === 'Checking...') {
+                initStatus();
+              }
+            }
           });
-        }
-
-        document.addEventListener('DOMContentLoaded', initStatus);
+        })();
       `}} />
     </div>
   );

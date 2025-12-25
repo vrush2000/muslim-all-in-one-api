@@ -51,6 +51,52 @@ export const Layout = ({ children, title }) => {
           code {
             font-family: 'JetBrains Mono', monospace;
           }
+
+          /* JSONEditor Custom Style for Modal */
+          #modal-json-editor .jsoneditor {
+            border: none !important;
+          }
+          #modal-json-editor .jsoneditor-menu {
+            background-color: #1e293b !important;
+            border-bottom: 1px solid #334155 !important;
+          }
+          #modal-json-editor .jsoneditor-navigation-bar {
+            background-color: #1e293b !important;
+            border-bottom: 1px solid #334155 !important;
+          }
+          #modal-json-editor .jsoneditor-outer {
+            background-color: #0f172a !important;
+          }
+          #modal-json-editor .jsoneditor-tree {
+            background-color: #0f172a !important;
+          }
+          #modal-json-editor .jsoneditor-separator {
+            background-color: transparent !important;
+          }
+          #modal-json-editor .jsoneditor-values {
+            color: #10b981 !important;
+          }
+          #modal-json-editor .jsoneditor-readonly {
+            color: #94a3b8 !important;
+          }
+          #modal-json-editor .jsoneditor-string {
+            color: #10b981 !important;
+          }
+          #modal-json-editor .jsoneditor-number {
+            color: #3b82f6 !important;
+          }
+          #modal-json-editor .jsoneditor-boolean {
+            color: #f59e0b !important;
+          }
+          #modal-json-editor .jsoneditor-null {
+            color: #ef4444 !important;
+          }
+          #modal-json-editor .jsoneditor-field {
+            color: #e2e8f0 !important;
+          }
+          #modal-json-editor div.jsoneditor-tree-inner {
+            padding-bottom: 50px !important;
+          }
         `}</style>
       </head>
       <body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col">
@@ -246,6 +292,153 @@ export const Layout = ({ children, title }) => {
         </header>
 
         <main class="flex-grow">{children}</main>
+
+        {/* Global API Preview Modal */}
+        <div id="api-preview-modal" class="fixed inset-0 z-[200] hidden">
+          <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" onclick="window.closeApiModal()"></div>
+          <div class="absolute inset-0 flex items-center justify-center p-4 pointer-events-none">
+            <div class="bg-white w-full max-w-4xl max-h-[90vh] rounded-2xl shadow-2xl flex flex-col pointer-events-auto overflow-hidden border border-slate-200">
+              {/* Header */}
+              <div class="flex items-center justify-between px-6 py-4 border-b border-slate-100 bg-slate-50/50">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 bg-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 class="text-lg font-bold text-slate-900">API Response Preview</h3>
+                    <p id="modal-endpoint-url" class="text-xs text-slate-500 font-mono mt-0.5 truncate max-w-md md:max-w-xl"></p>
+                  </div>
+                </div>
+                <button 
+                  onclick="window.closeApiModal()"
+                  class="p-2 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-xl transition-all"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+
+              {/* Body */}
+              <div class="flex-grow p-6 overflow-hidden flex flex-col gap-4">
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center gap-4">
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800">
+                      GET
+                    </span>
+                    <span id="modal-status-badge" class="hidden inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium"></span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <button 
+                      onclick="window.copyModalResponse()"
+                      class="flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-slate-600 hover:text-emerald-600 hover:bg-emerald-50 rounded-lg transition-all"
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+                      </svg>
+                      Copy JSON
+                    </button>
+                    <a id="modal-full-playground" href="#" class="flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-emerald-600 hover:bg-emerald-50 rounded-lg transition-all">
+                      Open in Playground
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+                <div id="modal-json-editor" class="flex-grow bg-[#0f172a] rounded-xl overflow-hidden min-h-[400px] border border-slate-700 shadow-2xl"></div>
+              </div>
+
+              {/* Footer */}
+              <div class="px-6 py-4 border-t border-slate-100 bg-slate-50/50 flex justify-end">
+                <button 
+                  onclick="window.closeApiModal()"
+                  class="px-6 py-2 bg-slate-900 text-white rounded-xl font-bold hover:bg-slate-800 transition-all shadow-lg shadow-slate-200"
+                >
+                  Close Preview
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <script dangerouslySetInnerHTML={{ __html: `
+          let modalEditor = null;
+          
+          window.openApiModal = async function(category, endpointId, url) {
+            const modal = document.getElementById('api-preview-modal');
+            const editorContainer = document.getElementById('modal-json-editor');
+            const urlDisplay = document.getElementById('modal-endpoint-url');
+            const playgroundLink = document.getElementById('modal-full-playground');
+            const statusBadge = document.getElementById('modal-status-badge');
+            
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+            
+            urlDisplay.textContent = url;
+            playgroundLink.href = '/playground?category=' + category + '&endpoint=' + endpointId;
+            
+            if (!modalEditor) {
+              modalEditor = new JSONEditor(editorContainer, {
+                mode: 'view',
+                mainMenuBar: false,
+                navigationBar: false,
+                statusBar: false,
+                onEditable: function (node) {
+                  return false;
+                }
+              });
+            }
+            
+            modalEditor.set({ message: 'Loading response...' });
+            statusBadge.classList.add('hidden');
+            
+            try {
+              const start = performance.now();
+              const response = await fetch(url);
+              const data = await response.json();
+              const end = performance.now();
+              
+              modalEditor.set(data);
+              
+              statusBadge.textContent = response.status + ' ' + response.statusText + ' (' + Math.round(end - start) + 'ms)';
+              statusBadge.className = 'inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ' + 
+                (response.ok ? 'bg-blue-100 text-blue-800' : 'bg-red-100 text-red-800');
+              statusBadge.classList.remove('hidden');
+            } catch (error) {
+              modalEditor.set({ error: 'Failed to fetch API', details: error.message });
+              statusBadge.textContent = 'Error';
+              statusBadge.className = 'inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800';
+              statusBadge.classList.remove('hidden');
+            }
+          };
+          
+          window.closeApiModal = function() {
+            const modal = document.getElementById('api-preview-modal');
+            modal.classList.add('hidden');
+            document.body.style.overflow = '';
+          };
+          
+          window.copyModalResponse = function() {
+            if (modalEditor) {
+              const json = JSON.stringify(modalEditor.get(), null, 2);
+              navigator.clipboard.writeText(json).then(() => {
+                const btn = event.currentTarget;
+                const originalText = btn.innerHTML;
+                btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg> Copied!';
+                setTimeout(() => btn.innerHTML = originalText, 2000);
+              });
+            }
+          };
+          
+          // Close modal on ESC key
+          document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') window.closeApiModal();
+          });
+        `}} />
 
         <footer class="bg-white border-t border-slate-200 py-12 mt-12">
           <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

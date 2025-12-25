@@ -85,7 +85,7 @@ Jika Anda menemukan typo pada Al-Quran, Doa, atau Dzikir:
 1. Jalankan aplikasi di **Lokal**.
 2. Gunakan endpoint `/v1/admin/ayah`, `/v1/admin/dzikir`, atau `/v1/admin/doa` dengan method `PATCH`.
 3. Sertakan Header `x-api-key` (default: `muslim-api-admin-secret` atau cek `.env`).
-4. Setelah database lokal terupdate, lakukan `git commit` pada file `database/alquran.db` dan `git push` ke repository Anda.
+4. Setelah database lokal terupdate, lakukan `git commit` pada file `src/database/alquran.db` dan `git push` ke repository Anda.
 
 
 ## 🌍 Deployment (Vercel)
