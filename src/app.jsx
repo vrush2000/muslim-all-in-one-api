@@ -6,7 +6,6 @@ import { query as dbQuery } from './database/config.js';
 
 import apiRouter from './routes/index.jsx';
 import apiV1Router from './routes/muslim/v1/index.js';
-import qrisRouter from './routes/qris.js';
 
 const app = new Hono();
 
@@ -85,7 +84,6 @@ app.use('/v1/*', async (c, next) => {
 });
 
 app.route('/v1', apiV1Router);
-app.route('/api/qris', qrisRouter);
 app.route('/', apiRouter);
 
 app.notFound((c) => {

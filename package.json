@@ -14,8 +14,7 @@
     "better-sqlite3": "^12.5.0",
     "crypto": "^1.0.1",
     "hono": "^4.11.1",
-    "qrcode": "^1.5.4",
-    "qris-dinamis": "^1.0.2"
+    "qrcode-generator": "^2.0.4"
   },
   "devDependencies": {
     "@hono/vite-dev-server": "^0.23.0",
