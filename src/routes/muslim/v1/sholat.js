@@ -1,8 +1,9 @@
 import { Hono } from 'hono';
+import { API_CONFIG } from '../../../config.js';
 
 const sholat = new Hono();
 
-const BASE_API = 'https://api.myquran.com/v2/sholat';
+const BASE_API = API_CONFIG.SHOLAT.MYQURAN;
 
 // Cache untuk daftar kota agar tidak sering fetch
 let kotaCache = null;
@@ -67,7 +68,7 @@ sholat.get('/jadwal/koordinat', async (c) => {
 
   try {
     // 1. Reverse Geocode menggunakan Nominatim untuk mendapatkan nama kota
-    const geoRes = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&zoom=10`, {
+    const geoRes = await fetch(`${API_CONFIG.SHOLAT.NOMINATIM}?format=json&lat=${lat}&lon=${lon}&zoom=10`, {
       headers: { 'User-Agent': 'Muslim-API/1.0' }
     });
     const geoData = await geoRes.json();

@@ -247,6 +247,108 @@ export const Layout = ({ children, title }) => {
 
         <main class="flex-grow">{children}</main>
 
+        {/* Global JSON Preview Modal */}
+        <div id="json-modal" class="fixed inset-0 z-[200] hidden overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+          <div class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+            <div class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity" aria-hidden="true" onclick="window.closeJsonModal()"></div>
+            <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+            <div class="inline-block align-bottom bg-white rounded-[2rem] text-left overflow-hidden shadow-2xl transform transition-all sm:my-8 sm:align-middle sm:max-w-4xl sm:w-full border border-slate-200">
+              <div class="bg-slate-900 px-6 py-4 flex items-center justify-between border-b border-slate-800">
+                <div class="flex items-center gap-3">
+                  <div class="flex gap-1.5">
+                    <div class="w-3 h-3 rounded-full bg-rose-500"></div>
+                    <div class="w-3 h-3 rounded-full bg-amber-500"></div>
+                    <div class="w-3 h-3 rounded-full bg-emerald-500"></div>
+                  </div>
+                  <h3 class="text-sm font-bold text-slate-400 uppercase tracking-widest ml-2" id="modal-title">Live API Preview</h3>
+                </div>
+                <button onclick="window.closeJsonModal()" class="text-slate-400 hover:text-white transition-colors">
+                  <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+              <div class="bg-white p-0 relative">
+                <div id="modal-loader" class="absolute inset-0 bg-white/80 backdrop-blur-sm flex items-center justify-center z-10 hidden">
+                  <div class="flex flex-col items-center gap-4">
+                    <div class="w-10 h-10 border-4 border-emerald-500/20 border-t-emerald-500 rounded-full animate-spin"></div>
+                    <span class="text-emerald-600 font-bold animate-pulse">Fetching data...</span>
+                  </div>
+                </div>
+                <div class="px-6 py-4 bg-slate-50 border-b border-slate-100 flex items-center justify-between">
+                  <div class="flex items-center gap-2 overflow-hidden mr-4">
+                    <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-emerald-100 text-emerald-700">GET</span>
+                    <code id="modal-endpoint-path" class="text-xs font-mono text-slate-500 truncate">/v1/health</code>
+                  </div>
+                  <div id="modal-status-badge">
+                    <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-emerald-500/20 text-emerald-600 border border-emerald-500/30">200 OK</span>
+                  </div>
+                </div>
+                <div id="modal-json-editor" class="h-[500px] w-full"></div>
+              </div>
+              <div class="bg-slate-50 px-6 py-4 flex justify-between items-center border-t border-slate-200">
+                <div class="flex gap-4 text-[10px] font-mono text-slate-400 uppercase tracking-wider">
+                  <span id="modal-response-time">Time: 0ms</span>
+                  <span id="modal-response-size">Size: 0B</span>
+                </div>
+                <button onclick="window.closeJsonModal()" class="px-6 py-2 bg-slate-900 text-white rounded-xl text-sm font-bold hover:bg-slate-800 transition-all shadow-lg shadow-slate-200">
+                  Close Preview
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <script dangerouslySetInnerHTML={{ __html: `
+          let modalEditor = null;
+          
+          window.openJsonModal = async (path) => {
+            const modal = document.getElementById('json-modal');
+            const loader = document.getElementById('modal-loader');
+            const pathDisplay = document.getElementById('modal-endpoint-path');
+            const timeDisplay = document.getElementById('modal-response-time');
+            const sizeDisplay = document.getElementById('modal-response-size');
+            const container = document.getElementById('modal-json-editor');
+            
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+            loader.classList.remove('hidden');
+            pathDisplay.textContent = '/v1' + path;
+            
+            if (!modalEditor) {
+              modalEditor = new JSONEditor(container, {
+                mode: 'view',
+                mainMenuBar: false,
+                navigationBar: false,
+                statusBar: false
+              });
+            }
+            
+            const startTime = performance.now();
+            try {
+              const response = await fetch('/v1' + path);
+              const data = await response.json();
+              const endTime = performance.now();
+              
+              modalEditor.set(data);
+              modalEditor.expandAll();
+              
+              timeDisplay.textContent = 'Time: ' + Math.round(endTime - startTime) + 'ms';
+              const size = new Blob([JSON.stringify(data)]).size;
+              sizeDisplay.textContent = 'Size: ' + (size < 1024 ? size + ' B' : (size / 1024).toFixed(2) + ' KB');
+            } catch (error) {
+              modalEditor.set({ error: "Failed to fetch data", message: error.message });
+            } finally {
+              loader.classList.add('hidden');
+            }
+          };
+          
+          window.closeJsonModal = () => {
+            document.getElementById('json-modal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+          };
+        `}} />
+
         <footer class="bg-white border-t border-slate-200 py-12 mt-12">
           <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">

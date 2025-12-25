@@ -1,9 +1,10 @@
 import { Hono } from 'hono';
 import { get, query as dbQuery } from '../../../database/config.js';
+import { API_CONFIG } from '../../../config.js';
 
 const hadits = new Hono();
 
-const GADING_API_BASE = 'https://api.hadith.gading.dev';
+const GADING_API_BASE = API_CONFIG.HADITS.GADING;
 
 // Hadits Arbain (Existing)
 hadits.get('/', async (c) => {

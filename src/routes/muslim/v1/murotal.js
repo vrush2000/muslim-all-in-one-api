@@ -1,22 +1,18 @@
 import { Hono } from 'hono';
-import { query } from '../../../database/config.js';
+import { query as dbQuery, get as dbGet } from '../../../database/config.js';
 
 const murotal = new Hono();
 
-const qaris = [
-  { id: '01', name: 'Abdullah Al-Juhany' },
-  { id: '02', name: 'Abdul-Muhsin Al-Qasim' },
-  { id: '03', name: 'Abdurrahman as-Sudais' },
-  { id: '04', name: 'Ibrahim Al-Dossari' },
-  { id: '05', name: 'Misyari Rasyid Al-Afasi' },
-  { id: '06', name: 'Yasser Al-Dosari' }
-];
-
-murotal.get('/qari', (c) => {
-  return c.json({
-    status: 200,
-    data: qaris
-  });
+murotal.get('/qari', async (c) => {
+  try {
+    const data = await dbQuery("SELECT * FROM qari ORDER BY id ASC");
+    return c.json({
+      status: 200,
+      data: data
+    });
+  } catch (error) {
+    return c.json({ status: 500, message: error.message }, 500);
+  }
 });
 
 murotal.get('/', async (c) => {
@@ -24,8 +20,11 @@ murotal.get('/', async (c) => {
     const qariId = c.req.query('qariId') || '05'; // Default to Misyari Rasyid
     const surahId = c.req.query('surahId');
 
+    // Get Qari Info
+    const qari = await dbGet("SELECT * FROM qari WHERE id = ?", [qariId]);
+
     if (surahId) {
-      const data = await query("SELECT number, name_id, name_short, audio_full FROM surah WHERE number = ?", [surahId]);
+      const data = await dbQuery("SELECT number, name_id, name_short, audio_full FROM surah WHERE number = ?", [surahId]);
       if (data.length === 0) {
         return c.json({ status: 404, message: 'Surah not found' }, 404);
       }
@@ -46,7 +45,7 @@ murotal.get('/', async (c) => {
     }
 
     // If no surahId, return all surahs with audio for that qari
-    const allSurahs = await query("SELECT number, name_id, name_short, audio_full FROM surah ORDER BY CAST(number as INTEGER) ASC");
+    const allSurahs = await dbQuery("SELECT number, name_id, name_short, audio_full FROM surah ORDER BY CAST(number as INTEGER) ASC");
     
     const result = allSurahs.map(s => {
       const audioFull = JSON.parse(s.audio_full || '{}');
@@ -60,7 +59,7 @@ murotal.get('/', async (c) => {
 
     return c.json({
       status: 200,
-      qari: qaris.find(q => q.id === qariId) || { id: qariId, name: 'Unknown' },
+      qari: qari || { id: qariId, name: 'Unknown' },
       data: result
     });
 

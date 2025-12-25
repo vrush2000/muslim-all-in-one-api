@@ -1,10 +1,26 @@
 import { Hono } from 'hono';
+import { query as dbQuery } from '../../../database/config.js';
 
 const calendar = new Hono();
 
+// Helper to get calendar data from DB
+const getCalendarData = async () => {
+  const months = await dbQuery("SELECT type, month_index, name FROM calendar_months");
+  const days = await dbQuery("SELECT type, day_index, name FROM calendar_days");
+
+  return {
+    islamicMonths: months.filter(m => m.type === 'islamic').sort((a, b) => a.month_index - b.month_index).map(m => m.name),
+    jawaMonths: months.filter(m => m.type === 'jawa').sort((a, b) => a.month_index - b.month_index).map(m => m.name),
+    gregorianMonths: months.filter(m => m.type === 'gregorian').sort((a, b) => a.month_index - b.month_index).map(m => m.name),
+    pasaran: days.filter(d => d.type === 'pasaran').sort((a, b) => a.day_index - b.day_index).map(d => d.name),
+    jawaDays: days.filter(d => d.type === 'jawa').sort((a, b) => a.day_index - b.day_index).map(d => d.name),
+    gregorianDays: days.filter(d => d.type === 'gregorian').sort((a, b) => a.day_index - b.day_index).map(d => d.name)
+  };
+};
+
 // Algoritma konversi Kalender Hijriah (Kuwaiti Algorithm dengan koreksi Kemenag)
 // Kemenag biasanya menggunakan kriteria MABIMS (koreksi +/- 1 hari)
-const g2h = (date, adjustment = 0) => {
+const g2h = (date, adjustment = 0, calData) => {
   let tempDate = new Date(date);
   if (adjustment !== 0) {
     tempDate.setDate(tempDate.getDate() + adjustment);
@@ -33,21 +49,8 @@ const g2h = (date, adjustment = 0) => {
   let day = l - Math.floor((709 * month) / 24);
   let year = 30 * n + j - 30;
 
-  const islamicMonths = [
-    "Muharram", "Safar", "Rabi' al-awwal", "Rabi' al-thani",
-    "Jumada al-ula", "Jumada al-akhira", "Rajab", "Sha'ban",
-    "Ramadan", "Shawwal", "Dhu al-Qi'dah", "Dhu al-Hijjah"
-  ];
+  const { islamicMonths, jawaMonths, pasaran, jawaDays } = calData;
 
-  const jawaMonths = [
-    "Sura", "Sapar", "Mulud", "Bakda Mulud",
-    "Jumadil Awal", "Jumadil Akhir", "Rejeb", "Ruwah",
-    "Pasa", "Sawal", "Sela", "Besar"
-  ];
-
-  const pasaran = ["Legi", "Pahing", "Pon", "Wage", "Kliwon"];
-  const jawaDays = ["Ahad", "Senen", "Slasa", "Rebo", "Kemis", "Jemuah", "Setu"];
-  
   // 1 Januari 1970 adalah Kamis Wage (Wage = index 3)
   const baseDate = new Date(1970, 0, 1);
   const diffDays = Math.floor((date.getTime() - baseDate.getTime()) / (1000 * 60 * 60 * 24));
@@ -72,7 +75,7 @@ const g2h = (date, adjustment = 0) => {
   };
 };
 
-const h2g = (hDay, hMonth, hYear) => {
+const h2g = (hDay, hMonth, hYear, calData) => {
   let jd = Math.floor((11 * hYear + 3) / 30) + 354 * hYear + 30 * hMonth - Math.floor((hMonth - 1) / 2) + hDay + 1948440 - 385;
   
   let l = jd + 68569;
@@ -87,11 +90,7 @@ const h2g = (hDay, hMonth, hYear) => {
   let y = 100 * (n - 49) + i + l;
 
   const date = new Date(y, m - 1, d);
-  const dayNames = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
-  const monthNames = [
-    "Januari", "Februari", "Maret", "April", "Mei", "Juni",
-    "Juli", "Agustus", "September", "Oktober", "November", "Desember"
-  ];
+  const { gregorianDays: dayNames, gregorianMonths: monthNames } = calData;
 
   return {
     day: d,
@@ -104,7 +103,7 @@ const h2g = (hDay, hMonth, hYear) => {
 };
 
 // GET /calendar/hijri?date=2024-03-11&adj=-1
-calendar.get('/hijri', (c) => {
+calendar.get('/hijri', async (c) => {
   try {
     const dateStr = c.req.query('date');
     const adj = parseInt(c.req.query('adj')) || 0; // Default 0 jika tidak ada adj
@@ -120,7 +119,8 @@ calendar.get('/hijri', (c) => {
       return c.json({ status: 400, message: "Invalid date format. Use YYYY-MM-DD" }, 400);
     }
 
-    const hijri = g2h(date, adj);
+    const calData = await getCalendarData();
+    const hijri = g2h(date, adj, calData);
     return c.json({
       status: 200,
       data: {
@@ -135,7 +135,7 @@ calendar.get('/hijri', (c) => {
 });
 
 // GET /calendar/masehi?day=1&month=9&year=1445
-calendar.get('/masehi', (c) => {
+calendar.get('/masehi', async (c) => {
   try {
     const day = parseInt(c.req.query('day'));
     const month = parseInt(c.req.query('month'));
@@ -149,7 +149,8 @@ calendar.get('/masehi', (c) => {
       return c.json({ status: 400, message: "Invalid Hijri date values" }, 400);
     }
 
-    const masehi = h2g(day, month, year);
+    const calData = await getCalendarData();
+    const masehi = h2g(day, month, year, calData);
     return c.json({
       status: 200,
       data: {
