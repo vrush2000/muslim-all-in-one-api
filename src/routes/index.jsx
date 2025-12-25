@@ -10,6 +10,12 @@ import { Status } from '../components/Status.jsx';
 
 const router = new Hono();
 
+const getBaseUrl = (c) => {
+  const url = new URL(c.req.url);
+  const proto = c.req.header('x-forwarded-proto') || url.protocol.split(':')[0];
+  return `${proto}://${url.host}/v1`;
+};
+
 router.get("/", (c) => {
   return c.html(
     <Layout title="Muslim All-In-One API | Platform Data Islami Terlengkap">
@@ -19,8 +25,7 @@ router.get("/", (c) => {
 });
 
 router.get("/docs", (c) => {
-  const url = new URL(c.req.url);
-  const baseUrl = `${url.protocol}//${url.host}/v1`;
+  const baseUrl = getBaseUrl(c);
   
   return c.html(
     <Layout title="Muslim API | Documentation">
@@ -38,8 +43,7 @@ router.get("/other", (c) => {
 });
 
 router.get("/playground", (c) => {
-  const url = new URL(c.req.url);
-  const baseUrl = `${url.protocol}//${url.host}/v1`;
+  const baseUrl = getBaseUrl(c);
   
   return c.html(
     <Layout title="Muslim API | Playground">
@@ -49,8 +53,7 @@ router.get("/playground", (c) => {
 });
 
 router.get("/status", (c) => {
-  const url = new URL(c.req.url);
-  const baseUrl = `${url.protocol}//${url.host}/v1`;
+  const baseUrl = getBaseUrl(c);
   
   return c.html(
     <Layout title="Muslim API | System Status">

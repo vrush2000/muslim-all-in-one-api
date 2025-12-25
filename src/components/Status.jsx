@@ -116,8 +116,8 @@ export const Status = ({ baseUrl }) => {
             
             let fullUrl;
             if (type === 'internal') {
-              const rootUrl = window.baseUrl.replace(/\\/v1$/, '');
-              fullUrl = endpoint === '/health' ? rootUrl + '/health' : window.baseUrl + endpoint;
+              // Use relative paths to avoid Mixed Content issues
+              fullUrl = endpoint === '/health' ? '/health' : '/v1' + endpoint;
             } else {
               fullUrl = endpoint;
             }
