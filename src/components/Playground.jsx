@@ -35,7 +35,8 @@ export const Playground = ({ baseUrl }) => {
                   <option value="hadits">Hadits</option>
                   <option value="murottal">Murottal Audio</option>
                   <option value="kemenag">Kemenag Open Data</option>
-                  <option value="sejarah">Sejarah & Fatwa</option>
+                  <option value="sejarah">Sejarah Islam</option>
+                  <option value="tools">Tools & Fitur Cerdas</option>
                   <option value="integrity">Integrity & Blockchain</option>
                   <option value="other">Lainnya (Asmaul Husna, Doa, dll)</option>
                 </select>
@@ -255,6 +256,7 @@ export const Playground = ({ baseUrl }) => {
               { name: 'tanggal', placeholder: '2025-12-25', type: 'date', default: new Date().toISOString().split('T')[0] }
             ] },
             { id: 'sholat-jadwal-koordinat', path: '/sholat/jadwal/koordinat', name: 'Jadwal by Koordinat', params: [{ name: 'lat', placeholder: '-6.1751', type: 'text', default: '-6.1751' }, { name: 'lon', placeholder: '106.8272', type: 'text', default: '106.8272' }] },
+            { id: 'sholat-next', path: '/sholat/next', name: 'Waktu Sholat Terdekat', params: [{ name: 'lat', placeholder: '-6.1751', type: 'text', default: '-6.1751' }, { name: 'lon', placeholder: '106.8272', type: 'text', default: '106.8272' }] },
           ],
           hadits: [
             { id: 'hadits-list', path: '/hadits', name: 'Daftar Hadits Arbain', params: [] },
@@ -288,12 +290,22 @@ export const Playground = ({ baseUrl }) => {
             { id: 'kemenag-kabupaten', path: '/kemenag/kabupaten', name: 'Daftar Kabupaten (Pesantren)', params: [{ name: 'provinsiId', type: 'number', default: '32', placeholder: '32', hint: 'ID Provinsi (Contoh: 32 untuk Jabar)' }] },
             { id: 'kemenag-pesantren', path: '/kemenag/pesantren', name: 'Daftar Pesantren', params: [{ name: 'kabupatenId', type: 'number', default: '3201', placeholder: '3201', hint: 'ID Kabupaten (Contoh: 3201 untuk Bogor)' }] },
             { id: 'kemenag-masjid', path: '/kemenag/masjid', name: 'Daftar Masjid Utama', params: [] },
+            { id: 'kemenag-masjid-nearby', path: '/kemenag/masjid/nearby', name: 'Masjid Terdekat (Geo)', params: [{ name: 'lat', type: 'text', default: '-6.1751' }, { name: 'lng', type: 'text', default: '106.8272' }, { name: 'radius', type: 'number', default: '5', hint: 'Radius dalam KM' }] },
           ],
           sejarah: [
-            { id: 'sejarah-list', path: '/sejarah', name: 'Sejarah Islam & Sirah', params: [] },
-            { id: 'sejarah-indonesia', path: '/sejarah', name: 'Sejarah Islam Indonesia', params: [{ name: 'kategori', type: 'text', default: 'indonesia', placeholder: 'indonesia' }] },
+            { id: 'sejarah-list', path: '/sejarah', name: 'Daftar Sirah Nabawiyah', params: [] },
+            { id: 'sejarah-today', path: '/sejarah/today', name: 'Peristiwa Hari Ini', params: [] },
             { id: 'sejarah-detail', path: '/sejarah/detail', name: 'Detail Sejarah', params: [{ name: 'id', type: 'number', default: '1', placeholder: '1' }] },
-            { id: 'sejarah-fatwa', path: '/sejarah/tanya-jawab', name: 'Tanya Jawab (Fatwa)', params: [] },
+          ],
+          tools: [
+            { id: 'tools-quotes', path: '/tools/quotes/daily', name: 'Daily Quotes', params: [] },
+            { id: 'tools-zakat', path: '/tools/zakat', name: 'Kalkulator Zakat', params: [
+              { name: 'type', type: 'select', default: 'maal', options: [{value:'maal', label:'Zakat Maal'}, {value:'penghasilan', label:'Zakat Penghasilan'}, {value:'fitrah', label:'Zakat Fitrah'}] },
+              { name: 'amount', type: 'number', default: '100000000', hint: 'Jumlah harta/pendapatan' },
+              { name: 'hargaEmas', type: 'number', default: '1200000', hint: 'Harga emas per gram (opsional)' }
+            ]},
+            { id: 'tools-qibla', path: '/tools/qibla', name: 'Arah Kiblat', params: [{ name: 'lat', type: 'text', default: '-6.1751' }, { name: 'lng', type: 'text', default: '106.8272' }] },
+            { id: 'tools-search', path: '/tools/semantic-search', name: 'Pencarian Semantik (AI)', params: [{ name: 'query', type: 'text', default: 'sabar', hint: 'Cari di Quran & Hadits' }] },
           ],
           integrity: [
             { id: 'integrity-chain', path: '/integrity/chain', name: 'Integrity Chain', params: [] },

@@ -22,9 +22,9 @@ word.get('/', async (c) => {
     sql += " ORDER BY CAST(surah as INTEGER), CAST(ayah as INTEGER), CAST(word as INTEGER) ASC";
     
     const data = await dbQuery(sql, params);
-    return c.json({ status: 200, data: data || [] });
+    return c.json({ status: true, message: 'Berhasil mendapatkan daftar kata.', data: data || [] });
   } catch (error) {
-    return c.json({ status: 500, message: error.message }, 500);
+    return c.json({ status: false, message: 'Gagal mendapatkan data kata: ' + error.message }, 500);
   }
 });
 

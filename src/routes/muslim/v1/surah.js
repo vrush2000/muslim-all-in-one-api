@@ -16,20 +16,20 @@ surah.get('/', async (c) => {
     if (surahId != null) {
       const data = await get("SELECT * FROM surah WHERE number = ?", [surahId]);
       if (!data) {
-        return c.json({ status: 404, data: {} }, 404);
+        return c.json({ status: false, message: 'Surah tidak ditemukan.', data: {} }, 404);
       } else {
-        return c.json({ status: 200, data: formatSurah(data) });
+        return c.json({ status: true, message: 'Berhasil mendapatkan detail surah.', data: formatSurah(data) });
       }
     } else {
       const data = await query("SELECT * FROM surah ORDER BY CAST(number as INTEGER) ASC");
       if (!data) {
-        return c.json({ status: 404, data: [] }, 404);
+        return c.json({ status: false, message: 'Daftar surah tidak tersedia.', data: [] }, 404);
       } else {
-        return c.json({ status: 200, data: data.map(formatSurah) });
+        return c.json({ status: true, message: 'Berhasil mendapatkan daftar surah.', data: data.map(formatSurah) });
       }
     }
   } catch (error) {
-    return c.json({ status: 500, message: error.message }, 500);
+    return c.json({ status: false, message: 'Gagal mendapatkan data surah: ' + error.message }, 500);
   }
 });
 

@@ -53,11 +53,18 @@ export const Landing = () => {
       link: '/other#kemenag'
     },
     {
-      title: 'Sejarah & Fatwa',
-      description: 'Kumpulan sejarah Islam Nusantara dan tanya jawab (fatwa) dari berbagai lembaga otoritas.',
+      title: 'Sejarah Islam',
+      description: 'Akses data sejarah Islam dan Sirah Nabawiyah yang autentik dan terpercaya.',
       icon: 'M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253',
       color: 'blue',
       link: '/other#sejarah'
+    },
+    {
+      title: 'Fitur Cerdas & Tools',
+      description: 'Kalkulator zakat, pencarian semantik AI, arah kiblat, dan kutipan harian otomatis.',
+      icon: 'M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4.343 4.343l.707.707m1.286 1.286L4.343 4.343M12 21v-1m0-1c-2.761 0-5-2.239-5-5a5 5 0 015-5 5 5 0 015 5c0 2.761-2.239 5-5 5z',
+      color: 'emerald',
+      link: '/playground?category=tools'
     }
   ];
 
@@ -72,9 +79,77 @@ export const Landing = () => {
             </span>
             Platform Data Islami Terlengkap
           </div>
-          <h1 class="text-5xl md:text-7xl font-extrabold text-slate-900 tracking-tight mb-8 animate-in fade-in slide-in-from-bottom-6 duration-1000">
-            Muslim <span class="text-emerald-600 block md:inline">All-in-One API</span>
+          <h1 class="text-4xl sm:text-5xl md:text-7xl font-extrabold text-slate-900 tracking-tight mb-8 animate-in fade-in slide-in-from-bottom-6 duration-1000">
+            Muslim API <span class="text-emerald-600 block md:inline-block">
+              <span id="dynamic-text">All-in-One</span><span class="animate-pulse">|</span>
+            </span>
           </h1>
+
+          <script dangerouslySetInnerHTML={{ __html: `
+            (function() {
+              const phrases = [
+                'All-in-One',
+                'Data Al-Qur\\'an',
+                'Pencarian AI',
+                'Kalkulator Zakat',
+                'Arah Kiblat',
+                'Hadits Arba\\'in',
+                'Tafsir Kemenag',
+                'Jadwal Sholat',
+                'Koleksi Doa',
+                'Sejarah Islam'
+              ];
+              let i = 0;
+              let j = 0;
+              let currentPhrase = [];
+              let isDeleting = false;
+              let isEnd = false;
+              
+              function loop() {
+                const el = document.getElementById('dynamic-text');
+                if (!el) {
+                  setTimeout(loop, 500);
+                  return;
+                }
+
+                isEnd = false;
+                
+                if (i < phrases.length) {
+                  if (!isDeleting && j <= phrases[i].length) {
+                    currentPhrase.push(phrases[i][j]);
+                    j++;
+                    el.innerHTML = currentPhrase.join('');
+                  }
+
+                  if (isDeleting && j >= 0) {
+                    currentPhrase.pop();
+                    j--;
+                    el.innerHTML = currentPhrase.join('');
+                  }
+
+                  if (j == phrases[i].length) {
+                    isEnd = true;
+                    isDeleting = true;
+                  }
+
+                  if (isDeleting && j <= 0) {
+                    currentPhrase = [];
+                    isDeleting = false;
+                    i++;
+                    if (i == phrases.length) i = 0;
+                    j = 0;
+                  }
+                }
+                const spedUp = Math.random() * (50 - 30) + 30;
+                const normalSpeed = Math.random() * (150 - 100) + 100;
+                const time = isEnd ? 2000 : isDeleting ? spedUp : normalSpeed;
+                setTimeout(loop, time);
+              }
+
+              // Start the loop after a short delay to ensure DOM is ready
+              setTimeout(loop, 100);
+            })();
+          ` }} />
           <p class="text-xl md:text-2xl text-slate-600 leading-relaxed mb-12 max-w-3xl mx-auto animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-200">
             Infrastruktur data keislaman digital yang cepat, gratis, dan andal. Dirancang untuk mempercepat inovasi dalam dakwah teknologi.
           </p>
@@ -113,7 +188,7 @@ export const Landing = () => {
               <div class="inline-block px-4 py-1.5 bg-emerald-100 text-emerald-700 rounded-lg text-sm font-bold uppercase tracking-wider">
                 Visi & Latar Belakang
               </div>
-              <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Mengapa Muslim API diciptakan?</h2>
+              <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Mengapa Muslim API?</h2>
               <div class="space-y-6 text-lg text-slate-600 leading-relaxed">
                 <p>
                   Di era digital saat ini, akses terhadap data keislaman yang akurat, cepat, dan mudah diintegrasikan adalah sebuah kebutuhan fundamental. Banyak pengembang menghadapi kesulitan dalam menemukan API yang menyediakan data lengkap tanpa batasan yang memberatkan.
@@ -264,14 +339,14 @@ export const Landing = () => {
                   <pre class="bg-transparent p-0 text-emerald-400 text-sm font-mono leading-relaxed">
 {`{
   "status": true,
-  "message": "Success fetching data",
+  "message": "Berhasil mengambil data surah.",
   "data": {
     "surah": "Al-Fatihah",
     "ayat": 7,
     "revelation": "Makkiyah",
     "translation": "Pembukaan"
   }
-}`}
+} `}
                   </pre>
                 </div>
               </div>

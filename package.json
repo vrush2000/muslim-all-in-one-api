@@ -7,13 +7,15 @@
   "scripts": {
     "dev": "vite",
     "build:css": "tailwindcss -i ./src/style.css -o ./src/compiled.css --minify",
-    "build": "npm run build:css && esbuild vercel-entry.js --bundle --platform=node --target=node20 --format=esm --outfile=api/index.js --external:better-sqlite3"
+    "build": "npm run build:css && esbuild vercel-entry.js --bundle --platform=node --target=node20 --format=esm --outfile=api/index.js --external:better-sqlite3 --external:fs --external:path --external:module --external:qrcode --external:qris-dinamis"
   },
   "dependencies": {
     "@hono/node-server": "^1.19.7",
     "better-sqlite3": "^12.5.0",
     "crypto": "^1.0.1",
-    "hono": "^4.11.1"
+    "hono": "^4.11.1",
+    "qrcode": "^1.5.4",
+    "qris-dinamis": "^1.0.2"
   },
   "devDependencies": {
     "@hono/vite-dev-server": "^0.23.0",

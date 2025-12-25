@@ -13,9 +13,9 @@ const formatAyah = (a) => {
 ayah.get('/', async (c) => {
   try {
     const data = await dbQuery("SELECT * FROM ayah ORDER BY CAST(id as INTEGER) ASC");
-    return c.json({ status: 200, data: (data || []).map(formatAyah) });
+    return c.json({ status: true, message: 'Berhasil mendapatkan daftar seluruh ayat.', data: (data || []).map(formatAyah) });
   } catch (error) {
-    return c.json({ status: 500, message: error.message }, 500);
+    return c.json({ status: false, message: 'Gagal mendapatkan daftar ayat: ' + error.message }, 500);
   }
 });
 
@@ -29,15 +29,15 @@ ayah.get('/range', async (c) => {
         "SELECT * FROM ayah WHERE surah = ? AND ayah BETWEEN CAST(? as INTEGER) and CAST(? as INTEGER) ORDER BY CAST(id as INTEGER) ASC",
         [surahId, start, end]
       );
-      return c.json({ status: 200, data: (data || []).map(formatAyah) });
+      return c.json({ status: true, message: `Berhasil mendapatkan ayat dari surah ${surahId} rentang ${start}-${end}.`, data: (data || []).map(formatAyah) });
     } else {
       return c.json({
-        status: 500,
-        message: "Parameter di perlukan (surahId, start, end).",
-      }, 500);
+        status: false,
+        message: "Parameter diperlukan (surahId, start, end).",
+      }, 400);
     }
   } catch (error) {
-    return c.json({ status: 500, message: error.message }, 500);
+    return c.json({ status: false, message: 'Gagal mendapatkan rentang ayat: ' + error.message }, 500);
   }
 });
 
@@ -49,15 +49,15 @@ ayah.get('/surah', async (c) => {
         "SELECT * FROM ayah WHERE surah = ? ORDER BY CAST(id as INTEGER) ASC",
         [id]
       );
-      return c.json({ status: 200, data: (data || []).map(formatAyah) });
+      return c.json({ status: true, message: `Berhasil mendapatkan daftar ayat untuk surah ${id}.`, data: (data || []).map(formatAyah) });
     } else {
       return c.json({
-        status: 500,
-        message: "Parameter di perlukan (surahId).",
-      }, 500);
+        status: false,
+        message: "Parameter diperlukan (surahId).",
+      }, 400);
     }
   } catch (error) {
-    return c.json({ status: 500, message: error.message }, 500);
+    return c.json({ status: false, message: 'Gagal mendapatkan ayat juz: ' + error.message }, 500);
   }
 });
 
@@ -69,15 +69,15 @@ ayah.get('/juz', async (c) => {
         "SELECT * FROM ayah WHERE juz = ? ORDER BY CAST(id as INTEGER) ASC",
         [id]
       );
-      return c.json({ status: 200, data: (data || []).map(formatAyah) });
+      return c.json({ status: true, message: `Berhasil mendapatkan daftar ayat untuk juz ${id}.`, data: (data || []).map(formatAyah) });
     } else {
       return c.json({
-        status: 500,
-        message: "Parameter di perlukan (juzId).",
-      }, 500);
+        status: false,
+        message: "Parameter diperlukan (juzId).",
+      }, 400);
     }
   } catch (error) {
-    return c.json({ status: 500, message: error.message }, 500);
+    return c.json({ status: false, message: 'Gagal mendapatkan ayat halaman: ' + error.message }, 500);
   }
 });
 
@@ -89,15 +89,15 @@ ayah.get('/page', async (c) => {
         "SELECT * FROM ayah WHERE page = ? ORDER BY CAST(id as INTEGER) ASC",
         [id]
       );
-      return c.json({ status: 200, data: (data || []).map(formatAyah) });
+      return c.json({ status: true, message: `Berhasil mendapatkan daftar ayat untuk halaman ${id}.`, data: (data || []).map(formatAyah) });
     } else {
       return c.json({
-        status: 500,
-        message: "Parameter di perlukan (page).",
-      }, 500);
+        status: false,
+        message: "Parameter diperlukan (page).",
+      }, 400);
     }
   } catch (error) {
-    return c.json({ status: 500, message: error.message }, 500);
+    return c.json({ status: false, message: error.message }, 500);
   }
 });
 
@@ -111,18 +111,18 @@ ayah.get('/specific', async (c) => {
         [surahId, ayahId]
       );
       if (!data) {
-        return c.json({ status: 404, data: {} }, 404);
+        return c.json({ status: false, message: `Ayat ${ayahId} pada surah ${surahId} tidak ditemukan.`, data: {} }, 404);
       } else {
-        return c.json({ status: 200, data: formatAyah(data) });
+        return c.json({ status: true, message: `Berhasil mendapatkan detail ayat ${ayahId} pada surah ${surahId}.`, data: formatAyah(data) });
       }
     } else {
       return c.json({
-        status: 500,
-        message: "Parameter di perlukan (surahId, ayahId).",
-      }, 500);
+        status: false,
+        message: "Parameter diperlukan (surahId, ayahId).",
+      }, 400);
     }
   } catch (error) {
-    return c.json({ status: 500, message: error.message }, 500);
+    return c.json({ status: false, message: 'Gagal mendapatkan detail ayat: ' + error.message }, 500);
   }
 });
 
@@ -134,15 +134,15 @@ ayah.get('/find', async (c) => {
         "SELECT * FROM ayah WHERE text LIKE ? ORDER BY CAST(id as INTEGER) ASC",
         [`%${q}%`]
       );
-      return c.json({ status: 200, data: (data || []).map(formatAyah) });
+      return c.json({ status: true, message: `Berhasil mencari ayat dengan kata kunci: ${q}.`, data: (data || []).map(formatAyah) });
     } else {
       return c.json({
-        status: 500,
-        message: "Parameter di perlukan (query). Harus lebih dari 3 karakter.",
-      }, 500);
+        status: false,
+        message: "Parameter diperlukan (query). Harus lebih dari 3 karakter.",
+      }, 400);
     }
   } catch (error) {
-    return c.json({ status: 500, message: error.message }, 500);
+    return c.json({ status: false, message: 'Gagal mencari ayat: ' + error.message }, 500);
   }
 });
 

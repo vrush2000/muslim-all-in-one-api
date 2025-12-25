@@ -116,13 +116,14 @@ calendar.get('/hijri', async (c) => {
     }
 
     if (isNaN(date.getTime())) {
-      return c.json({ status: 400, message: "Invalid date format. Use YYYY-MM-DD" }, 400);
+      return c.json({ status: false, message: "Format tanggal tidak valid. Gunakan YYYY-MM-DD." }, 400);
     }
 
     const calData = await getCalendarData();
     const hijri = g2h(date, adj, calData);
     return c.json({
-      status: 200,
+      status: true,
+      message: 'Berhasil mengonversi tanggal Masehi ke Hijriah.',
       data: {
         masehi: date.toISOString().split('T')[0],
         adjustment: adj,
@@ -130,7 +131,7 @@ calendar.get('/hijri', async (c) => {
       }
     });
   } catch (error) {
-    return c.json({ status: 500, message: error.message }, 500);
+    return c.json({ status: false, message: 'Gagal mengonversi tanggal: ' + error.message }, 500);
   }
 });
 
@@ -142,17 +143,18 @@ calendar.get('/masehi', async (c) => {
     const year = parseInt(c.req.query('year'));
 
     if (isNaN(day) || isNaN(month) || isNaN(year)) {
-      return c.json({ status: 400, message: "Missing or invalid parameters. Requires day, month, and year" }, 400);
+      return c.json({ status: false, message: "Parameter tidak lengkap atau tidak valid. Membutuhkan day, month, dan year." }, 400);
     }
 
     if (month < 1 || month > 12 || day < 1 || day > 30) {
-      return c.json({ status: 400, message: "Invalid Hijri date values" }, 400);
+      return c.json({ status: false, message: "Nilai tanggal Hijriah tidak valid." }, 400);
     }
 
     const calData = await getCalendarData();
     const masehi = h2g(day, month, year, calData);
     return c.json({
-      status: 200,
+      status: true,
+      message: 'Berhasil mengonversi tanggal Hijriah ke Masehi.',
       data: {
         hijri: {
           day,
@@ -163,7 +165,7 @@ calendar.get('/masehi', async (c) => {
       }
     });
   } catch (error) {
-    return c.json({ status: 500, message: error.message }, 500);
+    return c.json({ status: false, message: 'Gagal mengonversi tanggal: ' + error.message }, 500);
   }
 });
 

@@ -4820,7 +4820,25 @@ try {
   console.error("Failed to load compiled CSS:", e);
 }
 var Layout = ({ children, title: title3 }) => {
-  return /* @__PURE__ */ jsx("html", { lang: "en", class: "scroll-smooth" }, /* @__PURE__ */ jsx("head", null, /* @__PURE__ */ jsx("meta", { charset: "UTF-8" }), /* @__PURE__ */ jsx("meta", { name: "viewport", content: "width=device-width, initial-scale=1.0" }), /* @__PURE__ */ jsx("title", null, title3), /* @__PURE__ */ jsx("link", { rel: "icon", href: "data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23059669%22/><path d=%22M30 35v40c10-5 20-5 20 0V35c0-5-10-5-20 0zM70 35v40c-10-5-20-5-20 0V35c0-5 10-5 20 0z%22 fill=%22white%22/></svg>" }), compiledCss ? /* @__PURE__ */ jsx("style", { dangerouslySetInnerHTML: { __html: compiledCss } }) : /* @__PURE__ */ jsx("script", { src: "https://cdn.tailwindcss.com" }), /* @__PURE__ */ jsx("link", { href: "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap", rel: "stylesheet" }), /* @__PURE__ */ jsx("link", { rel: "stylesheet", href: "https://cdn.jsdelivr.net/npm/jsoneditor@9.10.0/dist/jsoneditor.min.css" }), /* @__PURE__ */ jsx("script", { src: "https://cdn.jsdelivr.net/npm/jsoneditor@9.10.0/dist/jsoneditor.min.js" }), process.env.NODE_ENV === "development" && /* @__PURE__ */ jsx("script", { type: "module", src: "/@vite/client" }), /* @__PURE__ */ jsx("style", null, `
+  return /* @__PURE__ */ jsx("html", { lang: "en", class: "scroll-smooth" }, /* @__PURE__ */ jsx("head", null, /* @__PURE__ */ jsx("meta", { charset: "UTF-8" }), /* @__PURE__ */ jsx("meta", { name: "viewport", content: "width=device-width, initial-scale=1.0" }), /* @__PURE__ */ jsx("title", null, title3), /* @__PURE__ */ jsx(
+    "link",
+    {
+      rel: "icon",
+      href: "data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23059669%22/><path d=%22M30 35v40c10-5 20-5 20 0V35c0-5-10-5-20 0zM70 35v40c-10-5-20-5-20 0V35c0-5 10-5 20 0z%22 fill=%22white%22/></svg>"
+    }
+  ), compiledCss ? /* @__PURE__ */ jsx("style", { dangerouslySetInnerHTML: { __html: compiledCss } }) : /* @__PURE__ */ jsx("script", { src: "https://cdn.tailwindcss.com" }), /* @__PURE__ */ jsx(
+    "link",
+    {
+      href: "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap",
+      rel: "stylesheet"
+    }
+  ), /* @__PURE__ */ jsx(
+    "link",
+    {
+      rel: "stylesheet",
+      href: "https://cdn.jsdelivr.net/npm/jsoneditor@9.10.0/dist/jsoneditor.min.css"
+    }
+  ), /* @__PURE__ */ jsx("script", { src: "https://cdn.jsdelivr.net/npm/jsoneditor@9.10.0/dist/jsoneditor.min.js" }), process.env.NODE_ENV === "development" && /* @__PURE__ */ jsx("script", { type: "module", src: "/@vite/client" }), /* @__PURE__ */ jsx("style", null, `
           body {
             font-family: 'Plus Jakarta Sans', sans-serif;
           }
@@ -4856,6 +4874,11 @@ var Layout = ({ children, title: title3 }) => {
           }
 
           /* JSONEditor Custom Style for Modal */
+          #modal-json-editor {
+            border: none !important;
+            height: 100% !important;
+            width: 100% !important;
+          }
           #modal-json-editor .jsoneditor {
             border: none !important;
           }
@@ -4869,9 +4892,23 @@ var Layout = ({ children, title: title3 }) => {
           }
           #modal-json-editor .jsoneditor-outer {
             background-color: #0f172a !important;
+            overflow: auto !important;
+            position: relative !important;
           }
           #modal-json-editor .jsoneditor-tree {
             background-color: #0f172a !important;
+            min-width: 100% !important;
+          }
+          #modal-json-editor .jsoneditor-tree-inner {
+            min-width: max-content !important;
+            padding-bottom: 50px !important;
+          }
+          #modal-json-editor .jsoneditor-content-wrapper {
+            overflow: visible !important;
+          }
+          #modal-json-editor .jsoneditor-field,
+          #modal-json-editor .jsoneditor-value {
+            white-space: nowrap !important;
           }
           #modal-json-editor .jsoneditor-separator {
             background-color: transparent !important;
@@ -4897,14 +4934,61 @@ var Layout = ({ children, title: title3 }) => {
           #modal-json-editor .jsoneditor-field {
             color: #e2e8f0 !important;
           }
-          #modal-json-editor div.jsoneditor-tree-inner {
-            padding-bottom: 50px !important;
+
+          /* Custom Scrollbar for both wrapper and JSONEditor internals */
+          .custom-scrollbar::-webkit-scrollbar,
+          #modal-json-editor .jsoneditor-outer::-webkit-scrollbar,
+          #modal-json-editor .jsoneditor-tree::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
           }
-        `)), /* @__PURE__ */ jsx("body", { class: "bg-slate-50 text-slate-900 min-h-screen flex flex-col" }, /* @__PURE__ */ jsx(Search, null), /* @__PURE__ */ jsx("header", { class: "sticky top-0 z-50 glass border-b border-slate-200" }, /* @__PURE__ */ jsx("div", { class: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" }, /* @__PURE__ */ jsx("div", { class: "flex justify-between h-16 items-center" }, /* @__PURE__ */ jsx("a", { href: "/", class: "flex items-center gap-2 group transition-all shrink-0" }, /* @__PURE__ */ jsx("div", { class: "w-8 h-8 bg-emerald-600 rounded-lg flex items-center justify-center group-hover:shadow-lg group-hover:shadow-emerald-200 transition-all" }, /* @__PURE__ */ jsx(
+          .custom-scrollbar::-webkit-scrollbar-track,
+          #modal-json-editor .jsoneditor-outer::-webkit-scrollbar-track,
+          #modal-json-editor .jsoneditor-tree::-webkit-scrollbar-track {
+            background: #0f172a;
+          }
+          .custom-scrollbar::-webkit-scrollbar-thumb,
+          #modal-json-editor .jsoneditor-outer::-webkit-scrollbar-thumb,
+          #modal-json-editor .jsoneditor-tree::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+          }
+          .custom-scrollbar::-webkit-scrollbar-thumb:hover,
+          #modal-json-editor .jsoneditor-outer::-webkit-scrollbar-thumb:hover,
+          #modal-json-editor .jsoneditor-tree::-webkit-scrollbar-thumb:hover {
+            background: #475569;
+          }
+        `)), /* @__PURE__ */ jsx("body", { class: "bg-slate-50 text-slate-900 min-h-screen flex flex-col" }, /* @__PURE__ */ jsx(Search, null), /* @__PURE__ */ jsx("header", { class: "sticky top-0 z-50 glass border-b border-slate-200" }, /* @__PURE__ */ jsx("div", { class: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" }, /* @__PURE__ */ jsx("div", { class: "flex justify-between h-16 items-center" }, /* @__PURE__ */ jsx(
+    "a",
+    {
+      href: "/",
+      class: "flex items-center gap-2 group transition-all shrink-0"
+    },
+    /* @__PURE__ */ jsx("div", { class: "w-8 h-8 bg-emerald-600 rounded-lg flex items-center justify-center group-hover:shadow-lg group-hover:shadow-emerald-200 transition-all" }, /* @__PURE__ */ jsx(
+      "svg",
+      {
+        xmlns: "http://www.w3.org/2000/svg",
+        class: "h-5 w-5 text-white",
+        fill: "none",
+        viewBox: "0 0 24 24",
+        stroke: "currentColor"
+      },
+      /* @__PURE__ */ jsx(
+        "path",
+        {
+          "stroke-linecap": "round",
+          "stroke-linejoin": "round",
+          "stroke-width": "2",
+          d: "M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+        }
+      )
+    )),
+    /* @__PURE__ */ jsx("span", { class: "text-xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent group-hover:from-emerald-500 group-hover:to-teal-500 transition-all" }, "Muslim API")
+  ), /* @__PURE__ */ jsx("div", { class: "flex items-center gap-1 md:gap-4 lg:gap-4" }, /* @__PURE__ */ jsx("div", { class: "relative group w-40 md:w-64" }, /* @__PURE__ */ jsx("div", { class: "absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none" }, /* @__PURE__ */ jsx(
     "svg",
     {
       xmlns: "http://www.w3.org/2000/svg",
-      class: "h-5 w-5 text-white",
+      class: "h-4 w-4 text-slate-400 group-focus-within:text-emerald-500 transition-colors",
       fill: "none",
       viewBox: "0 0 24 24",
       stroke: "currentColor"
@@ -4915,10 +4999,10 @@ var Layout = ({ children, title: title3 }) => {
         "stroke-linecap": "round",
         "stroke-linejoin": "round",
         "stroke-width": "2",
-        d: "M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+        d: "M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
       }
     )
-  )), /* @__PURE__ */ jsx("span", { class: "text-xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent group-hover:from-emerald-500 group-hover:to-teal-500 transition-all" }, "Muslim API")), /* @__PURE__ */ jsx("div", { class: "flex items-center gap-1 md:gap-4 lg:gap-4" }, /* @__PURE__ */ jsx("div", { class: "relative group w-40 md:w-64" }, /* @__PURE__ */ jsx("div", { class: "absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none" }, /* @__PURE__ */ jsx("svg", { xmlns: "http://www.w3.org/2000/svg", class: "h-4 w-4 text-slate-400 group-focus-within:text-emerald-500 transition-colors", fill: "none", viewBox: "0 0 24 24", stroke: "currentColor" }, /* @__PURE__ */ jsx("path", { "stroke-linecap": "round", "stroke-linejoin": "round", "stroke-width": "2", d: "M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" }))), /* @__PURE__ */ jsx(
+  )), /* @__PURE__ */ jsx(
     "input",
     {
       type: "text",
@@ -4929,14 +5013,239 @@ var Layout = ({ children, title: title3 }) => {
       placeholder: "Search...",
       class: "block w-full pl-10 pr-3 py-1.5 bg-slate-100 border border-slate-200 rounded-lg text-sm placeholder-slate-400 focus:outline-none focus:bg-white focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition-all"
     }
-  ), /* @__PURE__ */ jsx("div", { id: "search-results-dropdown", class: "absolute top-full left-0 right-0 mt-2 bg-white rounded-xl shadow-xl border border-slate-200 hidden overflow-hidden z-[100] max-h-[400px] overflow-y-auto" }, /* @__PURE__ */ jsx("div", { id: "search-results-content", class: "p-2" }, /* @__PURE__ */ jsx("div", { class: "text-center py-4 text-slate-400 text-xs" }, "Type to search...")))), /* @__PURE__ */ jsx("nav", { class: "hidden md:flex items-center space-x-8" }, /* @__PURE__ */ jsx(
+  ), /* @__PURE__ */ jsx(
+    "div",
+    {
+      id: "search-results-dropdown",
+      class: "absolute top-full left-0 right-0 mt-2 bg-white rounded-xl shadow-xl border border-slate-200 hidden overflow-hidden z-[100] max-h-[400px] overflow-y-auto"
+    },
+    /* @__PURE__ */ jsx("div", { id: "search-results-content", class: "p-2" }, /* @__PURE__ */ jsx("div", { class: "text-center py-4 text-slate-400 text-xs" }, "Type to search..."))
+  )), /* @__PURE__ */ jsx("nav", { class: "hidden md:flex items-center space-x-8" }, /* @__PURE__ */ jsx(
     "a",
     {
       href: "/",
       class: "text-slate-600 hover:text-emerald-600 font-medium transition-colors"
     },
     "Home"
-  ), /* @__PURE__ */ jsx("div", { class: "relative group" }, /* @__PURE__ */ jsx("button", { class: "flex items-center gap-1 text-slate-600 group-hover:text-emerald-600 font-medium transition-colors py-4" }, "Resources", /* @__PURE__ */ jsx("svg", { xmlns: "http://www.w3.org/2000/svg", class: "h-4 w-4 transition-transform group-hover:rotate-180", fill: "none", viewBox: "0 0 24 24", stroke: "currentColor" }, /* @__PURE__ */ jsx("path", { "stroke-linecap": "round", "stroke-linejoin": "round", "stroke-width": "2", d: "M19 9l-7 7-7-7" }))), /* @__PURE__ */ jsx("div", { class: "absolute top-full left-1/2 -translate-x-1/2 w-[600px] bg-white rounded-2xl shadow-2xl border border-slate-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 p-6 z-[100]" }, /* @__PURE__ */ jsx("div", { class: "grid grid-cols-3 gap-8" }, /* @__PURE__ */ jsx("div", null, /* @__PURE__ */ jsx("h5", { class: "text-xs font-bold text-slate-400 uppercase tracking-wider mb-4" }, "Internal Services"), /* @__PURE__ */ jsx("ul", { class: "space-y-3" }, /* @__PURE__ */ jsx("li", null, /* @__PURE__ */ jsx("a", { href: "/docs", class: "group/item flex items-start gap-3" }, /* @__PURE__ */ jsx("div", { class: "w-8 h-8 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0 group-hover/item:bg-emerald-600 group-hover/item:text-white transition-colors" }, /* @__PURE__ */ jsx("svg", { class: "w-4 h-4", fill: "none", stroke: "currentColor", viewBox: "0 0 24 24" }, /* @__PURE__ */ jsx("path", { "stroke-linecap": "round", "stroke-linejoin": "round", "stroke-width": "2", d: "M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" }))), /* @__PURE__ */ jsx("div", null, /* @__PURE__ */ jsx("div", { class: "text-sm font-bold text-slate-900" }, "Al-Quran API"), /* @__PURE__ */ jsx("div", { class: "text-xs text-slate-500" }, "Teks & Tafsir Kemenag")))), /* @__PURE__ */ jsx("li", null, /* @__PURE__ */ jsx("a", { href: "/other", class: "group/item flex items-start gap-3" }, /* @__PURE__ */ jsx("div", { class: "w-8 h-8 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center shrink-0 group-hover/item:bg-blue-600 group-hover/item:text-white transition-colors" }, /* @__PURE__ */ jsx("svg", { class: "w-4 h-4", fill: "none", stroke: "currentColor", viewBox: "0 0 24 24" }, /* @__PURE__ */ jsx("path", { "stroke-linecap": "round", "stroke-linejoin": "round", "stroke-width": "2", d: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" }))), /* @__PURE__ */ jsx("div", null, /* @__PURE__ */ jsx("div", { class: "text-sm font-bold text-slate-900" }, "Jadwal Sholat"), /* @__PURE__ */ jsx("div", { class: "text-xs text-slate-500" }, "Seluruh Indonesia")))), /* @__PURE__ */ jsx("li", null, /* @__PURE__ */ jsx("a", { href: "/status", class: "group/item flex items-start gap-3" }, /* @__PURE__ */ jsx("div", { class: "w-8 h-8 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center shrink-0 group-hover/item:bg-amber-600 group-hover/item:text-white transition-colors" }, /* @__PURE__ */ jsx("svg", { class: "w-4 h-4", fill: "none", stroke: "currentColor", viewBox: "0 0 24 24" }, /* @__PURE__ */ jsx("path", { "stroke-linecap": "round", "stroke-linejoin": "round", "stroke-width": "2", d: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" }))), /* @__PURE__ */ jsx("div", null, /* @__PURE__ */ jsx("div", { class: "text-sm font-bold text-slate-900" }, "System Status"), /* @__PURE__ */ jsx("div", { class: "text-xs text-slate-500" }, "Uptime & Latency")))))), /* @__PURE__ */ jsx("div", null, /* @__PURE__ */ jsx("h5", { class: "text-xs font-bold text-slate-400 uppercase tracking-wider mb-4" }, "Official Sources"), /* @__PURE__ */ jsx("ul", { class: "space-y-3 text-sm" }, /* @__PURE__ */ jsx("li", null, /* @__PURE__ */ jsx("a", { href: "https://quran.kemenag.go.id/", target: "_blank", class: "text-slate-600 hover:text-emerald-600 flex items-center gap-2" }, "Quran Kemenag ", /* @__PURE__ */ jsx("svg", { class: "w-3 h-3", fill: "none", stroke: "currentColor", viewBox: "0 0 24 24" }, /* @__PURE__ */ jsx("path", { d: "M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" })))), /* @__PURE__ */ jsx("li", null, /* @__PURE__ */ jsx("a", { href: "https://fatwatarjih.or.id/", target: "_blank", class: "text-slate-600 hover:text-emerald-600 flex items-center gap-2" }, "Fatwa Tarjih ", /* @__PURE__ */ jsx("svg", { class: "w-3 h-3", fill: "none", stroke: "currentColor", viewBox: "0 0 24 24" }, /* @__PURE__ */ jsx("path", { d: "M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" })))))), /* @__PURE__ */ jsx("div", null, /* @__PURE__ */ jsx("h5", { class: "text-xs font-bold text-slate-400 uppercase tracking-wider mb-4" }, "Community"), /* @__PURE__ */ jsx("ul", { class: "space-y-3 text-sm" }, /* @__PURE__ */ jsx("li", null, /* @__PURE__ */ jsx("a", { href: "https://github.com/vrush2000/muslim-all-in-one-api", target: "_blank", class: "text-slate-600 hover:text-emerald-600" }, "GitHub Repo")), /* @__PURE__ */ jsx("li", null, /* @__PURE__ */ jsx("a", { href: "https://equran.id/", target: "_blank", class: "text-slate-600 hover:text-emerald-600" }, "equran.id")), /* @__PURE__ */ jsx("li", null, /* @__PURE__ */ jsx("a", { href: "https://api.hadith.gading.dev/", target: "_blank", class: "text-slate-600 hover:text-emerald-600" }, "Hadith Gading"))))))), /* @__PURE__ */ jsx(
+  ), /* @__PURE__ */ jsx("div", { class: "relative group" }, /* @__PURE__ */ jsx("button", { class: "flex items-center gap-1 text-slate-600 group-hover:text-emerald-600 font-medium transition-colors py-4" }, "Documentation", /* @__PURE__ */ jsx(
+    "svg",
+    {
+      xmlns: "http://www.w3.org/2000/svg",
+      class: "h-4 w-4 transition-transform group-hover:rotate-180",
+      fill: "none",
+      viewBox: "0 0 24 24",
+      stroke: "currentColor"
+    },
+    /* @__PURE__ */ jsx(
+      "path",
+      {
+        "stroke-linecap": "round",
+        "stroke-linejoin": "round",
+        "stroke-width": "2",
+        d: "M19 9l-7 7-7-7"
+      }
+    )
+  )), /* @__PURE__ */ jsx("div", { class: "absolute top-full left-1/2 -translate-x-1/2 w-[500px] bg-white rounded-2xl shadow-2xl border border-slate-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 p-6 z-[100]" }, /* @__PURE__ */ jsx("div", { class: "grid grid-cols-3 gap-8" }, /* @__PURE__ */ jsx("div", null, /* @__PURE__ */ jsx("h5", { class: "text-xs font-bold text-slate-400 uppercase tracking-wider mb-4" }, "Internal Services"), /* @__PURE__ */ jsx("ul", { class: "space-y-3" }, /* @__PURE__ */ jsx("li", null, /* @__PURE__ */ jsx(
+    "a",
+    {
+      href: "/docs",
+      class: "group/item flex items-start gap-3"
+    },
+    /* @__PURE__ */ jsx("div", { class: "w-8 h-8 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0 group-hover/item:bg-emerald-600 group-hover/item:text-white transition-colors" }, /* @__PURE__ */ jsx(
+      "svg",
+      {
+        class: "w-4 h-4",
+        fill: "none",
+        stroke: "currentColor",
+        viewBox: "0 0 24 24"
+      },
+      /* @__PURE__ */ jsx(
+        "path",
+        {
+          "stroke-linecap": "round",
+          "stroke-linejoin": "round",
+          "stroke-width": "2",
+          d: "M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+        }
+      )
+    )),
+    /* @__PURE__ */ jsx("div", null, /* @__PURE__ */ jsx("div", { class: "text-sm font-bold text-slate-900" }, "Al-Quran API"), /* @__PURE__ */ jsx("div", { class: "text-xs text-slate-500" }, "Teks & Tafsir Kemenag"))
+  )), /* @__PURE__ */ jsx("li", null, /* @__PURE__ */ jsx(
+    "a",
+    {
+      href: "/other",
+      class: "group/item flex items-start gap-3"
+    },
+    /* @__PURE__ */ jsx("div", { class: "w-8 h-8 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center shrink-0 group-hover/item:bg-blue-600 group-hover/item:text-white transition-colors" }, /* @__PURE__ */ jsx(
+      "svg",
+      {
+        class: "w-4 h-4",
+        fill: "none",
+        stroke: "currentColor",
+        viewBox: "0 0 24 24"
+      },
+      /* @__PURE__ */ jsx(
+        "path",
+        {
+          "stroke-linecap": "round",
+          "stroke-linejoin": "round",
+          "stroke-width": "2",
+          d: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+        }
+      )
+    )),
+    /* @__PURE__ */ jsx("div", null, /* @__PURE__ */ jsx("div", { class: "text-sm font-bold text-slate-900" }, "Jadwal Sholat"), /* @__PURE__ */ jsx("div", { class: "text-xs text-slate-500" }, "Seluruh Indonesia"))
+  )), /* @__PURE__ */ jsx("li", null, /* @__PURE__ */ jsx(
+    "a",
+    {
+      href: "/status",
+      class: "group/item flex items-start gap-3"
+    },
+    /* @__PURE__ */ jsx("div", { class: "w-8 h-8 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center shrink-0 group-hover/item:bg-amber-600 group-hover/item:text-white transition-colors" }, /* @__PURE__ */ jsx(
+      "svg",
+      {
+        class: "w-4 h-4",
+        fill: "none",
+        stroke: "currentColor",
+        viewBox: "0 0 24 24"
+      },
+      /* @__PURE__ */ jsx(
+        "path",
+        {
+          "stroke-linecap": "round",
+          "stroke-linejoin": "round",
+          "stroke-width": "2",
+          d: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+        }
+      )
+    )),
+    /* @__PURE__ */ jsx("div", null, /* @__PURE__ */ jsx("div", { class: "text-sm font-bold text-slate-900" }, "System Status"), /* @__PURE__ */ jsx("div", { class: "text-xs text-slate-500" }, "Uptime & Latency"))
+  )))), /* @__PURE__ */ jsx("div", { class: "col-span-2" }, /* @__PURE__ */ jsx("h5", { class: "text-xs font-bold text-slate-400 uppercase tracking-wider mb-4" }, "Other API Resources"), /* @__PURE__ */ jsx("ul", { class: "grid grid-cols-2 gap-x-8 gap-y-4" }, /* @__PURE__ */ jsx("li", null, /* @__PURE__ */ jsx(
+    "a",
+    {
+      href: "/other#hadits",
+      class: "group/item flex items-start gap-3"
+    },
+    /* @__PURE__ */ jsx("div", { class: "w-8 h-8 rounded-lg bg-rose-50 text-rose-600 flex items-center justify-center shrink-0 group-hover/item:bg-rose-600 group-hover/item:text-white transition-colors" }, /* @__PURE__ */ jsx(
+      "svg",
+      {
+        class: "w-4 h-4",
+        fill: "none",
+        stroke: "currentColor",
+        viewBox: "0 0 24 24"
+      },
+      /* @__PURE__ */ jsx(
+        "path",
+        {
+          "stroke-linecap": "round",
+          "stroke-linejoin": "round",
+          "stroke-width": "2",
+          d: "M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+        }
+      )
+    )),
+    /* @__PURE__ */ jsx("div", null, /* @__PURE__ */ jsx("div", { class: "text-sm font-bold text-slate-900" }, "Hadits & Tafsir"), /* @__PURE__ */ jsx("div", { class: "text-xs text-slate-500" }, "Kumpulan Kitab & Tafsir"))
+  )), /* @__PURE__ */ jsx("li", null, /* @__PURE__ */ jsx(
+    "a",
+    {
+      href: "/other#doa",
+      class: "group/item flex items-start gap-3"
+    },
+    /* @__PURE__ */ jsx("div", { class: "w-8 h-8 rounded-lg bg-purple-50 text-purple-600 flex items-center justify-center shrink-0 group-hover/item:bg-purple-600 group-hover/item:text-white transition-colors" }, /* @__PURE__ */ jsx(
+      "svg",
+      {
+        class: "w-4 h-4",
+        fill: "none",
+        stroke: "currentColor",
+        viewBox: "0 0 24 24"
+      },
+      /* @__PURE__ */ jsx(
+        "path",
+        {
+          "stroke-linecap": "round",
+          "stroke-linejoin": "round",
+          "stroke-width": "2",
+          d: "M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+        }
+      )
+    )),
+    /* @__PURE__ */ jsx("div", null, /* @__PURE__ */ jsx("div", { class: "text-sm font-bold text-slate-900" }, "Doa & Dzikir"), /* @__PURE__ */ jsx("div", { class: "text-xs text-slate-500" }, "Harian & Pilihan"))
+  )), /* @__PURE__ */ jsx("li", null, /* @__PURE__ */ jsx(
+    "a",
+    {
+      href: "/other#calendar",
+      class: "group/item flex items-start gap-3"
+    },
+    /* @__PURE__ */ jsx("div", { class: "w-8 h-8 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center shrink-0 group-hover/item:bg-indigo-600 group-hover/item:text-white transition-colors" }, /* @__PURE__ */ jsx(
+      "svg",
+      {
+        class: "w-4 h-4",
+        fill: "none",
+        stroke: "currentColor",
+        viewBox: "0 0 24 24"
+      },
+      /* @__PURE__ */ jsx(
+        "path",
+        {
+          "stroke-linecap": "round",
+          "stroke-linejoin": "round",
+          "stroke-width": "2",
+          d: "M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+        }
+      )
+    )),
+    /* @__PURE__ */ jsx("div", null, /* @__PURE__ */ jsx("div", { class: "text-sm font-bold text-slate-900" }, "Kalender Hijriah"), /* @__PURE__ */ jsx("div", { class: "text-xs text-slate-500" }, "Konversi & Jadwal"))
+  )), /* @__PURE__ */ jsx("li", null, /* @__PURE__ */ jsx(
+    "a",
+    {
+      href: "/other#asma",
+      class: "group/item flex items-start gap-3"
+    },
+    /* @__PURE__ */ jsx("div", { class: "w-8 h-8 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center shrink-0 group-hover/item:bg-amber-600 group-hover/item:text-white transition-colors" }, /* @__PURE__ */ jsx(
+      "svg",
+      {
+        class: "w-4 h-4",
+        fill: "none",
+        stroke: "currentColor",
+        viewBox: "0 0 24 24"
+      },
+      /* @__PURE__ */ jsx(
+        "path",
+        {
+          "stroke-linecap": "round",
+          "stroke-linejoin": "round",
+          "stroke-width": "2",
+          d: "M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-7.714 2.143L11 21l-2.286-6.857L1 12l7.714-2.143L11 3z"
+        }
+      )
+    )),
+    /* @__PURE__ */ jsx("div", null, /* @__PURE__ */ jsx("div", { class: "text-sm font-bold text-slate-900" }, "Asmaul Husna"), /* @__PURE__ */ jsx("div", { class: "text-xs text-slate-500" }, "99 Nama Allah"))
+  )), /* @__PURE__ */ jsx("li", null, /* @__PURE__ */ jsx(
+    "a",
+    {
+      href: "/other#kemenag",
+      class: "group/item flex items-start gap-3"
+    },
+    /* @__PURE__ */ jsx("div", { class: "w-8 h-8 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0 group-hover/item:bg-emerald-600 group-hover/item:text-white transition-colors" }, /* @__PURE__ */ jsx(
+      "svg",
+      {
+        class: "w-4 h-4",
+        fill: "none",
+        stroke: "currentColor",
+        viewBox: "0 0 24 24"
+      },
+      /* @__PURE__ */ jsx(
+        "path",
+        {
+          "stroke-linecap": "round",
+          "stroke-linejoin": "round",
+          "stroke-width": "2",
+          d: "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+        }
+      )
+    )),
+    /* @__PURE__ */ jsx("div", null, /* @__PURE__ */ jsx("div", { class: "text-sm font-bold text-slate-900" }, "Layanan Kemenag"), /* @__PURE__ */ jsx("div", { class: "text-xs text-slate-500" }, "SIMAS, Pesantren & Libur"))
+  ))))))), /* @__PURE__ */ jsx(
     "a",
     {
       href: "/playground",
@@ -4969,34 +5278,208 @@ var Layout = ({ children, title: title3 }) => {
         }
       )
     )
-  )))), /* @__PURE__ */ jsx("div", { id: "mobile-menu", class: "md:hidden border-t border-slate-100" }, /* @__PURE__ */ jsx("nav", { class: "flex flex-col space-y-1 px-2 pb-4" }, /* @__PURE__ */ jsx("a", { href: "/", class: "text-slate-600 hover:text-emerald-600 hover:bg-emerald-50 px-3 py-2 rounded-lg font-medium transition-all" }, "Home"), /* @__PURE__ */ jsx("div", { class: "px-3 py-2 text-xs font-bold text-slate-400 uppercase tracking-wider mt-2" }, "Internal Services"), /* @__PURE__ */ jsx("a", { href: "/docs", class: "text-slate-600 hover:text-emerald-600 hover:bg-emerald-50 px-3 py-2 rounded-lg font-medium transition-all flex items-center gap-2" }, /* @__PURE__ */ jsx("div", { class: "w-1.5 h-1.5 rounded-full bg-emerald-500" }), " Al-Quran API"), /* @__PURE__ */ jsx("a", { href: "/other", class: "text-slate-600 hover:text-emerald-600 hover:bg-emerald-50 px-3 py-2 rounded-lg font-medium transition-all flex items-center gap-2" }, /* @__PURE__ */ jsx("div", { class: "w-1.5 h-1.5 rounded-full bg-blue-500" }), " Other APIs"), /* @__PURE__ */ jsx("a", { href: "/status", class: "text-slate-600 hover:text-emerald-600 hover:bg-emerald-50 px-3 py-2 rounded-lg font-medium transition-all flex items-center gap-2" }, /* @__PURE__ */ jsx("div", { class: "w-1.5 h-1.5 rounded-full bg-amber-500" }), " System Status"), /* @__PURE__ */ jsx("div", { class: "px-3 py-2 text-xs font-bold text-slate-400 uppercase tracking-wider mt-2" }, "External Resources"), /* @__PURE__ */ jsx("a", { href: "https://quran.kemenag.go.id/", target: "_blank", class: "text-slate-600 hover:text-emerald-600 hover:bg-emerald-50 px-3 py-2 rounded-lg font-medium transition-all" }, "Quran Kemenag"), /* @__PURE__ */ jsx("a", { href: "https://fatwatarjih.or.id/", target: "_blank", class: "text-slate-600 hover:text-emerald-600 hover:bg-emerald-50 px-3 py-2 rounded-lg font-medium transition-all" }, "Fatwa Tarjih"), /* @__PURE__ */ jsx("a", { href: "https://github.com/vrush2000/muslim-all-in-one-api", target: "_blank", class: "text-slate-600 hover:text-emerald-600 hover:bg-emerald-50 px-3 py-2 rounded-lg font-medium transition-all" }, "GitHub Repository"), /* @__PURE__ */ jsx("a", { href: "/playground", class: "mt-4 text-center text-white bg-emerald-600 px-3 py-2.5 rounded-xl font-bold transition-all shadow-lg shadow-emerald-100" }, "Open Playground"))))), /* @__PURE__ */ jsx("main", { class: "flex-grow" }, children), /* @__PURE__ */ jsx("div", { id: "api-preview-modal", class: "fixed inset-0 z-[200] hidden" }, /* @__PURE__ */ jsx("div", { class: "absolute inset-0 bg-slate-900/60 backdrop-blur-sm", onclick: "window.closeApiModal()" }), /* @__PURE__ */ jsx("div", { class: "absolute inset-0 flex items-center justify-center p-4 pointer-events-none" }, /* @__PURE__ */ jsx("div", { class: "bg-white w-full max-w-4xl max-h-[90vh] rounded-2xl shadow-2xl flex flex-col pointer-events-auto overflow-hidden border border-slate-200" }, /* @__PURE__ */ jsx("div", { class: "flex items-center justify-between px-6 py-4 border-b border-slate-100 bg-slate-50/50" }, /* @__PURE__ */ jsx("div", { class: "flex items-center gap-3" }, /* @__PURE__ */ jsx("div", { class: "w-10 h-10 bg-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center" }, /* @__PURE__ */ jsx("svg", { xmlns: "http://www.w3.org/2000/svg", class: "h-6 w-6", fill: "none", viewBox: "0 0 24 24", stroke: "currentColor" }, /* @__PURE__ */ jsx("path", { "stroke-linecap": "round", "stroke-linejoin": "round", "stroke-width": "2", d: "M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" }), /* @__PURE__ */ jsx("path", { "stroke-linecap": "round", "stroke-linejoin": "round", "stroke-width": "2", d: "M21 12a9 9 0 11-18 0 9 9 0 0118 0z" }))), /* @__PURE__ */ jsx("div", null, /* @__PURE__ */ jsx("h3", { class: "text-lg font-bold text-slate-900" }, "API Response Preview"), /* @__PURE__ */ jsx("p", { id: "modal-endpoint-url", class: "text-xs text-slate-500 font-mono mt-0.5 truncate max-w-md md:max-w-xl" }))), /* @__PURE__ */ jsx(
+  )))), /* @__PURE__ */ jsx("div", { id: "mobile-menu", class: "md:hidden border-t border-slate-100" }, /* @__PURE__ */ jsx("nav", { class: "flex flex-col space-y-1 px-2 pb-4" }, /* @__PURE__ */ jsx(
+    "a",
+    {
+      href: "/",
+      class: "text-slate-600 hover:text-emerald-600 hover:bg-emerald-50 px-3 py-2 rounded-lg font-medium transition-all"
+    },
+    "Home"
+  ), /* @__PURE__ */ jsx("div", { class: "px-3 py-2 text-xs font-bold text-slate-400 uppercase tracking-wider mt-2" }, "Internal Services"), /* @__PURE__ */ jsx(
+    "a",
+    {
+      href: "/docs",
+      class: "text-slate-600 hover:text-emerald-600 hover:bg-emerald-50 px-3 py-2 rounded-lg font-medium transition-all flex items-center gap-2"
+    },
+    /* @__PURE__ */ jsx("div", { class: "w-1.5 h-1.5 rounded-full bg-emerald-500" }),
+    " ",
+    "Al-Quran API"
+  ), /* @__PURE__ */ jsx(
+    "a",
+    {
+      href: "/other",
+      class: "text-slate-600 hover:text-emerald-600 hover:bg-emerald-50 px-3 py-2 rounded-lg font-medium transition-all flex items-center gap-2"
+    },
+    /* @__PURE__ */ jsx("div", { class: "w-1.5 h-1.5 rounded-full bg-blue-500" }),
+    " Other APIs"
+  ), /* @__PURE__ */ jsx(
+    "a",
+    {
+      href: "/status",
+      class: "text-slate-600 hover:text-emerald-600 hover:bg-emerald-50 px-3 py-2 rounded-lg font-medium transition-all flex items-center gap-2"
+    },
+    /* @__PURE__ */ jsx("div", { class: "w-1.5 h-1.5 rounded-full bg-amber-500" }),
+    " ",
+    "System Status"
+  ), /* @__PURE__ */ jsx("div", { class: "px-3 py-2 text-xs font-bold text-slate-400 uppercase tracking-wider mt-2" }, "External Resources"), /* @__PURE__ */ jsx(
+    "a",
+    {
+      href: "https://quran.kemenag.go.id/",
+      target: "_blank",
+      class: "text-slate-600 hover:text-emerald-600 hover:bg-emerald-50 px-3 py-2 rounded-lg font-medium transition-all"
+    },
+    "Quran Kemenag"
+  ), /* @__PURE__ */ jsx(
+    "a",
+    {
+      href: "https://github.com/vrush2000/muslim-all-in-one-api",
+      target: "_blank",
+      class: "text-slate-600 hover:text-emerald-600 hover:bg-emerald-50 px-3 py-2 rounded-lg font-medium transition-all"
+    },
+    "GitHub Repository"
+  ), /* @__PURE__ */ jsx(
+    "a",
+    {
+      href: "/playground",
+      class: "mt-4 text-center text-white bg-emerald-600 px-3 py-2.5 rounded-xl font-bold transition-all shadow-lg shadow-emerald-100"
+    },
+    "Open Playground"
+  ))))), /* @__PURE__ */ jsx("main", { class: "flex-grow" }, children), /* @__PURE__ */ jsx("div", { id: "api-preview-modal", class: "fixed inset-0 z-[200] hidden" }, /* @__PURE__ */ jsx(
+    "div",
+    {
+      class: "absolute inset-0 bg-slate-900/60 backdrop-blur-sm",
+      onclick: "window.closeApiModal()"
+    }
+  ), /* @__PURE__ */ jsx("div", { class: "absolute inset-0 flex items-center justify-center p-2 sm:p-4 pointer-events-none" }, /* @__PURE__ */ jsx("div", { class: "bg-white w-full max-w-4xl h-full sm:h-auto sm:max-h-[90vh] rounded-xl sm:rounded-2xl shadow-2xl flex flex-col pointer-events-auto overflow-hidden border border-slate-200" }, /* @__PURE__ */ jsx("div", { class: "flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4 border-b border-slate-100 bg-slate-50/50 shrink-0" }, /* @__PURE__ */ jsx("div", { class: "flex items-center gap-2 sm:gap-3 overflow-hidden" }, /* @__PURE__ */ jsx("div", { class: "w-8 h-8 sm:w-10 sm:h-10 bg-emerald-100 text-emerald-600 rounded-lg sm:rounded-xl flex items-center justify-center shrink-0" }, /* @__PURE__ */ jsx(
+    "svg",
+    {
+      xmlns: "http://www.w3.org/2000/svg",
+      class: "h-5 w-5 sm:h-6 sm:w-6",
+      fill: "none",
+      viewBox: "0 0 24 24",
+      stroke: "currentColor"
+    },
+    /* @__PURE__ */ jsx(
+      "path",
+      {
+        "stroke-linecap": "round",
+        "stroke-linejoin": "round",
+        "stroke-width": "2",
+        d: "M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"
+      }
+    ),
+    /* @__PURE__ */ jsx(
+      "path",
+      {
+        "stroke-linecap": "round",
+        "stroke-linejoin": "round",
+        "stroke-width": "2",
+        d: "M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+      }
+    )
+  )), /* @__PURE__ */ jsx("div", { class: "overflow-hidden" }, /* @__PURE__ */ jsx("h3", { class: "text-sm sm:text-lg font-bold text-slate-900 truncate" }, "API Response Preview"), /* @__PURE__ */ jsx(
+    "p",
+    {
+      id: "modal-endpoint-url",
+      class: "text-[10px] sm:text-xs text-slate-500 font-mono mt-0.5 truncate max-w-[150px] sm:max-w-md md:max-w-xl"
+    }
+  ))), /* @__PURE__ */ jsx(
     "button",
     {
       onclick: "window.closeApiModal()",
-      class: "p-2 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-xl transition-all"
+      class: "p-1.5 sm:p-2 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-lg transition-all shrink-0"
     },
-    /* @__PURE__ */ jsx("svg", { xmlns: "http://www.w3.org/2000/svg", class: "h-6 w-6", fill: "none", viewBox: "0 0 24 24", stroke: "currentColor" }, /* @__PURE__ */ jsx("path", { "stroke-linecap": "round", "stroke-linejoin": "round", "stroke-width": "2", d: "M6 18L18 6M6 6l12 12" }))
-  )), /* @__PURE__ */ jsx("div", { class: "flex-grow p-6 overflow-hidden flex flex-col gap-4" }, /* @__PURE__ */ jsx("div", { class: "flex items-center justify-between" }, /* @__PURE__ */ jsx("div", { class: "flex items-center gap-4" }, /* @__PURE__ */ jsx("span", { class: "inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800" }, "GET"), /* @__PURE__ */ jsx("span", { id: "modal-status-badge", class: "hidden inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium" })), /* @__PURE__ */ jsx("div", { class: "flex items-center gap-2" }, /* @__PURE__ */ jsx(
+    /* @__PURE__ */ jsx(
+      "svg",
+      {
+        xmlns: "http://www.w3.org/2000/svg",
+        class: "h-5 w-5 sm:h-6 sm:w-6",
+        fill: "none",
+        viewBox: "0 0 24 24",
+        stroke: "currentColor"
+      },
+      /* @__PURE__ */ jsx(
+        "path",
+        {
+          "stroke-linecap": "round",
+          "stroke-linejoin": "round",
+          "stroke-width": "2",
+          d: "M6 18L18 6M6 6l12 12"
+        }
+      )
+    )
+  )), /* @__PURE__ */ jsx("div", { class: "flex-grow p-4 sm:p-6 overflow-hidden flex flex-col gap-3 sm:gap-4" }, /* @__PURE__ */ jsx("div", { class: "flex flex-col sm:flex-row sm:items-center justify-between gap-3 shrink-0" }, /* @__PURE__ */ jsx("div", { class: "flex items-center gap-3" }, /* @__PURE__ */ jsx("span", { class: "inline-flex items-center px-2 py-0.5 rounded-md text-[10px] sm:text-xs font-bold bg-emerald-100 text-emerald-800 uppercase tracking-wider" }, "GET"), /* @__PURE__ */ jsx(
+    "span",
+    {
+      id: "modal-status-badge",
+      class: "hidden inline-flex items-center px-2 py-0.5 rounded-md text-[10px] sm:text-xs font-bold uppercase tracking-wider"
+    }
+  )), /* @__PURE__ */ jsx("div", { class: "flex items-center gap-2" }, /* @__PURE__ */ jsx(
     "button",
     {
       onclick: "window.copyModalResponse()",
-      class: "flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-slate-600 hover:text-emerald-600 hover:bg-emerald-50 rounded-lg transition-all"
+      class: "flex-1 sm:flex-none flex items-center justify-center gap-2 px-3 py-1.5 text-[11px] sm:text-sm font-medium text-slate-600 hover:text-emerald-600 hover:bg-emerald-50 border border-slate-200 sm:border-transparent rounded-lg transition-all"
     },
-    /* @__PURE__ */ jsx("svg", { xmlns: "http://www.w3.org/2000/svg", class: "h-4 w-4", fill: "none", viewBox: "0 0 24 24", stroke: "currentColor" }, /* @__PURE__ */ jsx("path", { "stroke-linecap": "round", "stroke-linejoin": "round", "stroke-width": "2", d: "M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" })),
+    /* @__PURE__ */ jsx(
+      "svg",
+      {
+        xmlns: "http://www.w3.org/2000/svg",
+        class: "h-3.5 w-3.5 sm:h-4 sm:w-4",
+        fill: "none",
+        viewBox: "0 0 24 24",
+        stroke: "currentColor"
+      },
+      /* @__PURE__ */ jsx(
+        "path",
+        {
+          "stroke-linecap": "round",
+          "stroke-linejoin": "round",
+          "stroke-width": "2",
+          d: "M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"
+        }
+      )
+    ),
     "Copy JSON"
-  ), /* @__PURE__ */ jsx("a", { id: "modal-full-playground", href: "#", class: "flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-emerald-600 hover:bg-emerald-50 rounded-lg transition-all" }, "Open in Playground", /* @__PURE__ */ jsx("svg", { xmlns: "http://www.w3.org/2000/svg", class: "h-4 w-4", fill: "none", viewBox: "0 0 24 24", stroke: "currentColor" }, /* @__PURE__ */ jsx("path", { "stroke-linecap": "round", "stroke-linejoin": "round", "stroke-width": "2", d: "M13 7l5 5m0 0l-5 5m5-5H6" }))))), /* @__PURE__ */ jsx("div", { id: "modal-json-editor", class: "flex-grow bg-[#0f172a] rounded-xl overflow-hidden min-h-[400px] border border-slate-700 shadow-2xl" })), /* @__PURE__ */ jsx("div", { class: "px-6 py-4 border-t border-slate-100 bg-slate-50/50 flex justify-end" }, /* @__PURE__ */ jsx(
+  ), /* @__PURE__ */ jsx(
+    "a",
+    {
+      id: "modal-full-playground",
+      href: "#",
+      class: "flex-1 sm:flex-none flex items-center justify-center gap-2 px-3 py-1.5 text-[11px] sm:text-sm font-medium text-emerald-600 hover:bg-emerald-50 border border-emerald-100 sm:border-transparent rounded-lg transition-all"
+    },
+    "Playground",
+    /* @__PURE__ */ jsx(
+      "svg",
+      {
+        xmlns: "http://www.w3.org/2000/svg",
+        class: "h-3.5 w-3.5 sm:h-4 sm:w-4",
+        fill: "none",
+        viewBox: "0 0 24 24",
+        stroke: "currentColor"
+      },
+      /* @__PURE__ */ jsx(
+        "path",
+        {
+          "stroke-linecap": "round",
+          "stroke-linejoin": "round",
+          "stroke-width": "2",
+          d: "M13 7l5 5m0 0l-5 5m5-5H6"
+        }
+      )
+    )
+  ))), /* @__PURE__ */ jsx("div", { class: "flex-grow overflow-hidden relative custom-scrollbar flex flex-col bg-[#0f172a] rounded-lg sm:rounded-xl border border-slate-700" }, /* @__PURE__ */ jsx(
+    "pre",
+    {
+      id: "modal-json-pure",
+      class: "flex-grow h-full w-full p-4 sm:p-6 text-emerald-400 font-mono text-[11px] sm:text-sm overflow-auto custom-scrollbar whitespace-pre"
+    }
+  ))), /* @__PURE__ */ jsx("div", { class: "px-4 sm:px-6 py-3 sm:py-4 border-t border-slate-100 bg-slate-50/50 flex shrink-0" }, /* @__PURE__ */ jsx(
     "button",
     {
       onclick: "window.closeApiModal()",
-      class: "px-6 py-2 bg-slate-900 text-white rounded-xl font-bold hover:bg-slate-800 transition-all shadow-lg shadow-slate-200"
+      class: "w-full sm:w-auto sm:ml-auto px-6 py-2 bg-slate-900 text-white rounded-lg sm:rounded-xl font-bold hover:bg-slate-800 transition-all shadow-lg shadow-slate-200"
     },
     "Close Preview"
-  ))))), /* @__PURE__ */ jsx("script", { dangerouslySetInnerHTML: { __html: `
-          let modalEditor = null;
+  ))))), /* @__PURE__ */ jsx(
+    "script",
+    {
+      dangerouslySetInnerHTML: {
+        __html: `
+          let modalJsonData = null;
           
           window.openApiModal = async function(category, endpointId, url) {
             const modal = document.getElementById('api-preview-modal');
-            const editorContainer = document.getElementById('modal-json-editor');
+            const jsonDisplay = document.getElementById('modal-json-pure');
             const urlDisplay = document.getElementById('modal-endpoint-url');
             const playgroundLink = document.getElementById('modal-full-playground');
             const statusBadge = document.getElementById('modal-status-badge');
@@ -5007,19 +5490,7 @@ var Layout = ({ children, title: title3 }) => {
             urlDisplay.textContent = url;
             playgroundLink.href = '/playground?category=' + category + '&endpoint=' + endpointId;
             
-            if (!modalEditor) {
-              modalEditor = new JSONEditor(editorContainer, {
-                mode: 'view',
-                mainMenuBar: false,
-                navigationBar: false,
-                statusBar: false,
-                onEditable: function (node) {
-                  return false;
-                }
-              });
-            }
-            
-            modalEditor.set({ message: 'Loading response...' });
+            jsonDisplay.textContent = 'Loading response...';
             statusBadge.classList.add('hidden');
             
             try {
@@ -5028,14 +5499,15 @@ var Layout = ({ children, title: title3 }) => {
               const data = await response.json();
               const end = performance.now();
               
-              modalEditor.set(data);
+              modalJsonData = data;
+              jsonDisplay.textContent = JSON.stringify(data, null, 2);
               
               statusBadge.textContent = response.status + ' ' + response.statusText + ' (' + Math.round(end - start) + 'ms)';
               statusBadge.className = 'inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ' + 
                 (response.ok ? 'bg-blue-100 text-blue-800' : 'bg-red-100 text-red-800');
               statusBadge.classList.remove('hidden');
             } catch (error) {
-              modalEditor.set({ error: 'Failed to fetch API', details: error.message });
+              jsonDisplay.textContent = JSON.stringify({ error: 'Failed to fetch API', details: error.message }, null, 2);
               statusBadge.textContent = 'Error';
               statusBadge.className = 'inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800';
               statusBadge.classList.remove('hidden');
@@ -5049,8 +5521,8 @@ var Layout = ({ children, title: title3 }) => {
           };
           
           window.copyModalResponse = function() {
-            if (modalEditor) {
-              const json = JSON.stringify(modalEditor.get(), null, 2);
+            if (modalJsonData) {
+              const json = JSON.stringify(modalJsonData, null, 2);
               navigator.clipboard.writeText(json).then(() => {
                 const btn = event.currentTarget;
                 const originalText = btn.innerHTML;
@@ -5062,9 +5534,130 @@ var Layout = ({ children, title: title3 }) => {
           
           // Close modal on ESC key
           document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') window.closeApiModal();
+            if (e.key === 'Escape') {
+              window.closeApiModal();
+              window.closeDonationModal();
+            }
           });
-        ` } }), /* @__PURE__ */ jsx("footer", { class: "bg-white border-t border-slate-200 py-12 mt-12" }, /* @__PURE__ */ jsx("div", { class: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" }, /* @__PURE__ */ jsx("div", { class: "grid grid-cols-1 md:grid-cols-4 gap-8" }, /* @__PURE__ */ jsx("div", { class: "col-span-1 md:col-span-1" }, /* @__PURE__ */ jsx("div", { class: "flex items-center gap-2 mb-4" }, /* @__PURE__ */ jsx("div", { class: "w-6 h-6 bg-emerald-600 rounded flex items-center justify-center" }, /* @__PURE__ */ jsx(
+
+          window.openDonationModal = function() {
+            const modal = document.getElementById('donation-modal');
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+            window.resetDonationModal();
+          };
+
+          window.closeDonationModal = function() {
+            const modal = document.getElementById('donation-modal');
+            modal.classList.add('hidden');
+            document.body.style.overflow = '';
+          };
+
+          window.resetDonationModal = function() {
+            document.getElementById('qris-display-section').classList.add('hidden');
+            document.getElementById('donation-options-section').classList.remove('hidden');
+            document.getElementById('custom-amount').value = '';
+            document.getElementById('qris-image').src = '';
+            
+            // Reset active state of preset buttons
+            document.querySelectorAll('.preset-btn').forEach(btn => {
+              btn.classList.remove('ring-2', 'ring-emerald-500', 'bg-emerald-50');
+            });
+          };
+
+          window.selectPreset = function(amount, btn) {
+            document.getElementById('custom-amount').value = amount;
+            
+            // Highlight active button
+            document.querySelectorAll('.preset-btn').forEach(b => {
+              b.classList.remove('ring-2', 'ring-emerald-500', 'bg-emerald-50');
+            });
+            btn.classList.add('ring-2', 'ring-emerald-500', 'bg-emerald-50');
+          };
+
+          window.generateDonationQR = async function() {
+            const amount = document.getElementById('custom-amount').value;
+            if (!amount || amount < 1000) {
+              alert('Minimal donasi Rp 1.000');
+              return;
+            }
+
+            const generateBtn = document.getElementById('generate-qris-btn');
+            const originalText = generateBtn.innerHTML;
+            generateBtn.disabled = true;
+            generateBtn.innerHTML = '<svg class="animate-spin h-5 w-5 mr-2 inline" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" fill="none"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> Generating...';
+
+            try {
+              const response = await fetch("/api/qris/generate?amount=" + amount);
+              const result = await response.json();
+              
+              if (result.status) {
+                document.getElementById('donation-options-section').classList.add('hidden');
+                document.getElementById('qris-display-section').classList.remove('hidden');
+                document.getElementById('qris-image').src = result.data.qr_image;
+                document.getElementById('display-amount').textContent = 'Rp ' + parseInt(amount).toLocaleString('id-ID');
+              } else {
+                alert('Gagal generate QRIS: ' + result.message);
+              }
+            } catch (error) {
+              alert('Terjadi kesalahan: ' + error.message);
+            } finally {
+              generateBtn.disabled = false;
+              generateBtn.innerHTML = originalText;
+            }
+          };
+        `
+      }
+    }
+  ), /* @__PURE__ */ jsx(
+    "div",
+    {
+      id: "donation-modal",
+      class: "fixed inset-0 z-[100] hidden",
+      "aria-labelledby": "modal-title",
+      role: "dialog",
+      "aria-modal": "true"
+    },
+    /* @__PURE__ */ jsx("div", { class: "fixed inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity", onclick: "window.closeDonationModal()" }),
+    /* @__PURE__ */ jsx("div", { class: "fixed inset-0 z-10 overflow-y-auto" }, /* @__PURE__ */ jsx("div", { class: "flex min-h-full items-center justify-center p-4 text-center sm:p-0" }, /* @__PURE__ */ jsx("div", { class: "relative transform overflow-hidden rounded-2xl bg-white text-left shadow-2xl transition-all sm:my-8 sm:w-full sm:max-w-md" }, /* @__PURE__ */ jsx("div", { class: "bg-emerald-600 px-6 py-4 flex items-center justify-between" }, /* @__PURE__ */ jsx("h3", { class: "text-lg font-bold text-white flex items-center gap-2" }, /* @__PURE__ */ jsx("svg", { xmlns: "http://www.w3.org/2000/svg", class: "h-6 w-6", fill: "none", viewBox: "0 0 24 24", stroke: "currentColor" }, /* @__PURE__ */ jsx("path", { "stroke-linecap": "round", "stroke-linejoin": "round", "stroke-width": "2", d: "M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" })), "Dukung Muslim API"), /* @__PURE__ */ jsx(
+      "button",
+      {
+        onclick: "window.closeDonationModal()",
+        class: "text-emerald-100 hover:text-white transition-colors"
+      },
+      /* @__PURE__ */ jsx("svg", { class: "h-6 w-6", fill: "none", viewBox: "0 0 24 24", stroke: "currentColor" }, /* @__PURE__ */ jsx("path", { "stroke-linecap": "round", "stroke-linejoin": "round", "stroke-width": "2", d: "M6 18L18 6M6 6l12 12" }))
+    )), /* @__PURE__ */ jsx("div", { class: "px-6 py-6" }, /* @__PURE__ */ jsx("div", { id: "donation-options-section" }, /* @__PURE__ */ jsx("p", { class: "text-slate-600 text-sm mb-6 text-center" }, "Pilih atau masukkan nominal donasi untuk mendukung pengembangan Muslim API."), /* @__PURE__ */ jsx("div", { class: "grid grid-cols-3 gap-3 mb-6" }, [5e3, 1e4, 2e4, 5e4, 1e5, 25e4].map((amount) => /* @__PURE__ */ jsx(
+      "button",
+      {
+        onclick: "window.selectPreset(" + amount + ", this)",
+        class: "preset-btn py-2 px-1 border border-slate-200 rounded-lg text-sm font-semibold text-slate-700 hover:border-emerald-500 hover:text-emerald-600 transition-all"
+      },
+      amount >= 1e3 ? amount / 1e3 + "rb" : amount
+    ))), /* @__PURE__ */ jsx("div", { class: "mb-6" }, /* @__PURE__ */ jsx("label", { class: "block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2" }, "Nominal Lain (Min Rp 1.000)"), /* @__PURE__ */ jsx("div", { class: "relative" }, /* @__PURE__ */ jsx("span", { class: "absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 font-bold" }, "Rp"), /* @__PURE__ */ jsx(
+      "input",
+      {
+        id: "custom-amount",
+        type: "number",
+        placeholder: "0",
+        class: "w-full pl-12 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent font-bold text-slate-700"
+      }
+    ))), /* @__PURE__ */ jsx(
+      "button",
+      {
+        id: "generate-qris-btn",
+        onclick: "window.generateDonationQR()",
+        class: "w-full py-4 bg-emerald-600 text-white rounded-xl font-bold shadow-lg shadow-emerald-200 hover:bg-emerald-700 transition-all transform hover:-translate-y-0.5"
+      },
+      "Lanjutkan ke Pembayaran"
+    )), /* @__PURE__ */ jsx("div", { id: "qris-display-section", class: "hidden text-center" }, /* @__PURE__ */ jsx("div", { class: "mb-4" }, /* @__PURE__ */ jsx("div", { id: "display-amount", class: "text-2xl font-black text-slate-800" }, "Rp 0"), /* @__PURE__ */ jsx("div", { class: "text-xs text-slate-400 font-medium" }, "Scan QRIS untuk membayar"), /* @__PURE__ */ jsx("div", { class: "text-xs text-slate-400 font-medium" }, "dan akan diarahkan ke Hariistimewa.com - DANA")), /* @__PURE__ */ jsx("div", { class: "bg-white p-4 border-2 border-slate-100 rounded-2xl mb-6 inline-block shadow-sm" }, /* @__PURE__ */ jsx("img", { id: "qris-image", src: "", alt: "QRIS", class: "w-64 h-64" })), /* @__PURE__ */ jsx("div", { class: "bg-slate-50 p-4 rounded-xl mb-6 text-left" }, /* @__PURE__ */ jsx("div", { class: "flex items-start gap-3" }, /* @__PURE__ */ jsx("div", { class: "w-5 h-5 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center flex-shrink-0 text-[10px] font-bold" }, "1"), /* @__PURE__ */ jsx("p", { class: "text-xs text-slate-600" }, "Buka aplikasi pembayaran (Gopay, OVO, Dana, LinkAja, atau Mobile Banking).")), /* @__PURE__ */ jsx("div", { class: "flex items-start gap-3 mt-3" }, /* @__PURE__ */ jsx("div", { class: "w-5 h-5 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center flex-shrink-0 text-[10px] font-bold" }, "2"), /* @__PURE__ */ jsx("p", { class: "text-xs text-slate-600" }, "Pilih menu ", /* @__PURE__ */ jsx("b", null, "Scan/Bayar"), " lalu arahkan kamera ke QR Code di atas.")), /* @__PURE__ */ jsx("div", { class: "flex items-start gap-3 mt-3" }, /* @__PURE__ */ jsx("div", { class: "w-5 h-5 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center flex-shrink-0 text-[10px] font-bold" }, "3"), /* @__PURE__ */ jsx("p", { class: "text-xs text-slate-600" }, "Pastikan nominal sesuai dan selesaikan pembayaran."))), /* @__PURE__ */ jsx(
+      "button",
+      {
+        onclick: "window.resetDonationModal()",
+        class: "text-sm font-semibold text-emerald-600 hover:text-emerald-700"
+      },
+      "\u2190 Kembali Pilih Nominal"
+    ))), /* @__PURE__ */ jsx("div", { class: "bg-slate-50 px-6 py-4 border-t border-slate-100 flex items-center justify-center gap-4" }, /* @__PURE__ */ jsx("img", { src: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Logo_QRIS.svg/1200px-Logo_QRIS.svg.png", alt: "QRIS", class: "h-4 opacity-50" }), /* @__PURE__ */ jsx("div", { class: "w-px h-3 bg-slate-300" }), /* @__PURE__ */ jsx("span", { class: "text-[10px] text-slate-400 font-medium uppercase tracking-widest" }, "Aman \u2022 Terverifikasi")))))
+  ), /* @__PURE__ */ jsx("footer", { class: "bg-white border-t border-slate-200 py-12 mt-12" }, /* @__PURE__ */ jsx("div", { class: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" }, /* @__PURE__ */ jsx("div", { class: "grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4 gap-8" }, /* @__PURE__ */ jsx("div", { class: "col-span-1 md:col-span-1" }, /* @__PURE__ */ jsx("div", { class: "flex items-center gap-2 mb-4" }, /* @__PURE__ */ jsx("div", { class: "w-6 h-6 bg-emerald-600 rounded flex items-center justify-center" }, /* @__PURE__ */ jsx(
     "svg",
     {
       xmlns: "http://www.w3.org/2000/svg",
@@ -5082,7 +5675,123 @@ var Layout = ({ children, title: title3 }) => {
         d: "M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
       }
     )
-  )), /* @__PURE__ */ jsx("span", { class: "text-lg font-bold" }, "Muslim API")), /* @__PURE__ */ jsx("p", { class: "text-slate-500 text-sm leading-relaxed mb-4" }, "Penyedia layanan API Muslim gratis untuk mempermudah pengembang dalam membangun aplikasi islami."), /* @__PURE__ */ jsx("div", { class: "flex items-center gap-3" }, /* @__PURE__ */ jsx("a", { href: "https://github.com/vrush2000/muslim-all-in-one-api", target: "_blank", class: "p-2 bg-slate-100 hover:bg-emerald-100 text-slate-600 hover:text-emerald-600 rounded-lg transition-all", title: "GitHub Repository" }, /* @__PURE__ */ jsx("svg", { class: "w-5 h-5", fill: "currentColor", viewBox: "0 0 24 24" }, /* @__PURE__ */ jsx("path", { d: "M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" }))), /* @__PURE__ */ jsx("a", { href: "/status", class: "p-2 bg-slate-100 hover:bg-emerald-100 text-slate-600 hover:text-emerald-600 rounded-lg transition-all", title: "System Status" }, /* @__PURE__ */ jsx("svg", { class: "w-5 h-5", fill: "none", stroke: "currentColor", viewBox: "0 0 24 24" }, /* @__PURE__ */ jsx("path", { "stroke-linecap": "round", "stroke-linejoin": "round", "stroke-width": "2", d: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" }))))), /* @__PURE__ */ jsx("div", null, /* @__PURE__ */ jsx("h4", { class: "font-semibold text-slate-900 mb-4" }, "API Documentation"), /* @__PURE__ */ jsx("ul", { class: "space-y-2 text-sm text-slate-500" }, /* @__PURE__ */ jsx("li", null, /* @__PURE__ */ jsx("a", { href: "/docs", class: "hover:text-emerald-600" }, "Al-Quran API")), /* @__PURE__ */ jsx("li", null, /* @__PURE__ */ jsx("a", { href: "/other", class: "hover:text-emerald-600" }, "Hadits & Doa")), /* @__PURE__ */ jsx("li", null, /* @__PURE__ */ jsx("a", { href: "/other", class: "hover:text-emerald-600" }, "Jadwal Sholat")), /* @__PURE__ */ jsx("li", null, /* @__PURE__ */ jsx("a", { href: "/other", class: "hover:text-emerald-600" }, "Kemenag Data")), /* @__PURE__ */ jsx("li", null, /* @__PURE__ */ jsx("a", { href: "/playground", class: "text-emerald-600 font-semibold hover:underline" }, "API Playground")))), /* @__PURE__ */ jsx("div", null, /* @__PURE__ */ jsx("h4", { class: "font-semibold text-slate-900 mb-4" }, "Official Sources"), /* @__PURE__ */ jsx("ul", { class: "space-y-2 text-sm text-slate-500" }, /* @__PURE__ */ jsx("li", null, /* @__PURE__ */ jsx("a", { href: "https://quran.kemenag.go.id/", target: "_blank", class: "hover:text-emerald-600 flex items-center gap-1" }, "Quran Kemenag ", /* @__PURE__ */ jsx("svg", { class: "w-3 h-3", fill: "none", stroke: "currentColor", viewBox: "0 0 24 24" }, /* @__PURE__ */ jsx("path", { d: "M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" })))), /* @__PURE__ */ jsx("li", null, /* @__PURE__ */ jsx("a", { href: "https://fatwatarjih.or.id/", target: "_blank", class: "hover:text-emerald-600 flex items-center gap-1" }, "Fatwa Tarjih ", /* @__PURE__ */ jsx("svg", { class: "w-3 h-3", fill: "none", stroke: "currentColor", viewBox: "0 0 24 24" }, /* @__PURE__ */ jsx("path", { d: "M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" })))), /* @__PURE__ */ jsx("li", null, /* @__PURE__ */ jsx("a", { href: "https://api.myquran.com/", target: "_blank", class: "hover:text-emerald-600" }, "MyQuran API")))), /* @__PURE__ */ jsx("div", null, /* @__PURE__ */ jsx("h4", { class: "font-semibold text-slate-900 mb-4" }, "Community Repos"), /* @__PURE__ */ jsx("ul", { class: "space-y-2 text-sm text-slate-500" }, /* @__PURE__ */ jsx("li", null, /* @__PURE__ */ jsx("a", { href: "https://github.com/nasrul21/data-pesantren-indonesia", target: "_blank", class: "hover:text-emerald-600" }, "Data Pesantren")), /* @__PURE__ */ jsx("li", null, /* @__PURE__ */ jsx("a", { href: "https://github.com/kresnasatya/api-harilibur", target: "_blank", class: "hover:text-emerald-600" }, "Libur Nasional")), /* @__PURE__ */ jsx("li", null, /* @__PURE__ */ jsx("a", { href: "https://equran.id/", target: "_blank", class: "hover:text-emerald-600" }, "equran.id (Audio)")), /* @__PURE__ */ jsx("li", null, /* @__PURE__ */ jsx("a", { href: "https://api.hadith.gading.dev/", target: "_blank", class: "hover:text-emerald-600" }, "Hadith Gading")))), /* @__PURE__ */ jsx("div", null, /* @__PURE__ */ jsx("h4", { class: "font-semibold text-slate-900 mb-4" }, "Inspiration"), /* @__PURE__ */ jsx("p", { class: "text-slate-500 text-sm leading-relaxed" }, "Original template by", " ", /* @__PURE__ */ jsx(
+  )), /* @__PURE__ */ jsx("span", { class: "text-lg font-bold" }, "Muslim API")), /* @__PURE__ */ jsx("p", { class: "text-slate-500 text-sm leading-relaxed mb-4" }, "Penyedia layanan API Muslim gratis untuk mempermudah pengembang dalam membangun aplikasi islami."), /* @__PURE__ */ jsx("div", { class: "flex items-center gap-3" }, /* @__PURE__ */ jsx(
+    "a",
+    {
+      href: "https://github.com/vrush2000/muslim-all-in-one-api",
+      target: "_blank",
+      class: "p-2 bg-slate-100 hover:bg-emerald-100 text-slate-600 hover:text-emerald-600 rounded-lg transition-all",
+      title: "GitHub Repository"
+    },
+    /* @__PURE__ */ jsx(
+      "svg",
+      {
+        class: "w-5 h-5",
+        fill: "currentColor",
+        viewBox: "0 0 24 24"
+      },
+      /* @__PURE__ */ jsx("path", { d: "M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" })
+    )
+  ), /* @__PURE__ */ jsx(
+    "a",
+    {
+      href: "/status",
+      class: "p-2 bg-slate-100 hover:bg-emerald-100 text-slate-600 hover:text-emerald-600 rounded-lg transition-all",
+      title: "System Status"
+    },
+    /* @__PURE__ */ jsx(
+      "svg",
+      {
+        class: "w-5 h-5",
+        fill: "none",
+        stroke: "currentColor",
+        viewBox: "0 0 24 24"
+      },
+      /* @__PURE__ */ jsx(
+        "path",
+        {
+          "stroke-linecap": "round",
+          "stroke-linejoin": "round",
+          "stroke-width": "2",
+          d: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+        }
+      )
+    )
+  ))), /* @__PURE__ */ jsx("div", null, /* @__PURE__ */ jsx("h4", { class: "font-semibold text-slate-900 mb-4" }, "API Documentation"), /* @__PURE__ */ jsx("ul", { class: "space-y-2 text-sm text-slate-500" }, /* @__PURE__ */ jsx("li", null, /* @__PURE__ */ jsx("a", { href: "/docs", class: "hover:text-emerald-600" }, "Al-Quran API")), /* @__PURE__ */ jsx("li", null, /* @__PURE__ */ jsx("a", { href: "/other#hadits", class: "hover:text-emerald-600" }, "Hadits & Doa")), /* @__PURE__ */ jsx("li", null, /* @__PURE__ */ jsx("a", { href: "/other#sholat", class: "hover:text-emerald-600" }, "Jadwal Sholat")), /* @__PURE__ */ jsx("li", null, /* @__PURE__ */ jsx("a", { href: "/other#kemenag", class: "hover:text-emerald-600" }, "Kemenag Data")), /* @__PURE__ */ jsx("li", null, /* @__PURE__ */ jsx("a", { href: "/other#sejarah", class: "hover:text-emerald-600" }, "Sejarah Islam")), /* @__PURE__ */ jsx("li", null, /* @__PURE__ */ jsx(
+    "a",
+    {
+      href: "/playground",
+      class: "text-emerald-600 font-semibold hover:underline"
+    },
+    "API Playground"
+  )))), /* @__PURE__ */ jsx("div", null, /* @__PURE__ */ jsx("h4", { class: "font-semibold text-slate-900 mb-4" }, "Official Sources"), /* @__PURE__ */ jsx("ul", { class: "space-y-2 text-sm text-slate-500" }, /* @__PURE__ */ jsx("li", null, /* @__PURE__ */ jsx(
+    "a",
+    {
+      href: "https://quran.kemenag.go.id/",
+      target: "_blank",
+      class: "hover:text-emerald-600 flex items-center gap-1"
+    },
+    "Quran Kemenag",
+    " ",
+    /* @__PURE__ */ jsx(
+      "svg",
+      {
+        class: "w-3 h-3",
+        fill: "none",
+        stroke: "currentColor",
+        viewBox: "0 0 24 24"
+      },
+      /* @__PURE__ */ jsx("path", { d: "M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" })
+    )
+  )), /* @__PURE__ */ jsx("li", null, /* @__PURE__ */ jsx(
+    "a",
+    {
+      href: "https://equran.id/",
+      target: "_blank",
+      class: "hover:text-emerald-600"
+    },
+    "equran.id (Audio)"
+  )), /* @__PURE__ */ jsx("li", null, /* @__PURE__ */ jsx(
+    "a",
+    {
+      href: "https://api.myquran.com/",
+      target: "_blank",
+      class: "hover:text-emerald-600"
+    },
+    "MyQuran API (Jadwal Sholat)"
+  )))), /* @__PURE__ */ jsx("div", null, /* @__PURE__ */ jsx("h4", { class: "font-semibold text-slate-900 mb-4" }, "Community Repos"), /* @__PURE__ */ jsx("ul", { class: "space-y-2 text-sm text-slate-500" }, /* @__PURE__ */ jsx("li", null, /* @__PURE__ */ jsx(
+    "a",
+    {
+      href: "https://github.com/Otangid/muslim-api",
+      target: "_blank",
+      class: "hover:text-emerald-600"
+    },
+    "Dataset keislaman (SQLite)"
+  )), /* @__PURE__ */ jsx("li", null, /* @__PURE__ */ jsx(
+    "a",
+    {
+      href: "https://github.com/nasrul21/data-pesantren-indonesia",
+      target: "_blank",
+      class: "hover:text-emerald-600"
+    },
+    "Data Pesantren"
+  )), /* @__PURE__ */ jsx("li", null, /* @__PURE__ */ jsx(
+    "a",
+    {
+      href: "https://github.com/kresnasatya/api-harilibur",
+      target: "_blank",
+      class: "hover:text-emerald-600"
+    },
+    "Libur Nasional"
+  )), /* @__PURE__ */ jsx("li", null, /* @__PURE__ */ jsx(
+    "a",
+    {
+      href: "https://github.com/gadingnst/hadith-api",
+      target: "_blank",
+      class: "hover:text-emerald-600"
+    },
+    "Koleksi Hadith"
+  )))), /* @__PURE__ */ jsx("div", null, /* @__PURE__ */ jsx("h4", { class: "font-semibold text-slate-900 mb-4" }, "Inspiration"), /* @__PURE__ */ jsx("p", { class: "text-slate-500 text-sm leading-relaxed" }, "Original template by", " ", /* @__PURE__ */ jsx(
     "a",
     {
       href: "http://www.designstub.com/",
@@ -5090,57 +5799,33 @@ var Layout = ({ children, title: title3 }) => {
       class: "hover:text-emerald-600"
     },
     "Designstub"
-  )))), /* @__PURE__ */ jsx("div", { class: "border-t border-slate-100 mt-12 pt-8 text-center" }, /* @__PURE__ */ jsx("p", { class: "text-slate-500 text-sm mb-4" }, "Dikembangkan dengan \u2764\uFE0F untuk Ummat."), /* @__PURE__ */ jsx("div", { class: "flex flex-wrap justify-center gap-x-4 gap-y-2 text-xs text-slate-400 mb-6" }, /* @__PURE__ */ jsx("span", { class: "flex items-center gap-1 text-emerald-600 font-semibold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-100" }, /* @__PURE__ */ jsx(
-    "svg",
+  ))), /* @__PURE__ */ jsx("div", null, /* @__PURE__ */ jsx("h4", { class: "font-semibold text-slate-900 mb-4" }, "Support Project"), /* @__PURE__ */ jsx(
+    "button",
     {
-      xmlns: "http://www.w3.org/2000/svg",
-      class: "h-3 w-3",
-      fill: "none",
-      viewBox: "0 0 24 24",
-      stroke: "currentColor"
+      onclick: "window.openDonationModal()",
+      class: "w-full group flex items-center gap-3 p-3 bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl border border-amber-100 hover:border-amber-300 transition-all shadow-sm hover:shadow-md cursor-pointer"
     },
-    /* @__PURE__ */ jsx(
-      "path",
+    /* @__PURE__ */ jsx("div", { class: "w-10 h-10 bg-amber-500 rounded-lg flex items-center justify-center text-white shadow-lg shadow-amber-200 group-hover:scale-110 transition-transform" }, /* @__PURE__ */ jsx(
+      "svg",
       {
-        "stroke-linecap": "round",
-        "stroke-linejoin": "round",
-        "stroke-width": "3",
-        d: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04M12 2.944a11.955 11.955 0 01-8.618 3.04M12 2.944V12m0 9.472c-2.28 0-4.47-.636-6.342-1.742L12 12l6.342 7.73A11.955 11.955 0 0112 21.472z"
-      }
-    )
-  ), "Verified Source"), /* @__PURE__ */ jsx("span", { class: "hidden sm:inline" }, "|"), /* @__PURE__ */ jsx("span", null, "Sumber Data:"), /* @__PURE__ */ jsx(
-    "a",
-    {
-      href: "https://muslim-api-three.vercel.app",
-      target: "_blank",
-      class: "hover:text-emerald-600 transition-colors"
-    },
-    "muslim-api-three (Dataset)"
-  ), /* @__PURE__ */ jsx("span", { class: "hidden sm:inline" }, "\u2022"), /* @__PURE__ */ jsx(
-    "a",
-    {
-      href: "https://equran.id",
-      target: "_blank",
-      class: "hover:text-emerald-600 transition-colors"
-    },
-    "equran.id (Audio CDN & API v2)"
-  ), /* @__PURE__ */ jsx("span", { class: "hidden sm:inline" }, "\u2022"), /* @__PURE__ */ jsx(
-    "a",
-    {
-      href: "https://quran.kemenag.go.id/",
-      target: "_blank",
-      class: "hover:text-emerald-600 transition-colors"
-    },
-    "Kemenag RI"
-  ), /* @__PURE__ */ jsx("span", { class: "hidden sm:inline" }, "\u2022"), /* @__PURE__ */ jsx(
-    "a",
-    {
-      href: "https://api.hadith.gading.dev/",
-      target: "_blank",
-      class: "hover:text-emerald-600 transition-colors"
-    },
-    "Hadith Gading Dev"
-  )), /* @__PURE__ */ jsx("p", { class: "text-slate-400 text-xs" }, "\xA9 ", (/* @__PURE__ */ new Date()).getFullYear(), " Muslim All-in-One API. Created by Vrush Studio."))))));
+        xmlns: "http://www.w3.org/2000/svg",
+        class: "h-6 w-6",
+        fill: "none",
+        viewBox: "0 0 24 24",
+        stroke: "currentColor"
+      },
+      /* @__PURE__ */ jsx(
+        "path",
+        {
+          "stroke-linecap": "round",
+          "stroke-linejoin": "round",
+          "stroke-width": "2",
+          d: "M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+        }
+      )
+    )),
+    /* @__PURE__ */ jsx("div", { class: "text-left" }, /* @__PURE__ */ jsx("div", { class: "text-[10px] text-amber-600 font-medium" }, "Dukung via QRIS"))
+  ))), /* @__PURE__ */ jsx("div", { class: "border-t border-slate-100 mt-12 pt-8 text-center" }, /* @__PURE__ */ jsx("p", { class: "text-slate-500 text-sm mb-4" }, "Dikembangkan dengan \u2764\uFE0F untuk Ummat."), /* @__PURE__ */ jsx("p", { class: "text-slate-400 text-xs" }, "\xA9 ", (/* @__PURE__ */ new Date()).getFullYear(), " Muslim All-in-One API. Created by Vrush Studio."))))));
 };
 
 // src/components/Home.jsx
@@ -5177,7 +5862,15 @@ var Home = ({ baseUrl }) => {
     },
     /* @__PURE__ */ jsx("svg", { xmlns: "http://www.w3.org/2000/svg", class: "h-4 w-4 text-slate-400 group-hover:text-emerald-500 transition-colors", fill: "none", viewBox: "0 0 24 24", stroke: "currentColor" }, /* @__PURE__ */ jsx("path", { "stroke-linecap": "round", "stroke-linejoin": "round", "stroke-width": "2", d: item.icon })),
     item.name
-  ))))), /* @__PURE__ */ jsx("div", { class: "col-span-1 lg:col-span-3" }, /* @__PURE__ */ jsx("section", { id: "intro", class: "mb-20 scroll-mt-24" }, /* @__PURE__ */ jsx("div", { class: "flex flex-wrap gap-3 mb-6" }, /* @__PURE__ */ jsx("div", { class: "inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 text-emerald-700 text-xs font-bold" }, /* @__PURE__ */ jsx("span", { class: "relative flex h-2 w-2" }, /* @__PURE__ */ jsx("span", { class: "animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" }), /* @__PURE__ */ jsx("span", { class: "relative inline-flex rounded-full h-2 w-2 bg-emerald-500" })), "v1.0.0 Stable"), /* @__PURE__ */ jsx("div", { class: "inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 text-blue-700 text-xs font-bold" }, /* @__PURE__ */ jsx("svg", { xmlns: "http://www.w3.org/2000/svg", class: "h-3 w-3", fill: "none", viewBox: "0 0 24 24", stroke: "currentColor" }, /* @__PURE__ */ jsx("path", { "stroke-linecap": "round", "stroke-linejoin": "round", "stroke-width": "3", d: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04M12 2.944a11.955 11.955 0 01-8.618 3.04M12 2.944V12m0 9.472c-2.28 0-4.47-.636-6.342-1.742L12 12l6.342 7.73A11.955 11.955 0 0112 21.472z" })), "Verified Data Source: Kemenag RI")), /* @__PURE__ */ jsx("h1", { class: "text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight mb-6" }, "Muslim ", /* @__PURE__ */ jsx("span", { class: "text-emerald-600 block md:inline" }, "All-in-One API")), /* @__PURE__ */ jsx("p", { class: "text-xl text-slate-600 leading-relaxed mb-10 max-w-3xl" }, "Akses data keislaman terlengkap dengan performa tinggi. Dibangun untuk pengembang yang ingin membuat aplikasi islami."), /* @__PURE__ */ jsx("div", { class: "grid grid-cols-1 md:grid-cols-2 gap-6 mb-10" }, /* @__PURE__ */ jsx("div", { class: "p-6 rounded-2xl border border-slate-200 bg-white shadow-sm" }, /* @__PURE__ */ jsx("div", { class: "w-10 h-10 bg-emerald-100 rounded-xl flex items-center justify-center text-emerald-600 mb-4" }, /* @__PURE__ */ jsx("svg", { xmlns: "http://www.w3.org/2000/svg", class: "h-6 w-6", fill: "none", viewBox: "0 0 24 24", stroke: "currentColor" }, /* @__PURE__ */ jsx("path", { "stroke-linecap": "round", "stroke-linejoin": "round", "stroke-width": "2", d: "M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.828a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" }))), /* @__PURE__ */ jsx("h3", { class: "font-bold text-slate-900 mb-2" }, "Base URL"), /* @__PURE__ */ jsx("div", { class: "flex items-center gap-2 bg-slate-50 p-2 rounded-lg border border-slate-100" }, /* @__PURE__ */ jsx("code", { class: "text-sm text-emerald-600 font-mono font-bold" }, baseUrl))), /* @__PURE__ */ jsx("div", { class: "p-6 rounded-2xl border border-slate-200 bg-white shadow-sm" }, /* @__PURE__ */ jsx("div", { class: "w-10 h-10 bg-blue-100 rounded-xl flex items-center justify-center text-blue-600 mb-4" }, /* @__PURE__ */ jsx("svg", { xmlns: "http://www.w3.org/2000/svg", class: "h-6 w-6", fill: "none", viewBox: "0 0 24 24", stroke: "currentColor" }, /* @__PURE__ */ jsx("path", { "stroke-linecap": "round", "stroke-linejoin": "round", "stroke-width": "2", d: "M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" }))), /* @__PURE__ */ jsx("h3", { class: "font-bold text-slate-900 mb-2" }, "Format"), /* @__PURE__ */ jsx("div", { class: "flex items-center gap-2 bg-slate-50 p-2 rounded-lg border border-slate-100" }, /* @__PURE__ */ jsx("code", { class: "text-sm text-blue-600 font-mono font-bold" }, "application/json"))))), /* @__PURE__ */ jsx(
+  ))))), /* @__PURE__ */ jsx("div", { class: "col-span-1 lg:col-span-3" }, /* @__PURE__ */ jsx("section", { id: "intro", class: "mb-20 scroll-mt-24" }, /* @__PURE__ */ jsx("div", { class: "flex flex-wrap gap-3 mb-6" }, /* @__PURE__ */ jsx("div", { class: "inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 text-emerald-700 text-xs font-bold" }, /* @__PURE__ */ jsx("span", { class: "relative flex h-2 w-2" }, /* @__PURE__ */ jsx("span", { class: "animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" }), /* @__PURE__ */ jsx("span", { class: "relative inline-flex rounded-full h-2 w-2 bg-emerald-500" })), "v1.0.0 Stable"), /* @__PURE__ */ jsx("div", { class: "inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 text-blue-700 text-xs font-bold" }, /* @__PURE__ */ jsx("svg", { xmlns: "http://www.w3.org/2000/svg", class: "h-3 w-3", fill: "none", viewBox: "0 0 24 24", stroke: "currentColor" }, /* @__PURE__ */ jsx("path", { "stroke-linecap": "round", "stroke-linejoin": "round", "stroke-width": "3", d: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04M12 2.944a11.955 11.955 0 01-8.618 3.04M12 2.944V12m0 9.472c-2.28 0-4.47-.636-6.342-1.742L12 12l6.342 7.73A11.955 11.955 0 0112 21.472z" })), "Verified Data Source: Kemenag RI")), /* @__PURE__ */ jsx("h1", { class: "text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight mb-6" }, "Muslim ", /* @__PURE__ */ jsx("span", { class: "text-emerald-600 block md:inline" }, "All-in-One API")), /* @__PURE__ */ jsx("p", { class: "text-xl text-slate-600 leading-relaxed mb-10 max-w-3xl" }, "Akses data keislaman terlengkap dengan performa tinggi. Dibangun untuk pengembang yang ingin membuat aplikasi islami."), /* @__PURE__ */ jsx("div", { class: "grid grid-cols-1 md:grid-cols-2 gap-6 mb-10" }, /* @__PURE__ */ jsx("div", { class: "p-6 rounded-2xl border border-slate-200 bg-white shadow-sm" }, /* @__PURE__ */ jsx("div", { class: "w-10 h-10 bg-emerald-100 rounded-xl flex items-center justify-center text-emerald-600 mb-4" }, /* @__PURE__ */ jsx("svg", { xmlns: "http://www.w3.org/2000/svg", class: "h-6 w-6", fill: "none", viewBox: "0 0 24 24", stroke: "currentColor" }, /* @__PURE__ */ jsx("path", { "stroke-linecap": "round", "stroke-linejoin": "round", "stroke-width": "2", d: "M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.828a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" }))), /* @__PURE__ */ jsx("h3", { class: "font-bold text-slate-900 mb-2" }, "Base URL"), /* @__PURE__ */ jsx("div", { class: "flex items-center justify-between gap-2 bg-slate-50 p-2 rounded-lg border border-slate-100 group" }, /* @__PURE__ */ jsx("code", { class: "text-sm text-emerald-600 font-mono font-bold truncate" }, baseUrl), /* @__PURE__ */ jsx(
+    "button",
+    {
+      onclick: `navigator.clipboard.writeText('${baseUrl}')`,
+      class: "p-1.5 text-slate-400 hover:text-emerald-600 hover:bg-emerald-50 rounded-md transition-all shrink-0",
+      title: "Copy Base URL"
+    },
+    /* @__PURE__ */ jsx("svg", { xmlns: "http://www.w3.org/2000/svg", class: "h-4 w-4", fill: "none", viewBox: "0 0 24 24", stroke: "currentColor" }, /* @__PURE__ */ jsx("path", { "stroke-linecap": "round", "stroke-linejoin": "round", "stroke-width": "2", d: "M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" }))
+  ))), /* @__PURE__ */ jsx("div", { class: "p-6 rounded-2xl border border-slate-200 bg-white shadow-sm" }, /* @__PURE__ */ jsx("div", { class: "w-10 h-10 bg-blue-100 rounded-xl flex items-center justify-center text-blue-600 mb-4" }, /* @__PURE__ */ jsx("svg", { xmlns: "http://www.w3.org/2000/svg", class: "h-6 w-6", fill: "none", viewBox: "0 0 24 24", stroke: "currentColor" }, /* @__PURE__ */ jsx("path", { "stroke-linecap": "round", "stroke-linejoin": "round", "stroke-width": "2", d: "M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" }))), /* @__PURE__ */ jsx("h3", { class: "font-bold text-slate-900 mb-2" }, "Format"), /* @__PURE__ */ jsx("div", { class: "flex items-center gap-2 bg-slate-50 p-2 rounded-lg border border-slate-100" }, /* @__PURE__ */ jsx("code", { class: "text-sm text-blue-600 font-mono font-bold" }, "application/json"))))), /* @__PURE__ */ jsx(
     SectionTitle,
     {
       id: "quran",
@@ -5193,7 +5886,8 @@ var Home = ({ baseUrl }) => {
       category: "quran",
       endpointId: "list-surah",
       responseJson: `{
-  "status": 200,
+  "status": true,
+  "message": "Berhasil mendapatkan daftar surah.",
   "data": [
     {
       "number": "1",
@@ -5215,7 +5909,8 @@ var Home = ({ baseUrl }) => {
       category: "quran",
       endpointId: "detail-surah",
       responseJson: `{
-  "status": 200,
+  "status": true,
+  "message": "Berhasil mendapatkan detail surah Al-Fatihah.",
   "data": {
     "number": "1",
     "sequence": "5",
@@ -5235,10 +5930,7 @@ var Home = ({ baseUrl }) => {
     "audio_full": {
       "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/001.mp3",
       "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/001.mp3",
-      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/001.mp3",
-      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/001.mp3",
-      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/001.mp3",
-      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/001.mp3"
+      ...
     }
   }
 }`
@@ -5252,7 +5944,8 @@ var Home = ({ baseUrl }) => {
       category: "quran",
       endpointId: "tafsir",
       responseJson: `{
-  "status": 200,
+  "status": true,
+  "message": "Berhasil mendapatkan tafsir surah 1.",
   "data": [
     {
       "id": "1",
@@ -5272,7 +5965,8 @@ var Home = ({ baseUrl }) => {
       category: "quran",
       endpointId: "ayah-surah",
       responseJson: `{
-  "status": 200,
+  "status": true,
+  "message": "Berhasil mendapatkan daftar seluruh ayat surah 1.",
   "data": [
     {
       "id": "1",
@@ -5288,10 +5982,7 @@ var Home = ({ baseUrl }) => {
       "audio_partial": {
         "01": "https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/001001.mp3",
         "02": "https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/001001.mp3",
-        "03": "https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/001001.mp3",
-        "04": "https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/001001.mp3",
-        "05": "https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/001001.mp3",
-        "06": "https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/001001.mp3"
+        ...
       },
       "theme": null,
       "text": "...",
@@ -5309,7 +6000,8 @@ var Home = ({ baseUrl }) => {
       category: "quran",
       endpointId: "ayah-specific",
       responseJson: `{
-  "status": 200,
+  "status": true,
+  "message": "Berhasil mendapatkan ayat 1 surah 1.",
   "data": {
     "id": "1",
     "surah": "1",
@@ -5323,11 +6015,7 @@ var Home = ({ baseUrl }) => {
     "audio": "...",
     "audio_partial": {
       "01": "https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/001001.mp3",
-      "02": "https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/001001.mp3",
-      "03": "https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/001001.mp3",
-      "04": "https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/001001.mp3",
-      "05": "https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/001001.mp3",
-      "06": "https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/001001.mp3"
+      ...
     },
     "theme": null,
     "text": "...",
@@ -5344,7 +6032,8 @@ var Home = ({ baseUrl }) => {
       category: "quran",
       endpointId: "ayah-juz",
       responseJson: `{
-  "status": 200,
+  "status": true,
+  "message": "Berhasil mendapatkan seluruh ayat pada juz 30.",
   "data": [...]
 }`
     }
@@ -5357,7 +6046,8 @@ var Home = ({ baseUrl }) => {
       category: "quran",
       endpointId: "ayah-page",
       responseJson: `{
-  "status": 200,
+  "status": true,
+  "message": "Berhasil mendapatkan seluruh ayat pada halaman 604.",
   "data": [...]
 }`
     }
@@ -5370,7 +6060,8 @@ var Home = ({ baseUrl }) => {
       category: "quran",
       endpointId: "ayah-range",
       responseJson: `{
-  "status": 200,
+  "status": true,
+  "message": "Berhasil mendapatkan ayat surah 1 dari ayat 1 sampai 7.",
   "data": [...]
 }`
     }
@@ -5383,7 +6074,8 @@ var Home = ({ baseUrl }) => {
       category: "quran",
       endpointId: "ayah-find",
       responseJson: `{
-  "status": 200,
+  "status": true,
+  "message": "Berhasil mencari ayat dengan kata kunci 'alhamdulillah'.",
   "data": [...]
 }`
     }
@@ -5396,7 +6088,8 @@ var Home = ({ baseUrl }) => {
       category: "quran",
       endpointId: "juz-list",
       responseJson: `{
-  "status": 200,
+  "status": true,
+  "message": "Berhasil mendapatkan daftar juz.",
   "data": [
     {
       "number": "1",
@@ -5414,7 +6107,8 @@ var Home = ({ baseUrl }) => {
       category: "quran",
       endpointId: "juz-detail",
       responseJson: `{
-  "status": 200,
+  "status": true,
+  "message": "Berhasil mendapatkan informasi juz 30.",
   "data": [...]
 }`
     }
@@ -5427,7 +6121,8 @@ var Home = ({ baseUrl }) => {
       category: "quran",
       endpointId: "theme-list",
       responseJson: `{
-  "status": 200,
+  "status": true,
+  "message": "Berhasil mendapatkan daftar tema Al-Quran.",
   "data": [
     {
       "id": "1",
@@ -5445,7 +6140,8 @@ var Home = ({ baseUrl }) => {
       category: "quran",
       endpointId: "theme-detail",
       responseJson: `{
-  "status": 200,
+  "status": true,
+  "message": "Berhasil mendapatkan ayat dengan tema 1.",
   "data": [...]
 }`
     }
@@ -5458,7 +6154,8 @@ var Home = ({ baseUrl }) => {
       category: "quran",
       endpointId: "word-ayah",
       responseJson: `{
-  "status": 200,
+  "status": true,
+  "message": "Berhasil mendapatkan data kata per kata surah 1.",
   "data": [
     {
       "id": "id",
@@ -5478,9 +6175,10 @@ var Home = ({ baseUrl }) => {
       method: "GET",
       path: "/word?surahId=1&ayahId=1",
       category: "quran",
-      endpointId: "word-ayah",
+      endpointId: "word-ayah-specific",
       responseJson: `{
-  "status": 200,
+  "status": true,
+  "message": "Berhasil mendapatkan data kata per kata surah 1 ayat 1.",
   "data": [...]
 }`
     }
@@ -5501,8 +6199,8 @@ var Home = ({ baseUrl }) => {
       category: "integrity",
       endpointId: "integrity-chain",
       responseJson: `{
-  "status": 200,
-  "message": "Data Integrity Chain (Proof of Authenticity)",
+  "status": true,
+  "message": "Data Integrity Chain (Proof of Authenticity) berhasil dibuat.",
   "network": "Muslim-API Data Ledger",
   "root_hash": "4f8a...",
   "chain": [
@@ -5529,13 +6227,13 @@ var Home = ({ baseUrl }) => {
       category: "integrity",
       endpointId: "integrity-verify",
       responseJson: `{
-  "status": 200,
+  "status": true,
+  "message": "Berhasil memverifikasi integritas ayat 1 pada surah 1.",
   "data": {
-    "surah": "1",
-    "ayah": "1",
+    "surahId": "1",
+    "ayahId": "1",
     "hash": "e3b0c442...",
-    "verification_method": "SHA-256",
-    "integrity": "Verified"
+    "timestamp": "2025-12-24T00:00:00Z"
   }
 }`
     }
@@ -5562,7 +6260,7 @@ var Home = ({ baseUrl }) => {
     },
     {
       q: "Bagaimana keaslian dan akurasi data Al-Quran?",
-      a: "Kami menjamin keaslian data Al-Quran dalam API ini. Data teks, terjemahan, dan tafsir (Wajiz & Tahlili) diwarisi dari dataset muslim-api-three milik Otang45 yang telah diverifikasi sesuai dengan database Kemenag RI. Struktur data kami mencakup Tafsir Tahlili yang sangat mendalam, yang merupakan produk intelektual resmi dari Kementerian Agama RI dan mengikuti standar Mushaf Al-Quran Standar Indonesia (MSI)."
+      a: "Kami menjamin keaslian data Al-Quran dalam API ini. Data teks, terjemahan, dan tafsir (Wajiz & Tahlili) diwarisi dari dataset muslim-api-three milik Otangid yang telah diverifikasi sesuai dengan database Kemenag RI. Struktur data kami mencakup Tafsir Tahlili yang sangat mendalam, yang merupakan produk intelektual resmi dari Kementerian Agama RI dan mengikuti standar Mushaf Al-Quran Standar Indonesia (MSI)."
     },
     {
       q: "Bagaimana dengan performa dan keamanan?",
@@ -5574,11 +6272,11 @@ var Home = ({ baseUrl }) => {
     },
     {
       q: "Apakah data Hadits yang disediakan sahih?",
-      a: "Untuk Hadits Arbain, kami menggunakan dataset dari muslim-api-three milik Otang45 yang telah terverifikasi. Untuk koleksi hadits besar (Bukhari, Muslim, dll), kami mengintegrasikan data dari api.hadith.gading.dev yang mengambil sumber dari kitab-kitab hadits terkemuka dengan teks Arab dan terjemahan Indonesia yang kredibel."
+      a: "Untuk Hadits Arbain, kami menggunakan dataset dari muslim-api-three milik Otangid yang telah terverifikasi. Untuk koleksi hadits besar (Bukhari, Muslim, dll), kami mengintegrasikan data dari api.hadith.gading.dev yang mengambil sumber dari kitab-kitab hadits terkemuka dengan teks Arab dan terjemahan Indonesia yang kredibel."
     },
     {
       q: "Dari mana sumber data lainnya?",
-      a: "Jadwal sholat bersumber dari Kemenag RI (via MyQuran API). Dataset Al-Quran, Doa, dan Dzikir diwarisi dari project milik Otang45 (muslim-api-three). Audio murottal disediakan melalui CDN equran.id."
+      a: "Jadwal sholat bersumber dari Kemenag RI (via MyQuran API). Dataset Al-Quran, Doa, dan Dzikir diwarisi dari project milik Otangid (muslim-api-three). Audio murottal disediakan melalui CDN equran.id."
     },
     {
       q: "Bagaimana cara melakukan perubahan data atau memperbaiki typo?",
@@ -5617,7 +6315,18 @@ var ApiEndpoint2 = ({ method, path: path2, title: title3, responseJson, category
   },
   /* @__PURE__ */ jsx("svg", { xmlns: "http://www.w3.org/2000/svg", class: "h-5 w-5", fill: "none", viewBox: "0 0 24 24", stroke: "currentColor" }, /* @__PURE__ */ jsx("path", { "stroke-linecap": "round", "stroke-linejoin": "round", "stroke-width": "2", d: "M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m-3 8.5V11a.5.5 0 00-.5-.5H9.75a.5.5 0 00-.5.5v1.5a.5.5 0 00.5.5h.75a.5.5 0 00.5-.5z" }))
 ))), /* @__PURE__ */ jsx("div", { class: "space-y-4" }, /* @__PURE__ */ jsx("details", { class: "group" }, /* @__PURE__ */ jsx("summary", { class: "flex items-center gap-2 cursor-pointer text-sm font-medium text-slate-500 hover:text-emerald-600 transition-colors list-none" }, /* @__PURE__ */ jsx("svg", { xmlns: "http://www.w3.org/2000/svg", class: "h-4 w-4 group-open:rotate-180 transition-transform", fill: "none", viewBox: "0 0 24 24", stroke: "currentColor" }, /* @__PURE__ */ jsx("path", { "stroke-linecap": "round", "stroke-linejoin": "round", "stroke-width": "2", d: "M19 9l-7 7-7-7" })), "Example Response"), /* @__PURE__ */ jsx("div", { class: "mt-4 animate-in fade-in slide-in-from-top-2 duration-300" }, /* @__PURE__ */ jsx("pre", { class: "text-[11px] leading-relaxed shadow-inner" }, /* @__PURE__ */ jsx("code", null, responseJson)))))));
-var SectionTitle2 = ({ title: title3, icon, id, color = "emerald" }) => /* @__PURE__ */ jsx("div", { id, class: "flex items-center gap-3 mb-8 scroll-mt-24" }, /* @__PURE__ */ jsx("div", { class: `w-10 h-10 bg-${color}-600 rounded-lg flex items-center justify-center shadow-lg shadow-${color}-100` }, /* @__PURE__ */ jsx("svg", { xmlns: "http://www.w3.org/2000/svg", class: "h-6 w-6 text-white", fill: "none", viewBox: "0 0 24 24", stroke: "currentColor" }, /* @__PURE__ */ jsx("path", { "stroke-linecap": "round", "stroke-linejoin": "round", "stroke-width": "2", d: icon }))), /* @__PURE__ */ jsx("h2", { class: "text-2xl font-bold text-slate-900" }, title3));
+var SectionTitle2 = ({ title: title3, icon, id, color = "emerald" }) => {
+  const colorClasses = {
+    emerald: "bg-emerald-600 shadow-emerald-100",
+    blue: "bg-blue-600 shadow-blue-100",
+    amber: "bg-amber-600 shadow-amber-100",
+    rose: "bg-rose-600 shadow-rose-100",
+    purple: "bg-purple-600 shadow-purple-100",
+    indigo: "bg-indigo-600 shadow-indigo-100",
+    slate: "bg-slate-600 shadow-slate-100"
+  };
+  return /* @__PURE__ */ jsx("div", { id, class: "flex items-center gap-3 mb-8 scroll-mt-24" }, /* @__PURE__ */ jsx("div", { class: `w-10 h-10 ${colorClasses[color] || colorClasses.emerald} rounded-lg flex items-center justify-center shadow-lg` }, /* @__PURE__ */ jsx("svg", { xmlns: "http://www.w3.org/2000/svg", class: "h-6 w-6 text-white", fill: "none", viewBox: "0 0 24 24", stroke: "currentColor" }, /* @__PURE__ */ jsx("path", { "stroke-linecap": "round", "stroke-linejoin": "round", "stroke-width": "2", d: icon }))), /* @__PURE__ */ jsx("h2", { class: "text-2xl font-bold text-slate-900" }, title3));
+};
 var Other = () => {
   return /* @__PURE__ */ jsx("div", { class: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12" }, /* @__PURE__ */ jsx("div", { class: "grid grid-cols-1 lg:grid-cols-4 gap-12" }, /* @__PURE__ */ jsx("aside", { class: "hidden lg:block col-span-1 sticky top-28 self-start" }, /* @__PURE__ */ jsx("div", { class: "bg-white rounded-2xl border border-slate-200 p-6 shadow-sm" }, /* @__PURE__ */ jsx("h3", { class: "text-xs font-bold text-slate-400 uppercase tracking-wider mb-4 px-3" }, "Menu Other API"), /* @__PURE__ */ jsx("nav", { class: "space-y-1" }, [
     { name: "Murottal", href: "#murottal", icon: "M11 5.882V19.118a3.63 3.63 0 01-5.12 3.574L1 18.817V5.183L5.88 1.309a3.63 3.63 0 015.12 3.573z M15 12a3 3 0 11-6 0 3 3 0 016 0z" },
@@ -5631,6 +6340,7 @@ var Other = () => {
     { name: "Kemenag", href: "#kemenag", icon: "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" },
     { name: "Sejarah", href: "#sejarah", icon: "M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" },
     { name: "Juz & Tema", href: "#extra", icon: "M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" },
+    { name: "Tools Cerdas", href: "#tools", icon: "M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" },
     { name: "Resources", href: "#resources", icon: "M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" }
   ].map((item, index) => /* @__PURE__ */ jsx(
     "a",
@@ -5658,7 +6368,8 @@ var Other = () => {
       category: "murottal",
       endpointId: "murottal-qari",
       responseJson: `{
-  "status": 200,
+  "status": true,
+  "message": "Berhasil mendapatkan daftar qari.",
   "data": [
     {
       "id": "01",
@@ -5677,7 +6388,8 @@ var Other = () => {
       category: "murottal",
       endpointId: "murottal-surah",
       responseJson: `{
-  "status": 200,
+  "status": true,
+  "message": "Berhasil mendapatkan audio murottal surah 1.",
   "data": {
     "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/001.mp3",
     "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/001.mp3",
@@ -5703,7 +6415,7 @@ var Other = () => {
       endpointId: "sholat-cari-kota",
       responseJson: `{
   "status": true,
-  "message": "success",
+  "message": "Berhasil mendapatkan daftar kota.",
   "data": [
     {
       "id": "1301",
@@ -5722,7 +6434,7 @@ var Other = () => {
       endpointId: "sholat-jadwal-kota",
       responseJson: `{
   "status": true,
-  "message": "success",
+  "message": "Berhasil mendapatkan jadwal sholat.",
   "data": {
     "id": "1301",
     "kabko": "KOTA JAKARTA",
@@ -5752,10 +6464,11 @@ var Other = () => {
       category: "sholat",
       endpointId: "sholat-jadwal-koordinat",
       responseJson: `{
-  "status": 200,
-  "location": "Monumen Nasional, Jalan Medan Merdeka Barat, Gambir, Jakarta Pusat",
-  "city_found": "Jakarta Pusat",
+  "status": true,
+  "message": "Berhasil mendapatkan jadwal sholat berdasarkan koordinat.",
   "data": {
+    "location": "Monumen Nasional, Jalan Medan Merdeka Barat, Gambir, Jakarta Pusat",
+    "city_found": "Jakarta Pusat",
     "id": "1301",
     "kabko": "KOTA JAKARTA",
     "prov": "DKI JAKARTA",
@@ -5792,7 +6505,8 @@ var Other = () => {
       category: "other",
       endpointId: "calendar-hijri",
       responseJson: `{
-  "status": 200,
+  "status": true,
+  "message": "Berhasil konversi Masehi ke Hijriah.",
   "data": {
     "masehi": "2024-03-11",
     "adjustment": -1,
@@ -5814,7 +6528,8 @@ var Other = () => {
       category: "other",
       endpointId: "calendar-masehi",
       responseJson: `{
-  "status": 200,
+  "status": true,
+  "message": "Berhasil konversi Hijriah ke Masehi.",
   "data": {
     "hijri": {
       "day": 1,
@@ -5849,7 +6564,8 @@ var Other = () => {
       category: "hadits",
       endpointId: "hadits-list",
       responseJson: `{
-  "status": 200,
+  "status": true,
+  "message": "Berhasil mendapatkan daftar hadits arbain.",
   "data": [
     {
       "id": 1,
@@ -5870,8 +6586,8 @@ var Other = () => {
       category: "hadits",
       endpointId: "hadits-books",
       responseJson: `{
-  "code": 200,
-  "message": "Success fetching all collections",
+  "status": true,
+  "message": "Berhasil mendapatkan seluruh koleksi kitab hadits.",
   "data": [
     { "name": "Abudaud", "id": "abu-daud", "available": 4419 },
     ...
@@ -5895,7 +6611,8 @@ var Other = () => {
       category: "other",
       endpointId: "asma-list",
       responseJson: `{
-  "status": 200,
+  "status": true,
+  "message": "Berhasil mendapatkan seluruh daftar Asmaul Husna.",
   "data": [
     {
       "id": "1",
@@ -5924,7 +6641,8 @@ var Other = () => {
       category: "other",
       endpointId: "asbab-list",
       responseJson: `{
-  "status": 200,
+  "status": true,
+  "message": "Berhasil mendapatkan seluruh daftar asbabun nuzul.",
   "data": [
     {
       "id": "1",
@@ -5953,7 +6671,8 @@ var Other = () => {
       category: "other",
       endpointId: "dzikir",
       responseJson: `{
-  "status": 200,
+  "status": true,
+  "message": "Berhasil mendapatkan seluruh daftar dzikir.",
   "data": [
     {
       "id": 1,
@@ -5982,7 +6701,8 @@ var Other = () => {
       category: "other",
       endpointId: "doa-list",
       responseJson: `{
-  "status": 200,
+  "status": true,
+  "message": "Berhasil mendapatkan seluruh daftar doa.",
   "data": [
     {
       "id": 1,
@@ -6010,7 +6730,7 @@ var Other = () => {
       path: "/juz",
       category: "quran",
       endpointId: "juz-list",
-      responseJson: `{ "status": 200, "data": [...] }`
+      responseJson: `{ "status": true, "message": "Berhasil mendapatkan daftar juz.", "data": [...] }`
     }
   ), /* @__PURE__ */ jsx(
     ApiEndpoint2,
@@ -6020,7 +6740,7 @@ var Other = () => {
       path: "/theme",
       category: "quran",
       endpointId: "theme-list",
-      responseJson: `{ "status": 200, "data": [...] }`
+      responseJson: `{ "status": true, "message": "Berhasil mendapatkan daftar tema Al-Quran.", "data": [...] }`
     }
   ), /* @__PURE__ */ jsx(
     ApiEndpoint2,
@@ -6030,34 +6750,64 @@ var Other = () => {
       path: "/word?surahId=1",
       category: "quran",
       endpointId: "word-ayah",
-      responseJson: `{ "status": 200, "data": [...] }`
+      responseJson: `{ "status": true, "message": "Berhasil mendapatkan data kata per kata surah 1.", "data": [...] }`
     }
   ), /* @__PURE__ */ jsx(
     SectionTitle2,
     {
       id: "kemenag",
-      title: "Layanan Kemenag & Masjid",
+      title: "Layanan Kemenag",
       icon: "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4",
       color: "emerald"
     }
   ), /* @__PURE__ */ jsx(
     ApiEndpoint2,
     {
-      title: "Daftar Masjid Utama",
+      title: "Daftar Masjid & Mushalla (Source: SIMAS)",
       method: "GET",
       path: "/kemenag/masjid",
       category: "kemenag",
-      endpointId: "kemenag-masjid",
+      endpointId: "kemenag-masjid-list",
       responseJson: `{
   "status": true,
+  "message": "Data masjid/mushalla berhasil diambil (Source: SIMAS Kemenag)",
+  "total_data_source": "317.218 Masjid",
   "data": [
     {
       "id": 1,
       "nama": "Masjid Istiqlal",
+      "jenis": "Masjid",
+      "tipologi": "Nasional",
       "lokasi": "Jakarta Pusat, DKI Jakarta",
       "kapasitas": "200.000",
       "tahun_berdiri": "1978",
       "deskripsi": "Masjid terbesar di Asia Tenggara."
+    }
+  ]
+}`
+    }
+  ), /* @__PURE__ */ jsx(
+    ApiEndpoint2,
+    {
+      title: "Filter Masjid/Mushalla",
+      method: "GET",
+      path: "/kemenag/masjid?jenis=Masjid&tipologi=Agung&lokasi=semarang",
+      category: "kemenag",
+      endpointId: "kemenag-masjid-search",
+      responseJson: `{
+  "status": true,
+  "message": "Data masjid/mushalla berhasil diambil (Source: SIMAS Kemenag)",
+  "total_data_source": "317.218 Masjid",
+  "data": [
+    {
+      "id": 5,
+      "nama": "Masjid Agung Jawa Tengah",
+      "jenis": "Masjid",
+      "tipologi": "Agung",
+      "lokasi": "Semarang, Jawa Tengah",
+      "kapasitas": "15.000",
+      "tahun_berdiri": "2006",
+      "deskripsi": "Masjid dengan payung hidrolik raksasa seperti di Nabawi."
     }
   ]
 }`
@@ -6072,14 +6822,17 @@ var Other = () => {
       endpointId: "kemenag-libur",
       responseJson: `{
   "status": true,
-  "year": "2025",
-  "data": [
-    {
-      "tanggal": "2025-01-01",
-      "keterangan": "Tahun Baru 2025 Masehi",
-      "is_cuti": false
-    }
-  ]
+  "message": "Berhasil mendapatkan daftar hari libur tahun 2025.",
+  "data": {
+    "year": "2025",
+    "holidays": [
+      {
+        "tanggal": "2025-01-01",
+        "keterangan": "Tahun Baru 2025 Masehi",
+        "is_cuti": false
+      }
+    ]
+  }
 }`
     }
   ), /* @__PURE__ */ jsx(
@@ -6090,7 +6843,7 @@ var Other = () => {
       path: "/kemenag/provinsi",
       category: "kemenag",
       endpointId: "kemenag-provinsi",
-      responseJson: `{ "status": true, "data": [...] }`
+      responseJson: `{ "status": true, "message": "Berhasil mendapatkan daftar provinsi.", "data": [...] }`
     }
   ), /* @__PURE__ */ jsx(
     ApiEndpoint2,
@@ -6100,7 +6853,7 @@ var Other = () => {
       path: "/kemenag/kabupaten?provinsiId=32",
       category: "kemenag",
       endpointId: "kemenag-kabupaten",
-      responseJson: `{ "status": true, "data": [...] }`
+      responseJson: `{ "status": true, "message": "Berhasil mendapatkan daftar kabupaten untuk provinsi 32.", "data": [...] }`
     }
   ), /* @__PURE__ */ jsx(
     ApiEndpoint2,
@@ -6110,13 +6863,13 @@ var Other = () => {
       path: "/kemenag/pesantren?kabupatenId=3201",
       category: "kemenag",
       endpointId: "kemenag-pesantren",
-      responseJson: `{ "status": true, "data": [...] }`
+      responseJson: `{ "status": true, "message": "Berhasil mendapatkan daftar pesantren untuk kabupaten 3201.", "data": [...] }`
     }
   ), /* @__PURE__ */ jsx(
     SectionTitle2,
     {
       id: "sejarah",
-      title: "Sejarah & Fatwa",
+      title: "Sejarah Islam",
       icon: "M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253",
       color: "blue"
     }
@@ -6130,33 +6883,14 @@ var Other = () => {
       endpointId: "sejarah-list",
       responseJson: `{
   "status": true,
+  "message": "Berhasil mendapatkan seluruh daftar sejarah.",
   "data": [
     {
       "id": 1,
       "peristiwa": "Kelahiran Nabi Muhammad SAW",
       "tahun": "571 M",
-      "kategori": "Sirah Nabawiyah"
-    },
-    ...
-  ]
-}`
-    }
-  ), /* @__PURE__ */ jsx(
-    ApiEndpoint2,
-    {
-      title: "Sejarah Islam di Indonesia",
-      method: "GET",
-      path: "/sejarah?kategori=indonesia",
-      category: "sejarah",
-      endpointId: "sejarah-indonesia",
-      responseJson: `{
-  "status": true,
-  "data": [
-    {
-      "id": 5,
-      "peristiwa": "Masuknya Islam ke Nusantara",
-      "tahun": "Abad ke-7 s/d 13 M",
-      "kategori": "Sejarah Indonesia"
+      "kategori": "Sirah Nabawiyah",
+      "sumber": "Ar-Rahiq Al-Makhtum"
     },
     ...
   ]
@@ -6172,33 +6906,144 @@ var Other = () => {
       endpointId: "sejarah-detail",
       responseJson: `{
   "status": true,
+  "message": "Berhasil mendapatkan detail sejarah.",
   "data": {
     "id": 1,
     "peristiwa": "Kelahiran Nabi Muhammad SAW",
     "tahun": "571 M (Tahun Gajah)",
     "deskripsi": "...",
-    "kategori": "Sirah Nabawiyah"
+    "kategori": "Sirah Nabawiyah",
+    "sumber": "Ar-Rahiq Al-Makhtum"
+  }
+}`
+    }
+  ), /* @__PURE__ */ jsx(
+    SectionTitle2,
+    {
+      id: "tools",
+      title: "Tools & Fitur Cerdas",
+      icon: "M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z",
+      color: "purple"
+    }
+  ), /* @__PURE__ */ jsx(
+    ApiEndpoint2,
+    {
+      title: "Kutipan Harian (Ayat & Hadits)",
+      method: "GET",
+      path: "/tools/quotes/daily",
+      category: "tools",
+      endpointId: "tools-quotes-daily",
+      responseJson: `{
+  "status": true,
+  "message": "Berhasil mengambil kutipan harian.",
+  "data": {
+    "ayat": {
+      "arab": "...",
+      "text": "...",
+      "sumber": "QS. Al-Baqarah: 153"
+    },
+    "hadits": {
+      "arab": "...",
+      "text": "...",
+      "sumber": "HR. Bukhari"
+    }
   }
 }`
     }
   ), /* @__PURE__ */ jsx(
     ApiEndpoint2,
     {
-      title: "Tanya Jawab & Fatwa Ringkas",
+      title: "Kalkulator Zakat",
       method: "GET",
-      path: "/sejarah/tanya-jawab",
-      category: "sejarah",
-      endpointId: "sejarah-fatwa",
+      path: "/tools/zakat?type=maal&amount=100000000",
+      category: "tools",
+      endpointId: "tools-zakat",
       responseJson: `{
   "status": true,
-  "data": [
-    {
-      "id": 1,
-      "pertanyaan": "Apakah menyikat gigi membatalkan puasa?",
-      "jawaban": "...",
-      "sumber": "Umum / Fatwa Kontemporer"
+  "message": "Kalkulasi zakat berhasil.",
+  "data": {
+    "type": "maal",
+    "amount": 100000000,
+    "nishab": 85000000,
+    "isWajib": true,
+    "zakat": 2500000,
+    "keterangan": "Nishab Zakat Maal adalah setara 85 gram emas per tahun. Tarif zakat 2,5%."
+  }
+}`
     }
-  ]
+  ), /* @__PURE__ */ jsx(
+    ApiEndpoint2,
+    {
+      title: "Arah Kiblat (Qibla Direction)",
+      method: "GET",
+      path: "/tools/qibla?lat=-6.1751&lng=106.8272",
+      category: "tools",
+      endpointId: "tools-qibla",
+      responseJson: `{
+  "status": true,
+  "message": "Berhasil menghitung arah kiblat.",
+  "data": {
+    "coordinates": { "lat": -6.1751, "lng": 106.8272 },
+    "kaaba": { "lat": 21.4225, "lng": 39.8262 },
+    "qibla_direction": 295.12,
+    "unit": "degrees"
+  }
+}`
+    }
+  ), /* @__PURE__ */ jsx(
+    ApiEndpoint2,
+    {
+      title: "Pencarian Semantik (AI Search)",
+      method: "GET",
+      path: "/tools/semantic-search?query=sabar",
+      category: "tools",
+      endpointId: "tools-semantic-search",
+      responseJson: `{
+  "status": true,
+  "message": "Pencarian semantik untuk 'sabar' berhasil.",
+  "data": {
+    "query": "sabar",
+    "quran": [
+      {
+        "arab": "...",
+        "text": "...",
+        "sumber": "..."
+      },
+      "..."
+    ],
+    "hadits": [
+      {
+        "arab": "...",
+        "text": "...",
+        "sumber": "..."
+      },
+      "..."
+    ]
+  }
+}`
+    }
+  ), /* @__PURE__ */ jsx(
+    ApiEndpoint2,
+    {
+      title: "AI Chat Islami (Gemini Integration)",
+      method: "GET",
+      path: "/tools/ai-chat?query=apa arti sabar&apiKey=YOUR_GEMINI_KEY",
+      category: "tools",
+      endpointId: "tools-ai-chat",
+      responseJson: `{
+  "status": true,
+  "message": "Berhasil mendapatkan jawaban AI.",
+  "data": {
+    "query": "apa arti sabar",
+    "answer": "Sabar dalam Islam berarti menahan diri dari keluh kesah... Berdasarkan QS. Al-Baqarah: 153, Allah bersama orang yang sabar.",
+    "sources": [
+      {
+        "type": "quran",
+        "text": "Wahai orang-orang yang beriman! Mohonlah pertolongan (kepada Allah) dengan sabar dan shalat...",
+        "source": "QS. Al-Baqarah: 153"
+      }
+    ]
+  }
 }`
     }
   ), /* @__PURE__ */ jsx(
@@ -6214,9 +7059,8 @@ var Other = () => {
     { name: "Quran Kemenag", url: "https://quran.kemenag.go.id/", desc: "Official Quran data from Kemenag RI" },
     { name: "MyQuran (Prayer Times)", url: "https://api.myquran.com/", desc: "Prayer times and Islamic schedule API" },
     { name: "equran.id (Audio)", url: "https://equran.id/", desc: "Quran audio and digital text" },
-    { name: "Muslim API Vercel", url: "https://muslim-api-three.vercel.app/", desc: "Alternative Muslim API provider" },
-    { name: "Hadith Gading (Hadith Collection)", url: "https://api.hadith.gading.dev/", desc: "Comprehensive Hadith collection API" },
-    { name: "Fatwa Tarjih", url: "https://fatwatarjih.or.id/", desc: "Kumpulan putusan tarjih dan tajdid" },
+    { name: "Muslim API Dataset (Repo)", url: "https://github.com/Otangid/muslim-api", desc: "Alternative Muslim API provider" },
+    { name: "Hadith Collection (Repo)", url: "https://github.com/gadingnst/hadith-api", desc: "Comprehensive Hadith collection API" },
     { name: "Data Pesantren (Repo)", url: "https://github.com/nasrul21/data-pesantren-indonesia", desc: "Database pesantren se-Indonesia (Source)" },
     { name: "Libur Nasional (Repo)", url: "https://github.com/kresnasatya/api-harilibur", desc: "Data hari libur nasional Indonesia (Source)" }
   ].map((resource) => /* @__PURE__ */ jsx(
@@ -6285,14 +7129,85 @@ var Landing = () => {
       link: "/other#kemenag"
     },
     {
-      title: "Sejarah & Fatwa",
-      description: "Kumpulan sejarah Islam Nusantara dan tanya jawab (fatwa) dari berbagai lembaga otoritas.",
+      title: "Sejarah Islam",
+      description: "Akses data sejarah Islam dan Sirah Nabawiyah yang autentik dan terpercaya.",
       icon: "M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253",
       color: "blue",
       link: "/other#sejarah"
+    },
+    {
+      title: "Fitur Cerdas & Tools",
+      description: "Kalkulator zakat, pencarian semantik AI, arah kiblat, dan kutipan harian otomatis.",
+      icon: "M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4.343 4.343l.707.707m1.286 1.286L4.343 4.343M12 21v-1m0-1c-2.761 0-5-2.239-5-5a5 5 0 015-5 5 5 0 015 5c0 2.761-2.239 5-5 5z",
+      color: "emerald",
+      link: "/playground?category=tools"
     }
   ];
-  return /* @__PURE__ */ jsx("div", { class: "relative overflow-hidden" }, /* @__PURE__ */ jsx("section", { class: "relative pt-20 pb-24 md:pt-32 md:pb-40 bg-white" }, /* @__PURE__ */ jsx("div", { class: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-20" }, /* @__PURE__ */ jsx("div", { class: "inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-50 text-emerald-700 text-sm font-bold mb-8 animate-in fade-in slide-in-from-bottom-4 duration-700 relative z-30" }, /* @__PURE__ */ jsx("span", { class: "flex h-2 w-2" }, /* @__PURE__ */ jsx("span", { class: "relative inline-flex rounded-full h-2 w-2 bg-emerald-500" })), "Platform Data Islami Terlengkap"), /* @__PURE__ */ jsx("h1", { class: "text-5xl md:text-7xl font-extrabold text-slate-900 tracking-tight mb-8 animate-in fade-in slide-in-from-bottom-6 duration-1000" }, "Muslim ", /* @__PURE__ */ jsx("span", { class: "text-emerald-600 block md:inline" }, "All-in-One API")), /* @__PURE__ */ jsx("p", { class: "text-xl md:text-2xl text-slate-600 leading-relaxed mb-12 max-w-3xl mx-auto animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-200" }, "Infrastruktur data keislaman digital yang cepat, gratis, dan andal. Dirancang untuk mempercepat inovasi dalam dakwah teknologi."), /* @__PURE__ */ jsx("div", { class: "flex flex-col sm:flex-row items-center justify-center gap-4 animate-in fade-in slide-in-from-bottom-10 duration-1000 delay-300" }, /* @__PURE__ */ jsx(
+  return /* @__PURE__ */ jsx("div", { class: "relative overflow-hidden" }, /* @__PURE__ */ jsx("section", { class: "relative pt-20 pb-24 md:pt-32 md:pb-40 bg-white" }, /* @__PURE__ */ jsx("div", { class: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-20" }, /* @__PURE__ */ jsx("div", { class: "inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-50 text-emerald-700 text-sm font-bold mb-8 animate-in fade-in slide-in-from-bottom-4 duration-700 relative z-30" }, /* @__PURE__ */ jsx("span", { class: "flex h-2 w-2" }, /* @__PURE__ */ jsx("span", { class: "relative inline-flex rounded-full h-2 w-2 bg-emerald-500" })), "Platform Data Islami Terlengkap"), /* @__PURE__ */ jsx("h1", { class: "text-4xl sm:text-5xl md:text-7xl font-extrabold text-slate-900 tracking-tight mb-8 animate-in fade-in slide-in-from-bottom-6 duration-1000" }, "Muslim API ", /* @__PURE__ */ jsx("span", { class: "text-emerald-600 block md:inline-block" }, /* @__PURE__ */ jsx("span", { id: "dynamic-text" }, "All-in-One"), /* @__PURE__ */ jsx("span", { class: "animate-pulse" }, "|"))), /* @__PURE__ */ jsx("script", { dangerouslySetInnerHTML: { __html: `
+            (function() {
+              const phrases = [
+                'All-in-One',
+                'Data Al-Qur\\'an',
+                'Pencarian AI',
+                'Kalkulator Zakat',
+                'Arah Kiblat',
+                'Hadits Arba\\'in',
+                'Tafsir Kemenag',
+                'Jadwal Sholat',
+                'Koleksi Doa',
+                'Sejarah Islam'
+              ];
+              let i = 0;
+              let j = 0;
+              let currentPhrase = [];
+              let isDeleting = false;
+              let isEnd = false;
+              
+              function loop() {
+                const el = document.getElementById('dynamic-text');
+                if (!el) {
+                  setTimeout(loop, 500);
+                  return;
+                }
+
+                isEnd = false;
+                
+                if (i < phrases.length) {
+                  if (!isDeleting && j <= phrases[i].length) {
+                    currentPhrase.push(phrases[i][j]);
+                    j++;
+                    el.innerHTML = currentPhrase.join('');
+                  }
+
+                  if (isDeleting && j >= 0) {
+                    currentPhrase.pop();
+                    j--;
+                    el.innerHTML = currentPhrase.join('');
+                  }
+
+                  if (j == phrases[i].length) {
+                    isEnd = true;
+                    isDeleting = true;
+                  }
+
+                  if (isDeleting && j <= 0) {
+                    currentPhrase = [];
+                    isDeleting = false;
+                    i++;
+                    if (i == phrases.length) i = 0;
+                    j = 0;
+                  }
+                }
+                const spedUp = Math.random() * (50 - 30) + 30;
+                const normalSpeed = Math.random() * (150 - 100) + 100;
+                const time = isEnd ? 2000 : isDeleting ? spedUp : normalSpeed;
+                setTimeout(loop, time);
+              }
+
+              // Start the loop after a short delay to ensure DOM is ready
+              setTimeout(loop, 100);
+            })();
+          ` } }), /* @__PURE__ */ jsx("p", { class: "text-xl md:text-2xl text-slate-600 leading-relaxed mb-12 max-w-3xl mx-auto animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-200" }, "Infrastruktur data keislaman digital yang cepat, gratis, dan andal. Dirancang untuk mempercepat inovasi dalam dakwah teknologi."), /* @__PURE__ */ jsx("div", { class: "flex flex-col sm:flex-row items-center justify-center gap-4 animate-in fade-in slide-in-from-bottom-10 duration-1000 delay-300" }, /* @__PURE__ */ jsx(
     "a",
     {
       href: "/docs",
@@ -6308,7 +7223,7 @@ var Landing = () => {
       class: "w-full sm:w-auto px-8 py-4 bg-slate-100 text-slate-900 rounded-2xl font-bold text-lg hover:bg-slate-200 transition-all flex items-center justify-center gap-2"
     },
     "GitHub Project"
-  ))), /* @__PURE__ */ jsx("div", { class: "absolute inset-0 z-0 pointer-events-none overflow-hidden" }, /* @__PURE__ */ jsx("div", { class: "absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-emerald-50 rounded-full blur-[120px] opacity-60" }), /* @__PURE__ */ jsx("div", { class: "absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-teal-50 rounded-full blur-[120px] opacity-60" }))), /* @__PURE__ */ jsx("section", { class: "py-24 bg-slate-50 border-y border-slate-200" }, /* @__PURE__ */ jsx("div", { class: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" }, /* @__PURE__ */ jsx("div", { class: "grid grid-cols-1 lg:grid-cols-2 gap-16 items-center" }, /* @__PURE__ */ jsx("div", { class: "space-y-8" }, /* @__PURE__ */ jsx("div", { class: "inline-block px-4 py-1.5 bg-emerald-100 text-emerald-700 rounded-lg text-sm font-bold uppercase tracking-wider" }, "Visi & Latar Belakang"), /* @__PURE__ */ jsx("h2", { class: "text-3xl md:text-4xl font-bold text-slate-900" }, "Mengapa Muslim API diciptakan?"), /* @__PURE__ */ jsx("div", { class: "space-y-6 text-lg text-slate-600 leading-relaxed" }, /* @__PURE__ */ jsx("p", null, "Di era digital saat ini, akses terhadap data keislaman yang akurat, cepat, dan mudah diintegrasikan adalah sebuah kebutuhan fundamental. Banyak pengembang menghadapi kesulitan dalam menemukan API yang menyediakan data lengkap tanpa batasan yang memberatkan."), /* @__PURE__ */ jsx("div", { class: "grid grid-cols-1 md:grid-cols-2 gap-8 mt-8" }, /* @__PURE__ */ jsx("div", { class: "space-y-3" }, /* @__PURE__ */ jsx("h4", { class: "font-bold text-slate-900 flex items-center gap-2 text-xl" }, /* @__PURE__ */ jsx("span", { class: "w-2 h-2 bg-emerald-500 rounded-full" }), "Misi Kami"), /* @__PURE__ */ jsx("p", { class: "text-base" }, "Menjadi ", /* @__PURE__ */ jsx("span", { class: "text-emerald-600 font-semibold" }, '"Single Source of Truth"'), " untuk data keislaman digital di Indonesia. Kami menyediakan infrastruktur data yang andal bagi siapapun yang ingin berdakwah melalui teknologi.")), /* @__PURE__ */ jsx("div", { class: "space-y-3" }, /* @__PURE__ */ jsx("h4", { class: "font-bold text-slate-900 flex items-center gap-2 text-xl" }, /* @__PURE__ */ jsx("span", { class: "w-2 h-2 bg-emerald-500 rounded-full" }), "Filosofi Terbuka"), /* @__PURE__ */ jsx("p", { class: "text-base" }, "Muslim API dibangun dengan semangat ", /* @__PURE__ */ jsx("span", { class: "text-emerald-600 font-semibold" }, "Open Source"), ". Kami percaya bahwa ilmu agama harus dapat diakses seluas-luasnya tanpa ada penghalang teknis atau biaya."))), /* @__PURE__ */ jsx("div", { class: "mt-8 pt-8 border-t border-slate-200 italic text-slate-500 text-center md:text-left" }, '"Sebaik-baik manusia adalah yang paling bermanfaat bagi orang lain."'))), /* @__PURE__ */ jsx("div", { class: "relative" }, /* @__PURE__ */ jsx("div", { class: "bg-white p-8 rounded-3xl shadow-2xl border border-slate-200 relative z-10" }, /* @__PURE__ */ jsx("div", { class: "space-y-6" }, /* @__PURE__ */ jsx("div", { class: "flex items-start gap-4" }, /* @__PURE__ */ jsx("div", { class: "w-10 h-10 bg-emerald-100 rounded-xl flex items-center justify-center shrink-0" }, /* @__PURE__ */ jsx("svg", { xmlns: "http://www.w3.org/2000/svg", class: "h-6 w-6 text-emerald-600", fill: "none", viewBox: "0 0 24 24", stroke: "currentColor" }, /* @__PURE__ */ jsx("path", { "stroke-linecap": "round", "stroke-linejoin": "round", "stroke-width": "2", d: "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" }))), /* @__PURE__ */ jsx("div", null, /* @__PURE__ */ jsx("h4", { class: "font-bold text-slate-900 mb-1" }, "Data Terverifikasi"), /* @__PURE__ */ jsx("p", { class: "text-slate-500 text-sm" }, "Sumber data Al-Quran kami mengikuti standar Mushaf Al-Quran Standar Indonesia (MSI) Kemenag RI."))), /* @__PURE__ */ jsx("div", { class: "flex items-start gap-4" }, /* @__PURE__ */ jsx("div", { class: "w-10 h-10 bg-emerald-100 rounded-xl flex items-center justify-center shrink-0" }, /* @__PURE__ */ jsx("svg", { xmlns: "http://www.w3.org/2000/svg", class: "h-6 w-6 text-emerald-600", fill: "none", viewBox: "0 0 24 24", stroke: "currentColor" }, /* @__PURE__ */ jsx("path", { "stroke-linecap": "round", "stroke-linejoin": "round", "stroke-width": "2", d: "M13 10V3L4 14h7v7l9-11h-7z" }))), /* @__PURE__ */ jsx("div", null, /* @__PURE__ */ jsx("h4", { class: "font-bold text-slate-900 mb-1" }, "High Availability"), /* @__PURE__ */ jsx("p", { class: "text-slate-500 text-sm" }, "Dibangun di atas infrastruktur serverless untuk memastikan API selalu tersedia kapanpun dibutuhkan."))), /* @__PURE__ */ jsx("div", { class: "flex items-start gap-4" }, /* @__PURE__ */ jsx("div", { class: "w-10 h-10 bg-emerald-100 rounded-xl flex items-center justify-center shrink-0" }, /* @__PURE__ */ jsx("svg", { xmlns: "http://www.w3.org/2000/svg", class: "h-6 w-6 text-emerald-600", fill: "none", viewBox: "0 0 24 24", stroke: "currentColor" }, /* @__PURE__ */ jsx("path", { "stroke-linecap": "round", "stroke-linejoin": "round", "stroke-width": "2", d: "M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" }))), /* @__PURE__ */ jsx("div", null, /* @__PURE__ */ jsx("h4", { class: "font-bold text-slate-900 mb-1" }, "Blockchain Integrity"), /* @__PURE__ */ jsx("p", { class: "text-slate-500 text-sm" }, "Keaslian data dijamin melalui cryptographic hashing untuk menjaga kemurnian teks suci."))))), /* @__PURE__ */ jsx("div", { class: "absolute -bottom-6 -right-6 w-full h-full bg-emerald-600/5 rounded-3xl -z-0" }))))), /* @__PURE__ */ jsx("section", { class: "py-24 bg-white" }, /* @__PURE__ */ jsx("div", { class: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" }, /* @__PURE__ */ jsx("div", { class: "text-center mb-16" }, /* @__PURE__ */ jsx("h2", { class: "text-3xl md:text-4xl font-bold text-slate-900 mb-4" }, "Layanan API Kami"), /* @__PURE__ */ jsx("p", { class: "text-lg text-slate-600 max-w-2xl mx-auto" }, "Berbagai kategori API yang siap Anda integrasikan ke dalam aplikasi Anda secara instan.")), /* @__PURE__ */ jsx("div", { class: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" }, apiCategories.map((api, index) => /* @__PURE__ */ jsx(
+  ))), /* @__PURE__ */ jsx("div", { class: "absolute inset-0 z-0 pointer-events-none overflow-hidden" }, /* @__PURE__ */ jsx("div", { class: "absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-emerald-50 rounded-full blur-[120px] opacity-60" }), /* @__PURE__ */ jsx("div", { class: "absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-teal-50 rounded-full blur-[120px] opacity-60" }))), /* @__PURE__ */ jsx("section", { class: "py-24 bg-slate-50 border-y border-slate-200" }, /* @__PURE__ */ jsx("div", { class: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" }, /* @__PURE__ */ jsx("div", { class: "grid grid-cols-1 lg:grid-cols-2 gap-16 items-center" }, /* @__PURE__ */ jsx("div", { class: "space-y-8" }, /* @__PURE__ */ jsx("div", { class: "inline-block px-4 py-1.5 bg-emerald-100 text-emerald-700 rounded-lg text-sm font-bold uppercase tracking-wider" }, "Visi & Latar Belakang"), /* @__PURE__ */ jsx("h2", { class: "text-3xl md:text-4xl font-bold text-slate-900" }, "Mengapa Muslim API?"), /* @__PURE__ */ jsx("div", { class: "space-y-6 text-lg text-slate-600 leading-relaxed" }, /* @__PURE__ */ jsx("p", null, "Di era digital saat ini, akses terhadap data keislaman yang akurat, cepat, dan mudah diintegrasikan adalah sebuah kebutuhan fundamental. Banyak pengembang menghadapi kesulitan dalam menemukan API yang menyediakan data lengkap tanpa batasan yang memberatkan."), /* @__PURE__ */ jsx("div", { class: "grid grid-cols-1 md:grid-cols-2 gap-8 mt-8" }, /* @__PURE__ */ jsx("div", { class: "space-y-3" }, /* @__PURE__ */ jsx("h4", { class: "font-bold text-slate-900 flex items-center gap-2 text-xl" }, /* @__PURE__ */ jsx("span", { class: "w-2 h-2 bg-emerald-500 rounded-full" }), "Misi Kami"), /* @__PURE__ */ jsx("p", { class: "text-base" }, "Menjadi ", /* @__PURE__ */ jsx("span", { class: "text-emerald-600 font-semibold" }, '"Single Source of Truth"'), " untuk data keislaman digital di Indonesia. Kami menyediakan infrastruktur data yang andal bagi siapapun yang ingin berdakwah melalui teknologi.")), /* @__PURE__ */ jsx("div", { class: "space-y-3" }, /* @__PURE__ */ jsx("h4", { class: "font-bold text-slate-900 flex items-center gap-2 text-xl" }, /* @__PURE__ */ jsx("span", { class: "w-2 h-2 bg-emerald-500 rounded-full" }), "Filosofi Terbuka"), /* @__PURE__ */ jsx("p", { class: "text-base" }, "Muslim API dibangun dengan semangat ", /* @__PURE__ */ jsx("span", { class: "text-emerald-600 font-semibold" }, "Open Source"), ". Kami percaya bahwa ilmu agama harus dapat diakses seluas-luasnya tanpa ada penghalang teknis atau biaya."))), /* @__PURE__ */ jsx("div", { class: "mt-8 pt-8 border-t border-slate-200 italic text-slate-500 text-center md:text-left" }, '"Sebaik-baik manusia adalah yang paling bermanfaat bagi orang lain."'))), /* @__PURE__ */ jsx("div", { class: "relative" }, /* @__PURE__ */ jsx("div", { class: "bg-white p-8 rounded-3xl shadow-2xl border border-slate-200 relative z-10" }, /* @__PURE__ */ jsx("div", { class: "space-y-6" }, /* @__PURE__ */ jsx("div", { class: "flex items-start gap-4" }, /* @__PURE__ */ jsx("div", { class: "w-10 h-10 bg-emerald-100 rounded-xl flex items-center justify-center shrink-0" }, /* @__PURE__ */ jsx("svg", { xmlns: "http://www.w3.org/2000/svg", class: "h-6 w-6 text-emerald-600", fill: "none", viewBox: "0 0 24 24", stroke: "currentColor" }, /* @__PURE__ */ jsx("path", { "stroke-linecap": "round", "stroke-linejoin": "round", "stroke-width": "2", d: "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" }))), /* @__PURE__ */ jsx("div", null, /* @__PURE__ */ jsx("h4", { class: "font-bold text-slate-900 mb-1" }, "Data Terverifikasi"), /* @__PURE__ */ jsx("p", { class: "text-slate-500 text-sm" }, "Sumber data Al-Quran kami mengikuti standar Mushaf Al-Quran Standar Indonesia (MSI) Kemenag RI."))), /* @__PURE__ */ jsx("div", { class: "flex items-start gap-4" }, /* @__PURE__ */ jsx("div", { class: "w-10 h-10 bg-emerald-100 rounded-xl flex items-center justify-center shrink-0" }, /* @__PURE__ */ jsx("svg", { xmlns: "http://www.w3.org/2000/svg", class: "h-6 w-6 text-emerald-600", fill: "none", viewBox: "0 0 24 24", stroke: "currentColor" }, /* @__PURE__ */ jsx("path", { "stroke-linecap": "round", "stroke-linejoin": "round", "stroke-width": "2", d: "M13 10V3L4 14h7v7l9-11h-7z" }))), /* @__PURE__ */ jsx("div", null, /* @__PURE__ */ jsx("h4", { class: "font-bold text-slate-900 mb-1" }, "High Availability"), /* @__PURE__ */ jsx("p", { class: "text-slate-500 text-sm" }, "Dibangun di atas infrastruktur serverless untuk memastikan API selalu tersedia kapanpun dibutuhkan."))), /* @__PURE__ */ jsx("div", { class: "flex items-start gap-4" }, /* @__PURE__ */ jsx("div", { class: "w-10 h-10 bg-emerald-100 rounded-xl flex items-center justify-center shrink-0" }, /* @__PURE__ */ jsx("svg", { xmlns: "http://www.w3.org/2000/svg", class: "h-6 w-6 text-emerald-600", fill: "none", viewBox: "0 0 24 24", stroke: "currentColor" }, /* @__PURE__ */ jsx("path", { "stroke-linecap": "round", "stroke-linejoin": "round", "stroke-width": "2", d: "M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" }))), /* @__PURE__ */ jsx("div", null, /* @__PURE__ */ jsx("h4", { class: "font-bold text-slate-900 mb-1" }, "Blockchain Integrity"), /* @__PURE__ */ jsx("p", { class: "text-slate-500 text-sm" }, "Keaslian data dijamin melalui cryptographic hashing untuk menjaga kemurnian teks suci."))))), /* @__PURE__ */ jsx("div", { class: "absolute -bottom-6 -right-6 w-full h-full bg-emerald-600/5 rounded-3xl -z-0" }))))), /* @__PURE__ */ jsx("section", { class: "py-24 bg-white" }, /* @__PURE__ */ jsx("div", { class: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" }, /* @__PURE__ */ jsx("div", { class: "text-center mb-16" }, /* @__PURE__ */ jsx("h2", { class: "text-3xl md:text-4xl font-bold text-slate-900 mb-4" }, "Layanan API Kami"), /* @__PURE__ */ jsx("p", { class: "text-lg text-slate-600 max-w-2xl mx-auto" }, "Berbagai kategori API yang siap Anda integrasikan ke dalam aplikasi Anda secara instan.")), /* @__PURE__ */ jsx("div", { class: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" }, apiCategories.map((api, index) => /* @__PURE__ */ jsx(
     "a",
     {
       key: index,
@@ -6330,14 +7245,14 @@ var Landing = () => {
     /* @__PURE__ */ jsx("svg", { xmlns: "http://www.w3.org/2000/svg", class: "h-6 w-6", fill: "none", viewBox: "0 0 24 24", stroke: "currentColor" }, /* @__PURE__ */ jsx("path", { "stroke-linecap": "round", "stroke-linejoin": "round", "stroke-width": "2", d: "M13 10V3L4 14h7v7l9-11h-7z" }))
   )), /* @__PURE__ */ jsx("div", { class: "hidden lg:block" }, /* @__PURE__ */ jsx("div", { class: "bg-slate-800/50 backdrop-blur-xl border border-slate-700 rounded-3xl p-6 shadow-2xl" }, /* @__PURE__ */ jsx("div", { class: "flex items-center gap-2 mb-4" }, /* @__PURE__ */ jsx("div", { class: "flex gap-1.5" }, /* @__PURE__ */ jsx("div", { class: "w-3 h-3 rounded-full bg-rose-500" }), /* @__PURE__ */ jsx("div", { class: "w-3 h-3 rounded-full bg-amber-500" }), /* @__PURE__ */ jsx("div", { class: "w-3 h-3 rounded-full bg-emerald-500" }))), /* @__PURE__ */ jsx("pre", { class: "bg-transparent p-0 text-emerald-400 text-sm font-mono leading-relaxed" }, `{
   "status": true,
-  "message": "Success fetching data",
+  "message": "Berhasil mengambil data surah.",
   "data": {
     "surah": "Al-Fatihah",
     "ayat": 7,
     "revelation": "Makkiyah",
     "translation": "Pembukaan"
   }
-}`))))))), /* @__PURE__ */ jsx("section", { class: "py-24 bg-slate-900 relative overflow-hidden" }, /* @__PURE__ */ jsx("div", { class: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10" }, /* @__PURE__ */ jsx("h2", { class: "text-3xl md:text-5xl font-bold text-white mb-8" }, "Siap Membangun Masa Depan Dakwah Digital?"), /* @__PURE__ */ jsx("p", { class: "text-xl text-slate-400 mb-12 max-w-2xl mx-auto" }, "Bergabunglah dengan ribuan pengembang lainnya yang telah menggunakan Muslim API. Mulai secara gratis hari ini."), /* @__PURE__ */ jsx("div", { class: "flex flex-col sm:flex-row items-center justify-center gap-4" }, /* @__PURE__ */ jsx(
+} `))))))), /* @__PURE__ */ jsx("section", { class: "py-24 bg-slate-900 relative overflow-hidden" }, /* @__PURE__ */ jsx("div", { class: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10" }, /* @__PURE__ */ jsx("h2", { class: "text-3xl md:text-5xl font-bold text-white mb-8" }, "Siap Membangun Masa Depan Dakwah Digital?"), /* @__PURE__ */ jsx("p", { class: "text-xl text-slate-400 mb-12 max-w-2xl mx-auto" }, "Bergabunglah dengan ribuan pengembang lainnya yang telah menggunakan Muslim API. Mulai secara gratis hari ini."), /* @__PURE__ */ jsx("div", { class: "flex flex-col sm:flex-row items-center justify-center gap-4" }, /* @__PURE__ */ jsx(
     "a",
     {
       href: "/docs",
@@ -6368,7 +7283,8 @@ var Playground = ({ baseUrl }) => {
     /* @__PURE__ */ jsx("option", { value: "hadits" }, "Hadits"),
     /* @__PURE__ */ jsx("option", { value: "murottal" }, "Murottal Audio"),
     /* @__PURE__ */ jsx("option", { value: "kemenag" }, "Kemenag Open Data"),
-    /* @__PURE__ */ jsx("option", { value: "sejarah" }, "Sejarah & Fatwa"),
+    /* @__PURE__ */ jsx("option", { value: "sejarah" }, "Sejarah Islam"),
+    /* @__PURE__ */ jsx("option", { value: "tools" }, "Tools & Fitur Cerdas"),
     /* @__PURE__ */ jsx("option", { value: "integrity" }, "Integrity & Blockchain"),
     /* @__PURE__ */ jsx("option", { value: "other" }, "Lainnya (Asmaul Husna, Doa, dll)")
   )), /* @__PURE__ */ jsx("div", null, /* @__PURE__ */ jsx("label", { class: "block text-sm font-semibold text-slate-700 mb-2" }, "Endpoint"), /* @__PURE__ */ jsx(
@@ -6518,6 +7434,7 @@ var Playground = ({ baseUrl }) => {
               { name: 'tanggal', placeholder: '2025-12-25', type: 'date', default: new Date().toISOString().split('T')[0] }
             ] },
             { id: 'sholat-jadwal-koordinat', path: '/sholat/jadwal/koordinat', name: 'Jadwal by Koordinat', params: [{ name: 'lat', placeholder: '-6.1751', type: 'text', default: '-6.1751' }, { name: 'lon', placeholder: '106.8272', type: 'text', default: '106.8272' }] },
+            { id: 'sholat-next', path: '/sholat/next', name: 'Waktu Sholat Terdekat', params: [{ name: 'lat', placeholder: '-6.1751', type: 'text', default: '-6.1751' }, { name: 'lon', placeholder: '106.8272', type: 'text', default: '106.8272' }] },
           ],
           hadits: [
             { id: 'hadits-list', path: '/hadits', name: 'Daftar Hadits Arbain', params: [] },
@@ -6551,12 +7468,26 @@ var Playground = ({ baseUrl }) => {
             { id: 'kemenag-kabupaten', path: '/kemenag/kabupaten', name: 'Daftar Kabupaten (Pesantren)', params: [{ name: 'provinsiId', type: 'number', default: '32', placeholder: '32', hint: 'ID Provinsi (Contoh: 32 untuk Jabar)' }] },
             { id: 'kemenag-pesantren', path: '/kemenag/pesantren', name: 'Daftar Pesantren', params: [{ name: 'kabupatenId', type: 'number', default: '3201', placeholder: '3201', hint: 'ID Kabupaten (Contoh: 3201 untuk Bogor)' }] },
             { id: 'kemenag-masjid', path: '/kemenag/masjid', name: 'Daftar Masjid Utama', params: [] },
+            { id: 'kemenag-masjid-nearby', path: '/kemenag/masjid/nearby', name: 'Masjid Terdekat (Geo)', params: [{ name: 'lat', type: 'text', default: '-6.1751' }, { name: 'lng', type: 'text', default: '106.8272' }, { name: 'radius', type: 'number', default: '5', hint: 'Radius dalam KM' }] },
           ],
           sejarah: [
-            { id: 'sejarah-list', path: '/sejarah', name: 'Sejarah Islam & Sirah', params: [] },
-            { id: 'sejarah-indonesia', path: '/sejarah', name: 'Sejarah Islam Indonesia', params: [{ name: 'kategori', type: 'text', default: 'indonesia', placeholder: 'indonesia' }] },
+            { id: 'sejarah-list', path: '/sejarah', name: 'Daftar Sirah Nabawiyah', params: [] },
+            { id: 'sejarah-today', path: '/sejarah/today', name: 'Peristiwa Hari Ini', params: [] },
             { id: 'sejarah-detail', path: '/sejarah/detail', name: 'Detail Sejarah', params: [{ name: 'id', type: 'number', default: '1', placeholder: '1' }] },
-            { id: 'sejarah-fatwa', path: '/sejarah/tanya-jawab', name: 'Tanya Jawab (Fatwa)', params: [] },
+          ],
+          tools: [
+            { id: 'tools-quotes', path: '/tools/quotes/daily', name: 'Daily Quotes', params: [] },
+            { id: 'tools-zakat', path: '/tools/zakat', name: 'Kalkulator Zakat', params: [
+              { name: 'type', type: 'select', default: 'maal', options: [{value:'maal', label:'Zakat Maal'}, {value:'penghasilan', label:'Zakat Penghasilan'}, {value:'fitrah', label:'Zakat Fitrah'}] },
+              { name: 'amount', type: 'number', default: '100000000', hint: 'Jumlah harta/pendapatan' },
+              { name: 'hargaEmas', type: 'number', default: '1200000', hint: 'Harga emas per gram (opsional)' }
+            ]},
+            { id: 'tools-qibla', path: '/tools/qibla', name: 'Arah Kiblat', params: [{ name: 'lat', type: 'text', default: '-6.1751' }, { name: 'lng', type: 'text', default: '106.8272' }] },
+            { id: 'tools-search', path: '/tools/semantic-search', name: 'Pencarian Semantik', params: [{ name: 'query', type: 'text', default: 'sabar', hint: 'Cari di Quran & Hadits' }] },
+            { id: 'tools-ai-chat', path: '/tools/ai-chat', name: 'AI Chat Islami (Gemini)', params: [
+              { name: 'query', type: 'text', default: 'apa arti sabar', hint: 'Tanyakan sesuatu tentang Islam' },
+              { name: 'apiKey', type: 'text', default: '', hint: 'Masukkan API Key Gemini Anda' }
+            ]},
           ],
           integrity: [
             { id: 'integrity-chain', path: '/integrity/chain', name: 'Integrity Chain', params: [] },
@@ -6919,20 +7850,20 @@ asbab.get("/", async (c) => {
     if (id == null) {
       const data = await query("SELECT * FROM asbab_nuzul ORDER BY CAST(id as INTEGER) ASC");
       if (!data) {
-        return c.json({ status: 404, data: [] }, 404);
+        return c.json({ status: false, message: "Daftar Asbabun Nuzul tidak tersedia.", data: [] }, 404);
       } else {
-        return c.json({ status: 200, data });
+        return c.json({ status: true, message: "Berhasil mendapatkan daftar Asbabun Nuzul.", data });
       }
     } else {
       const data = await get("SELECT * FROM asbab_nuzul WHERE id = ?", [id]);
       if (!data) {
-        return c.json({ status: 404, data: {} }, 404);
+        return c.json({ status: false, message: "Asbabun Nuzul tidak ditemukan.", data: {} }, 404);
       } else {
-        return c.json({ status: 200, data });
+        return c.json({ status: true, message: "Berhasil mendapatkan detail Asbabun Nuzul.", data });
       }
     }
   } catch (error) {
-    return c.json({ status: 500, message: error.message }, 500);
+    return c.json({ status: false, message: "Gagal mendapatkan data Asbabun Nuzul: " + error.message }, 500);
   }
 });
 var asbab_default = asbab;
@@ -6945,20 +7876,20 @@ asma.get("/", async (c) => {
     if (id != null) {
       const data = await query("SELECT * FROM asmaul_husna WHERE id = ?", [id]);
       if (!data || data.length === 0) {
-        return c.json({ status: 404, data: {} }, 404);
+        return c.json({ status: false, message: "Asmaul Husna tidak ditemukan.", data: {} }, 404);
       } else {
-        return c.json({ status: 200, data: data[0] });
+        return c.json({ status: true, message: "Berhasil mendapatkan detail Asmaul Husna.", data: data[0] });
       }
     } else {
       const data = await query("SELECT * FROM asmaul_husna ORDER BY CAST(id as INTEGER) ASC");
       if (!data) {
-        return c.json({ status: 404, data: [] }, 404);
+        return c.json({ status: false, message: "Daftar Asmaul Husna tidak tersedia.", data: [] }, 404);
       } else {
-        return c.json({ status: 200, data });
+        return c.json({ status: true, message: "Berhasil mendapatkan daftar Asmaul Husna.", data });
       }
     }
   } catch (error) {
-    return c.json({ status: 500, message: error.message }, 500);
+    return c.json({ status: false, message: "Gagal mendapatkan data Asmaul Husna: " + error.message }, 500);
   }
 });
 var asma_default = asma;
@@ -6974,9 +7905,9 @@ var formatAyah = (a) => {
 ayah.get("/", async (c) => {
   try {
     const data = await query("SELECT * FROM ayah ORDER BY CAST(id as INTEGER) ASC");
-    return c.json({ status: 200, data: (data || []).map(formatAyah) });
+    return c.json({ status: true, message: "Berhasil mendapatkan daftar seluruh ayat.", data: (data || []).map(formatAyah) });
   } catch (error) {
-    return c.json({ status: 500, message: error.message }, 500);
+    return c.json({ status: false, message: "Gagal mendapatkan daftar ayat: " + error.message }, 500);
   }
 });
 ayah.get("/range", async (c) => {
@@ -6989,15 +7920,15 @@ ayah.get("/range", async (c) => {
         "SELECT * FROM ayah WHERE surah = ? AND ayah BETWEEN CAST(? as INTEGER) and CAST(? as INTEGER) ORDER BY CAST(id as INTEGER) ASC",
         [surahId, start, end]
       );
-      return c.json({ status: 200, data: (data || []).map(formatAyah) });
+      return c.json({ status: true, message: `Berhasil mendapatkan ayat dari surah ${surahId} rentang ${start}-${end}.`, data: (data || []).map(formatAyah) });
     } else {
       return c.json({
-        status: 500,
-        message: "Parameter di perlukan (surahId, start, end)."
-      }, 500);
+        status: false,
+        message: "Parameter diperlukan (surahId, start, end)."
+      }, 400);
     }
   } catch (error) {
-    return c.json({ status: 500, message: error.message }, 500);
+    return c.json({ status: false, message: "Gagal mendapatkan rentang ayat: " + error.message }, 500);
   }
 });
 ayah.get("/surah", async (c) => {
@@ -7008,15 +7939,15 @@ ayah.get("/surah", async (c) => {
         "SELECT * FROM ayah WHERE surah = ? ORDER BY CAST(id as INTEGER) ASC",
         [id]
       );
-      return c.json({ status: 200, data: (data || []).map(formatAyah) });
+      return c.json({ status: true, message: `Berhasil mendapatkan daftar ayat untuk surah ${id}.`, data: (data || []).map(formatAyah) });
     } else {
       return c.json({
-        status: 500,
-        message: "Parameter di perlukan (surahId)."
-      }, 500);
+        status: false,
+        message: "Parameter diperlukan (surahId)."
+      }, 400);
     }
   } catch (error) {
-    return c.json({ status: 500, message: error.message }, 500);
+    return c.json({ status: false, message: "Gagal mendapatkan ayat juz: " + error.message }, 500);
   }
 });
 ayah.get("/juz", async (c) => {
@@ -7027,15 +7958,15 @@ ayah.get("/juz", async (c) => {
         "SELECT * FROM ayah WHERE juz = ? ORDER BY CAST(id as INTEGER) ASC",
         [id]
       );
-      return c.json({ status: 200, data: (data || []).map(formatAyah) });
+      return c.json({ status: true, message: `Berhasil mendapatkan daftar ayat untuk juz ${id}.`, data: (data || []).map(formatAyah) });
     } else {
       return c.json({
-        status: 500,
-        message: "Parameter di perlukan (juzId)."
-      }, 500);
+        status: false,
+        message: "Parameter diperlukan (juzId)."
+      }, 400);
     }
   } catch (error) {
-    return c.json({ status: 500, message: error.message }, 500);
+    return c.json({ status: false, message: "Gagal mendapatkan ayat halaman: " + error.message }, 500);
   }
 });
 ayah.get("/page", async (c) => {
@@ -7046,15 +7977,15 @@ ayah.get("/page", async (c) => {
         "SELECT * FROM ayah WHERE page = ? ORDER BY CAST(id as INTEGER) ASC",
         [id]
       );
-      return c.json({ status: 200, data: (data || []).map(formatAyah) });
+      return c.json({ status: true, message: `Berhasil mendapatkan daftar ayat untuk halaman ${id}.`, data: (data || []).map(formatAyah) });
     } else {
       return c.json({
-        status: 500,
-        message: "Parameter di perlukan (page)."
-      }, 500);
+        status: false,
+        message: "Parameter diperlukan (page)."
+      }, 400);
     }
   } catch (error) {
-    return c.json({ status: 500, message: error.message }, 500);
+    return c.json({ status: false, message: error.message }, 500);
   }
 });
 ayah.get("/specific", async (c) => {
@@ -7067,18 +7998,18 @@ ayah.get("/specific", async (c) => {
         [surahId, ayahId]
       );
       if (!data) {
-        return c.json({ status: 404, data: {} }, 404);
+        return c.json({ status: false, message: `Ayat ${ayahId} pada surah ${surahId} tidak ditemukan.`, data: {} }, 404);
       } else {
-        return c.json({ status: 200, data: formatAyah(data) });
+        return c.json({ status: true, message: `Berhasil mendapatkan detail ayat ${ayahId} pada surah ${surahId}.`, data: formatAyah(data) });
       }
     } else {
       return c.json({
-        status: 500,
-        message: "Parameter di perlukan (surahId, ayahId)."
-      }, 500);
+        status: false,
+        message: "Parameter diperlukan (surahId, ayahId)."
+      }, 400);
     }
   } catch (error) {
-    return c.json({ status: 500, message: error.message }, 500);
+    return c.json({ status: false, message: "Gagal mendapatkan detail ayat: " + error.message }, 500);
   }
 });
 ayah.get("/find", async (c) => {
@@ -7089,15 +8020,15 @@ ayah.get("/find", async (c) => {
         "SELECT * FROM ayah WHERE text LIKE ? ORDER BY CAST(id as INTEGER) ASC",
         [`%${q}%`]
       );
-      return c.json({ status: 200, data: (data || []).map(formatAyah) });
+      return c.json({ status: true, message: `Berhasil mencari ayat dengan kata kunci: ${q}.`, data: (data || []).map(formatAyah) });
     } else {
       return c.json({
-        status: 500,
-        message: "Parameter di perlukan (query). Harus lebih dari 3 karakter."
-      }, 500);
+        status: false,
+        message: "Parameter diperlukan (query). Harus lebih dari 3 karakter."
+      }, 400);
     }
   } catch (error) {
-    return c.json({ status: 500, message: error.message }, 500);
+    return c.json({ status: false, message: "Gagal mencari ayat: " + error.message }, 500);
   }
 });
 var ayah_default = ayah;
@@ -7195,12 +8126,13 @@ calendar.get("/hijri", async (c) => {
       date = /* @__PURE__ */ new Date();
     }
     if (isNaN(date.getTime())) {
-      return c.json({ status: 400, message: "Invalid date format. Use YYYY-MM-DD" }, 400);
+      return c.json({ status: false, message: "Format tanggal tidak valid. Gunakan YYYY-MM-DD." }, 400);
     }
     const calData = await getCalendarData();
     const hijri = g2h(date, adj, calData);
     return c.json({
-      status: 200,
+      status: true,
+      message: "Berhasil mengonversi tanggal Masehi ke Hijriah.",
       data: {
         masehi: date.toISOString().split("T")[0],
         adjustment: adj,
@@ -7208,7 +8140,7 @@ calendar.get("/hijri", async (c) => {
       }
     });
   } catch (error) {
-    return c.json({ status: 500, message: error.message }, 500);
+    return c.json({ status: false, message: "Gagal mengonversi tanggal: " + error.message }, 500);
   }
 });
 calendar.get("/masehi", async (c) => {
@@ -7217,15 +8149,16 @@ calendar.get("/masehi", async (c) => {
     const month = parseInt(c.req.query("month"));
     const year = parseInt(c.req.query("year"));
     if (isNaN(day) || isNaN(month) || isNaN(year)) {
-      return c.json({ status: 400, message: "Missing or invalid parameters. Requires day, month, and year" }, 400);
+      return c.json({ status: false, message: "Parameter tidak lengkap atau tidak valid. Membutuhkan day, month, dan year." }, 400);
     }
     if (month < 1 || month > 12 || day < 1 || day > 30) {
-      return c.json({ status: 400, message: "Invalid Hijri date values" }, 400);
+      return c.json({ status: false, message: "Nilai tanggal Hijriah tidak valid." }, 400);
     }
     const calData = await getCalendarData();
     const masehi = h2g(day, month, year, calData);
     return c.json({
-      status: 200,
+      status: true,
+      message: "Berhasil mengonversi tanggal Hijriah ke Masehi.",
       data: {
         hijri: {
           day,
@@ -7236,7 +8169,7 @@ calendar.get("/masehi", async (c) => {
       }
     });
   } catch (error) {
-    return c.json({ status: 500, message: error.message }, 500);
+    return c.json({ status: false, message: "Gagal mengonversi tanggal: " + error.message }, 500);
   }
 });
 var calendar_default = calendar;
@@ -7251,13 +8184,13 @@ doa.get("/", async (c) => {
         "SELECT * FROM doa WHERE source = ? ORDER BY judul ASC",
         [source]
       );
-      return c.json({ status: 200, data: data || [] });
+      return c.json({ status: true, message: `Berhasil mendapatkan doa dari sumber: ${source}.`, data: data || [] });
     } else {
       const data = await query("SELECT * FROM doa ORDER BY judul ASC");
-      return c.json({ status: 200, data: data || [] });
+      return c.json({ status: true, message: "Berhasil mendapatkan daftar doa.", data: data || [] });
     }
   } catch (error) {
-    return c.json({ status: 500, message: error.message }, 500);
+    return c.json({ status: false, message: "Gagal mendapatkan data doa: " + error.message }, 500);
   }
 });
 doa.get("/find", async (c) => {
@@ -7268,15 +8201,15 @@ doa.get("/find", async (c) => {
         "SELECT * FROM doa WHERE judul LIKE ? ORDER BY judul ASC",
         [`%${q}%`]
       );
-      return c.json({ status: 200, data: data || [] });
+      return c.json({ status: true, message: `Berhasil mencari doa dengan kata kunci: ${q}.`, data: data || [] });
     } else {
       return c.json({
-        status: 500,
-        message: "Parameter di perlukan (query)."
-      }, 500);
+        status: false,
+        message: "Parameter diperlukan (query)."
+      }, 400);
     }
   } catch (error) {
-    return c.json({ status: 500, message: error.message }, 500);
+    return c.json({ status: false, message: "Gagal mencari doa: " + error.message }, 500);
   }
 });
 var doa_default = doa;
@@ -7291,13 +8224,13 @@ dzikir.get("/", async (c) => {
         "SELECT * FROM dzikir WHERE type = ?",
         [type]
       );
-      return c.json({ status: 200, data: data || [] });
+      return c.json({ status: true, message: `Berhasil mendapatkan dzikir tipe: ${type}.`, data: data || [] });
     } else {
       const data = await query("SELECT * FROM dzikir");
-      return c.json({ status: 200, data: data || [] });
+      return c.json({ status: true, message: "Berhasil mendapatkan daftar dzikir.", data: data || [] });
     }
   } catch (error) {
-    return c.json({ status: 500, message: error.message }, 500);
+    return c.json({ status: false, message: "Gagal mendapatkan data dzikir: " + error.message }, 500);
   }
 });
 var dzikir_default = dzikir;
@@ -7326,25 +8259,36 @@ hadits.get("/", async (c) => {
     if (nomor != null) {
       const data = await get("SELECT * FROM hadits WHERE no = ?", [nomor]);
       if (!data) {
-        return c.json({ status: 404, data: {} }, 404);
+        return c.json({ status: false, message: "Hadits tidak ditemukan.", data: {} }, 404);
       } else {
-        return c.json({ status: 200, data });
+        return c.json({ status: true, message: "Berhasil mendapatkan detail Hadits Arbain.", data });
       }
     } else {
       const data = await query("SELECT * FROM hadits ORDER BY CAST(no as INTEGER) ASC");
-      return c.json({ status: 200, data: data || [] });
+      return c.json({ status: true, message: "Berhasil mendapatkan daftar Hadits Arbain.", data: data || [] });
     }
   } catch (error) {
-    return c.json({ status: 500, message: error.message }, 500);
+    return c.json({ status: false, message: "Gagal mendapatkan data hadits: " + error.message }, 500);
   }
 });
 hadits.get("/books", async (c) => {
   try {
     const response = await fetch(`${GADING_API_BASE}/books`);
     const data = await response.json();
-    return c.json(data);
+    if (!response.ok || data.code && data.code !== 200) {
+      return c.json({
+        status: false,
+        message: "Gagal mengambil daftar kitab hadits dari API sumber.",
+        error: data.message || "Unknown error"
+      }, response.status || 502);
+    }
+    return c.json({
+      status: true,
+      message: "Berhasil mendapatkan daftar kitab hadits.",
+      data: data.data || data
+    });
   } catch (error) {
-    return c.json({ status: 500, message: error.message }, 500);
+    return c.json({ status: false, message: "Gagal mendapatkan daftar kitab hadits: " + error.message }, 500);
   }
 });
 hadits.get("/books/:name", async (c) => {
@@ -7354,9 +8298,20 @@ hadits.get("/books/:name", async (c) => {
     const url = range ? `${GADING_API_BASE}/books/${name}?range=${range}` : `${GADING_API_BASE}/books/${name}`;
     const response = await fetch(url);
     const data = await response.json();
-    return c.json(data);
+    if (!response.ok || data.code && data.code !== 200) {
+      return c.json({
+        status: false,
+        message: `Gagal mengambil daftar hadits dari kitab ${name} dari API sumber.`,
+        error: data.message || "Unknown error"
+      }, response.status || 502);
+    }
+    return c.json({
+      status: true,
+      message: `Berhasil mendapatkan daftar hadits dari kitab ${name}.`,
+      data: data.data || data
+    });
   } catch (error) {
-    return c.json({ status: 500, message: error.message }, 500);
+    return c.json({ status: false, message: `Gagal mendapatkan daftar hadits dari kitab ${c.req.param("name")}: ` + error.message }, 500);
   }
 });
 hadits.get("/books/:name/:number", async (c) => {
@@ -7365,9 +8320,20 @@ hadits.get("/books/:name/:number", async (c) => {
     const number = c.req.param("number");
     const response = await fetch(`${GADING_API_BASE}/books/${name}/${number}`);
     const data = await response.json();
-    return c.json(data);
+    if (!response.ok || data.code && data.code !== 200) {
+      return c.json({
+        status: false,
+        message: `Gagal mengambil detail hadits nomor ${number} dari kitab ${name} dari API sumber.`,
+        error: data.message || "Unknown error"
+      }, response.status || 502);
+    }
+    return c.json({
+      status: true,
+      message: `Berhasil mendapatkan detail hadits nomor ${number} dari kitab ${name}.`,
+      data: data.data || data
+    });
   } catch (error) {
-    return c.json({ status: 500, message: error.message }, 500);
+    return c.json({ status: false, message: `Gagal mendapatkan detail hadits dari kitab ${c.req.param("name")}: ` + error.message }, 500);
   }
 });
 hadits.get("/find", async (c) => {
@@ -7378,15 +8344,15 @@ hadits.get("/find", async (c) => {
         "SELECT * FROM hadits WHERE judul LIKE ? ORDER BY CAST(no as INTEGER) ASC",
         [`%${q}%`]
       );
-      return c.json({ status: 200, data: data || [] });
+      return c.json({ status: true, message: `Berhasil mencari hadits dengan kata kunci: ${q}.`, data: data || [] });
     } else {
       return c.json({
-        status: 500,
-        message: "Parameter di perlukan (query)."
-      }, 500);
+        status: false,
+        message: "Parameter diperlukan (query)."
+      }, 400);
     }
   } catch (error) {
-    return c.json({ status: 500, message: error.message }, 500);
+    return c.json({ status: false, message: "Gagal mencari hadits: " + error.message }, 500);
   }
 });
 var hadits_default = hadits;
@@ -7399,16 +8365,16 @@ juz.get("/", async (c) => {
     if (juzId != null) {
       const data = await get("SELECT * FROM juz WHERE number = ?", [juzId]);
       if (!data) {
-        return c.json({ status: 404, data: {} }, 404);
+        return c.json({ status: false, message: "Juz tidak ditemukan.", data: {} }, 404);
       } else {
-        return c.json({ status: 200, data });
+        return c.json({ status: true, message: "Berhasil mendapatkan detail juz.", data });
       }
     } else {
       const data = await query("SELECT * FROM juz ORDER BY CAST (number as INTEGER) ASC");
-      return c.json({ status: 200, data: data || [] });
+      return c.json({ status: true, message: "Berhasil mendapatkan daftar seluruh juz.", data: data || [] });
     }
   } catch (error) {
-    return c.json({ status: 500, message: error.message }, 500);
+    return c.json({ status: false, message: "Gagal mendapatkan data juz: " + error.message }, 500);
   }
 });
 var juz_default = juz;
@@ -7419,11 +8385,12 @@ murotal.get("/qari", async (c) => {
   try {
     const data = await query("SELECT * FROM qari ORDER BY id ASC");
     return c.json({
-      status: 200,
+      status: true,
+      message: "Berhasil mendapatkan daftar qari.",
       data
     });
   } catch (error) {
-    return c.json({ status: 500, message: error.message }, 500);
+    return c.json({ status: false, message: "Gagal mendapatkan daftar qari: " + error.message }, 500);
   }
 });
 murotal.get("/", async (c) => {
@@ -7434,12 +8401,13 @@ murotal.get("/", async (c) => {
     if (surahId) {
       const data = await query("SELECT number, name_id, name_short, audio_full FROM surah WHERE number = ?", [surahId]);
       if (data.length === 0) {
-        return c.json({ status: 404, message: "Surah not found" }, 404);
+        return c.json({ status: false, message: "Surah tidak ditemukan." }, 404);
       }
       const surah2 = data[0];
       const audioFull = JSON.parse(surah2.audio_full || "{}");
       return c.json({
-        status: 200,
+        status: true,
+        message: `Berhasil mendapatkan murotal surah ${surah2.name_id} untuk qari ${qari ? qari.name : qariId}.`,
         data: {
           surahId: surah2.number,
           name: surah2.name_id,
@@ -7460,12 +8428,13 @@ murotal.get("/", async (c) => {
       };
     });
     return c.json({
-      status: 200,
+      status: true,
+      message: `Berhasil mendapatkan daftar murotal untuk qari ${qari ? qari.name : qariId}.`,
       qari: qari || { id: qariId, name: "Unknown" },
       data: result
     });
   } catch (error) {
-    return c.json({ status: 500, message: error.message }, 500);
+    return c.json({ status: false, message: "Gagal mendapatkan data murotal: " + error.message }, 500);
   }
 });
 var murotal_default = murotal;
@@ -7506,14 +8475,14 @@ integrity.get("/chain", async (c) => {
       previousHash = blockHash;
     }
     return c.json({
-      status: 200,
-      message: "Data Integrity Chain (Proof of Authenticity)",
+      status: true,
+      message: "Data Integrity Chain (Proof of Authenticity) berhasil dibuat.",
       network: "Muslim-API Data Ledger",
       root_hash: previousHash,
       chain
     });
   } catch (error) {
-    return c.json({ status: 500, message: error.message }, 500);
+    return c.json({ status: false, message: "Gagal mendapatkan data integrity chain: " + error.message }, 500);
   }
 });
 integrity.get("/verify", async (c) => {
@@ -7524,16 +8493,16 @@ integrity.get("/verify", async (c) => {
     );
     const isDataValid = surah2 && surah2.length > 0 && ayahs && ayahs.length > 0;
     return c.json({
-      status: 200,
-      message: isDataValid ? "System Integrity Verified" : "System Online (Data Check Pending)",
+      status: true,
+      message: isDataValid ? "Integritas sistem terverifikasi." : "Sistem Online (Pengecekan data tertunda).",
       check: "Surah Al-Fatihah",
       integrity: isDataValid ? "Healthy" : "Warning",
       timestamp: (/* @__PURE__ */ new Date()).toISOString()
     });
   } catch (error) {
     return c.json({
-      status: 200,
-      message: "System Online (Integrity Check Error)",
+      status: true,
+      message: "Sistem Online (Error pada pengecekan integritas).",
       integrity: "Error",
       error: error.message,
       timestamp: (/* @__PURE__ */ new Date()).toISOString()
@@ -7544,29 +8513,28 @@ integrity.get("/verify/ayah", async (c) => {
   const surahId = c.req.query("surahId");
   const ayahId = c.req.query("ayahId");
   if (!surahId || !ayahId) {
-    return c.json({ status: 400, message: "surahId and ayahId are required" }, 400);
+    return c.json({ status: false, message: "Parameter surahId dan ayahId diperlukan." }, 400);
   }
   try {
-    const ayah2 = await query(
+    const data = await get(
       "SELECT arab, text FROM ayah WHERE surah = ? AND ayah = ?",
       [surahId, ayahId]
     );
-    if (!ayah2 || ayah2.length === 0) {
-      return c.json({ status: 404, message: "Ayah not found" }, 404);
+    if (!data) {
+      return c.json({ status: false, message: `Ayat ${ayahId} pada surah ${surahId} tidak ditemukan.`, data: {} }, 404);
     }
-    const hash = generateHash(ayah2[0]);
     return c.json({
-      status: 200,
+      status: true,
+      message: `Berhasil memverifikasi integritas ayat ${ayahId} pada surah ${surahId}.`,
       data: {
-        surah: surahId,
-        ayah: ayahId,
-        hash,
-        verification_method: "SHA-256",
-        integrity: "Verified"
+        surahId,
+        ayahId,
+        hash: generateHash(data),
+        timestamp: (/* @__PURE__ */ new Date()).toISOString()
       }
     });
   } catch (error) {
-    return c.json({ status: 500, message: error.message }, 500);
+    return c.json({ status: false, message: "Gagal memverifikasi integritas ayat: " + error.message }, 500);
   }
 });
 var integrity_default = integrity;
@@ -7577,39 +8545,61 @@ var BASE_API = API_CONFIG.SHOLAT.MYQURAN;
 var kotaCache = null;
 sholat.get("/kota/semua", async (c) => {
   try {
-    if (kotaCache) return c.json({ status: 200, data: kotaCache });
+    if (kotaCache) return c.json({ status: true, message: "Berhasil mendapatkan daftar kota (dari cache).", data: kotaCache });
     const response = await fetch(`${BASE_API}/kota/semua`);
     const data = await response.json();
     if (data.status) {
       kotaCache = data.data;
-      return c.json({ status: 200, data: data.data });
+      return c.json({ status: true, message: "Berhasil mendapatkan daftar kota.", data: data.data });
     }
-    return c.json({ status: 500, message: "Gagal mengambil data kota" }, 500);
+    return c.json({ status: false, message: "Gagal mengambil data kota dari API sumber." }, 502);
   } catch (error) {
-    return c.json({ status: 500, message: error.message }, 500);
+    return c.json({ status: false, message: "Gagal mendapatkan daftar kota: " + error.message }, 500);
   }
 });
 sholat.get("/kota/cari", async (c) => {
   const query2 = c.req.query("nama");
-  if (!query2) return c.json({ status: 400, message: "Parameter nama diperlukan" }, 400);
+  if (!query2) return c.json({ status: false, message: "Parameter nama diperlukan." }, 400);
   try {
     const response = await fetch(`${BASE_API}/kota/cari/${query2}`);
     const data = await response.json();
-    return c.json(data);
+    if (!response.ok || !data.status) {
+      return c.json({
+        status: false,
+        message: `Gagal mencari kota dengan kata kunci: ${query2} dari API sumber.`,
+        error: data.message || "Unknown error"
+      }, response.status || 502);
+    }
+    return c.json({
+      status: true,
+      message: `Berhasil mencari kota dengan kata kunci: ${query2}.`,
+      data: data.data || []
+    });
   } catch (error) {
-    return c.json({ status: 500, message: error.message }, 500);
+    return c.json({ status: false, message: "Gagal mencari kota: " + error.message }, 500);
   }
 });
 sholat.get("/jadwal", async (c) => {
   const kotaId = c.req.query("kotaId");
   const tanggal = c.req.query("tanggal") || (/* @__PURE__ */ new Date()).toISOString().split("T")[0];
-  if (!kotaId) return c.json({ status: 400, message: "Parameter kotaId diperlukan" }, 400);
+  if (!kotaId) return c.json({ status: false, message: "Parameter kotaId diperlukan." }, 400);
   try {
     const response = await fetch(`${BASE_API}/jadwal/${kotaId}/${tanggal}`);
     const data = await response.json();
-    return c.json(data);
+    if (!response.ok || !data.status) {
+      return c.json({
+        status: false,
+        message: `Gagal mengambil jadwal sholat untuk kota ID ${kotaId} dari API sumber.`,
+        error: data.message || "Unknown error"
+      }, response.status || 502);
+    }
+    return c.json({
+      status: true,
+      message: `Berhasil mendapatkan jadwal sholat untuk kota ID ${kotaId} pada tanggal ${tanggal}.`,
+      data: data.data ? data.data.jadwal : null
+    });
   } catch (error) {
-    return c.json({ status: 500, message: error.message }, 500);
+    return c.json({ status: false, message: "Gagal mendapatkan jadwal sholat: " + error.message }, 500);
   }
 });
 sholat.get("/jadwal/koordinat", async (c) => {
@@ -7617,38 +8607,124 @@ sholat.get("/jadwal/koordinat", async (c) => {
   const lon = c.req.query("lon");
   const tanggal = c.req.query("tanggal") || (/* @__PURE__ */ new Date()).toISOString().split("T")[0];
   if (!lat || !lon) {
-    return c.json({ status: 400, message: "Parameter lat dan lon diperlukan" }, 400);
+    return c.json({ status: false, message: "Parameter lat dan lon diperlukan." }, 400);
   }
   try {
     const geoRes = await fetch(`${API_CONFIG.SHOLAT.NOMINATIM}?format=json&lat=${lat}&lon=${lon}&zoom=10`, {
       headers: { "User-Agent": "Muslim-API/1.0" }
     });
+    if (!geoRes.ok) {
+      return c.json({ status: false, message: "Gagal mendapatkan data lokasi dari Nominatim." }, 502);
+    }
     const geoData = await geoRes.json();
-    const city = geoData.address.city || geoData.address.town || geoData.address.municipality || geoData.address.county;
+    const address = geoData.address || {};
+    const city = address.city || address.town || address.municipality || address.county;
     if (!city) {
-      return c.json({ status: 404, message: "Lokasi tidak ditemukan" }, 404);
+      return c.json({ status: false, message: "Lokasi tidak ditemukan." }, 404);
     }
     const cleanCityName = city.replace(/Kota |Kabupaten /g, "").trim();
     const kotaRes = await fetch(`${BASE_API}/kota/cari/${cleanCityName}`);
     const kotaData = await kotaRes.json();
-    if (!kotaData.status || !kotaData.data || kotaData.data.length === 0) {
+    if (!kotaRes.ok || !kotaData.status || !kotaData.data || kotaData.data.length === 0) {
       return c.json({
-        status: 404,
-        message: `Kota ${cleanCityName} tidak terdaftar di database Kemenag`,
+        status: false,
+        message: `Kota ${cleanCityName} tidak terdaftar di database Kemenag.`,
         location: city
       }, 404);
     }
     const kotaId = kotaData.data[0].id;
     const jadwalRes = await fetch(`${BASE_API}/jadwal/${kotaId}/${tanggal}`);
-    const jadwalData = await jadwalRes.json();
+    const data = await jadwalRes.json();
+    if (!jadwalRes.ok || !data.status) {
+      return c.json({ status: false, message: "Gagal mengambil jadwal dari API sumber." }, 502);
+    }
     return c.json({
-      status: 200,
-      location: geoData.display_name,
-      city_found: city,
-      data: jadwalData.data
+      status: true,
+      message: `Berhasil mendapatkan jadwal sholat untuk lokasi ${city} (${lat}, ${lon}).`,
+      data: {
+        location: city,
+        coordinates: { lat, lon },
+        jadwal: data.data ? data.data.jadwal : null
+      }
     });
   } catch (error) {
-    return c.json({ status: 500, message: error.message }, 500);
+    return c.json({ status: false, message: "Gagal mendapatkan jadwal sholat berdasarkan koordinat: " + error.message }, 500);
+  }
+});
+sholat.get("/next", async (c) => {
+  const lat = c.req.query("lat");
+  const lon = c.req.query("lon");
+  if (!lat || !lon) {
+    return c.json({ status: false, message: "Parameter lat dan lon diperlukan." }, 400);
+  }
+  try {
+    const today = (/* @__PURE__ */ new Date()).toISOString().split("T")[0];
+    const cityRes = await fetch(`${API_CONFIG.SHOLAT.NOMINATIM}?format=json&lat=${lat}&lon=${lon}&zoom=10`, {
+      headers: { "User-Agent": "Muslim-API/1.0" }
+    });
+    if (!cityRes.ok) {
+      return c.json({ status: false, message: "Gagal mendapatkan data lokasi dari Nominatim." }, 502);
+    }
+    const geoData = await cityRes.json();
+    const address = geoData.address || {};
+    const city = address.city || address.town || address.municipality || address.county;
+    if (!city) {
+      return c.json({ status: false, message: "Lokasi tidak ditemukan." }, 404);
+    }
+    const cleanCityName = city.replace(/Kota |Kabupaten /g, "").trim();
+    const kotaRes = await fetch(`${BASE_API}/kota/cari/${cleanCityName}`);
+    const kotaData = await kotaRes.json();
+    if (!kotaRes.ok || !kotaData.status || !kotaData.data || kotaData.data.length === 0) {
+      return c.json({ status: false, message: `Kota ${cleanCityName} tidak terdaftar.` }, 404);
+    }
+    const kotaId = kotaData.data[0].id;
+    const jadwalRes = await fetch(`${BASE_API}/jadwal/${kotaId}/${today}`);
+    const jadwalData = await jadwalRes.json();
+    if (!jadwalRes.ok || !jadwalData.status) return c.json({ status: false, message: "Gagal mengambil jadwal dari API sumber." }, 502);
+    const jadwal = jadwalData.data.jadwal;
+    const now = /* @__PURE__ */ new Date();
+    const currentTime = now.getHours() * 60 + now.getMinutes();
+    const times = [
+      { name: "Imsak", time: jadwal.imsak },
+      { name: "Subuh", time: jadwal.subuh },
+      { name: "Terbit", time: jadwal.terbit },
+      { name: "Dhuha", time: jadwal.dhuha },
+      { name: "Dzuhur", time: jadwal.dzuhur },
+      { name: "Ashar", time: jadwal.ashar },
+      { name: "Maghrib", time: jadwal.maghrib },
+      { name: "Isya", time: jadwal.isya }
+    ];
+    let nextPrayer = null;
+    for (const t of times) {
+      const [h, m] = t.time.split(":").map(Number);
+      const prayerMinutes = h * 60 + m;
+      if (prayerMinutes > currentTime) {
+        const diff = prayerMinutes - currentTime;
+        nextPrayer = {
+          name: t.name,
+          time: t.time,
+          remaining_minutes: diff,
+          remaining_hours: Math.floor(diff / 60),
+          remaining_minutes_only: diff % 60
+        };
+        break;
+      }
+    }
+    if (!nextPrayer) {
+      nextPrayer = { name: "Subuh (Besok)", time: times[1].time, message: "Waktu Isya telah lewat" };
+    }
+    return c.json({
+      status: true,
+      message: "Waktu sholat terdekat berhasil didapatkan.",
+      data: {
+        current_time: now.toLocaleTimeString("id-ID", { hour: "2-digit", minute: "2-digit" }),
+        next_prayer: nextPrayer,
+        location: city,
+        jadwal_today: jadwal
+      }
+    });
+  } catch (error) {
+    return c.json({ status: false, message: "Gagal mendapatkan waktu sholat terdekat: " + error.message }, 500);
   }
 });
 var sholat_default = sholat;
@@ -7667,20 +8743,20 @@ surah.get("/", async (c) => {
     if (surahId != null) {
       const data = await get("SELECT * FROM surah WHERE number = ?", [surahId]);
       if (!data) {
-        return c.json({ status: 404, data: {} }, 404);
+        return c.json({ status: false, message: "Surah tidak ditemukan.", data: {} }, 404);
       } else {
-        return c.json({ status: 200, data: formatSurah(data) });
+        return c.json({ status: true, message: "Berhasil mendapatkan detail surah.", data: formatSurah(data) });
       }
     } else {
       const data = await query("SELECT * FROM surah ORDER BY CAST(number as INTEGER) ASC");
       if (!data) {
-        return c.json({ status: 404, data: [] }, 404);
+        return c.json({ status: false, message: "Daftar surah tidak tersedia.", data: [] }, 404);
       } else {
-        return c.json({ status: 200, data: data.map(formatSurah) });
+        return c.json({ status: true, message: "Berhasil mendapatkan daftar surah.", data: data.map(formatSurah) });
       }
     }
   } catch (error) {
-    return c.json({ status: 500, message: error.message }, 500);
+    return c.json({ status: false, message: "Gagal mendapatkan data surah: " + error.message }, 500);
   }
 });
 var surah_default = surah;
@@ -7693,16 +8769,16 @@ tafsir.get("/", async (c) => {
     if (surahId != null) {
       const data = await query("SELECT * FROM tafsir WHERE id = ?", [surahId]);
       if (!data || data.length === 0) {
-        return c.json({ status: 404, data: {} }, 404);
+        return c.json({ status: false, message: "Tafsir surah tidak ditemukan.", data: {} }, 404);
       } else {
-        return c.json({ status: 200, data: data[0] });
+        return c.json({ status: true, message: "Berhasil mendapatkan detail tafsir surah.", data: data[0] });
       }
     } else {
       const data = await query("SELECT * FROM tafsir ORDER BY CAST(id as INTEGER) ASC");
-      return c.json({ status: 200, data: data || [] });
+      return c.json({ status: true, message: "Berhasil mendapatkan daftar tafsir surah.", data: data || [] });
     }
   } catch (error) {
-    return c.json({ status: 500, message: error.message }, 500);
+    return c.json({ status: false, message: "Gagal mendapatkan data tafsir: " + error.message }, 500);
   }
 });
 var tafsir_default = tafsir;
@@ -7715,16 +8791,16 @@ theme.get("/", async (c) => {
     if (themeId != null) {
       const data = await get("SELECT * FROM theme WHERE id = ?", [themeId]);
       if (!data) {
-        return c.json({ status: 404, data: {} }, 404);
+        return c.json({ status: false, message: "Tema tidak ditemukan.", data: {} }, 404);
       } else {
-        return c.json({ status: 200, data });
+        return c.json({ status: true, message: "Berhasil mendapatkan detail tema.", data });
       }
     } else {
       const data = await query("SELECT * FROM theme ORDER BY CAST(id as INTEGER) ASC");
-      return c.json({ status: 200, data: data || [] });
+      return c.json({ status: true, message: "Berhasil mendapatkan daftar seluruh tema.", data: data || [] });
     }
   } catch (error) {
-    return c.json({ status: 500, message: error.message }, 500);
+    return c.json({ status: false, message: "Gagal mendapatkan data tema: " + error.message }, 500);
   }
 });
 var theme_default = theme;
@@ -7746,9 +8822,9 @@ word.get("/", async (c) => {
     }
     sql += " ORDER BY CAST(surah as INTEGER), CAST(ayah as INTEGER), CAST(word as INTEGER) ASC";
     const data = await query(sql, params);
-    return c.json({ status: 200, data: data || [] });
+    return c.json({ status: true, message: "Berhasil mendapatkan daftar kata.", data: data || [] });
   } catch (error) {
-    return c.json({ status: 500, message: error.message }, 500);
+    return c.json({ status: false, message: "Gagal mendapatkan data kata: " + error.message }, 500);
   }
 });
 var word_default = word;
@@ -7759,13 +8835,13 @@ var API_KEY = process.env.ADMIN_API_KEY || "muslim-api-admin-secret";
 admin.use("*", async (c, next) => {
   if (process.env.VERCEL === "1" || process.env.NODE_ENV === "production") {
     return c.json({
-      status: 403,
-      message: "Admin updates are disabled on Vercel Production. Please use Local Update + Git Push strategy."
+      status: false,
+      message: "Pembaruan admin dinonaktifkan di Vercel Production. Harap gunakan strategi Pembaruan Lokal + Git Push."
     }, 403);
   }
   const apiKey = c.req.header("x-api-key");
   if (apiKey !== API_KEY) {
-    return c.json({ status: 401, message: "Unauthorized: Invalid or missing API Key" }, 401);
+    return c.json({ status: false, message: "Tidak diizinkan: API Key tidak valid atau tidak ada." }, 401);
   }
   await next();
 });
@@ -7773,14 +8849,14 @@ admin.patch("/ayah", async (c) => {
   try {
     const { surahId, ayahId, arab, text, latin } = await c.req.json();
     if (!surahId || !ayahId) {
-      return c.json({ status: 400, message: "surahId and ayahId are required" }, 400);
+      return c.json({ status: false, message: "surahId dan ayahId diperlukan." }, 400);
     }
     const oldData = await get(
       "SELECT arab, text, latin FROM ayah WHERE surah = ? AND ayah = ?",
       [surahId, ayahId]
     );
     if (!oldData) {
-      return c.json({ status: 404, message: "Ayah not found" }, 404);
+      return c.json({ status: false, message: "Ayat tidak ditemukan." }, 404);
     }
     const updates = [];
     const params = [];
@@ -7797,7 +8873,7 @@ admin.patch("/ayah", async (c) => {
       params.push(latin);
     }
     if (updates.length === 0) {
-      return c.json({ status: 400, message: "No fields to update provided" }, 400);
+      return c.json({ status: false, message: "Tidak ada bidang yang disediakan untuk diperbarui." }, 400);
     }
     params.push(surahId, ayahId);
     await query(
@@ -7809,24 +8885,24 @@ admin.patch("/ayah", async (c) => {
       [surahId, ayahId]
     );
     return c.json({
-      status: 200,
-      message: "Ayah updated successfully",
+      status: true,
+      message: "Berhasil memperbarui ayat.",
       diff: {
         before: oldData,
         after: newData
       },
-      integrity_status: "Hash will be automatically recalculated on next integrity check"
+      integrity_status: "Hash akan diperbarui otomatis pada pengecekan integritas berikutnya."
     });
   } catch (error) {
-    return c.json({ status: 500, message: error.message }, 500);
+    return c.json({ status: false, message: "Gagal memperbarui ayat: " + error.message }, 500);
   }
 });
 admin.patch("/dzikir", async (c) => {
   try {
     const { id, title: title3, arabic, translation } = await c.req.json();
-    if (!id) return c.json({ status: 400, message: "id is required" }, 400);
+    if (!id) return c.json({ status: false, message: "Parameter id diperlukan." }, 400);
     const oldData = await get("SELECT title, arabic, translation FROM dzikir WHERE id = ?", [id]);
-    if (!oldData) return c.json({ status: 404, message: "Dzikir not found" }, 404);
+    if (!oldData) return c.json({ status: false, message: "Dzikir tidak ditemukan.", data: {} }, 404);
     const updates = [];
     const params = [];
     if (title3) {
@@ -7841,28 +8917,31 @@ admin.patch("/dzikir", async (c) => {
       updates.push("translation = ?");
       params.push(translation);
     }
-    if (updates.length === 0) return c.json({ status: 400, message: "No fields to update" }, 400);
+    if (updates.length === 0) return c.json({ status: false, message: "Tidak ada data yang diubah." }, 400);
     params.push(id);
-    await query(`UPDATE dzikir SET ${updates.join(", ")} WHERE id = ?`, params);
+    await query(
+      `UPDATE dzikir SET ${updates.join(", ")} WHERE id = ?`,
+      params
+    );
     const newData = await get("SELECT title, arabic, translation FROM dzikir WHERE id = ?", [id]);
     return c.json({
-      status: 200,
-      message: "Dzikir updated successfully",
+      status: true,
+      message: "Berhasil memperbarui dzikir.",
       diff: {
         before: oldData,
         after: newData
       }
     });
   } catch (error) {
-    return c.json({ status: 500, message: error.message }, 500);
+    return c.json({ status: false, message: "Gagal memperbarui dzikir: " + error.message }, 500);
   }
 });
 admin.patch("/doa", async (c) => {
   try {
     const { id, judul, arab, indo } = await c.req.json();
-    if (!id) return c.json({ status: 400, message: "id is required" }, 400);
+    if (!id) return c.json({ status: false, message: "id diperlukan." }, 400);
     const oldData = await get("SELECT judul, arab, indo FROM doa WHERE id = ?", [id]);
-    if (!oldData) return c.json({ status: 404, message: "Doa not found" }, 404);
+    if (!oldData) return c.json({ status: false, message: "Doa tidak ditemukan." }, 404);
     const updates = [];
     const params = [];
     if (judul) {
@@ -7877,20 +8956,20 @@ admin.patch("/doa", async (c) => {
       updates.push("indo = ?");
       params.push(indo);
     }
-    if (updates.length === 0) return c.json({ status: 400, message: "No fields to update" }, 400);
+    if (updates.length === 0) return c.json({ status: false, message: "Tidak ada bidang untuk diperbarui." }, 400);
     params.push(id);
     await query(`UPDATE doa SET ${updates.join(", ")} WHERE id = ?`, params);
     const newData = await get("SELECT judul, arab, indo FROM doa WHERE id = ?", [id]);
     return c.json({
-      status: 200,
-      message: "Doa updated successfully",
+      status: true,
+      message: "Berhasil memperbarui doa.",
       diff: {
         before: oldData,
         after: newData
       }
     });
   } catch (error) {
-    return c.json({ status: 500, message: error.message }, 500);
+    return c.json({ status: false, message: error.message }, 500);
   }
 });
 var admin_default = admin;
@@ -7912,56 +8991,145 @@ kemenag.get("/libur", async (c) => {
     }));
     return c.json({
       status: true,
-      year,
-      data: mappedData
+      message: `Berhasil mendapatkan daftar hari libur tahun ${year}.`,
+      data: {
+        year,
+        holidays: mappedData
+      }
     });
   } catch (error) {
-    return c.json({ status: false, message: error.message }, 500);
+    return c.json({ status: false, message: "Gagal mendapatkan data libur: " + error.message }, 500);
   }
 });
 kemenag.get("/provinsi", async (c) => {
   try {
     const response = await fetch(`${API_CONFIG.KEMENAG.PESANTREN}/provinsi.json`);
-    if (!response.ok) return c.json({ status: false, message: "Gagal mengambil data provinsi" }, response.status);
+    if (!response.ok) return c.json({ status: false, message: "Gagal mengambil data provinsi." }, response.status);
     const data = await response.json();
-    return c.json({ status: true, data });
+    return c.json({ status: true, message: "Berhasil mendapatkan daftar provinsi.", data });
   } catch (error) {
-    return c.json({ status: false, message: error.message }, 500);
+    return c.json({ status: false, message: "Gagal mendapatkan data provinsi: " + error.message }, 500);
   }
 });
 kemenag.get("/kabupaten", async (c) => {
   const provinsiId = c.req.query("provinsiId");
-  if (!provinsiId) return c.json({ status: false, message: "provinsiId is required" }, 400);
+  if (!provinsiId) return c.json({ status: false, message: "Parameter provinsiId diperlukan." }, 400);
   try {
     const response = await fetch(`${API_CONFIG.KEMENAG.PESANTREN}/kabupaten/${provinsiId}.json`);
-    if (!response.ok) return c.json({ status: false, message: `Gagal mengambil data kabupaten untuk provinsi ID ${provinsiId}` }, response.status);
+    if (!response.ok) return c.json({ status: false, message: `Gagal mengambil data kabupaten untuk provinsi ID ${provinsiId}.` }, response.status);
     const data = await response.json();
-    return c.json({ status: true, data });
+    return c.json({ status: true, message: `Berhasil mendapatkan daftar kabupaten untuk provinsi ${provinsiId}.`, data });
   } catch (error) {
-    return c.json({ status: false, message: error.message }, 500);
+    return c.json({ status: false, message: "Gagal mendapatkan data kabupaten: " + error.message }, 500);
   }
 });
 kemenag.get("/pesantren", async (c) => {
   const kabupatenId = c.req.query("kabupatenId");
-  if (!kabupatenId) return c.json({ status: false, message: "kabupatenId is required" }, 400);
+  if (!kabupatenId) return c.json({ status: false, message: "Parameter kabupatenId diperlukan." }, 400);
   try {
     const response = await fetch(`${API_CONFIG.KEMENAG.PESANTREN}/pesantren/${kabupatenId}.json`);
-    if (!response.ok) return c.json({ status: false, message: `Data pesantren untuk kabupaten ID ${kabupatenId} tidak ditemukan` }, response.status);
+    if (!response.ok) return c.json({ status: false, message: `Data pesantren untuk kabupaten ID ${kabupatenId} tidak ditemukan.` }, response.status);
     const data = await response.json();
-    return c.json({ status: true, data });
+    return c.json({ status: true, message: `Berhasil mendapatkan daftar pesantren untuk kabupaten ${kabupatenId}.`, data });
   } catch (error) {
-    return c.json({ status: false, message: error.message }, 500);
+    return c.json({ status: false, message: "Gagal mendapatkan data pesantren: " + error.message }, 500);
   }
 });
 kemenag.get("/masjid", async (c) => {
   try {
-    const data = await query("SELECT * FROM masjid");
+    const search = c.req.query("search");
+    const lokasi = c.req.query("lokasi");
+    const jenis = c.req.query("jenis");
+    const tipologi = c.req.query("tipologi");
+    let sql = "SELECT * FROM masjid";
+    let params = [];
+    let conditions = [];
+    if (search) {
+      conditions.push("(nama LIKE ? OR deskripsi LIKE ?)");
+      params.push(`%${search}%`, `%${search}%`);
+    }
+    if (lokasi) {
+      conditions.push("lokasi LIKE ?");
+      params.push(`%${lokasi}%`);
+    }
+    if (jenis) {
+      conditions.push("jenis = ?");
+      params.push(jenis);
+    }
+    if (tipologi) {
+      conditions.push("tipologi = ?");
+      params.push(tipologi);
+    }
+    if (conditions.length > 0) {
+      sql += " WHERE " + conditions.join(" AND ");
+    }
+    const data = await query(sql, params);
     return c.json({
       status: true,
+      message: search || lokasi || jenis || tipologi ? `Berhasil mencari masjid dengan kriteria tertentu.` : `Berhasil mendapatkan daftar seluruh masjid.`,
       data
     });
   } catch (error) {
-    return c.json({ status: false, message: error.message }, 500);
+    return c.json({ status: false, message: "Gagal mendapatkan daftar masjid: " + error.message }, 500);
+  }
+});
+kemenag.get("/masjid/detail", async (c) => {
+  const id = c.req.query("id");
+  if (!id) return c.json({ status: false, message: "Parameter id diperlukan." }, 400);
+  try {
+    const data = await query("SELECT * FROM masjid WHERE id = ?", [id]);
+    if (data.length === 0) {
+      return c.json({ status: false, message: "Masjid tidak ditemukan.", data: {} }, 404);
+    }
+    return c.json({ status: true, message: "Berhasil mendapatkan detail masjid.", data: data[0] });
+  } catch (error) {
+    return c.json({ status: false, message: "Gagal mendapatkan detail masjid: " + error.message }, 500);
+  }
+});
+kemenag.get("/masjid/:id", async (c) => {
+  try {
+    const id = c.req.param("id");
+    const sql = "SELECT * FROM masjid WHERE id = ?";
+    const data = await query(sql, [id]);
+    if (data.length === 0) {
+      return c.json({ status: false, message: "Masjid tidak ditemukan.", data: {} }, 404);
+    }
+    return c.json({
+      status: true,
+      message: "Berhasil mendapatkan detail masjid.",
+      data: data[0]
+    });
+  } catch (error) {
+    return c.json({ status: false, message: "Gagal mendapatkan detail masjid: " + error.message }, 500);
+  }
+});
+kemenag.get("/masjid/nearby", async (c) => {
+  try {
+    const lat = parseFloat(c.req.query("lat"));
+    const lng = parseFloat(c.req.query("lng"));
+    const radius = parseFloat(c.req.query("radius") || 5);
+    if (isNaN(lat) || isNaN(lng)) {
+      return c.json({ status: false, message: "Parameter lat dan lng diperlukan." }, 400);
+    }
+    const data = await query(`
+      SELECT * FROM (
+        SELECT *, 
+        (6371 * acos(cos(radians(${lat})) * cos(radians(latitude)) * cos(radians(longitude) - radians(${lng})) + sin(radians(${lat})) * sin(radians(latitude)))) AS distance
+        FROM masjid
+        WHERE latitude BETWEEN ${lat - radius / 111} AND ${lat + radius / 111}
+        AND longitude BETWEEN ${lng - radius / (111 * Math.cos(lat * Math.PI / 180))} AND ${lng + radius / (111 * Math.cos(lat * Math.PI / 180))}
+      ) AS t
+      WHERE distance <= ${radius}
+      ORDER BY distance ASC
+      LIMIT 20
+    `);
+    return c.json({
+      status: true,
+      message: `Berhasil menemukan masjid dalam radius ${radius}km.`,
+      data
+    });
+  } catch (error) {
+    return c.json({ status: false, message: "Gagal mencari masjid terdekat: " + error.message }, 500);
   }
 });
 var kemenag_default = kemenag;
@@ -7980,35 +9148,277 @@ sejarah.get("/", async (c) => {
     const data = await query(sql, params);
     return c.json({
       status: true,
+      message: kategori ? `Berhasil mendapatkan daftar sejarah kategori ${kategori}.` : "Berhasil mendapatkan seluruh daftar sejarah.",
       data
     });
   } catch (error) {
-    return c.json({ status: false, message: error.message }, 500);
+    return c.json({ status: false, message: "Gagal mendapatkan daftar sejarah: " + error.message }, 500);
   }
 });
 sejarah.get("/detail", async (c) => {
   try {
     const id = c.req.query("id");
-    if (!id) return c.json({ status: false, message: "ID is required" }, 400);
+    if (!id) return c.json({ status: false, message: "Parameter id diperlukan." }, 400);
     const item = await get("SELECT * FROM sejarah WHERE id = ?", [id]);
-    if (!item) return c.json({ status: false, message: "Data tidak ditemukan" }, 404);
-    return c.json({ status: true, data: item });
+    if (!item) return c.json({ status: false, message: "Data sejarah tidak ditemukan.", data: {} }, 404);
+    return c.json({ status: true, message: "Berhasil mendapatkan detail sejarah.", data: item });
   } catch (error) {
-    return c.json({ status: false, message: error.message }, 500);
+    return c.json({ status: false, message: "Gagal mendapatkan detail sejarah: " + error.message }, 500);
   }
 });
-sejarah.get("/tanya-jawab", async (c) => {
+sejarah.get("/today", async (c) => {
   try {
-    const data = await query("SELECT * FROM fatwa");
+    const today = /* @__PURE__ */ new Date();
+    const day = today.getDate();
+    const monthNames = [
+      "Januari",
+      "Februari",
+      "Maret",
+      "April",
+      "Mei",
+      "Juni",
+      "Juli",
+      "Agustus",
+      "September",
+      "Oktober",
+      "November",
+      "Desember"
+    ];
+    const month = monthNames[today.getMonth()];
+    const data = await query(`
+      SELECT * FROM sejarah 
+      WHERE tahun LIKE ? OR tahun LIKE ? OR deskripsi LIKE ?
+      LIMIT 10
+    `, [`%${day} ${month}%`, `%${month}%`, `%${day} ${month}%`]);
     return c.json({
       status: true,
-      data
+      message: `Berhasil mendapatkan peristiwa sejarah untuk hari ini (${day} ${month}).`,
+      data: {
+        events: data,
+        today: `${day} ${month}`
+      }
     });
   } catch (error) {
-    return c.json({ status: false, message: error.message }, 500);
+    return c.json({ status: false, message: "Gagal mendapatkan peristiwa sejarah hari ini: " + error.message }, 500);
   }
 });
 var sejarah_default = sejarah;
+
+// src/routes/muslim/v1/tools.js
+var tools = new Hono2();
+tools.get("/quotes/daily", async (c) => {
+  try {
+    const ayat = await get(`
+      SELECT *
+      FROM ayah
+      ORDER BY RANDOM() LIMIT 1
+    `);
+    const surahData = await get(`SELECT * FROM surah WHERE number = ?`, [ayat.surah]);
+    const surahName = surahData.name_id || surahData.name_en || surahData.name_long;
+    const hadits2 = await get(`
+      SELECT *
+      FROM hadits
+      ORDER BY RANDOM() LIMIT 1
+    `);
+    return c.json({
+      status: true,
+      message: "Berhasil mengambil kutipan harian.",
+      data: {
+        ayat: {
+          arab: ayat.arab,
+          text: ayat.text,
+          sumber: `QS. ${surahName}: ${ayat.ayah}`
+        },
+        hadits: {
+          arab: hadits2.arab,
+          text: hadits2.indo,
+          sumber: `HR. ${hadits2.judul || "Hadits"}`
+        }
+      }
+    });
+  } catch (error) {
+    return c.json({ status: false, message: "Gagal mengambil kutipan harian: " + error.message }, 500);
+  }
+});
+tools.get("/zakat", (c) => {
+  const type = c.req.query("type");
+  const amount = parseFloat(c.req.query("amount") || 0);
+  const hargaEmas = parseFloat(c.req.query("hargaEmas") || 12e5);
+  if (!type) {
+    return c.json({
+      status: false,
+      message: "Parameter type (maal/penghasilan/fitrah) diperlukan."
+    }, 400);
+  }
+  if (isNaN(amount) || amount <= 0) {
+    return c.json({
+      status: false,
+      message: "Parameter amount harus berupa angka valid dan lebih besar dari 0."
+    }, 400);
+  }
+  let result = {
+    status: true,
+    message: "Kalkulasi zakat berhasil.",
+    data: {
+      type,
+      amount,
+      nishab: 0,
+      isWajib: false,
+      zakat: 0
+    }
+  };
+  if (type === "maal") {
+    const nishabEmas = 85 * hargaEmas;
+    result.data.nishab = nishabEmas;
+    result.data.isWajib = amount >= nishabEmas;
+    result.data.zakat = result.data.isWajib ? amount * 0.025 : 0;
+    result.data.keterangan = "Nishab Zakat Maal adalah setara 85 gram emas per tahun. Tarif zakat 2,5%.";
+  } else if (type === "penghasilan") {
+    const nishabEmasBulan = 85 * hargaEmas / 12;
+    result.data.nishab = nishabEmasBulan;
+    result.data.isWajib = amount >= nishabEmasBulan;
+    result.data.zakat = result.data.isWajib ? amount * 0.025 : 0;
+    result.data.keterangan = "Nishab Zakat Penghasilan setara 85 gram emas per tahun (dibagi 12 bulan). Tarif 2,5%.";
+  } else if (type === "fitrah") {
+    const hargaBeras = parseFloat(c.req.query("hargaBeras") || 15e3);
+    const jumlahOrang = parseInt(c.req.query("jumlahOrang") || 1);
+    const zakatPerOrang = 2.5 * hargaBeras;
+    result.data.nishab = 0;
+    result.data.isWajib = true;
+    result.data.zakat = zakatPerOrang * jumlahOrang;
+    result.data.keterangan = `Zakat Fitrah adalah 2.5kg beras per jiwa. Estimasi Rp${zakatPerOrang.toLocaleString("id-ID")} per jiwa.`;
+  } else {
+    return c.json({ status: false, message: "Tipe zakat tidak valid. Gunakan: maal, penghasilan, atau fitrah." }, 400);
+  }
+  return c.json(result);
+});
+tools.get("/qibla", async (c) => {
+  const lat = parseFloat(c.req.query("lat"));
+  const lng = parseFloat(c.req.query("lng"));
+  if (isNaN(lat) || isNaN(lng)) {
+    return c.json({ status: false, message: "Parameter lat dan lng diperlukan dan harus berupa angka." }, 400);
+  }
+  const kaabaLat = 21.4225;
+  const kaabaLng = 39.8262;
+  const dL = (kaabaLng - lng) * Math.PI / 180;
+  const phi1 = lat * Math.PI / 180;
+  const phi2 = kaabaLat * Math.PI / 180;
+  const q = Math.atan2(Math.sin(dL), Math.cos(phi1) * Math.tan(phi2) - Math.sin(phi1) * Math.cos(dL));
+  const direction = (q * 180 / Math.PI + 360) % 360;
+  return c.json({
+    status: true,
+    message: "Berhasil menghitung arah kiblat.",
+    data: {
+      coordinates: { lat, lng },
+      kaaba: { lat: kaabaLat, lng: kaabaLng },
+      qibla_direction: direction,
+      unit: "degrees"
+    }
+  });
+});
+tools.get("/semantic-search", async (c) => {
+  const query2 = c.req.query("query");
+  if (!query2) return c.json({ status: false, message: "Parameter query diperlukan." }, 400);
+  try {
+    const quranResults = await query(`
+      SELECT *
+      FROM ayah
+      WHERE text LIKE ? OR theme LIKE ?
+    `, [`%${query2}%`, `%${query2}%`]);
+    const formattedQuran = await Promise.all(quranResults.map(async (r) => {
+      const s = await get(`SELECT * FROM surah WHERE number = ?`, [r.surah]);
+      return {
+        arab: r.arab,
+        text: r.text,
+        sumber: `QS. ${s.name_id || s.name_en || s.name_long}: ${r.ayah}`
+      };
+    }));
+    const haditsResults = await query(`
+      SELECT *
+      FROM hadits
+      WHERE indo LIKE ? OR judul LIKE ?
+    `, [`%${query2}%`, `%${query2}%`]);
+    return c.json({
+      status: true,
+      message: `Pencarian semantik untuk '${query2}' berhasil.`,
+      data: {
+        query: query2,
+        quran: formattedQuran,
+        hadits: haditsResults.map((r) => ({
+          arab: r.arab,
+          text: r.indo,
+          sumber: `HR. ${r.judul || "Hadits"}`
+        }))
+      }
+    });
+  } catch (error) {
+    return c.json({ status: false, message: "Pencarian semantik gagal: " + error.message }, 500);
+  }
+});
+tools.get("/ai-chat", async (c) => {
+  const query2 = c.req.query("query");
+  const apiKey = c.req.query("apiKey")?.trim();
+  if (!query2) return c.json({ status: false, message: "Parameter query diperlukan." }, 400);
+  if (!apiKey) return c.json({ status: false, message: "Parameter apiKey (Google Gemini) diperlukan untuk fitur ini." }, 400);
+  try {
+    const quranResults = await query(`
+      SELECT * FROM ayah 
+      WHERE text LIKE ? OR theme LIKE ? 
+      LIMIT 5
+    `, [`%${query2}%`, `%${query2}%`]);
+    const haditsResults = await query(`
+      SELECT * FROM hadits 
+      WHERE indo LIKE ? OR judul LIKE ? 
+      LIMIT 5
+    `, [`%${query2}%`, `%${query2}%`]);
+    let references = "";
+    const sources = [];
+    for (const r of quranResults) {
+      const s = await get(`SELECT * FROM surah WHERE number = ?`, [r.surah]);
+      const source = `QS. ${s.name_id || s.name_en}: ${r.ayah}`;
+      references += `Ayat: ${r.text} (${source})
+`;
+      sources.push({ type: "quran", text: r.text, source });
+    }
+    for (const r of haditsResults) {
+      const source = `HR. ${r.judul || "Hadits"}`;
+      references += `Hadits: ${r.indo} (${source})
+`;
+      sources.push({ type: "hadits", text: r.indo, source });
+    }
+    const prompt = `Anda adalah asisten AI Islami yang bijak. Gunakan referensi berikut untuk menjawab pertanyaan pengguna secara ramah dan edukatif. Jika referensi tidak relevan, tetap jawab dengan bijak berdasarkan ilmu Islam umum.
+
+Referensi:
+${references}
+
+Pertanyaan: ${query2}
+Jawaban dalam Bahasa Indonesia:`;
+    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        contents: [{ parts: [{ text: prompt }] }]
+      })
+    });
+    const aiData = await response.json();
+    if (aiData.error) {
+      return c.json({ status: false, message: "Gemini API Error: " + aiData.error.message }, 500);
+    }
+    const aiAnswer = aiData.candidates?.[0]?.content?.parts?.[0]?.text || "Maaf, asisten AI tidak dapat memberikan jawaban saat ini.";
+    return c.json({
+      status: true,
+      message: "Berhasil mendapatkan jawaban AI.",
+      data: {
+        query: query2,
+        answer: aiAnswer,
+        sources
+      }
+    });
+  } catch (error) {
+    return c.json({ status: false, message: "Gagal memproses AI Chat: " + error.message }, 500);
+  }
+});
+var tools_default = tools;
 
 // src/routes/muslim/v1/index.js
 var v1 = new Hono2();
@@ -8030,184 +9440,300 @@ v1.route("/word", word_default);
 v1.route("/admin", admin_default);
 v1.route("/kemenag", kemenag_default);
 v1.route("/sejarah", sejarah_default);
+v1.route("/tools", tools_default);
 v1.get("/", (c) => {
   return c.json({
-    quran: {
-      surah: {
-        daftarSurah: {
-          pattern: "/v1/surah"
+    status: true,
+    message: "Selamat datang di Muslim API v1. Berikut adalah daftar endpoint yang tersedia.",
+    data: {
+      quran: {
+        surah: {
+          daftarSurah: {
+            pattern: "/v1/surah"
+          },
+          infoSurah: {
+            pattern: "/v1/surah?surahId={surahId}",
+            contoh: "/v1/surah?surahId=114"
+          }
         },
-        infoSurah: {
-          pattern: "/v1/surah?surahId={surahId}",
-          contoh: "/v1/surah?surahId=114"
+        ayah: {
+          range: {
+            pattern: "/v1/ayah/range?surahId={surahId}&start={start}&end={end}",
+            contoh: "/v1/ayah/range?surahId=1&start=1&end=7"
+          },
+          spesifikSurah: {
+            pattern: "/v1/ayah/surah?surahId={surahId}",
+            contoh: "/v1/ayah/surah?surahId=1"
+          },
+          spesifikJuz: {
+            pattern: "/v1/ayah/juz?juzId={juzId}",
+            contoh: "/v1/ayah/juz?juzId=30"
+          },
+          spesifikHalaman: {
+            pattern: "/v1/ayah/page?page={page}",
+            contoh: "/v1/ayah/page?page=604"
+          },
+          spesifikAyat: {
+            pattern: "/v1/ayah/specific?surahId={surahId}&ayahId={ayahId}",
+            contoh: "/v1/ayah/specific?surahId=1&ayahId=1"
+          },
+          cari: {
+            pattern: "/v1/ayah/find?query={query}",
+            contoh: "/v1/ayah/find?query=alhamdulillah"
+          }
+        },
+        juz: {
+          semua: {
+            pattern: "/v1/juz"
+          },
+          spesifik: {
+            pattern: "/v1/juz?juzId={juzId}",
+            contoh: "/v1/juz?juzId=30"
+          }
+        },
+        asbabNujul: {
+          semua: {
+            pattern: "/v1/asbab"
+          },
+          spesifik: {
+            pattern: "/v1/asbab?id={asbabId}",
+            contoh: "/v1/asbab?id=1"
+          }
+        },
+        asmaulHusna: {
+          semua: {
+            pattern: "/v1/asma"
+          },
+          spesifik: {
+            pattern: "/v1/asma?id={asmaId}",
+            contoh: "/v1/asma?id=1"
+          }
+        },
+        murotal: {
+          qari: {
+            pattern: "/v1/murotal/qari"
+          },
+          semua: {
+            pattern: "/v1/murotal"
+          },
+          spesifikQari: {
+            pattern: "/v1/murotal?qariId={qariId}",
+            contoh: "/v1/murotal?qariId=05"
+          },
+          spesifikSurah: {
+            pattern: "/v1/murotal?surahId={surahId}&qariId={qariId}",
+            contoh: "/v1/murotal?surahId=1&qariId=05"
+          }
+        },
+        jadwalSholat: {
+          semuaKota: {
+            pattern: "/v1/sholat/kota/semua"
+          },
+          cariKota: {
+            pattern: "/v1/sholat/kota/cari?nama={namaKota}",
+            contoh: "/v1/sholat/kota/cari?nama=jakarta"
+          },
+          jadwalByKota: {
+            pattern: "/v1/sholat/jadwal?kotaId={kotaId}&tanggal={YYYY-MM-DD}",
+            contoh: "/v1/sholat/jadwal?kotaId=58a2fc6ed39fd083f55d4182bf88826d&tanggal=2025-12-24"
+          },
+          jadwalByKoordinat: {
+            pattern: "/v1/sholat/jadwal/koordinat?lat={latitude}&lon={longitude}",
+            contoh: "/v1/sholat/jadwal/koordinat?lat=-6.1751&lon=106.8272"
+          },
+          sholatTerdekat: {
+            pattern: "/v1/sholat/next?lat={lat}&lon={lon}",
+            contoh: "/v1/sholat/next?lat=-6.1751&lon=106.8272"
+          }
+        },
+        calendar: {
+          masehiToHijri: {
+            pattern: "/v1/calendar/hijri?date={YYYY-MM-DD}",
+            contoh: "/v1/calendar/hijri?date=2024-03-11"
+          },
+          hijriToMasehi: {
+            pattern: "/v1/calendar/masehi?day={day}&month={month}&year={year}",
+            contoh: "/v1/calendar/masehi?day=1&month=9&year=1445"
+          }
+        },
+        tafsir: {
+          semua: {
+            pattern: "/v1/tafsir"
+          },
+          spesifikSurah: {
+            pattern: "/v1/tafsir?surahId={surahId}",
+            contoh: "/v1/tafsir?surahId=1"
+          }
+        },
+        theme: {
+          semua: {
+            pattern: "/v1/theme"
+          },
+          spesifik: {
+            pattern: "/v1/theme?themeId={themeId}",
+            contoh: "/v1/theme?themeId=1"
+          }
+        },
+        kataPerKata: {
+          semua: {
+            pattern: "/v1/word"
+          },
+          spesifikSurah: {
+            pattern: "/v1/word?surahId={surahId}",
+            contoh: "/v1/word?surahId=1"
+          },
+          spesifikAyat: {
+            pattern: "/v1/word?surahId={surahId}&ayahId={ayahId}",
+            contoh: "/v1/word?surahId=1&ayahId=1"
+          }
         }
       },
-      ayah: {
-        range: {
-          pattern: "/v1/ayah/range?surahId={surahId}&start={start}&end={end}",
-          contoh: "/v1/ayah/range?surahId=1&start=1&end=7"
+      doa: {
+        semua: {
+          pattern: "/v1/doa"
         },
-        spesifikSurah: {
-          pattern: "/v1/ayah/surah?surahId={surahId}",
-          contoh: "/v1/ayah/surah?surahId=1"
-        },
-        spesifikJuz: {
-          pattern: "/v1/ayah/juz?juzId={juzId}",
-          contoh: "/v1/ayah/juz?juzId=30"
-        },
-        spesifikHalaman: {
-          pattern: "/v1/ayah/page?page={page}",
-          contoh: "/v1/ayah/page?page=604"
-        },
-        spesifikAyat: {
-          pattern: "/v1/ayah/specific?surahId={surahId}&ayahId={ayahId}",
-          contoh: "/v1/ayah/specific?surahId=1&ayahId=1"
+        spesifikSumber: {
+          pattern: "/v1/doa?source={source}",
+          contoh: "/v1/doa?source=quran"
         },
         cari: {
-          pattern: "/v1/ayah/find?query={query}",
-          contoh: "/v1/ayah/find?query=alhamdulillah"
+          pattern: "/v1/doa/find?query={query}",
+          contoh: "/v1/doa/find?query=makan"
         }
       },
-      juz: {
+      dzikir: {
         semua: {
-          pattern: "/v1/juz"
+          pattern: "/v1/dzikir"
+        },
+        spesifikTipe: {
+          pattern: "/v1/dzikir?type={type}",
+          contoh: "/v1/dzikir?type=pagi"
+        }
+      },
+      hadits: {
+        semua: {
+          pattern: "/v1/hadits"
+        },
+        spesifikNomor: {
+          pattern: "/v1/hadits?nomor={nomor}",
+          contoh: "/v1/hadits?nomor=1"
+        },
+        cari: {
+          pattern: "/v1/hadits/find?query={query}",
+          contoh: "/v1/hadits/find?query=niat"
+        }
+      },
+      sejarah: {
+        semua: {
+          pattern: "/v1/sejarah"
         },
         spesifik: {
-          pattern: "/v1/juz?juzId={juzId}",
-          contoh: "/v1/juz?juzId=30"
+          pattern: "/v1/sejarah?id={sejarahId}",
+          contoh: "/v1/sejarah?id=1"
         }
       },
-      asbabNujul: {
-        semua: {
-          pattern: "/v1/asbab"
+      kemenag: {
+        hariLibur: {
+          pattern: "/v1/kemenag/libur?year={year}",
+          contoh: "/v1/kemenag/libur?year=2025"
         },
-        spesifik: {
-          pattern: "/v1/asbab?id={asbabId}",
-          contoh: "/v1/asbab?id=1"
+        pesantren: {
+          provinsi: {
+            pattern: "/v1/kemenag/provinsi"
+          },
+          kabupaten: {
+            pattern: "/v1/kemenag/kabupaten?provinsiId={provinsiId}",
+            contoh: "/v1/kemenag/kabupaten?provinsiId=13"
+          },
+          daftar: {
+            pattern: "/v1/kemenag/pesantren?kabupatenId={kabupatenId}",
+            contoh: "/v1/kemenag/pesantren?kabupatenId=1301"
+          }
+        },
+        masjid: {
+          daftar: {
+            pattern: "/v1/kemenag/masjid?search={query}&lokasi={lokasi}",
+            contoh: "/v1/kemenag/masjid?search=istiqlal"
+          },
+          detail: {
+            pattern: "/v1/kemenag/masjid/detail?id={id}",
+            contoh: "/v1/kemenag/masjid/detail?id=1"
+          },
+          terdekat: {
+            pattern: "/v1/kemenag/masjid/nearby?lat={lat}&lng={lng}&radius={radius}",
+            contoh: "/v1/kemenag/masjid/nearby?lat=-6.1702&lng=106.8315"
+          }
         }
       },
-      asmaulHusna: {
-        semua: {
-          pattern: "/v1/asma"
+      tools: {
+        quotesHarian: {
+          pattern: "/v1/tools/quotes/daily"
         },
-        spesifik: {
-          pattern: "/v1/asma?id={asmaId}",
-          contoh: "/v1/asma?id=1"
+        zakat: {
+          pattern: "/v1/tools/zakat?type={type}&amount={amount}",
+          contoh: "/v1/tools/zakat?type=maal&amount=100000000"
+        },
+        qibla: {
+          pattern: "/v1/tools/qibla?lat={lat}&lng={lng}",
+          contoh: "/v1/tools/qibla?lat=-6.1751&lng=106.8272"
+        },
+        semanticSearch: {
+          pattern: "/v1/tools/semantic-search?query={query}",
+          contoh: "/v1/tools/semantic-search?query=sabar"
         }
       },
-      murotal: {
-        qari: {
-          pattern: "/v1/murotal/qari"
+      integrity: {
+        chain: {
+          pattern: "/v1/integrity/chain"
         },
-        semua: {
-          pattern: "/v1/murotal"
+        verify: {
+          pattern: "/v1/integrity/verify"
         },
-        spesifikQari: {
-          pattern: "/v1/murotal?qariId={qariId}",
-          contoh: "/v1/murotal?qariId=05"
-        },
-        spesifikSurah: {
-          pattern: "/v1/murotal?surahId={surahId}&qariId={qariId}",
-          contoh: "/v1/murotal?surahId=1&qariId=05"
+        verifyAyah: {
+          pattern: "/v1/integrity/verify/ayah?surahId={surahId}&ayahId={ayahId}",
+          contoh: "/v1/integrity/verify/ayah?surahId=1&ayahId=1"
         }
-      },
-      jadwalSholat: {
-        semuaKota: {
-          pattern: "/v1/sholat/kota/semua"
-        },
-        cariKota: {
-          pattern: "/v1/sholat/kota/cari?nama={namaKota}",
-          contoh: "/v1/sholat/kota/cari?nama=jakarta"
-        },
-        jadwalByKota: {
-          pattern: "/v1/sholat/jadwal?kotaId={kotaId}&tanggal={YYYY-MM-DD}",
-          contoh: "/v1/sholat/jadwal?kotaId=58a2fc6ed39fd083f55d4182bf88826d&tanggal=2025-12-24"
-        },
-        jadwalByKoordinat: {
-          pattern: "/v1/sholat/jadwal/koordinat?lat={latitude}&lon={longitude}",
-          contoh: "/v1/sholat/jadwal/koordinat?lat=-6.1751&lon=106.8272"
-        }
-      },
-      calendar: {
-        masehiToHijri: {
-          pattern: "/v1/calendar/hijri?date={YYYY-MM-DD}",
-          contoh: "/v1/calendar/hijri?date=2024-03-11"
-        },
-        hijriToMasehi: {
-          pattern: "/v1/calendar/masehi?day={day}&month={month}&year={year}",
-          contoh: "/v1/calendar/masehi?day=1&month=9&year=1445"
-        }
-      },
-      tafsir: {
-        semua: {
-          pattern: "/v1/tafsir"
-        },
-        spesifikSurah: {
-          pattern: "/v1/tafsir?surahId={surahId}",
-          contoh: "/v1/tafsir?surahId=1"
-        }
-      },
-      theme: {
-        semua: {
-          pattern: "/v1/theme"
-        },
-        spesifik: {
-          pattern: "/v1/theme?themeId={themeId}",
-          contoh: "/v1/theme?themeId=1"
-        }
-      },
-      kataPerKata: {
-        semua: {
-          pattern: "/v1/word"
-        },
-        spesifikSurah: {
-          pattern: "/v1/word?surahId={surahId}",
-          contoh: "/v1/word?surahId=1"
-        },
-        spesifikAyat: {
-          pattern: "/v1/word?surahId={surahId}&ayahId={ayahId}",
-          contoh: "/v1/word?surahId=1&ayahId=1"
-        }
-      }
-    },
-    doa: {
-      semua: {
-        pattern: "/v1/doa"
-      },
-      spesifikSumber: {
-        pattern: "/v1/doa?source={source}",
-        contoh: "/v1/doa?source=quran"
-      },
-      cari: {
-        pattern: "/v1/doa/find?query={query}",
-        contoh: "/v1/doa/find?query=makan"
-      }
-    },
-    dzikir: {
-      semua: {
-        pattern: "/v1/dzikir"
-      },
-      spesifikTipe: {
-        pattern: "/v1/dzikir?type={type}",
-        contoh: "/v1/dzikir?type=pagi"
-      }
-    },
-    hadits: {
-      semua: {
-        pattern: "/v1/hadits"
-      },
-      spesifikNomor: {
-        pattern: "/v1/hadits?nomor={nomor}",
-        contoh: "/v1/hadits?nomor=1"
-      },
-      cari: {
-        pattern: "/v1/hadits/find?query={query}",
-        contoh: "/v1/hadits/find?query=niat"
       }
     }
   });
 });
 var v1_default = v1;
+
+// src/routes/qris.js
+import { createRequire } from "module";
+import QRCode from "qrcode";
+var require2 = createRequire(import.meta.url);
+var { makeString } = require2("qris-dinamis");
+var qris = new Hono2();
+var STATIC_QRIS = "00020101021126570011ID.DANA.WWW011893600915314378691502091437869150303UMI51440014ID.CO.QRIS.WWW0215ID10210738442970303UMI5204899953033605802ID5916Hariistimewa.com6015Kota Jakarta Se6105128206304D1F0";
+qris.get("/generate", async (c) => {
+  const amount = c.req.query("amount");
+  if (!amount) {
+    return c.json({ status: false, message: "Amount is required" }, 400);
+  }
+  try {
+    const dynamicQris = makeString(STATIC_QRIS, { nominal: amount });
+    const qrDataUrl = await QRCode.toDataURL(dynamicQris, {
+      margin: 2,
+      width: 400,
+      color: {
+        dark: "#000000",
+        light: "#ffffff"
+      }
+    });
+    return c.json({
+      status: true,
+      data: {
+        amount: parseInt(amount),
+        qris_string: dynamicQris,
+        qr_image: qrDataUrl
+      }
+    });
+  } catch (error) {
+    return c.json({ status: false, message: error.message }, 500);
+  }
+});
+var qris_default = qris;
 
 // src/app.jsx
 var app = new Hono2();
@@ -8273,6 +9799,7 @@ app.use("/v1/*", async (c, next) => {
   await next();
 });
 app.route("/v1", v1_default);
+app.route("/api/qris", qris_default);
 app.route("/", routes_default);
 app.notFound((c) => {
   return c.json({ status: 404, message: "Not Found" }, 404);

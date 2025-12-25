@@ -1,5 +1,5 @@
 import { Hono } from 'hono';
-import { query as dbQuery } from '../../../database/config.js';
+import { query as dbQuery, get as dbGet } from '../../../database/config.js';
 import crypto from 'crypto';
 
 const integrity = new Hono();
@@ -47,14 +47,14 @@ integrity.get('/chain', async (c) => {
     }
 
     return c.json({
-      status: 200,
-      message: "Data Integrity Chain (Proof of Authenticity)",
+      status: true,
+      message: "Data Integrity Chain (Proof of Authenticity) berhasil dibuat.",
       network: "Muslim-API Data Ledger",
       root_hash: previousHash,
       chain: chain
     });
   } catch (error) {
-    return c.json({ status: 500, message: error.message }, 500);
+    return c.json({ status: false, message: 'Gagal mendapatkan data integrity chain: ' + error.message }, 500);
   }
 });
 
@@ -70,8 +70,8 @@ integrity.get('/verify', async (c) => {
     const isDataValid = surah && surah.length > 0 && ayahs && ayahs.length > 0;
 
     return c.json({
-      status: 200,
-      message: isDataValid ? "System Integrity Verified" : "System Online (Data Check Pending)",
+      status: true,
+      message: isDataValid ? "Integritas sistem terverifikasi." : "Sistem Online (Pengecekan data tertunda).",
       check: "Surah Al-Fatihah",
       integrity: isDataValid ? "Healthy" : "Warning",
       timestamp: new Date().toISOString()
@@ -79,8 +79,8 @@ integrity.get('/verify', async (c) => {
   } catch (error) {
     // Even if DB check fails, if the route is reached, the system is partially online
     return c.json({ 
-      status: 200, 
-      message: "System Online (Integrity Check Error)",
+      status: true, 
+      message: "Sistem Online (Error pada pengecekan integritas).",
       integrity: "Error",
       error: error.message,
       timestamp: new Date().toISOString()
@@ -94,33 +94,31 @@ integrity.get('/verify/ayah', async (c) => {
   const ayahId = c.req.query('ayahId');
 
   if (!surahId || !ayahId) {
-    return c.json({ status: 400, message: "surahId and ayahId are required" }, 400);
+    return c.json({ status: false, message: "Parameter surahId dan ayahId diperlukan." }, 400);
   }
 
   try {
-    const ayah = await dbQuery(
+    const data = await dbGet(
       "SELECT arab, text FROM ayah WHERE surah = ? AND ayah = ?",
       [surahId, ayahId]
     );
 
-    if (!ayah || ayah.length === 0) {
-      return c.json({ status: 404, message: "Ayah not found" }, 404);
+    if (!data) {
+      return c.json({ status: false, message: `Ayat ${ayahId} pada surah ${surahId} tidak ditemukan.`, data: {} }, 404);
     }
 
-    const hash = generateHash(ayah[0]);
-
     return c.json({
-      status: 200,
+      status: true,
+      message: `Berhasil memverifikasi integritas ayat ${ayahId} pada surah ${surahId}.`,
       data: {
-        surah: surahId,
-        ayah: ayahId,
-        hash: hash,
-        verification_method: "SHA-256",
-        integrity: "Verified"
+        surahId,
+        ayahId,
+        hash: generateHash(data),
+        timestamp: new Date().toISOString()
       }
     });
   } catch (error) {
-    return c.json({ status: 500, message: error.message }, 500);
+    return c.json({ status: false, message: 'Gagal memverifikasi integritas ayat: ' + error.message }, 500);
   }
 });
 

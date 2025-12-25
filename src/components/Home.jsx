@@ -134,8 +134,17 @@ export const Home = ({ baseUrl }) => {
                   </svg>
                 </div>
                 <h3 class="font-bold text-slate-900 mb-2">Base URL</h3>
-                <div class="flex items-center gap-2 bg-slate-50 p-2 rounded-lg border border-slate-100">
-                  <code class="text-sm text-emerald-600 font-mono font-bold">{baseUrl}</code>
+                <div class="flex items-center justify-between gap-2 bg-slate-50 p-2 rounded-lg border border-slate-100 group">
+                  <code class="text-sm text-emerald-600 font-mono font-bold truncate">{baseUrl}</code>
+                  <button 
+                    onclick={`navigator.clipboard.writeText('${baseUrl}')`}
+                    class="p-1.5 text-slate-400 hover:text-emerald-600 hover:bg-emerald-50 rounded-md transition-all shrink-0"
+                    title="Copy Base URL"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+                    </svg>
+                  </button>
                 </div>
               </div>
               <div class="p-6 rounded-2xl border border-slate-200 bg-white shadow-sm">
@@ -164,7 +173,8 @@ export const Home = ({ baseUrl }) => {
             category="quran"
             endpointId="list-surah"
             responseJson={`{
-  "status": 200,
+  "status": true,
+  "message": "Berhasil mendapatkan daftar surah.",
   "data": [
     {
       "number": "1",
@@ -184,7 +194,8 @@ export const Home = ({ baseUrl }) => {
             category="quran"
             endpointId="detail-surah"
             responseJson={`{
-  "status": 200,
+  "status": true,
+  "message": "Berhasil mendapatkan detail surah Al-Fatihah.",
   "data": {
     "number": "1",
     "sequence": "5",
@@ -204,10 +215,7 @@ export const Home = ({ baseUrl }) => {
     "audio_full": {
       "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/001.mp3",
       "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/001.mp3",
-      "03": "https://cdn.equran.id/audio-full/Abdurrahman-as-Sudais/001.mp3",
-      "04": "https://cdn.equran.id/audio-full/Ibrahim-Al-Dossari/001.mp3",
-      "05": "https://cdn.equran.id/audio-full/Misyari-Rasyid-Al-Afasi/001.mp3",
-      "06": "https://cdn.equran.id/audio-full/Yasser-Al-Dosari/001.mp3"
+      ...
     }
   }
 }`}
@@ -219,7 +227,8 @@ export const Home = ({ baseUrl }) => {
             category="quran"
             endpointId="tafsir"
             responseJson={`{
-  "status": 200,
+  "status": true,
+  "message": "Berhasil mendapatkan tafsir surah 1.",
   "data": [
     {
       "id": "1",
@@ -237,7 +246,8 @@ export const Home = ({ baseUrl }) => {
             category="quran"
             endpointId="ayah-surah"
             responseJson={`{
-  "status": 200,
+  "status": true,
+  "message": "Berhasil mendapatkan daftar seluruh ayat surah 1.",
   "data": [
     {
       "id": "1",
@@ -253,10 +263,7 @@ export const Home = ({ baseUrl }) => {
       "audio_partial": {
         "01": "https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/001001.mp3",
         "02": "https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/001001.mp3",
-        "03": "https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/001001.mp3",
-        "04": "https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/001001.mp3",
-        "05": "https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/001001.mp3",
-        "06": "https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/001001.mp3"
+        ...
       },
       "theme": null,
       "text": "...",
@@ -272,7 +279,8 @@ export const Home = ({ baseUrl }) => {
             category="quran"
             endpointId="ayah-specific"
             responseJson={`{
-  "status": 200,
+  "status": true,
+  "message": "Berhasil mendapatkan ayat 1 surah 1.",
   "data": {
     "id": "1",
     "surah": "1",
@@ -286,11 +294,7 @@ export const Home = ({ baseUrl }) => {
     "audio": "...",
     "audio_partial": {
       "01": "https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/001001.mp3",
-      "02": "https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/001001.mp3",
-      "03": "https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/001001.mp3",
-      "04": "https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/001001.mp3",
-      "05": "https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/001001.mp3",
-      "06": "https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/001001.mp3"
+      ...
     },
     "theme": null,
     "text": "...",
@@ -305,7 +309,8 @@ export const Home = ({ baseUrl }) => {
             category="quran"
             endpointId="ayah-juz"
             responseJson={`{
-  "status": 200,
+  "status": true,
+  "message": "Berhasil mendapatkan seluruh ayat pada juz 30.",
   "data": [...]
 }`}
           />
@@ -316,7 +321,8 @@ export const Home = ({ baseUrl }) => {
             category="quran"
             endpointId="ayah-page"
             responseJson={`{
-  "status": 200,
+  "status": true,
+  "message": "Berhasil mendapatkan seluruh ayat pada halaman 604.",
   "data": [...]
 }`}
           />
@@ -327,7 +333,8 @@ export const Home = ({ baseUrl }) => {
             category="quran"
             endpointId="ayah-range"
             responseJson={`{
-  "status": 200,
+  "status": true,
+  "message": "Berhasil mendapatkan ayat surah 1 dari ayat 1 sampai 7.",
   "data": [...]
 }`}
           />
@@ -338,7 +345,8 @@ export const Home = ({ baseUrl }) => {
             category="quran"
             endpointId="ayah-find"
             responseJson={`{
-  "status": 200,
+  "status": true,
+  "message": "Berhasil mencari ayat dengan kata kunci 'alhamdulillah'.",
   "data": [...]
 }`}
           />
@@ -349,7 +357,8 @@ export const Home = ({ baseUrl }) => {
             category="quran"
             endpointId="juz-list"
             responseJson={`{
-  "status": 200,
+  "status": true,
+  "message": "Berhasil mendapatkan daftar juz.",
   "data": [
     {
       "number": "1",
@@ -365,7 +374,8 @@ export const Home = ({ baseUrl }) => {
             category="quran"
             endpointId="juz-detail"
             responseJson={`{
-  "status": 200,
+  "status": true,
+  "message": "Berhasil mendapatkan informasi juz 30.",
   "data": [...]
 }`}
           />
@@ -376,7 +386,8 @@ export const Home = ({ baseUrl }) => {
             category="quran"
             endpointId="theme-list"
             responseJson={`{
-  "status": 200,
+  "status": true,
+  "message": "Berhasil mendapatkan daftar tema Al-Quran.",
   "data": [
     {
       "id": "1",
@@ -392,7 +403,8 @@ export const Home = ({ baseUrl }) => {
             category="quran"
             endpointId="theme-detail"
             responseJson={`{
-  "status": 200,
+  "status": true,
+  "message": "Berhasil mendapatkan ayat dengan tema 1.",
   "data": [...]
 }`}
           />
@@ -403,7 +415,8 @@ export const Home = ({ baseUrl }) => {
             category="quran"
             endpointId="word-ayah"
             responseJson={`{
-  "status": 200,
+  "status": true,
+  "message": "Berhasil mendapatkan data kata per kata surah 1.",
   "data": [
     {
       "id": "id",
@@ -421,9 +434,10 @@ export const Home = ({ baseUrl }) => {
             method="GET" 
             path="/word?surahId=1&ayahId=1" 
             category="quran"
-            endpointId="word-ayah"
+            endpointId="word-ayah-specific"
             responseJson={`{
-  "status": 200,
+  "status": true,
+  "message": "Berhasil mendapatkan data kata per kata surah 1 ayat 1.",
   "data": [...]
 }`}
           />
@@ -446,8 +460,8 @@ export const Home = ({ baseUrl }) => {
             category="integrity"
             endpointId="integrity-chain"
             responseJson={`{
-  "status": 200,
-  "message": "Data Integrity Chain (Proof of Authenticity)",
+  "status": true,
+  "message": "Data Integrity Chain (Proof of Authenticity) berhasil dibuat.",
   "network": "Muslim-API Data Ledger",
   "root_hash": "4f8a...",
   "chain": [
@@ -472,13 +486,13 @@ export const Home = ({ baseUrl }) => {
             category="integrity"
             endpointId="integrity-verify"
             responseJson={`{
-  "status": 200,
+  "status": true,
+  "message": "Berhasil memverifikasi integritas ayat 1 pada surah 1.",
   "data": {
-    "surah": "1",
-    "ayah": "1",
+    "surahId": "1",
+    "ayahId": "1",
     "hash": "e3b0c442...",
-    "verification_method": "SHA-256",
-    "integrity": "Verified"
+    "timestamp": "2025-12-24T00:00:00Z"
   }
 }`}
           />
@@ -522,7 +536,7 @@ export const Home = ({ baseUrl }) => {
               },
               {
                 q: "Bagaimana keaslian dan akurasi data Al-Quran?",
-                a: "Kami menjamin keaslian data Al-Quran dalam API ini. Data teks, terjemahan, dan tafsir (Wajiz & Tahlili) diwarisi dari dataset muslim-api-three milik Otang45 yang telah diverifikasi sesuai dengan database Kemenag RI. Struktur data kami mencakup Tafsir Tahlili yang sangat mendalam, yang merupakan produk intelektual resmi dari Kementerian Agama RI dan mengikuti standar Mushaf Al-Quran Standar Indonesia (MSI)."
+                a: "Kami menjamin keaslian data Al-Quran dalam API ini. Data teks, terjemahan, dan tafsir (Wajiz & Tahlili) diwarisi dari dataset muslim-api-three milik Otangid yang telah diverifikasi sesuai dengan database Kemenag RI. Struktur data kami mencakup Tafsir Tahlili yang sangat mendalam, yang merupakan produk intelektual resmi dari Kementerian Agama RI dan mengikuti standar Mushaf Al-Quran Standar Indonesia (MSI)."
               },
               {
                 q: "Bagaimana dengan performa dan keamanan?",
@@ -534,11 +548,11 @@ export const Home = ({ baseUrl }) => {
               },
               {
                 q: "Apakah data Hadits yang disediakan sahih?",
-                a: "Untuk Hadits Arbain, kami menggunakan dataset dari muslim-api-three milik Otang45 yang telah terverifikasi. Untuk koleksi hadits besar (Bukhari, Muslim, dll), kami mengintegrasikan data dari api.hadith.gading.dev yang mengambil sumber dari kitab-kitab hadits terkemuka dengan teks Arab dan terjemahan Indonesia yang kredibel."
+                a: "Untuk Hadits Arbain, kami menggunakan dataset dari muslim-api-three milik Otangid yang telah terverifikasi. Untuk koleksi hadits besar (Bukhari, Muslim, dll), kami mengintegrasikan data dari api.hadith.gading.dev yang mengambil sumber dari kitab-kitab hadits terkemuka dengan teks Arab dan terjemahan Indonesia yang kredibel."
               },
               {
                 q: "Dari mana sumber data lainnya?",
-                a: "Jadwal sholat bersumber dari Kemenag RI (via MyQuran API). Dataset Al-Quran, Doa, dan Dzikir diwarisi dari project milik Otang45 (muslim-api-three). Audio murottal disediakan melalui CDN equran.id."
+                a: "Jadwal sholat bersumber dari Kemenag RI (via MyQuran API). Dataset Al-Quran, Doa, dan Dzikir diwarisi dari project milik Otangid (muslim-api-three). Audio murottal disediakan melalui CDN equran.id."
               },
               {
                 q: "Bagaimana cara melakukan perubahan data atau memperbaiki typo?",

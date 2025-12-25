@@ -72,4 +72,10 @@ export const get = async (sql, params = []) => {
   return stmt.get(params);
 };
 
+export const run = async (sql, params = []) => {
+  const database = initializeDatabase();
+  const stmt = database.prepare(sql);
+  return stmt.run(params);
+};
+
 export default initializeDatabase;

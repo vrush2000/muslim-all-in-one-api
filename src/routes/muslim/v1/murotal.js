@@ -7,11 +7,12 @@ murotal.get('/qari', async (c) => {
   try {
     const data = await dbQuery("SELECT * FROM qari ORDER BY id ASC");
     return c.json({
-      status: 200,
+      status: true,
+      message: 'Berhasil mendapatkan daftar qari.',
       data: data
     });
   } catch (error) {
-    return c.json({ status: 500, message: error.message }, 500);
+    return c.json({ status: false, message: 'Gagal mendapatkan daftar qari: ' + error.message }, 500);
   }
 });
 
@@ -26,14 +27,15 @@ murotal.get('/', async (c) => {
     if (surahId) {
       const data = await dbQuery("SELECT number, name_id, name_short, audio_full FROM surah WHERE number = ?", [surahId]);
       if (data.length === 0) {
-        return c.json({ status: 404, message: 'Surah not found' }, 404);
+        return c.json({ status: false, message: 'Surah tidak ditemukan.' }, 404);
       }
       
       const surah = data[0];
       const audioFull = JSON.parse(surah.audio_full || '{}');
       
       return c.json({
-        status: 200,
+        status: true,
+        message: `Berhasil mendapatkan murotal surah ${surah.name_id} untuk qari ${qari ? qari.name : qariId}.`,
         data: {
           surahId: surah.number,
           name: surah.name_id,
@@ -58,13 +60,14 @@ murotal.get('/', async (c) => {
     });
 
     return c.json({
-      status: 200,
+      status: true,
+      message: `Berhasil mendapatkan daftar murotal untuk qari ${qari ? qari.name : qariId}.`,
       qari: qari || { id: qariId, name: 'Unknown' },
       data: result
     });
 
   } catch (error) {
-    return c.json({ status: 500, message: error.message }, 500);
+    return c.json({ status: false, message: 'Gagal mendapatkan data murotal: ' + error.message }, 500);
   }
 });
 

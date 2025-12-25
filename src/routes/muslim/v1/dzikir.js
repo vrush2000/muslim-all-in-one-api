@@ -11,13 +11,13 @@ dzikir.get('/', async (c) => {
         "SELECT * FROM dzikir WHERE type = ?",
         [type]
       );
-      return c.json({ status: 200, data: data || [] });
+      return c.json({ status: true, message: `Berhasil mendapatkan dzikir tipe: ${type}.`, data: data || [] });
     } else {
       const data = await dbQuery("SELECT * FROM dzikir");
-      return c.json({ status: 200, data: data || [] });
+      return c.json({ status: true, message: 'Berhasil mendapatkan daftar dzikir.', data: data || [] });
     }
   } catch (error) {
-    return c.json({ status: 500, message: error.message }, 500);
+    return c.json({ status: false, message: 'Gagal mendapatkan data dzikir: ' + error.message }, 500);
   }
 });
 

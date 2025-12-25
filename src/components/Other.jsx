@@ -60,16 +60,28 @@ const ApiEndpoint = ({ method, path, title, responseJson, category, endpointId }
   </div>
 )
 
-const SectionTitle = ({ title, icon, id, color = "emerald" }) => (
-  <div id={id} class="flex items-center gap-3 mb-8 scroll-mt-24">
-    <div class={`w-10 h-10 bg-${color}-600 rounded-lg flex items-center justify-center shadow-lg shadow-${color}-100`}>
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={icon} />
-      </svg>
+const SectionTitle = ({ title, icon, id, color = "emerald" }) => {
+  const colorClasses = {
+    emerald: "bg-emerald-600 shadow-emerald-100",
+    blue: "bg-blue-600 shadow-blue-100",
+    amber: "bg-amber-600 shadow-amber-100",
+    rose: "bg-rose-600 shadow-rose-100",
+    purple: "bg-purple-600 shadow-purple-100",
+    indigo: "bg-indigo-600 shadow-indigo-100",
+    slate: "bg-slate-600 shadow-slate-100"
+  };
+
+  return (
+    <div id={id} class="flex items-center gap-3 mb-8 scroll-mt-24">
+      <div class={`w-10 h-10 ${colorClasses[color] || colorClasses.emerald} rounded-lg flex items-center justify-center shadow-lg`}>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={icon} />
+        </svg>
+      </div>
+      <h2 class="text-2xl font-bold text-slate-900">{title}</h2>
     </div>
-    <h2 class="text-2xl font-bold text-slate-900">{title}</h2>
-  </div>
-)
+  );
+}
 
 export const Other = () => {
   return (
@@ -92,6 +104,7 @@ export const Other = () => {
                 { name: 'Kemenag', href: '#kemenag', icon: 'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4' },
                 { name: 'Sejarah', href: '#sejarah', icon: 'M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253' },
                 { name: 'Juz & Tema', href: '#extra', icon: 'M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10' },
+                { name: 'Tools Cerdas', href: '#tools', icon: 'M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z' },
                 { name: 'Resources', href: '#resources', icon: 'M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1' },
               ].map((item, index) => (
                 <a 
@@ -130,7 +143,8 @@ export const Other = () => {
             category="murottal"
             endpointId="murottal-qari"
             responseJson={`{
-  "status": 200,
+  "status": true,
+  "message": "Berhasil mendapatkan daftar qari.",
   "data": [
     {
       "id": "01",
@@ -147,7 +161,8 @@ export const Other = () => {
             category="murottal"
             endpointId="murottal-surah"
             responseJson={`{
-  "status": 200,
+  "status": true,
+  "message": "Berhasil mendapatkan audio murottal surah 1.",
   "data": {
     "01": "https://cdn.equran.id/audio-full/Abdullah-Al-Juhany/001.mp3",
     "02": "https://cdn.equran.id/audio-full/Abdul-Muhsin-Al-Qasim/001.mp3",
@@ -170,7 +185,7 @@ export const Other = () => {
             endpointId="sholat-cari-kota"
             responseJson={`{
   "status": true,
-  "message": "success",
+  "message": "Berhasil mendapatkan daftar kota.",
   "data": [
     {
       "id": "1301",
@@ -187,7 +202,7 @@ export const Other = () => {
             endpointId="sholat-jadwal-kota"
             responseJson={`{
   "status": true,
-  "message": "success",
+  "message": "Berhasil mendapatkan jadwal sholat.",
   "data": {
     "id": "1301",
     "kabko": "KOTA JAKARTA",
@@ -215,10 +230,11 @@ export const Other = () => {
             category="sholat"
             endpointId="sholat-jadwal-koordinat"
             responseJson={`{
-  "status": 200,
-  "location": "Monumen Nasional, Jalan Medan Merdeka Barat, Gambir, Jakarta Pusat",
-  "city_found": "Jakarta Pusat",
+  "status": true,
+  "message": "Berhasil mendapatkan jadwal sholat berdasarkan koordinat.",
   "data": {
+    "location": "Monumen Nasional, Jalan Medan Merdeka Barat, Gambir, Jakarta Pusat",
+    "city_found": "Jakarta Pusat",
     "id": "1301",
     "kabko": "KOTA JAKARTA",
     "prov": "DKI JAKARTA",
@@ -252,7 +268,8 @@ export const Other = () => {
             category="other"
             endpointId="calendar-hijri"
             responseJson={`{
-  "status": 200,
+  "status": true,
+  "message": "Berhasil konversi Masehi ke Hijriah.",
   "data": {
     "masehi": "2024-03-11",
     "adjustment": -1,
@@ -272,7 +289,8 @@ export const Other = () => {
             category="other"
             endpointId="calendar-masehi"
             responseJson={`{
-  "status": 200,
+  "status": true,
+  "message": "Berhasil konversi Hijriah ke Masehi.",
   "data": {
     "hijri": {
       "day": 1,
@@ -304,7 +322,8 @@ export const Other = () => {
             category="hadits"
             endpointId="hadits-list"
             responseJson={`{
-  "status": 200,
+  "status": true,
+  "message": "Berhasil mendapatkan daftar hadits arbain.",
   "data": [
     {
       "id": 1,
@@ -323,8 +342,8 @@ export const Other = () => {
             category="hadits"
             endpointId="hadits-books"
             responseJson={`{
-  "code": 200,
-  "message": "Success fetching all collections",
+  "status": true,
+  "message": "Berhasil mendapatkan seluruh koleksi kitab hadits.",
   "data": [
     { "name": "Abudaud", "id": "abu-daud", "available": 4419 },
     ...
@@ -345,7 +364,8 @@ export const Other = () => {
             category="other"
             endpointId="asma-list"
             responseJson={`{
-  "status": 200,
+  "status": true,
+  "message": "Berhasil mendapatkan seluruh daftar Asmaul Husna.",
   "data": [
     {
       "id": "1",
@@ -371,7 +391,8 @@ export const Other = () => {
             category="other"
             endpointId="asbab-list"
             responseJson={`{
-  "status": 200,
+  "status": true,
+  "message": "Berhasil mendapatkan seluruh daftar asbabun nuzul.",
   "data": [
     {
       "id": "1",
@@ -397,7 +418,8 @@ export const Other = () => {
             category="other"
             endpointId="dzikir"
             responseJson={`{
-  "status": 200,
+  "status": true,
+  "message": "Berhasil mendapatkan seluruh daftar dzikir.",
   "data": [
     {
       "id": 1,
@@ -423,7 +445,8 @@ export const Other = () => {
             category="other"
             endpointId="doa-list"
             responseJson={`{
-  "status": 200,
+  "status": true,
+  "message": "Berhasil mendapatkan seluruh daftar doa.",
   "data": [
     {
       "id": 1,
@@ -448,7 +471,7 @@ export const Other = () => {
             path="/juz" 
             category="quran"
             endpointId="juz-list"
-            responseJson={`{ "status": 200, "data": [...] }`}
+            responseJson={`{ "status": true, "message": "Berhasil mendapatkan daftar juz.", "data": [...] }`}
           />
           <ApiEndpoint 
             title="Tema Al-Quran" 
@@ -456,7 +479,7 @@ export const Other = () => {
             path="/theme" 
             category="quran"
             endpointId="theme-list"
-            responseJson={`{ "status": 200, "data": [...] }`}
+            responseJson={`{ "status": true, "message": "Berhasil mendapatkan daftar tema Al-Quran.", "data": [...] }`}
           />
           <ApiEndpoint 
             title="Kata per Kata" 
@@ -464,31 +487,59 @@ export const Other = () => {
             path="/word?surahId=1" 
             category="quran"
             endpointId="word-ayah"
-            responseJson={`{ "status": 200, "data": [...] }`}
+            responseJson={`{ "status": true, "message": "Berhasil mendapatkan data kata per kata surah 1.", "data": [...] }`}
           />
 
           <SectionTitle 
             id="kemenag" 
-            title="Layanan Kemenag & Masjid" 
+            title="Layanan Kemenag" 
             icon="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" 
             color="emerald"
           />
           <ApiEndpoint 
-            title="Daftar Masjid Utama" 
+            title="Daftar Masjid & Mushalla (Source: SIMAS)" 
             method="GET" 
             path="/kemenag/masjid" 
             category="kemenag"
-            endpointId="kemenag-masjid"
+            endpointId="kemenag-masjid-list"
             responseJson={`{
   "status": true,
+  "message": "Data masjid/mushalla berhasil diambil (Source: SIMAS Kemenag)",
+  "total_data_source": "317.218 Masjid",
   "data": [
     {
       "id": 1,
       "nama": "Masjid Istiqlal",
+      "jenis": "Masjid",
+      "tipologi": "Nasional",
       "lokasi": "Jakarta Pusat, DKI Jakarta",
       "kapasitas": "200.000",
       "tahun_berdiri": "1978",
       "deskripsi": "Masjid terbesar di Asia Tenggara."
+    }
+  ]
+}`}
+          />
+          <ApiEndpoint 
+            title="Filter Masjid/Mushalla" 
+            method="GET" 
+            path="/kemenag/masjid?jenis=Masjid&tipologi=Agung&lokasi=semarang" 
+            category="kemenag"
+            endpointId="kemenag-masjid-search"
+            responseJson={`{
+  "status": true,
+  "message": "Data masjid/mushalla berhasil diambil (Source: SIMAS Kemenag)",
+  "total_data_source": "317.218 Masjid",
+  "data": [
+    {
+      "id": 5,
+      "nama": "Masjid Agung Jawa Tengah",
+      "jenis": "Masjid",
+      "tipologi": "Agung",
+      "lokasi": "Semarang, Jawa Tengah",
+      "kapasitas": "15.000",
+      "tahun_berdiri": "2006",
+      "deskripsi": "Masjid dengan payung hidrolik raksasa seperti di Nabawi."
     }
   ]
 }`}
@@ -501,14 +552,17 @@ export const Other = () => {
             endpointId="kemenag-libur"
             responseJson={`{
   "status": true,
-  "year": "2025",
-  "data": [
-    {
-      "tanggal": "2025-01-01",
-      "keterangan": "Tahun Baru 2025 Masehi",
-      "is_cuti": false
-    }
-  ]
+  "message": "Berhasil mendapatkan daftar hari libur tahun 2025.",
+  "data": {
+    "year": "2025",
+    "holidays": [
+      {
+        "tanggal": "2025-01-01",
+        "keterangan": "Tahun Baru 2025 Masehi",
+        "is_cuti": false
+      }
+    ]
+  }
 }`}
           />
           <ApiEndpoint 
@@ -517,7 +571,7 @@ export const Other = () => {
             path="/kemenag/provinsi" 
             category="kemenag"
             endpointId="kemenag-provinsi"
-            responseJson={`{ "status": true, "data": [...] }`}
+            responseJson={`{ "status": true, "message": "Berhasil mendapatkan daftar provinsi.", "data": [...] }`}
           />
           <ApiEndpoint 
             title="Daftar Kabupaten (Pesantren)" 
@@ -525,7 +579,7 @@ export const Other = () => {
             path="/kemenag/kabupaten?provinsiId=32" 
             category="kemenag"
             endpointId="kemenag-kabupaten"
-            responseJson={`{ "status": true, "data": [...] }`}
+            responseJson={`{ "status": true, "message": "Berhasil mendapatkan daftar kabupaten untuk provinsi 32.", "data": [...] }`}
           />
           <ApiEndpoint 
             title="Daftar Pesantren" 
@@ -533,12 +587,12 @@ export const Other = () => {
             path="/kemenag/pesantren?kabupatenId=3201" 
             category="kemenag"
             endpointId="kemenag-pesantren"
-            responseJson={`{ "status": true, "data": [...] }`}
+            responseJson={`{ "status": true, "message": "Berhasil mendapatkan daftar pesantren untuk kabupaten 3201.", "data": [...] }`}
           />
 
           <SectionTitle 
             id="sejarah" 
-            title="Sejarah & Fatwa" 
+            title="Sejarah Islam" 
             icon="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" 
             color="blue"
           />
@@ -550,31 +604,14 @@ export const Other = () => {
             endpointId="sejarah-list"
             responseJson={`{
   "status": true,
+  "message": "Berhasil mendapatkan seluruh daftar sejarah.",
   "data": [
     {
       "id": 1,
       "peristiwa": "Kelahiran Nabi Muhammad SAW",
       "tahun": "571 M",
-      "kategori": "Sirah Nabawiyah"
-    },
-    ...
-  ]
-}`}
-          />
-          <ApiEndpoint 
-            title="Sejarah Islam di Indonesia" 
-            method="GET" 
-            path="/sejarah?kategori=indonesia" 
-            category="sejarah"
-            endpointId="sejarah-indonesia"
-            responseJson={`{
-  "status": true,
-  "data": [
-    {
-      "id": 5,
-      "peristiwa": "Masuknya Islam ke Nusantara",
-      "tahun": "Abad ke-7 s/d 13 M",
-      "kategori": "Sejarah Indonesia"
+      "kategori": "Sirah Nabawiyah",
+      "sumber": "Ar-Rahiq Al-Makhtum"
     },
     ...
   ]
@@ -584,35 +621,115 @@ export const Other = () => {
             title="Detail Peristiwa Sejarah" 
             method="GET" 
             path="/sejarah/detail?id=1" 
-            category="sejarah"
-            endpointId="sejarah-detail"
+            category="sejarah" 
+            endpointId="sejarah-detail" 
             responseJson={`{
   "status": true,
+  "message": "Berhasil mendapatkan detail sejarah.",
   "data": {
     "id": 1,
     "peristiwa": "Kelahiran Nabi Muhammad SAW",
     "tahun": "571 M (Tahun Gajah)",
     "deskripsi": "...",
-    "kategori": "Sirah Nabawiyah"
+    "kategori": "Sirah Nabawiyah",
+    "sumber": "Ar-Rahiq Al-Makhtum"
+  }
+}`}
+          />
+
+          <SectionTitle 
+            id="tools" 
+            title="Tools & Fitur Cerdas" 
+            icon="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" 
+            color="purple"
+          />
+          <ApiEndpoint 
+            title="Kutipan Harian (Ayat & Hadits)" 
+            method="GET" 
+            path="/tools/quotes/daily" 
+            category="tools"
+            endpointId="tools-quotes-daily"
+            responseJson={`{
+  "status": true,
+  "message": "Berhasil mengambil kutipan harian.",
+  "data": {
+    "ayat": {
+      "arab": "...",
+      "text": "...",
+      "sumber": "QS. Al-Baqarah: 153"
+    },
+    "hadits": {
+      "arab": "...",
+      "text": "...",
+      "sumber": "HR. Bukhari"
+    }
   }
 }`}
           />
           <ApiEndpoint 
-            title="Tanya Jawab & Fatwa Ringkas" 
+            title="Kalkulator Zakat" 
             method="GET" 
-            path="/sejarah/tanya-jawab" 
-            category="sejarah"
-            endpointId="sejarah-fatwa"
+            path="/tools/zakat?type=maal&amount=100000000" 
+            category="tools"
+            endpointId="tools-zakat"
             responseJson={`{
   "status": true,
-  "data": [
-    {
-      "id": 1,
-      "pertanyaan": "Apakah menyikat gigi membatalkan puasa?",
-      "jawaban": "...",
-      "sumber": "Umum / Fatwa Kontemporer"
-    }
-  ]
+  "message": "Kalkulasi zakat berhasil.",
+  "data": {
+    "type": "maal",
+    "amount": 100000000,
+    "nishab": 85000000,
+    "isWajib": true,
+    "zakat": 2500000,
+    "keterangan": "Nishab Zakat Maal adalah setara 85 gram emas per tahun. Tarif zakat 2,5%."
+  }
+}`}
+          />
+          <ApiEndpoint 
+            title="Arah Kiblat (Qibla Direction)" 
+            method="GET" 
+            path="/tools/qibla?lat=-6.1751&lng=106.8272" 
+            category="tools"
+            endpointId="tools-qibla"
+            responseJson={`{
+  "status": true,
+  "message": "Berhasil menghitung arah kiblat.",
+  "data": {
+    "coordinates": { "lat": -6.1751, "lng": 106.8272 },
+    "kaaba": { "lat": 21.4225, "lng": 39.8262 },
+    "qibla_direction": 295.12,
+    "unit": "degrees"
+  }
+}`}
+          />
+          <ApiEndpoint 
+            title="Pencarian Semantik (AI Search)" 
+            method="GET" 
+            path="/tools/semantic-search?query=sabar" 
+            category="tools"
+            endpointId="tools-semantic-search"
+            responseJson={`{
+  "status": true,
+  "message": "Pencarian semantik untuk 'sabar' berhasil.",
+  "data": {
+    "query": "sabar",
+    "quran": [
+      {
+        "arab": "...",
+        "text": "...",
+        "sumber": "..."
+      },
+      "..."
+    ],
+    "hadits": [
+      {
+        "arab": "...",
+        "text": "...",
+        "sumber": "..."
+      },
+      "..."
+    ]
+  }
 }`}
           />
 
@@ -628,9 +745,8 @@ export const Other = () => {
               { name: 'Quran Kemenag', url: 'https://quran.kemenag.go.id/', desc: 'Official Quran data from Kemenag RI' },
               { name: 'MyQuran (Prayer Times)', url: 'https://api.myquran.com/', desc: 'Prayer times and Islamic schedule API' },
               { name: 'equran.id (Audio)', url: 'https://equran.id/', desc: 'Quran audio and digital text' },
-              { name: 'Muslim API Vercel', url: 'https://muslim-api-three.vercel.app/', desc: 'Alternative Muslim API provider' },
-              { name: 'Hadith Gading (Hadith Collection)', url: 'https://api.hadith.gading.dev/', desc: 'Comprehensive Hadith collection API' },
-              { name: 'Fatwa Tarjih', url: 'https://fatwatarjih.or.id/', desc: 'Kumpulan putusan tarjih dan tajdid' },
+              { name: 'Muslim API Dataset (Repo)', url: 'https://github.com/Otangid/muslim-api', desc: 'Alternative Muslim API provider' },
+              { name: 'Hadith Collection (Repo)', url: 'https://github.com/gadingnst/hadith-api', desc: 'Comprehensive Hadith collection API' },
               { name: 'Data Pesantren (Repo)', url: 'https://github.com/nasrul21/data-pesantren-indonesia', desc: 'Database pesantren se-Indonesia (Source)' },
               { name: 'Libur Nasional (Repo)', url: 'https://github.com/kresnasatya/api-harilibur', desc: 'Data hari libur nasional Indonesia (Source)' },
             ].map((resource) => (

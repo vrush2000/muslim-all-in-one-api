@@ -10,14 +10,14 @@ admin.use('*', async (c, next) => {
   // Check if running on Vercel Production
   if (process.env.VERCEL === '1' || process.env.NODE_ENV === 'production') {
     return c.json({ 
-      status: 403, 
-      message: 'Admin updates are disabled on Vercel Production. Please use Local Update + Git Push strategy.' 
+      status: false, 
+      message: 'Pembaruan admin dinonaktifkan di Vercel Production. Harap gunakan strategi Pembaruan Lokal + Git Push.' 
     }, 403);
   }
 
   const apiKey = c.req.header('x-api-key');
   if (apiKey !== API_KEY) {
-    return c.json({ status: 401, message: 'Unauthorized: Invalid or missing API Key' }, 401);
+    return c.json({ status: false, message: 'Tidak diizinkan: API Key tidak valid atau tidak ada.' }, 401);
   }
   await next();
 });
@@ -28,7 +28,7 @@ admin.patch('/ayah', async (c) => {
     const { surahId, ayahId, arab, text, latin } = await c.req.json();
     
     if (!surahId || !ayahId) {
-      return c.json({ status: 400, message: 'surahId and ayahId are required' }, 400);
+      return c.json({ status: false, message: 'surahId dan ayahId diperlukan.' }, 400);
     }
 
     // Get old data for diff
@@ -38,7 +38,7 @@ admin.patch('/ayah', async (c) => {
     );
 
     if (!oldData) {
-      return c.json({ status: 404, message: 'Ayah not found' }, 404);
+      return c.json({ status: false, message: 'Ayat tidak ditemukan.' }, 404);
     }
 
     const updates = [];
@@ -49,7 +49,7 @@ admin.patch('/ayah', async (c) => {
     if (latin) { updates.push("latin = ?"); params.push(latin); }
 
     if (updates.length === 0) {
-      return c.json({ status: 400, message: 'No fields to update provided' }, 400);
+      return c.json({ status: false, message: 'Tidak ada bidang yang disediakan untuk diperbarui.' }, 400);
     }
 
     params.push(surahId, ayahId);
@@ -65,16 +65,16 @@ admin.patch('/ayah', async (c) => {
     );
 
     return c.json({ 
-      status: 200, 
-      message: 'Ayah updated successfully',
+      status: true, 
+      message: 'Berhasil memperbarui ayat.',
       diff: {
         before: oldData,
         after: newData
       },
-      integrity_status: 'Hash will be automatically recalculated on next integrity check'
+      integrity_status: 'Hash akan diperbarui otomatis pada pengecekan integritas berikutnya.'
     });
   } catch (error) {
-    return c.json({ status: 500, message: error.message }, 500);
+    return c.json({ status: false, message: 'Gagal memperbarui ayat: ' + error.message }, 500);
   }
 });
 
@@ -83,10 +83,10 @@ admin.patch('/dzikir', async (c) => {
   try {
     const { id, title, arabic, translation } = await c.req.json();
     
-    if (!id) return c.json({ status: 400, message: 'id is required' }, 400);
+    if (!id) return c.json({ status: false, message: 'Parameter id diperlukan.' }, 400);
 
     const oldData = await dbGet("SELECT title, arabic, translation FROM dzikir WHERE id = ?", [id]);
-    if (!oldData) return c.json({ status: 404, message: 'Dzikir not found' }, 404);
+    if (!oldData) return c.json({ status: false, message: 'Dzikir tidak ditemukan.', data: {} }, 404);
 
     const updates = [];
     const params = [];
@@ -95,23 +95,27 @@ admin.patch('/dzikir', async (c) => {
     if (arabic) { updates.push("arabic = ?"); params.push(arabic); }
     if (translation) { updates.push("translation = ?"); params.push(translation); }
 
-    if (updates.length === 0) return c.json({ status: 400, message: 'No fields to update' }, 400);
+    if (updates.length === 0) return c.json({ status: false, message: 'Tidak ada data yang diubah.' }, 400);
 
     params.push(id);
-    await dbQuery(`UPDATE dzikir SET ${updates.join(", ")} WHERE id = ?`, params);
+    
+    await dbQuery(
+      `UPDATE dzikir SET ${updates.join(", ")} WHERE id = ?`,
+      params
+    );
 
     const newData = await dbGet("SELECT title, arabic, translation FROM dzikir WHERE id = ?", [id]);
 
-    return c.json({ 
-      status: 200, 
-      message: 'Dzikir updated successfully',
+    return c.json({
+      status: true,
+      message: 'Berhasil memperbarui dzikir.',
       diff: {
         before: oldData,
         after: newData
       }
     });
   } catch (error) {
-    return c.json({ status: 500, message: error.message }, 500);
+    return c.json({ status: false, message: 'Gagal memperbarui dzikir: ' + error.message }, 500);
   }
 });
 
@@ -120,10 +124,10 @@ admin.patch('/doa', async (c) => {
   try {
     const { id, judul, arab, indo } = await c.req.json();
     
-    if (!id) return c.json({ status: 400, message: 'id is required' }, 400);
+    if (!id) return c.json({ status: false, message: 'id diperlukan.' }, 400);
 
     const oldData = await dbGet("SELECT judul, arab, indo FROM doa WHERE id = ?", [id]);
-    if (!oldData) return c.json({ status: 404, message: 'Doa not found' }, 404);
+    if (!oldData) return c.json({ status: false, message: 'Doa tidak ditemukan.' }, 404);
 
     const updates = [];
     const params = [];
@@ -132,7 +136,7 @@ admin.patch('/doa', async (c) => {
     if (arab) { updates.push("arab = ?"); params.push(arab); }
     if (indo) { updates.push("indo = ?"); params.push(indo); }
 
-    if (updates.length === 0) return c.json({ status: 400, message: 'No fields to update' }, 400);
+    if (updates.length === 0) return c.json({ status: false, message: 'Tidak ada bidang untuk diperbarui.' }, 400);
 
     params.push(id);
     await dbQuery(`UPDATE doa SET ${updates.join(", ")} WHERE id = ?`, params);
@@ -140,15 +144,15 @@ admin.patch('/doa', async (c) => {
     const newData = await dbGet("SELECT judul, arab, indo FROM doa WHERE id = ?", [id]);
 
     return c.json({ 
-      status: 200, 
-      message: 'Doa updated successfully',
+      status: true, 
+      message: 'Berhasil memperbarui doa.',
       diff: {
         before: oldData,
         after: newData
       }
     });
   } catch (error) {
-    return c.json({ status: 500, message: error.message }, 500);
+    return c.json({ status: false, message: error.message }, 500);
   }
 });
 

@@ -9,16 +9,16 @@ tafsir.get('/', async (c) => {
     if (surahId != null) {
       const data = await dbQuery("SELECT * FROM tafsir WHERE id = ?", [surahId]);
       if (!data || data.length === 0) {
-        return c.json({ status: 404, data: {} }, 404);
+        return c.json({ status: false, message: 'Tafsir surah tidak ditemukan.', data: {} }, 404);
       } else {
-        return c.json({ status: 200, data: data[0] });
+        return c.json({ status: true, message: 'Berhasil mendapatkan detail tafsir surah.', data: data[0] });
       }
     } else {
       const data = await dbQuery("SELECT * FROM tafsir ORDER BY CAST(id as INTEGER) ASC");
-      return c.json({ status: 200, data: data || [] });
+      return c.json({ status: true, message: 'Berhasil mendapatkan daftar tafsir surah.', data: data || [] });
     }
   } catch (error) {
-    return c.json({ status: 500, message: error.message }, 500);
+    return c.json({ status: false, message: 'Gagal mendapatkan data tafsir: ' + error.message }, 500);
   }
 });
 

@@ -11,13 +11,13 @@ doa.get('/', async (c) => {
         "SELECT * FROM doa WHERE source = ? ORDER BY judul ASC",
         [source]
       );
-      return c.json({ status: 200, data: data || [] });
+      return c.json({ status: true, message: `Berhasil mendapatkan doa dari sumber: ${source}.`, data: data || [] });
     } else {
       const data = await dbQuery("SELECT * FROM doa ORDER BY judul ASC");
-      return c.json({ status: 200, data: data || [] });
+      return c.json({ status: true, message: 'Berhasil mendapatkan daftar doa.', data: data || [] });
     }
   } catch (error) {
-    return c.json({ status: 500, message: error.message }, 500);
+    return c.json({ status: false, message: 'Gagal mendapatkan data doa: ' + error.message }, 500);
   }
 });
 
@@ -29,15 +29,15 @@ doa.get('/find', async (c) => {
         "SELECT * FROM doa WHERE judul LIKE ? ORDER BY judul ASC",
         [`%${q}%`]
       );
-      return c.json({ status: 200, data: data || [] });
+      return c.json({ status: true, message: `Berhasil mencari doa dengan kata kunci: ${q}.`, data: data || [] });
     } else {
       return c.json({
-        status: 500,
-        message: "Parameter di perlukan (query).",
-      }, 500);
+        status: false,
+        message: "Parameter diperlukan (query).",
+      }, 400);
     }
   } catch (error) {
-    return c.json({ status: 500, message: error.message }, 500);
+    return c.json({ status: false, message: 'Gagal mencari doa: ' + error.message }, 500);
   }
 });
 

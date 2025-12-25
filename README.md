@@ -1,7 +1,7 @@
 <div align="center">
   <h1 align="center">MUSLIM ALL-IN-ONE API</h1>
   <p align="center">
-    <strong>API Keislaman All-in-One: Al-Quran (Tafsir & Audio), Jadwal Sholat, Kalender Hijriah/Jawa, Dzikir, Doa, Hadits, serta Sistem Integritas Data Modern.</strong>
+    <strong>API Keislaman All-in-One: Al-Quran (Tafsir & Audio), Jadwal Sholat, Kalender Hijriah/Jawa, Dzikir, Doa, Hadits, Sejarah Islam, serta Sistem Integritas Data Modern.</strong>
   </p>
    <p align="center">
     <a href="https://muslim-all-in-one-api.vercel.app"><strong>Dokumentasi</strong></a> · <a href="https://github.com/vrush2000/muslim-all-in-one-api/issues"><strong>Laporkan Bug</strong></a> · <a href="https://github.com/vrush2000/muslim-all-in-one-api/issues"><strong>Request Fitur</strong></a>
@@ -46,7 +46,8 @@ Menyediakan berbagai data keislaman dari sumber terpercaya:
 - 📅 **Kalender**: Integrasi Kalender Hijriah dan Kalender Jawa yang sinkron.
 - 🤲 **Doa-doa & Dzikir**: Kumpulan doa harian dan dzikir pagi/petang.
 - 📚 **Hadits**: Kumpulan Hadits Arba'in dengan fitur pencarian.
-- 🔊 **Audio**: Murottal merdu dari 6 Qari terkemuka.
+- � **Sejarah Islam**: Informasi peristiwa sejarah Islam yang penting.
+- �� **Audio**: Murottal merdu dari 6 Qari terkemuka.
 - 🛠️ **Admin Management**: API khusus untuk koreksi data secara instan (Local mode).
 - 🔍 **Search Engine**: Sistem pencarian cepat untuk Ayat dan Doa.
 
@@ -121,7 +122,7 @@ Ya, API ini 100% gratis untuk digunakan baik untuk proyek personal maupun komers
 
 <details>
 <summary><b>Dari mana sumber datanya?</b></summary>
-Data teks Al-Quran, terjemahan, dan tafsir berasal dari Kemenag RI. Audio murottal disediakan melalui CDN equran.id, dan dataset awal dikelola oleh Otang45.
+Data teks Al-Quran, terjemahan, dan tafsir berasal dari Kemenag RI. Audio murottal disediakan melalui CDN equran.id, dan dataset awal dikelola oleh Otangid.
 </details>
 
 <details>
@@ -138,12 +139,12 @@ Ya, teks dan terjemahan mengikuti standar Mushaf Al-Quran Standar Indonesia (MSI
 
 ## ❤️ Apresiasi & Penghormatan
 
-Project ini merupakan hasil pengembangan lanjut (migrasi & modernisasi) dari project asli yang dibangun oleh **[Otang45](https://github.com/Otang45)**. 
+Project ini merupakan hasil pengembangan lanjut (migrasi & modernisasi) dari project asli yang dibangun oleh **[Otangid](https://github.com/Otangid/muslim-api)**. 
 
 Kami memberikan apresiasi setinggi-tingginya kepada para penyedia data dan sumber inspirasi:
 
 - **[Kemenag RI](https://quran.kemenag.go.id/)**: Atas penyediaan data Al-Quran, Terjemahan, dan Tafsir resmi.
-- **[Otang45](https://github.com/Otang45)**: Atas penyediaan dataset keislaman (SQLite) dan logika dasar API yang menjadi fondasi project ini.
+- **[Otangid](https://github.com/Otangid/muslim-api)**: Atas penyediaan dataset keislaman (SQLite) dan logika dasar API yang menjadi fondasi project ini.
 - **[equran.id](https://equran.id)**: Atas penyediaan API v2 dan Content Delivery Network (CDN) untuk data murottal audio (6 Qari).
 - **[MyQuran (SutanLab)](https://api.myquran.com/)**: Atas penyediaan dataset jadwal sholat akurat untuk seluruh wilayah Indonesia.
 - **[Hadith Gading](https://api.hadith.gading.dev/)**: Atas penyediaan koleksi hadits digital yang sangat lengkap.
