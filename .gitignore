@@ -46,6 +46,10 @@ jspm_packages/
 # Snowpack dependency directory (https://snowpack.dev/)
 web_modules/
 
+# SQLite
+*.db-shm
+*.db-wal
+
 # TypeScript cache
 *.tsbuildinfo
 
