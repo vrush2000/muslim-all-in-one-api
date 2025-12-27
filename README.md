@@ -49,6 +49,7 @@ Menyediakan berbagai data keislaman dari sumber terpercaya:
 - 🏛️ **Sejarah Islam**: Informasi peristiwa sejarah Islam yang penting.
 - 🎧 **Audio**: Murottal merdu dari 6 Qari terkemuka.
 - 🛡️ **Data Integrity Chain**: Verifikasi kemurnian teks Al-Quran menggunakan sistem SHA-256 Hashing yang transparan.
+- 📊 **Spiritual Analytics**: Statistik global pembacaan Al-Quran dan laporan khatam kolektif secara real-time.
 - 🔍 **Search Engine**: Sistem pencarian cepat untuk Ayat, Hadits, dan Doa.
 - 🛠️ **Admin Management**: API khusus untuk koreksi data secara instan (Local mode).
 
@@ -80,6 +81,15 @@ Setiap perubahan satu karakter saja pada teks Arab atau terjemahan akan merusak 
 
 ### Fitur Live Comparison:
 Endpoint `/v1/integrity/verify/ayah` kini mendukung **Live Comparison**. Saat dipanggil, sistem akan mengambil data pembanding secara real-time dari sumber resmi (Kemenag via EQuran.id) dan menyajikannya berdampingan dengan data kami untuk membuktikan bahwa tidak ada perbedaan teks.
+
+## 📊 Global Spiritual Analytics
+
+Kami menyediakan statistik kolektif untuk melihat tren pembacaan Al-Quran di seluruh pengguna API ini:
+- **Trending Surahs**: Daftar surah yang paling sering dibaca secara global.
+- **Global Khatam Tracker**: Penghitung berapa kali Al-Quran telah dikhatamkan melalui ekosistem platform ini.
+- **Total Reads**: Total ayat yang telah diakses/dibaca oleh komunitas pengguna.
+
+Statistik ini bersifat anonim dan bertujuan untuk memotivasi umat dalam beribadah.
 
 ## 🤝 Kontribusi & Koreksi Data
 

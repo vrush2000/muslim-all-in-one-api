@@ -18,6 +18,7 @@ import admin from './admin.js';
 import kemenag from './kemenag.js';
 import sejarah from './sejarah.js';
 import tools from './tools.js';
+import analytics from './analytics.js';
 
 const v1 = new Hono();
 
@@ -40,6 +41,7 @@ v1.route('/admin', admin);
 v1.route('/kemenag', kemenag);
 v1.route('/sejarah', sejarah);
 v1.route('/tools', tools);
+v1.route('/analytics', analytics);
 
 v1.get('/', (c) => {
   return c.json({

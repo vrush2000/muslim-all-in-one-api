@@ -1,5 +1,5 @@
 import { Hono } from 'hono';
-import { getSurahList, getSurahDetail } from '../../../utils/jsonHandler.js';
+import { getSurahList, getSurahDetail, updateAnalytics } from '../../../utils/jsonHandler.js';
 
 const surah = new Hono();
 
@@ -19,6 +19,9 @@ surah.get('/', async (c) => {
       if (!data) {
         return c.json({ status: false, message: 'Surah tidak ditemukan.', data: {} }, 404);
       } else {
+        // Track surah read analytics (async, don't wait for it)
+        updateAnalytics('surah', surahId).catch(err => console.error('Analytics error:', err));
+        
         return c.json({ status: true, message: 'Berhasil mendapatkan detail surah.', data: formatSurah(data) });
       }
     } else {

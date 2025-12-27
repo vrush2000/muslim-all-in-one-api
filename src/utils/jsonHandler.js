@@ -98,6 +98,34 @@ export async function getMasjid() {
   return await readJson('common/masjid.json');
 }
 
+export async function getAnalytics() {
+  const data = await readJson('common/analytics.json');
+  return data || {
+    trending_surahs: {},
+    trending_ayahs: {},
+    global_khatam: 0,
+    total_reads: 0,
+    last_updated: new Date().toISOString()
+  };
+}
+
+export async function updateAnalytics(type, id) {
+  const stats = await getAnalytics();
+  
+  if (type === 'surah') {
+    stats.trending_surahs[id] = (stats.trending_surahs[id] || 0) + 1;
+    stats.total_reads += 1;
+  } else if (type === 'ayah') {
+    stats.trending_ayahs[id] = (stats.trending_ayahs[id] || 0) + 1;
+    stats.total_reads += 1;
+  } else if (type === 'khatam') {
+    stats.global_khatam += 1;
+  }
+  
+  stats.last_updated = new Date().toISOString();
+  return await writeJson('common/analytics.json', stats);
+}
+
 export async function getLocalHadits(bookName) {
   return await readJson(`hadits/${bookName}.json`);
 }

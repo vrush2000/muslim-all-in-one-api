@@ -1,5 +1,5 @@
 import { Hono } from 'hono';
-import { getAyahBySurah, getSurahList } from '../../../utils/jsonHandler.js';
+import { getAyahBySurah, getSurahList, updateAnalytics } from '../../../utils/jsonHandler.js';
 
 const ayah = new Hono();
 
@@ -139,6 +139,9 @@ ayah.get('/specific', async (c) => {
         const formatted = formatAyah(data);
         // Tambahkan link verifikasi eksternal ke Kemenag RI
         formatted.external_verification = `https://quran.kemenag.go.id/quran/per-ayat/surah/${surahId}?from=${ayahId}&to=${ayahId}`;
+        
+        // Track ayah read analytics
+        updateAnalytics('ayah', `${surahId}:${ayahId}`).catch(err => console.error('Analytics error:', err));
         
         return c.json({ status: true, message: `Berhasil mendapatkan detail ayat ${ayahId} pada surah ${surahId}.`, data: formatted });
       }

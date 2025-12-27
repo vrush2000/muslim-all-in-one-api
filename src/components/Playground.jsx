@@ -38,6 +38,7 @@ export const Playground = ({ baseUrl }) => {
                   <option value="sejarah">Sejarah Islam</option>
                   <option value="tools">Tools & Fitur Cerdas</option>
                   <option value="integrity">Integrity Chain</option>
+                  <option value="analytics">Spiritual Analytics</option>
                   <option value="other">Lainnya (Asmaul Husna, Doa, dll)</option>
                 </select>
               </div>
@@ -311,6 +312,10 @@ export const Playground = ({ baseUrl }) => {
             { id: 'integrity-chain', path: '/integrity/chain', name: 'Integrity Chain', params: [] },
             { id: 'integrity-verify', path: '/integrity/verify/ayah', name: 'Verifikasi Ayah', params: [{ name: 'surahId', placeholder: '1', type: 'number', default: '1' }, { name: 'ayahId', placeholder: '1', type: 'number', default: '1' }] },
           ],
+          analytics: [
+            { id: 'analytics-global', path: '/analytics', name: 'Global Spiritual Analytics', params: [] },
+            { id: 'analytics-khatam', path: '/analytics/khatam', name: 'Lapor Khatam (Post)', params: [], method: 'POST' },
+          ],
           other: [
             { id: 'asma-list', path: '/asma', name: 'Semua Asmaul Husna', params: [] },
             { id: 'asma-detail', path: '/asma', name: 'Detail Asmaul Husna', params: [{ name: 'id', placeholder: '1-99', type: 'number', default: '1', hint: 'Nomor 1-99' }] },
@@ -400,7 +405,14 @@ export const Playground = ({ baseUrl }) => {
             const queryString = queryParams.toString();
             const fullUrl = \`\${window.location.origin}/v1\${path}\${queryString ? '?' + queryString : ''}\`;
             
-            const response = await fetch(fullUrl);
+            const fetchOptions = {
+              method: currentEndpoint.method || 'GET',
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            };
+            
+            const response = await fetch(fullUrl, fetchOptions);
             const data = await response.json();
             const endTime = performance.now();
 

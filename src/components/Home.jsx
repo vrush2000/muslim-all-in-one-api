@@ -492,7 +492,7 @@ export const Home = ({ baseUrl }) => {
     "surahId": "1",
     "ayahId": "1",
     "local_data": {
-      "arab": "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ",
+      "arab": "بِسْمِ اللَّهِ الر" + "َحْمَٰنِ الرَّحِيمِ",
       "text": "Dengan nama Allah Yang Maha Pengasih, Maha Penyayang."
     },
     "hash": "e3b0c442...",
@@ -505,13 +505,76 @@ export const Home = ({ baseUrl }) => {
         "translation_match": true
       },
       "external_data": {
-        "arab": "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ",
+        "arab": "بِسْمِ اللَّهِ الر" + "َحْمَٰنِ الرَّحِيمِ",
         "text": "Dengan nama Allah Yang Maha Pengasih, Maha Penyayang."
       }
     },
     "external_verification_url": "https://quran.kemenag.go.id/quran/per-ayat/surah/1?from=1&to=1",
     "timestamp": "2025-12-24T00:00:00Z"
   }
+}`}
+          />
+
+          <ApiEndpoint 
+            title="Kalkulator Zakat" 
+            method="GET" 
+            path="/tools/zakat?type=maal&amount=100000000&hargaEmas=1200000" 
+            category="tools"
+            endpointId="tools-zakat"
+            responseJson={`{
+  "status": true,
+  "message": "Kalkulasi zakat berhasil.",
+  "data": {
+    "type": "maal",
+    "amount": 100000000,
+    "nishab": 102000000,
+    "isWajib": false,
+    "zakat": 0,
+    "keterangan": "Nishab Zakat Maal adalah setara 85 gram emas per tahun. Tarif zakat 2,5%."
+  }
+}`}
+          />
+
+          {/* Analytics Category */}
+          <div class="mt-12 mb-6">
+            <h3 class="pl-4 text-2xl font-bold text-emerald-800 border-l-4 border-emerald-500">
+              Spiritual Analytics (Global)
+            </h3>
+            <p class="mt-2 text-slate-600">
+              Statistik penggunaan global untuk melihat tren pembacaan Al-Qur'an dan laporan khatam kolektif.
+            </p>
+          </div>
+
+          <ApiEndpoint 
+            title="Global Analytics" 
+            method="GET" 
+            path="/analytics" 
+            category="analytics"
+            endpointId="analytics-global"
+            responseJson={`{
+  "status": true,
+  "message": "Berhasil mendapatkan statistik spiritual global.",
+  "data": {
+    "total_reads": 1250,
+    "global_khatam_count": 5,
+    "trending_surahs": [
+      { "id": "1", "name": "Al-Fatihah", "reads": 450 },
+      { "id": "18", "name": "Al-Kahf", "reads": 320 }
+    ],
+    "last_updated": "2025-12-24T00:00:00Z"
+  }
+}`}
+          />
+
+          <ApiEndpoint 
+            title="Lapor Khatam (Post)" 
+            method="POST" 
+            path="/analytics/khatam" 
+            category="analytics"
+            endpointId="analytics-khatam"
+            responseJson={`{
+  "status": true,
+  "message": "Alhamdulillah! Satu khatam baru telah tercatat dalam statistik global. Semoga berkah."
 }`}
           />
 
