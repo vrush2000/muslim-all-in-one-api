@@ -829,9 +829,68 @@ export const Layout = ({ children, title }) => {
           document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
               window.closeApiModal();
+              window.closeDonationModal();
             }
           });
+
+          window.openDonationModal = function() {
+            const modal = document.getElementById('donation-modal');
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+            window.resetDonationModal();
+          };
+
+          window.closeDonationModal = function() {
+            const modal = document.getElementById('donation-modal');
+            modal.classList.add('hidden');
+            document.body.style.overflow = '';
+          };
+
+          window.resetDonationModal = function() {
+            document.getElementById('qris-display-section').classList.add('hidden');
+            document.getElementById('donation-options-section').classList.remove('hidden');
+            document.getElementById('custom-amount').value = '';
+            document.getElementById('qris-image').src = '';
+          };
+
+          window.selectPreset = function(amount) {
+            document.getElementById('custom-amount').value = amount;
+            window.generateDonationQR();
+          };
+
+          window.generateDonationQR = async function() {
+            const amount = document.getElementById('custom-amount').value;
+            if (!amount || amount < 1000) {
+              alert('Pilih atau masukan nominal donasi');
+              return;
+            }
+
+            const generateBtn = document.getElementById('generate-qris-btn');
+            const originalText = generateBtn.innerHTML;
+            generateBtn.disabled = true;
+            generateBtn.innerHTML = 'Generating...';
+
+            try {
+              const response = await fetch("/api/qris/generate?amount=" + amount);
+              const result = await response.json();
+
+              if (result.status === 200) {
+                document.getElementById('donation-options-section').classList.add('hidden');
+                document.getElementById('qris-display-section').classList.remove('hidden');
+                document.getElementById('qris-image').src = result.data.qr_image;
+                document.getElementById('display-amount').textContent = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(amount);
+              } else {
+                alert('Gagal generate QRIS: ' + result.message);
+              }
+            } catch (error) {
+              alert('Terjadi kesalahan: ' + error.message);
+            } finally {
+              generateBtn.disabled = false;
+              generateBtn.innerHTML = originalText;
+            }
+          };
         `,
+
           }}
         />
 
@@ -1038,7 +1097,36 @@ export const Layout = ({ children, title }) => {
               </div>
               <div>
                 <h4 class="font-semibold text-slate-900 mb-4">Support Project</h4>
-                <a
+                <div
+                  onclick="window.openDonationModal()"
+                  class="w-full group flex items-center gap-3 p-3 bg-gradient-to-br from-emerald-50 to-teal-50 rounded-xl border border-emerald-100 hover:border-emerald-300 transition-all shadow-sm hover:shadow-md cursor-pointer mb-3"
+                >
+                  <div class="w-10 h-10 bg-emerald-600 rounded-lg flex items-center justify-center text-white shadow-lg shadow-emerald-200 group-hover:scale-110 transition-transform">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-6 w-6"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                  </div>
+                  <div class="text-left">
+                    <div class="text-[10px] text-emerald-600 font-medium">
+                      Donasi via QRIS
+                    </div>
+                    <div class="text-xs font-bold text-slate-900">
+                      Support Developer
+                    </div>
+                  </div>
+                </div>
+                {/* <a
                   href="https://github.com/vrush2000/muslim-all-in-one-api"
                   target="_blank"
                   class="w-full group flex items-center gap-3 p-3 bg-gradient-to-br from-emerald-50 to-teal-50 rounded-xl border border-emerald-100 hover:border-emerald-300 transition-all shadow-sm hover:shadow-md cursor-pointer"
@@ -1064,7 +1152,7 @@ export const Layout = ({ children, title }) => {
                       Star on GitHub
                     </div>
                   </div>
-                </a>
+                </a> */}
               </div>
             </div>
             <div class="border-t border-slate-100 mt-12 pt-8 text-center">
@@ -1078,6 +1166,230 @@ export const Layout = ({ children, title }) => {
             </div>
           </div>
         </footer>
+
+        {/* Donation Modal */}
+        <div
+          id="donation-modal"
+          class="fixed inset-0 z-[100] hidden overflow-y-auto"
+          aria-labelledby="modal-title"
+          role="dialog"
+          aria-modal="true"
+        >
+          <div class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+            <div
+              class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity"
+              onclick="window.closeDonationModal()"
+              style="z-index: -1;"
+            ></div>
+
+            <span
+              class="hidden sm:inline-block sm:align-middle sm:h-screen"
+              aria-hidden="true"
+            >
+              &#8203;
+            </span>
+
+            <div class="inline-block align-bottom bg-white rounded-3xl text-left overflow-hidden shadow-2xl transform transition-all sm:my-8 sm:align-middle sm:max-w-md sm:w-full border border-slate-100 relative z-10">
+              {/* Header */}
+              <div class="bg-gradient-to-r from-emerald-600 to-teal-600 px-6 py-4 flex items-center justify-between relative z-20">
+                <div class="flex items-center gap-3 text-white">
+                  <div class="p-2 bg-white/20 rounded-lg backdrop-blur-md">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-5 w-5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                      />
+                    </svg>
+                  </div>
+                  <h3 class="text-lg font-bold leading-6" id="modal-title">
+                    Dukung Muslim API
+                  </h3>
+                </div>
+                <button
+                  onclick="window.closeDonationModal()"
+                  class="text-white/80 hover:text-white transition-colors"
+                >
+                  <svg
+                    class="h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M6 18L18 6M6 6l18 18"
+                    />
+                  </svg>
+                </button>
+              </div>
+
+              {/* Content */}
+              <div class="px-6 py-6">
+                <div id="donation-options-section">
+                  <p class="text-slate-600 text-sm mb-6 text-center">
+                    Pilih atau masukkan nominal donasi untuk mendukung pengembangan Muslim API.
+                  </p>
+
+                  <div class="grid grid-cols-3 gap-3 mb-6">
+                    {[5000, 10000, 20000, 50000, 100000, 250000].map((amount) => (
+                      <button
+                        onclick={`window.selectPreset(${amount})`}
+                        class="preset-btn relative z-20 py-3 px-2 bg-slate-50 border border-slate-200 rounded-xl text-sm font-bold text-slate-700 hover:border-emerald-500 hover:bg-emerald-50 transition-all focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
+                      >
+                        {new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(amount)}
+                      </button>
+                    ))}
+                  </div>
+
+                  <div class="relative z-20 mb-6">
+                    <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                      <span class="text-slate-400 font-bold">Rp</span>
+                    </div>
+                    <input
+                      type="number"
+                      id="custom-amount"
+                      class="block w-full pl-12 pr-4 py-4 bg-slate-50 border border-slate-200 rounded-2xl text-lg font-bold placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition-all"
+                      placeholder="Nominal lainnya..."
+                    />
+                  </div>
+
+                  <button
+                    id="generate-qris-btn"
+                    onclick="window.generateDonationQR()"
+                    class="w-full py-4 bg-slate-900 text-white rounded-2xl font-bold hover:bg-slate-800 transition-all shadow-xl shadow-slate-200 flex items-center justify-center gap-2 relative z-20"
+                  >
+                    Generate QRIS
+                  </button>
+                </div>
+
+                <div id="qris-display-section" class="hidden text-center">
+                  <div class="mb-4">
+                    <div id="display-amount" class="text-2xl font-black text-slate-800">Rp 0</div>
+                    <div class="text-xs text-slate-400 font-medium">Scan QRIS untuk membayar</div>
+                    <div class="text-xs text-slate-400 font-medium">dan akan diarahkan ke Hariistimewa.com - DANA</div>
+                  </div>
+
+                  <div class="bg-white p-4 border-2 border-slate-100 rounded-2xl mb-6 inline-block shadow-sm">
+                    <img id="qris-image" src="" alt="QRIS" class="w-64 h-64" />
+                  </div>
+
+                  <div class="bg-slate-50 p-4 rounded-xl mb-6 text-left">
+                    <div class="flex items-start gap-3">
+                      <div class="w-5 h-5 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center flex-shrink-0 text-[10px] font-bold">1</div>
+                      <p class="text-xs text-slate-600">Buka aplikasi pembayaran (Gopay, OVO, Dana, LinkAja, atau Mobile Banking).</p>
+                    </div>
+                    <div class="flex items-start gap-3 mt-3">
+                      <div class="w-5 h-5 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center flex-shrink-0 text-[10px] font-bold">2</div>
+                      <p class="text-xs text-slate-600">Pilih menu <b>Scan/Bayar</b> lalu arahkan kamera ke QR Code di atas.</p>
+                    </div>
+                    <div class="flex items-start gap-3 mt-3">
+                      <div class="w-5 h-5 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center flex-shrink-0 text-[10px] font-bold">3</div>
+                      <p class="text-xs text-slate-600">Pastikan nominal sesuai dan selesaikan pembayaran.</p>
+                    </div>
+                  </div>
+
+                  <button
+                    onclick="window.resetDonationModal()"
+                    class="text-emerald-600 font-bold text-sm hover:underline"
+                  >
+                    Ganti Nominal
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <script dangerouslySetInnerHTML={{ __html: `
+          window.openDonationModal = function() {
+            document.getElementById('donation-modal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+          }
+
+          window.closeDonationModal = function() {
+            document.getElementById('donation-modal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+            window.resetDonationModal();
+          }
+
+          window.selectPreset = function(amount) {
+            const input = document.getElementById('custom-amount');
+            input.value = amount;
+            
+            // Highlight selected preset
+            document.querySelectorAll('.preset-btn').forEach(btn => {
+              btn.classList.remove('border-emerald-500', 'bg-emerald-50', 'ring-2', 'ring-emerald-500/20');
+            });
+            
+            event.currentTarget.classList.add('border-emerald-500', 'bg-emerald-50', 'ring-2', 'ring-emerald-500/20');
+          }
+
+          window.generateDonationQR = async function() {
+            const amountInput = document.getElementById('custom-amount');
+            const amount = parseInt(amountInput.value);
+            const btn = document.getElementById('generate-qris-btn');
+            
+            if (!amount || amount < 1000) {
+              alert('Pilh atau masukkan nominal donasi');
+              return;
+            }
+
+            btn.disabled = true;
+            btn.innerHTML = '<svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> Generating...';
+
+            try {
+              const response = await fetch('/api/qris/generate?amount=' + amount);
+              const result = await response.json();
+
+              if (result.status === 200) {
+                document.getElementById('donation-options-section').classList.add('hidden');
+                document.getElementById('qris-display-section').classList.remove('hidden');
+                
+                document.getElementById('display-amount').innerText = new Intl.NumberFormat(\'id-ID\', { 
+                  style: \'currency\', 
+                  currency: \'IDR\', 
+                  minimumFractionDigits: 0 
+                }).format(amount);
+                
+                document.getElementById(\'qris-image\').src = result.data.qr_image;
+              } else {
+                alert(\'Gagal generate QRIS: \' + result.message);
+              }
+            } catch (error) {
+              console.error(\'Error:\', error);
+              alert(\'Terjadi kesalahan saat generate QRIS\');
+            } finally {
+              btn.disabled = false;
+              btn.innerHTML = \'Generate QRIS\';
+            }
+          }
+
+          window.resetDonationModal = function() {
+            document.getElementById(\'donation-options-section\').classList.remove(\'hidden\');
+            document.getElementById(\'qris-display-section\').classList.add(\'hidden\');
+            document.getElementById(\'custom-amount\').value = \'\';
+            document.querySelectorAll(\'.preset-btn\').forEach(btn => {
+              btn.classList.remove(\'border-emerald-500\', \'bg-emerald-50\', \'ring-2\', \'ring-emerald-500/20\');
+            });
+          }
+
+          // Close on ESC
+          document.addEventListener(\'keydown\', function(e) {
+            if (e.key === \'Escape\') {
+              window.closeDonationModal();
+            }
+          });
+        ` }} />
       </body>
     </html>
   );
