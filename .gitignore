@@ -47,6 +47,7 @@ jspm_packages/
 web_modules/
 
 # SQLite
+*.db
 *.db-shm
 *.db-wal
 

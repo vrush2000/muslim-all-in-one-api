@@ -7,12 +7,11 @@
   "scripts": {
     "dev": "vite",
     "build:css": "tailwindcss -i ./src/style.css -o ./src/compiled.css --minify",
-    "build": "npm run build:css && esbuild vercel-entry.js --bundle --platform=node --target=node20 --format=esm --outfile=api/index.js --external:better-sqlite3 --external:fs --external:path --external:os --external:url --external:http --external:https --external:stream --external:crypto --external:zlib"
+    "build": "npm run build:css && esbuild vercel-entry.js --bundle --platform=node --target=node20 --format=esm --outfile=api/index.js --minify --sourcemap --external:fs --external:path --external:os --external:url --external:http --external:https --external:stream --external:crypto --external:zlib --external:events --external:util --external:buffer --external:querystring --external:ws --banner:js=\"import { createRequire } from 'module'; const require = createRequire(import.meta.url);\""
   },
   "dependencies": {
     "@hono/node-server": "^1.19.7",
-    "better-sqlite3": "^12.5.0",
-    "crypto": "^1.0.1",
+    "@libsql/client": "^0.15.15",
     "hono": "^4.11.1",
     "qrcode-generator": "^2.0.4"
   },
@@ -22,6 +21,7 @@
     "@tailwindcss/vite": "^4.1.18",
     "@types/node": "^25.0.3",
     "autoprefixer": "^10.4.23",
+    "dotenv": "^17.2.3",
     "esbuild": "^0.27.2",
     "postcss": "^8.5.6",
     "tailwindcss": "^4.1.18",

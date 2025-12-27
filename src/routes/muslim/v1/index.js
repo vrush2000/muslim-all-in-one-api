@@ -18,6 +18,8 @@ import admin from './admin.js';
 import kemenag from './kemenag.js';
 import sejarah from './sejarah.js';
 import tools from './tools.js';
+import analytics from './analytics.js';
+import puasa from './puasa.js';
 
 const v1 = new Hono();
 
@@ -40,6 +42,8 @@ v1.route('/admin', admin);
 v1.route('/kemenag', kemenag);
 v1.route('/sejarah', sejarah);
 v1.route('/tools', tools);
+v1.route('/analytics', analytics);
+v1.route('/puasa', puasa);
 
 v1.get('/', (c) => {
   return c.json({
@@ -79,7 +83,7 @@ v1.get('/', (c) => {
           },
           cari: {
             pattern: "/v1/ayah/find?query={query}",
-            contoh: "/v1/ayah/find?query=alhamdulillah",
+            contoh: "/v1/ayah/find?query=puasa",
           },
         },
         juz: {
@@ -232,6 +236,22 @@ v1.get('/', (c) => {
           contoh: "/v1/sejarah?id=1",
         },
       },
+      puasa: {
+        semua: {
+          pattern: "/v1/puasa",
+        },
+        fiqh: {
+          pattern: "/v1/puasa/fiqh",
+        },
+        cari: {
+          pattern: "/v1/puasa/find?query={query}",
+          contoh: "/v1/puasa/find?query=bidh",
+        },
+        filterTipe: {
+          pattern: "/v1/puasa/type/{type}",
+          contoh: "/v1/puasa/type/mingguan",
+        },
+      },
       kemenag: {
         hariLibur: {
           pattern: "/v1/kemenag/libur?year={year}",
@@ -270,8 +290,12 @@ v1.get('/', (c) => {
           pattern: "/v1/tools/quotes/daily",
         },
         zakat: {
-          pattern: "/v1/tools/zakat?type={type}&amount={amount}",
+          pattern: "/v1/tools/zakat?type={type}&amount={amount}&hargaEmas={hargaEmas}&hargaBeras={hargaBeras}&jumlahOrang={jumlahOrang}",
           contoh: "/v1/tools/zakat?type=maal&amount=100000000",
+        },
+        faraidh: {
+          pattern: "/v1/tools/faraidh?totalHarta={totalHarta}&suami={suami}&istri={istri}&anakLk={anakLk}&anakPr={anakPr}&ayah={ayah}&ibu={ibu}",
+          contoh: "/v1/tools/faraidh?totalHarta=120000000&suami=1&anakLk=1&anakPr=1",
         },
         qibla: {
           pattern: "/v1/tools/qibla?lat={lat}&lng={lng}",
@@ -280,6 +304,15 @@ v1.get('/', (c) => {
         semanticSearch: {
           pattern: "/v1/tools/semantic-search?query={query}",
           contoh: "/v1/tools/semantic-search?query=sabar",
+        },
+      },
+      analytics: {
+        global: {
+          pattern: "/v1/analytics",
+        },
+        laporKhatam: {
+          pattern: "/v1/analytics/khatam",
+          method: "POST",
         },
       },
       integrity: {
@@ -297,6 +330,5 @@ v1.get('/', (c) => {
     }
   });
 });
-// });
 
 export default v1;

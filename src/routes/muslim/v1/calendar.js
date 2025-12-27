@@ -1,12 +1,16 @@
 import { Hono } from 'hono';
-import { query as dbQuery } from '../../../database/config.js';
+import { getCalendarMonths, getCalendarDays } from '../../../utils/jsonHandler.js';
 
 const calendar = new Hono();
 
-// Helper to get calendar data from DB
+// Helper to get calendar data from JSON
 const getCalendarData = async () => {
-  const months = await dbQuery("SELECT type, month_index, name FROM calendar_months");
-  const days = await dbQuery("SELECT type, day_index, name FROM calendar_days");
+  const months = await getCalendarMonths();
+  const days = await getCalendarDays();
+
+  if (!months || !days) {
+    throw new Error('Data kalender tidak tersedia.');
+  }
 
   return {
     islamicMonths: months.filter(m => m.type === 'islamic').sort((a, b) => a.month_index - b.month_index).map(m => m.name),

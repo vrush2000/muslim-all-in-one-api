@@ -3,20 +3,20 @@ import { jsx } from 'hono/jsx'
 
 export const Playground = ({ baseUrl }) => {
   return (
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="px-4 py-12 mx-auto max-w-7xl sm:px-6 lg:px-8">
       <div class="mb-12">
-        <h1 class="text-4xl font-extrabold text-slate-900 tracking-tight mb-4">API Playground</h1>
+        <h1 class="mb-4 text-4xl font-extrabold tracking-tight text-slate-900">API Playground</h1>
         <p class="text-lg text-slate-600">
           Uji coba API secara interaktif. Pilih endpoint, masukkan parameter, dan lihat hasilnya secara langsung.
         </p>
       </div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
         {/* Request Panel */}
         <div class="space-y-6">
-          <div class="bg-white rounded-3xl border border-slate-200 p-8 shadow-sm">
-            <h3 class="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <div class="p-8 bg-white rounded-3xl border shadow-sm border-slate-200">
+            <h3 class="flex gap-2 items-center mb-6 text-xl font-bold text-slate-900">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
               </svg>
               Konfigurasi Request
@@ -24,10 +24,10 @@ export const Playground = ({ baseUrl }) => {
 
             <div class="space-y-4">
               <div>
-                <label class="block text-sm font-semibold text-slate-700 mb-2">Pilih Kategori</label>
+                <label class="block mb-2 text-sm font-semibold text-slate-700">Pilih Kategori</label>
                 <select 
                   id="category-select"
-                  class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition-all cursor-pointer"
+                  class="px-4 py-3 w-full rounded-xl border transition-all cursor-pointer bg-slate-50 border-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500"
                   onchange="window.updateEndpoints(this.value)"
                 >
                   <option value="quran">Al-Quran Indonesia</option>
@@ -36,26 +36,28 @@ export const Playground = ({ baseUrl }) => {
                   <option value="murottal">Murottal Audio</option>
                   <option value="kemenag">Kemenag Open Data</option>
                   <option value="sejarah">Sejarah Islam</option>
+                  <option value="puasa">Puasa & Fiqh</option>
                   <option value="tools">Tools & Fitur Cerdas</option>
-                  <option value="integrity">Integrity & Blockchain</option>
+                  <option value="integrity">Integrity Chain</option>
+                  <option value="analytics">Spiritual Analytics</option>
                   <option value="other">Lainnya (Asmaul Husna, Doa, dll)</option>
                 </select>
               </div>
 
               <div>
-                <label class="block text-sm font-semibold text-slate-700 mb-2">Endpoint</label>
+                <label class="block mb-2 text-sm font-semibold text-slate-700">Endpoint</label>
                 <select 
                   id="endpoint-select"
-                  class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition-all cursor-pointer font-mono text-sm"
+                  class="px-4 py-3 w-full font-mono text-sm rounded-xl border transition-all cursor-pointer bg-slate-50 border-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500"
                   onchange="window.updateParams(this.value)"
                 >
                   {/* Options populated by JS */}
                 </select>
               </div>
 
-              <div id="params-container" class="space-y-4 pt-4 border-t border-slate-100 hidden">
+              <div id="params-container" class="hidden pt-4 space-y-4 border-t border-slate-100">
                 <label class="block text-sm font-semibold text-slate-700">Parameter</label>
-                <div id="params-fields" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div id="params-fields" class="grid grid-cols-1 gap-4 md:grid-cols-2">
                   {/* Fields populated by JS */}
                 </div>
               </div>
@@ -64,10 +66,10 @@ export const Playground = ({ baseUrl }) => {
                 <button 
                   id="send-request"
                   onclick="window.sendRequest()"
-                  class="w-full py-4 bg-emerald-600 text-white rounded-2xl font-bold text-lg hover:bg-emerald-700 transition-all shadow-xl shadow-emerald-200 flex items-center justify-center gap-2 group"
+                  class="flex gap-2 justify-center items-center py-4 w-full text-lg font-bold text-white bg-emerald-600 rounded-2xl shadow-xl transition-all hover:bg-emerald-700 shadow-emerald-200 group"
                 >
                   Kirim Request
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7-7 7" />
                   </svg>
                 </button>
@@ -75,14 +77,14 @@ export const Playground = ({ baseUrl }) => {
             </div>
           </div>
 
-          <div class="bg-emerald-50 rounded-2xl p-6 border border-emerald-100">
-            <h4 class="font-bold text-emerald-800 mb-2 flex items-center gap-2">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <div class="p-6 bg-emerald-50 rounded-2xl border border-emerald-100">
+            <h4 class="flex gap-2 items-center mb-2 font-bold text-emerald-800">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
               Tips
             </h4>
-            <p class="text-sm text-emerald-700 leading-relaxed">
+            <p class="text-sm leading-relaxed text-emerald-700">
               Gunakan playground ini untuk memahami struktur response JSON sebelum mengimplementasikannya di aplikasi Anda. Base URL yang digunakan adalah <code class="font-bold">{baseUrl}</code>.
             </p>
           </div>
@@ -90,15 +92,15 @@ export const Playground = ({ baseUrl }) => {
 
         {/* Response Panel */}
         <div class="flex flex-col h-full lg:max-h-[700px]">
-          <div class="bg-slate-900 rounded-3xl shadow-2xl flex-grow overflow-hidden flex flex-col h-full">
-            <div class="px-6 py-4 bg-slate-800 border-b border-slate-700 flex justify-between items-center shrink-0">
-              <div class="flex items-center gap-3">
+          <div class="flex overflow-hidden flex-col flex-grow h-full rounded-3xl shadow-2xl bg-slate-900">
+            <div class="flex justify-between items-center px-6 py-4 border-b bg-slate-800 border-slate-700 shrink-0">
+              <div class="flex gap-3 items-center">
                 <div class="flex gap-1.5">
-                  <div class="w-3 h-3 rounded-full bg-rose-500"></div>
-                  <div class="w-3 h-3 rounded-full bg-amber-500"></div>
-                  <div class="w-3 h-3 rounded-full bg-emerald-500"></div>
+                  <div class="w-3 h-3 bg-rose-500 rounded-full"></div>
+                  <div class="w-3 h-3 bg-amber-500 rounded-full"></div>
+                  <div class="w-3 h-3 bg-emerald-500 rounded-full"></div>
                 </div>
-                <span class="text-xs font-bold text-slate-400 uppercase tracking-widest ml-2">JSON Response</span>
+                <span class="ml-2 text-xs font-bold tracking-widest uppercase text-slate-400">JSON Response</span>
               </div>
               <div id="status-badge" class="hidden">
                 <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
@@ -106,14 +108,14 @@ export const Playground = ({ baseUrl }) => {
                 </span>
               </div>
             </div>
-            <div class="flex-grow overflow-hidden relative custom-scrollbar flex flex-col">
-              <div id="loader" class="absolute inset-0 bg-slate-900/80 backdrop-blur-sm flex items-center justify-center hidden z-10">
-                <div class="flex flex-col items-center gap-4">
-                  <div class="w-10 h-10 border-4 border-emerald-500/20 border-t-emerald-500 rounded-full animate-spin"></div>
-                  <span class="text-emerald-500 font-medium animate-pulse">Memuat data...</span>
+            <div class="flex overflow-hidden relative flex-col flex-grow custom-scrollbar">
+              <div id="loader" class="flex hidden absolute inset-0 z-10 justify-center items-center backdrop-blur-sm bg-slate-900/80">
+                <div class="flex flex-col gap-4 items-center">
+                  <div class="w-10 h-10 rounded-full border-4 animate-spin border-emerald-500/20 border-t-emerald-500"></div>
+                  <span class="font-medium text-emerald-500 animate-pulse">Memuat data...</span>
                 </div>
               </div>
-              <div id="json-viewer-container" class="flex-grow h-full w-full"></div>
+              <div id="json-viewer-container" class="flex-grow w-full h-full"></div>
             </div>
             <div class="px-6 py-3 bg-slate-800 border-t border-slate-700 flex justify-between items-center text-[10px] text-slate-500 font-mono shrink-0">
               <span id="response-time">Time: 0ms</span>
@@ -217,7 +219,7 @@ export const Playground = ({ baseUrl }) => {
             { id: 'ayah-juz', path: '/ayah/juz', name: 'Ayat by Juz', params: [{ name: 'juzId', placeholder: '1-30', type: 'number', default: '30', hint: 'Nomor Juz (1-30)' }] },
             { id: 'ayah-page', path: '/ayah/page', name: 'Ayat by Halaman', params: [{ name: 'page', placeholder: '1-604', type: 'number', default: '604', hint: 'Halaman Al-Quran (1-604)' }] },
             { id: 'ayah-range', path: '/ayah/range', name: 'Range Ayat', params: [{ name: 'surahId', placeholder: '1', type: 'number', default: '1' }, { name: 'start', placeholder: '1', type: 'number', default: '1' }, { name: 'end', placeholder: '7', type: 'number', default: '7' }] },
-            { id: 'ayah-find', path: '/ayah/find', name: 'Cari Ayat (Query)', params: [{ name: 'query', placeholder: 'alhamdulillah', type: 'text', default: 'alhamdulillah', hint: 'Kata kunci pencarian' }] },
+            { id: 'ayah-find', path: '/ayah/find', name: 'Cari Ayat (Query)', params: [{ name: 'query', placeholder: 'puasa', type: 'text', default: 'puasa', hint: 'Kata kunci pencarian' }] },
             { id: 'juz-list', path: '/juz', name: 'Daftar Juz', params: [] },
             { id: 'juz-detail', path: '/juz', name: 'Detail Juz', params: [{ name: 'juzId', placeholder: '1-30', type: 'number', default: '30', hint: 'Nomor Juz (1-30)' }] },
             { id: 'theme-list', path: '/theme', name: 'Daftar Tema', params: [] },
@@ -297,12 +299,35 @@ export const Playground = ({ baseUrl }) => {
             { id: 'sejarah-today', path: '/sejarah/today', name: 'Peristiwa Hari Ini', params: [] },
             { id: 'sejarah-detail', path: '/sejarah/detail', name: 'Detail Sejarah', params: [{ name: 'id', type: 'number', default: '1', placeholder: '1' }] },
           ],
+          puasa: [
+            { id: 'puasa-all', path: '/puasa', name: 'Daftar Puasa (Wajib & Sunnah)', params: [] },
+            { id: 'puasa-fiqh', path: '/puasa/fiqh', name: 'Fiqh & Adab Puasa (70 Masalah)', params: [] },
+            { id: 'puasa-find', path: '/puasa/find', name: 'Cari Puasa', params: [{ name: 'query', type: 'text', default: 'bidh', placeholder: 'bidh' }] },
+            { id: 'puasa-type', path: '/puasa/type/mingguan', name: 'Filter by Tipe', params: [
+              { name: 'type', type: 'select', default: 'mingguan', options: [
+                { value: 'mingguan', label: 'Mingguan' },
+                { value: 'bulanan', label: 'Bulanan' },
+                { value: 'tahunan', label: 'Tahunan' }
+              ]}
+            ]},
+          ],
           tools: [
             { id: 'tools-quotes', path: '/tools/quotes/daily', name: 'Daily Quotes', params: [] },
             { id: 'tools-zakat', path: '/tools/zakat', name: 'Kalkulator Zakat', params: [
               { name: 'type', type: 'select', default: 'maal', options: [{value:'maal', label:'Zakat Maal'}, {value:'penghasilan', label:'Zakat Penghasilan'}, {value:'fitrah', label:'Zakat Fitrah'}] },
               { name: 'amount', type: 'number', default: '100000000', hint: 'Jumlah harta/pendapatan' },
-              { name: 'hargaEmas', type: 'number', default: '1200000', hint: 'Harga emas per gram (opsional)' }
+              { name: 'hargaEmas', type: 'number', default: '1200000', hint: 'Harga emas per gram (opsional)' },
+              { name: 'hargaBeras', type: 'number', default: '15000', hint: 'Harga beras per kg (Zakat Fitrah)' },
+              { name: 'jumlahOrang', type: 'number', default: '1', hint: 'Jumlah jiwa (Zakat Fitrah)' }
+            ]},
+            { id: 'tools-faraidh', path: '/tools/faraidh', name: 'Kalkulator Waris (Faraidh)', params: [
+              { name: 'totalHarta', type: 'number', default: '120000000', hint: 'Total harta warisan' },
+              { name: 'suami', type: 'number', default: '1', hint: 'Jumlah suami (0-1)' },
+              { name: 'istri', type: 'number', default: '0', hint: 'Jumlah istri' },
+              { name: 'anakLk', type: 'number', default: '1', hint: 'Jumlah anak laki-laki' },
+              { name: 'anakPr', type: 'number', default: '1', hint: 'Jumlah anak perempuan' },
+              { name: 'ayah', type: 'select', default: 'false', options: [{value:'true', label:'Ada'}, {value:'false', label:'Tidak Ada'}] },
+              { name: 'ibu', type: 'select', default: 'false', options: [{value:'true', label:'Ada'}, {value:'false', label:'Tidak Ada'}] }
             ]},
             { id: 'tools-qibla', path: '/tools/qibla', name: 'Arah Kiblat', params: [{ name: 'lat', type: 'text', default: '-6.1751' }, { name: 'lng', type: 'text', default: '106.8272' }] },
             { id: 'tools-search', path: '/tools/semantic-search', name: 'Pencarian Semantik (AI)', params: [{ name: 'query', type: 'text', default: 'sabar', hint: 'Cari di Quran & Hadits' }] },
@@ -310,6 +335,10 @@ export const Playground = ({ baseUrl }) => {
           integrity: [
             { id: 'integrity-chain', path: '/integrity/chain', name: 'Integrity Chain', params: [] },
             { id: 'integrity-verify', path: '/integrity/verify/ayah', name: 'Verifikasi Ayah', params: [{ name: 'surahId', placeholder: '1', type: 'number', default: '1' }, { name: 'ayahId', placeholder: '1', type: 'number', default: '1' }] },
+          ],
+          analytics: [
+            { id: 'analytics-global', path: '/analytics', name: 'Global Spiritual Analytics', params: [] },
+            { id: 'analytics-khatam', path: '/analytics/khatam', name: 'Lapor Khatam (Post)', params: [], method: 'POST' },
           ],
           other: [
             { id: 'asma-list', path: '/asma', name: 'Semua Asmaul Husna', params: [] },
@@ -353,11 +382,11 @@ export const Playground = ({ baseUrl }) => {
                 return '<div class="space-y-1">' +
                     '<label class="block text-[10px] font-bold text-slate-500 uppercase tracking-wider">' + param.name + '</label>' +
                     '<div class="relative">' +
-                      '<select name="' + param.name + '" class="w-full bg-white border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition-all appearance-none cursor-pointer pr-8">' +
+                      '<select name="' + param.name + '" class="px-3 py-2 pr-8 w-full text-sm bg-white rounded-lg border transition-all appearance-none cursor-pointer border-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500">' +
                         optionsHtml +
                       '</select>' +
-                      '<div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none text-slate-400">' +
-                        '<svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>' +
+                      '<div class="flex absolute inset-y-0 right-0 items-center px-2 pointer-events-none text-slate-400">' +
+                        '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>' +
                       '</div>' +
                     '</div>' +
                     (param.hint ? '<p class="text-[10px] text-slate-400 italic leading-tight">' + param.hint + '</p>' : '') +
@@ -365,7 +394,7 @@ export const Playground = ({ baseUrl }) => {
               }
               return '<div class="space-y-1">' +
                   '<label class="block text-[10px] font-bold text-slate-500 uppercase tracking-wider">' + param.name + '</label>' +
-                  '<input type="' + param.type + '" name="' + param.name + '" value="' + (param.default || '') + '" placeholder="' + param.placeholder + '" class="w-full bg-white border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition-all" />' +
+                  '<input type="' + param.type + '" name="' + param.name + '" value="' + (param.default || '') + '" placeholder="' + param.placeholder + '" class="px-3 py-2 w-full text-sm bg-white rounded-lg border transition-all border-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500" />' +
                   (param.hint ? '<p class="text-[10px] text-slate-400 italic leading-tight">' + param.hint + '</p>' : '') +
                 '</div>';
             }).join('');
@@ -400,7 +429,14 @@ export const Playground = ({ baseUrl }) => {
             const queryString = queryParams.toString();
             const fullUrl = \`\${window.location.origin}/v1\${path}\${queryString ? '?' + queryString : ''}\`;
             
-            const response = await fetch(fullUrl);
+            const fetchOptions = {
+              method: currentEndpoint.method || 'GET',
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            };
+            
+            const response = await fetch(fullUrl, fetchOptions);
             const data = await response.json();
             const endTime = performance.now();
 

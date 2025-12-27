@@ -1,0 +1,218 @@
+[
+  {
+    "id": 1,
+    "type": "islamic",
+    "month_index": 1,
+    "name": "Muharram"
+  },
+  {
+    "id": 2,
+    "type": "islamic",
+    "month_index": 2,
+    "name": "Safar"
+  },
+  {
+    "id": 3,
+    "type": "islamic",
+    "month_index": 3,
+    "name": "Rabi' al-awwal"
+  },
+  {
+    "id": 4,
+    "type": "islamic",
+    "month_index": 4,
+    "name": "Rabi' al-thani"
+  },
+  {
+    "id": 5,
+    "type": "islamic",
+    "month_index": 5,
+    "name": "Jumada al-ula"
+  },
+  {
+    "id": 6,
+    "type": "islamic",
+    "month_index": 6,
+    "name": "Jumada al-akhira"
+  },
+  {
+    "id": 7,
+    "type": "islamic",
+    "month_index": 7,
+    "name": "Rajab"
+  },
+  {
+    "id": 8,
+    "type": "islamic",
+    "month_index": 8,
+    "name": "Sha'ban"
+  },
+  {
+    "id": 9,
+    "type": "islamic",
+    "month_index": 9,
+    "name": "Ramadan"
+  },
+  {
+    "id": 10,
+    "type": "islamic",
+    "month_index": 10,
+    "name": "Shawwal"
+  },
+  {
+    "id": 11,
+    "type": "islamic",
+    "month_index": 11,
+    "name": "Dhu al-Qi'dah"
+  },
+  {
+    "id": 12,
+    "type": "islamic",
+    "month_index": 12,
+    "name": "Dhu al-Hijjah"
+  },
+  {
+    "id": 13,
+    "type": "jawa",
+    "month_index": 1,
+    "name": "Sura"
+  },
+  {
+    "id": 14,
+    "type": "jawa",
+    "month_index": 2,
+    "name": "Sapar"
+  },
+  {
+    "id": 15,
+    "type": "jawa",
+    "month_index": 3,
+    "name": "Mulud"
+  },
+  {
+    "id": 16,
+    "type": "jawa",
+    "month_index": 4,
+    "name": "Bakda Mulud"
+  },
+  {
+    "id": 17,
+    "type": "jawa",
+    "month_index": 5,
+    "name": "Jumadil Awal"
+  },
+  {
+    "id": 18,
+    "type": "jawa",
+    "month_index": 6,
+    "name": "Jumadil Akhir"
+  },
+  {
+    "id": 19,
+    "type": "jawa",
+    "month_index": 7,
+    "name": "Rejeb"
+  },
+  {
+    "id": 20,
+    "type": "jawa",
+    "month_index": 8,
+    "name": "Ruwah"
+  },
+  {
+    "id": 21,
+    "type": "jawa",
+    "month_index": 9,
+    "name": "Pasa"
+  },
+  {
+    "id": 22,
+    "type": "jawa",
+    "month_index": 10,
+    "name": "Sawal"
+  },
+  {
+    "id": 23,
+    "type": "jawa",
+    "month_index": 11,
+    "name": "Sela"
+  },
+  {
+    "id": 24,
+    "type": "jawa",
+    "month_index": 12,
+    "name": "Besar"
+  },
+  {
+    "id": 25,
+    "type": "gregorian",
+    "month_index": 1,
+    "name": "Januari"
+  },
+  {
+    "id": 26,
+    "type": "gregorian",
+    "month_index": 2,
+    "name": "Februari"
+  },
+  {
+    "id": 27,
+    "type": "gregorian",
+    "month_index": 3,
+    "name": "Maret"
+  },
+  {
+    "id": 28,
+    "type": "gregorian",
+    "month_index": 4,
+    "name": "April"
+  },
+  {
+    "id": 29,
+    "type": "gregorian",
+    "month_index": 5,
+    "name": "Mei"
+  },
+  {
+    "id": 30,
+    "type": "gregorian",
+    "month_index": 6,
+    "name": "Juni"
+  },
+  {
+    "id": 31,
+    "type": "gregorian",
+    "month_index": 7,
+    "name": "Juli"
+  },
+  {
+    "id": 32,
+    "type": "gregorian",
+    "month_index": 8,
+    "name": "Agustus"
+  },
+  {
+    "id": 33,
+    "type": "gregorian",
+    "month_index": 9,
+    "name": "September"
+  },
+  {
+    "id": 34,
+    "type": "gregorian",
+    "month_index": 10,
+    "name": "Oktober"
+  },
+  {
+    "id": 35,
+    "type": "gregorian",
+    "month_index": 11,
+    "name": "November"
+  },
+  {
+    "id": 36,
+    "type": "gregorian",
+    "month_index": 12,
+    "name": "Desember"
+  }
+]

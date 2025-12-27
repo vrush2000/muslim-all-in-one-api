@@ -1,5 +1,5 @@
 import { Hono } from 'hono';
-import { query as dbQuery, get as dbGet } from '../../../database/config.js';
+import { getSejarah } from '../../../utils/jsonHandler.js';
 
 const sejarah = new Hono();
 
@@ -7,15 +7,14 @@ const sejarah = new Hono();
 sejarah.get('/', async (c) => {
   try {
     const kategori = c.req.query('kategori');
-    let sql = "SELECT * FROM sejarah";
-    let params = [];
+    const allSejarah = await getSejarah();
+    if (!allSejarah) return c.json({ status: false, message: 'Daftar sejarah tidak tersedia.', data: [] }, 404);
 
+    let data = allSejarah;
     if (kategori) {
-      sql += " WHERE kategori LIKE ?";
-      params.push(`%${kategori}%`);
+      const kategoriLower = kategori.toLowerCase();
+      data = allSejarah.filter(s => s.kategori && s.kategori.toLowerCase().includes(kategoriLower));
     }
-
-    const data = await dbQuery(sql, params);
 
     return c.json({
       status: true,
@@ -33,9 +32,13 @@ sejarah.get('/detail', async (c) => {
     const id = c.req.query('id');
     if (!id) return c.json({ status: false, message: 'Parameter id diperlukan.' }, 400);
 
-    const item = await dbGet("SELECT * FROM sejarah WHERE id = ?", [id]);
+    const allSejarah = await getSejarah();
+    if (!allSejarah) return c.json({ status: false, message: 'Daftar sejarah tidak tersedia.', data: {} }, 404);
+
+    // Cari dengan ID sebagai string atau number
+    const item = allSejarah.find(s => s.id == id || (s.id && s.id.toString() === id.toString()));
     
-    if (!item) return c.json({ status: false, message: 'Data sejarah tidak ditemukan.', data: {} }, 404);
+    if (!item) return c.json({ status: false, message: `Data sejarah dengan ID ${id} tidak ditemukan.`, data: {} }, 404);
     
     return c.json({ status: true, message: 'Berhasil mendapatkan detail sejarah.', data: item });
   } catch (error) {
@@ -53,20 +56,38 @@ sejarah.get('/today', async (c) => {
     ];
     const month = monthNames[today.getMonth()];
     
-    // Cari peristiwa yang mengandung tanggal atau bulan hari ini di kolom 'tahun'
-    // Contoh: "17 Ramadhan", "12 Rabiul Awwal", "632 M", dll.
-    // Karena format tahun kita beragam, kita gunakan LIKE
-    const data = await dbQuery(`
-      SELECT * FROM sejarah 
-      WHERE tahun LIKE ? OR tahun LIKE ? OR deskripsi LIKE ?
-      LIMIT 10
-    `, [`%${day} ${month}%`, `%${month}%`, `%${day} ${month}%`]);
+    const allSejarah = await getSejarah();
+    if (!allSejarah) return c.json({ status: false, message: 'Daftar sejarah tidak tersedia.', data: [] }, 404);
+
+    const searchStr = `${day} ${month}`;
+    const searchMonth = month;
+    
+    // Perbaikan logika filter: pastikan pencarian lebih akurat
+    const data = allSejarah.filter(s => {
+      const deskripsiLower = (s.deskripsi || '').toLowerCase();
+      const tahunLower = (s.tahun || '').toLowerCase();
+      const searchStrLower = searchStr.toLowerCase();
+      const monthLower = searchMonth.toLowerCase();
+
+      return tahunLower.includes(searchStrLower) || 
+             tahunLower.includes(monthLower) || 
+             deskripsiLower.includes(searchStrLower);
+    });
+
+    // Jika data kosong, coba cari berdasarkan bulan saja sebagai fallback
+    let finalData = data;
+    if (finalData.length === 0) {
+      finalData = allSejarah.filter(s => 
+        (s.tahun && s.tahun.toLowerCase().includes(month.toLowerCase())) ||
+        (s.deskripsi && s.deskripsi.toLowerCase().includes(month.toLowerCase()))
+      );
+    }
 
     return c.json({
       status: true,
       message: `Berhasil mendapatkan peristiwa sejarah untuk hari ini (${day} ${month}).`,
       data: {
-        events: data,
+        events: finalData.slice(0, 10),
         today: `${day} ${month}`
       }
     });

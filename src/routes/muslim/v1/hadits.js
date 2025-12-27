@@ -1,126 +1,251 @@
 import { Hono } from 'hono';
-import { get, query as dbQuery } from '../../../database/config.js';
-import { API_CONFIG } from '../../../config.js';
+import { getHaditsArbain, getLocalHadits } from '../../../utils/jsonHandler.js';
 
 const hadits = new Hono();
 
-const GADING_API_BASE = API_CONFIG.HADITS.GADING;
+// Mapping ID buku ke file lokal
+const bookFileMapping = {
+  'bukhari': 'bukhari',
+  'muslim': 'muslim',
+  'abu-daud': 'abu-daud',
+  'abudawud': 'abu-daud',
+  'ibnu-majah': 'ibnu-majah',
+  'ibnmajah': 'ibnu-majah',
+  'tirmidzi': 'tirmidzi',
+  'tirmidhi': 'tirmidzi',
+  'ahmad': 'ahmad',
+  'darimi': 'darimi',
+  'malik': 'malik',
+  'nasai': 'nasai'
+};
+
+const bookDisplayNames = {
+  'bukhari': 'Sahih Bukhari',
+  'muslim': 'Sahih Muslim',
+  'abu-daud': 'Sunan Abu Daud',
+  'ibnu-majah': 'Sunan Ibnu Majah',
+  'tirmidzi': 'Sunan Tirmidzi',
+  'ahmad': 'Musnad Ahmad',
+  'darimi': 'Sunan Darimi',
+  'malik': 'Muwatha Malik',
+  'nasai': 'Sunan Nasai'
+};
 
 // Hadits Arbain (Existing)
 hadits.get('/', async (c) => {
   try {
     const nomor = c.req.query('nomor');
+    const allArbain = await getHaditsArbain();
+    if (!allArbain) return c.json({ status: false, message: 'Daftar hadits tidak tersedia.', data: [] }, 404);
+
     if (nomor != null) {
-      const data = await get("SELECT * FROM hadits WHERE no = ?", [nomor]);
+      const data = allArbain.find(h => h.no == nomor);
       if (!data) {
         return c.json({ status: false, message: 'Hadits tidak ditemukan.', data: {} }, 404);
       } else {
-        return c.json({ status: true, message: 'Berhasil mendapatkan detail Hadits Arbain.', data: data });
+        return c.json({ status: true, message: 'Berhasil mendapatkan detail Hadits Arbain.', data });
       }
     } else {
-      const data = await dbQuery("SELECT * FROM hadits ORDER BY CAST(no as INTEGER) ASC");
-      return c.json({ status: true, message: 'Berhasil mendapatkan daftar Hadits Arbain.', data: data || [] });
+      const sortedData = [...allArbain].sort((a, b) => parseInt(a.no) - parseInt(b.no));
+      return c.json({ status: true, message: 'Berhasil mendapatkan daftar Hadits Arbain.', data: sortedData });
     }
   } catch (error) {
     return c.json({ status: false, message: 'Gagal mendapatkan data hadits: ' + error.message }, 500);
   }
 });
 
-// List of Hadith Books (from api.hadith.gading.dev)
-hadits.get('/books', async (c) => {
-  try {
-    const response = await fetch(`${GADING_API_BASE}/books`);
-    const data = await response.json();
+// List of Hadith Books (Local)
+hadits.get('/books', (c) => {
+  const books = Object.entries(bookDisplayNames).map(([id, name]) => ({
+    id,
+    name: `HR. ${name.replace('Sahih ', '').replace('Sunan ', '').replace('Musnad ', '').replace('Muwatha ', '')}`,
+    available: 'Lokal (JSON)'
+  }));
 
-    if (!response.ok || (data.code && data.code !== 200)) {
-      return c.json({
-        status: false,
-        message: 'Gagal mengambil daftar kitab hadits dari API sumber.',
-        error: data.message || 'Unknown error'
-      }, response.status || 502);
-    }
-
-    return c.json({
-      status: true,
-      message: 'Berhasil mendapatkan daftar kitab hadits.',
-      data: data.data || data
-    });
-  } catch (error) {
-    return c.json({ status: false, message: 'Gagal mendapatkan daftar kitab hadits: ' + error.message }, 500);
-  }
+  return c.json({
+    status: true,
+    message: "Berhasil mendapatkan seluruh koleksi kitab hadits.",
+    data: [
+      { id: 'arbain', name: 'Hadits Arbain Nawawi', available: 42 },
+      ...books
+    ]
+  });
 });
 
-// Hadiths by Book with Range (from api.hadith.gading.dev)
+// Specific Hadith Book (Local) - List first 50 hadiths
 hadits.get('/books/:name', async (c) => {
   try {
-    const name = c.req.param('name');
-    const range = c.req.query('range');
-    const url = range 
-      ? `${GADING_API_BASE}/books/${name}?range=${range}`
-      : `${GADING_API_BASE}/books/${name}`;
-    
-    const response = await fetch(url);
-    const data = await response.json();
+    const name = c.req.param('name').toLowerCase();
+    const page = parseInt(c.req.query('page') || 1);
+    const limit = 50;
+    const offset = (page - 1) * limit;
 
-    if (!response.ok || (data.code && data.code !== 200)) {
-      return c.json({
-        status: false,
-        message: `Gagal mengambil daftar hadits dari kitab ${name} dari API sumber.`,
-        error: data.message || 'Unknown error'
-      }, response.status || 502);
+    const targetBookFile = bookFileMapping[name];
+    if (!targetBookFile) {
+      return c.json({ status: false, message: `Kitab ${name} tidak ditemukan.` }, 404);
     }
+
+    const allHadits = await getLocalHadits(targetBookFile);
+    if (!allHadits) {
+      return c.json({ status: false, message: `Gagal memuat data kitab ${name}.` }, 500);
+    }
+
+    const displayName = bookDisplayNames[targetBookFile] || name;
+    const paginatedData = allHadits.slice(offset, offset + limit).map(h => ({
+      number: h.number,
+      arab: h.arab,
+      id: h.id,
+      name: `HR. ${displayName.replace('Sahih ', '').replace('Sunan ', '').replace('Musnad ', '').replace('Muwatha ', '')}`
+    }));
 
     return c.json({
       status: true,
-      message: `Berhasil mendapatkan daftar hadits dari kitab ${name}.`,
-      data: data.data || data
+      message: `Berhasil mendapatkan daftar hadits dari kitab ${displayName} (Halaman ${page}).`,
+      data: {
+        book: displayName,
+        total: allHadits.length,
+        page,
+        limit,
+        hadiths: paginatedData
+      }
     });
   } catch (error) {
-    return c.json({ status: false, message: `Gagal mendapatkan daftar hadits dari kitab ${c.req.param('name')}: ` + error.message }, 500);
+    return c.json({ status: false, message: 'Gagal mendapatkan daftar hadits: ' + error.message }, 500);
   }
 });
 
-// Specific Hadith by Number (from api.hadith.gading.dev)
+// Specific Hadith by Number (Local)
 hadits.get('/books/:name/:number', async (c) => {
   try {
-    const name = c.req.param('name');
-    const number = c.req.param('number');
+    const name = c.req.param('name').toLowerCase();
+    const number = parseInt(c.req.param('number'));
     
-    const response = await fetch(`${GADING_API_BASE}/books/${name}/${number}`);
-    const data = await response.json();
-
-    if (!response.ok || (data.code && data.code !== 200)) {
-      return c.json({
-        status: false,
-        message: `Gagal mengambil detail hadits nomor ${number} dari kitab ${name} dari API sumber.`,
-        error: data.message || 'Unknown error'
-      }, response.status || 502);
+    const targetBookFile = bookFileMapping[name];
+    if (!targetBookFile) {
+      return c.json({ status: false, message: `Kitab ${name} tidak ditemukan.` }, 404);
     }
 
+    const allHadits = await getLocalHadits(targetBookFile);
+    if (!allHadits) {
+      return c.json({ status: false, message: `Gagal memuat data kitab ${name}.` }, 500);
+    }
+
+    const hadith = allHadits.find(h => h.number === number);
+    if (!hadith) {
+      return c.json({ status: false, message: `Hadits nomor ${number} tidak ditemukan di kitab ${name}.` }, 404);
+    }
+
+    const displayName = bookDisplayNames[targetBookFile] || name;
     return c.json({
       status: true,
-      message: `Berhasil mendapatkan detail hadits nomor ${number} dari kitab ${name}.`,
-      data: data.data || data
+      message: `Berhasil mendapatkan detail hadits nomor ${number} dari kitab ${displayName}.`,
+      data: {
+        number: hadith.number,
+        arab: hadith.arab,
+        id: hadith.id, // Bahasa Indonesia
+        name: `HR. ${displayName.replace('Sahih ', '').replace('Sunan ', '').replace('Musnad ', '').replace('Muwatha ', '')}`
+      }
     });
   } catch (error) {
-    return c.json({ status: false, message: `Gagal mendapatkan detail hadits dari kitab ${c.req.param('name')}: ` + error.message }, 500);
+    return c.json({ status: false, message: 'Gagal mendapatkan detail hadits: ' + error.message }, 500);
   }
 });
 
+// Cari Hadits (Query)
 hadits.get('/find', async (c) => {
   try {
     const q = c.req.query('query');
-    if (q != null) {
-      const data = await dbQuery(
-        "SELECT * FROM hadits WHERE judul LIKE ? ORDER BY CAST(no as INTEGER) ASC",
-        [`%${q}%`]
-      );
-      return c.json({ status: true, message: `Berhasil mencari hadits dengan kata kunci: ${q}.`, data: data || [] });
-    } else {
+    const book = c.req.query('book');
+
+    if (!q) {
       return c.json({
         status: false,
-        message: "Parameter diperlukan (query).",
+        message: "Parameter query diperlukan.",
       }, 400);
+    }
+
+    // Opsi B: Hadits Arbain (Data JSON)
+    if (!book || book.toLowerCase() === 'arbain') {
+      const allArbain = await getHaditsArbain();
+      
+      if (!allArbain || allArbain.length === 0) {
+        return c.json({ 
+          status: false, 
+          message: `Daftar hadits Arbain tidak tersedia.`,
+          data: []
+        }, 404);
+      }
+
+      const queryLower = q.toLowerCase();
+      const results = allArbain.filter(r => 
+        (r.judul && r.judul.toLowerCase().includes(queryLower)) || 
+        (r.indo && r.indo.toLowerCase().includes(queryLower))
+      );
+
+      if (results.length === 0) {
+        return c.json({ 
+          status: false, 
+          message: `Tidak ada hadits Arbain yang ditemukan dengan kata kunci: ${q}.`,
+          data: []
+        }, 404);
+      }
+
+      return c.json({ 
+        status: true, 
+        message: `Berhasil mencari hadits Arbain dengan kata kunci: ${q}.`, 
+        data: results.map(r => ({
+          ...r,
+          sumber: `Hadits Arbain No. ${r.no}: ${r.judul}`
+        }))
+      });
+    } 
+    
+    // Opsi A: Hadits dari File JSON Lokal
+    else {
+      const targetBookFile = bookFileMapping[book.toLowerCase()];
+      
+      if (!targetBookFile) {
+        return c.json({
+          status: false,
+          message: `Pencarian untuk buku '${book}' belum didukung. Gunakan: arbain, bukhari, muslim, abu-daud, ibnu-majah, tirmidzi, ahmad, darimi, malik, atau nasai.`
+        }, 400);
+      }
+
+      const allHadits = await getLocalHadits(targetBookFile);
+      if (!allHadits) {
+        return c.json({
+          status: false,
+          message: `Gagal membaca data hadits untuk kitab ${book}.`
+        }, 500);
+      }
+
+      // Cari secara manual di array
+      const searchTerms = q.toLowerCase().split(' ');
+      const results = allHadits.filter(h => {
+        const text = (h.id || '').toLowerCase(); // Field 'id' berisi terjemahan Indo
+        return searchTerms.every(term => text.includes(term));
+      }).slice(0, 50);
+
+      if (results.length === 0) {
+        return c.json({
+          status: false,
+          message: `Tidak ada hadits ditemukan di kitab ${book} dengan kata kunci: ${q}.`,
+          data: []
+        }, 404);
+      }
+
+      const displayName = bookDisplayNames[targetBookFile] || book;
+      return c.json({
+        status: true,
+        message: `Berhasil mencari hadits di kitab ${displayName} dengan kata kunci: ${q}.`,
+        data: results.map(h => ({
+          no: h.number,
+          judul: displayName,
+          arab: h.arab,
+          indo: h.id, // Field 'id' adalah terjemahan Indonesia
+          sumber: `HR. ${displayName.replace('Sahih ', '').replace('Sunan ', '').replace('Musnad ', '').replace('Muwatha ', '')} No. ${h.number}`
+        }))
+      });
     }
   } catch (error) {
     return c.json({ status: false, message: 'Gagal mencari hadits: ' + error.message }, 500);

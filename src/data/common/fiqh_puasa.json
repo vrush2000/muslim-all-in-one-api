@@ -1,0 +1,433 @@
+[
+  {
+    "category": "Definisi & Keutamaan",
+    "source": "IslamQA (70 Matters Related to Fasting)",
+    "points": [
+      {
+        "id": 1,
+        "title": "Pengertian Puasa",
+        "content": "Puasa (ash-Shiyam) secara bahasa berarti menahan diri (al-imsak). Secara syar'i adalah menahan diri dari hal-hal yang membatalkan puasa mulai dari terbit fajar (Shubuh) hingga terbenam matahari (Maghrib) dengan niat ibadah kepada Allah."
+      },
+      {
+        "id": 2,
+        "title": "Keutamaan Puasa",
+        "content": "Puasa adalah ibadah yang pahalanya langsung ditentukan oleh Allah. Bau mulut orang yang berpuasa lebih harum di sisi Allah daripada minyak misk."
+      },
+      {
+        "id": 3,
+        "title": "Perisai dari Neraka",
+        "content": "Puasa adalah perisai (benteng) yang dapat melindungi seorang hamba dari api neraka."
+      },
+      {
+        "id": 4,
+        "title": "Pintu Ar-Rayyan",
+        "content": "Di surga terdapat pintu khusus bernama Ar-Rayyan yang hanya dimasuki oleh orang-orang yang gemar berpuasa."
+      },
+      {
+        "id": 5,
+        "title": "Penghapus Dosa",
+        "content": "Barangsiapa berpuasa Ramadhan dengan iman dan mengharap pahala, maka dosa-dosanya yang telah lalu akan diampuni."
+      }
+    ]
+  },
+  {
+    "category": "Hukum & Niat",
+    "source": "IslamQA (70 Matters Related to Fasting)",
+    "points": [
+      {
+        "id": 6,
+        "title": "Hukum Puasa Ramadhan",
+        "content": "Puasa Ramadhan adalah wajib bagi setiap Muslim yang baligh, berakal, sehat, dan mukim (tidak sedang safar)."
+      },
+      {
+        "id": 7,
+        "title": "Niat di Malam Hari",
+        "content": "Untuk puasa wajib (Ramadhan), niat harus dilakukan di malam hari sebelum fajar menyingsing. Untuk puasa sunnah, niat boleh dilakukan di siang hari selama belum makan/minum."
+      },
+      {
+        "id": 8,
+        "title": "Niat dalam Hati",
+        "content": "Tempat niat adalah di dalam hati. Melafadzkan niat tidak disyaratkan, yang penting adalah kesadaran hati untuk berpuasa esok hari."
+      },
+      {
+        "id": 9,
+        "title": "Satu Niat untuk Sebulan",
+        "content": "Sebagian ulama membolehkan satu niat di awal Ramadhan untuk sebulan penuh, namun lebih utama memperbaharui niat setiap malam."
+      }
+    ]
+  },
+  {
+    "category": "Hal-hal yang Membatalkan Puasa",
+    "source": "IslamQA (70 Matters Related to Fasting)",
+    "points": [
+      {
+        "id": 10,
+        "title": "Makan dan Minum dengan Sengaja",
+        "content": "Makan atau minum dengan sengaja membatalkan puasa. Jika lupa, maka puasanya tetap sah dan harus segera berhenti saat ingat."
+      },
+      {
+        "id": 11,
+        "title": "Hubungan Suami Istri",
+        "content": "Melakukan hubungan suami istri di siang hari Ramadhan membatalkan puasa dan mewajibkan kafarah berat (memerdekakan budak, atau puasa 2 bulan berturut-turut, atau memberi makan 60 fakir miskin)."
+      },
+      {
+        "id": 12,
+        "title": "Muntah dengan Sengaja",
+        "content": "Mengusahakan muntah dengan sengaja membatalkan puasa. Jika muntah terjadi secara tidak sengaja, puasa tetap sah."
+      },
+      {
+        "id": 13,
+        "title": "Haid dan Nifas",
+        "content": "Keluarnya darah haid atau nifas, meskipun sesaat sebelum matahari terbenam, membatalkan puasa hari tersebut."
+      },
+      {
+        "id": 14,
+        "title": "Mengeluarkan Mani dengan Sengaja",
+        "content": "Mengeluarkan mani dengan sengaja (onani atau bercumbu) membatalkan puasa. Mimpi basah tidak membatalkan puasa."
+      },
+      {
+        "id": 15,
+        "title": "Suntikan Nutrisi",
+        "content": "Suntikan yang berfungsi sebagai nutrisi atau pengganti makanan/minuman membatalkan puasa. Suntikan pengobatan biasa (tidak mengenyangkan) tidak membatalkan."
+      },
+      {
+        "id": 16,
+        "title": "Bekam (Hijamah)",
+        "content": "Terdapat perbedaan pendapat ulama, namun pendapat yang lebih kuat adalah bekam dapat melemahkan orang yang berpuasa sehingga sebaiknya dihindari."
+      }
+    ]
+  },
+  {
+    "category": "Keringanan (Rukhshah)",
+    "source": "IslamQA (70 Matters Related to Fasting)",
+    "points": [
+      {
+        "id": 17,
+        "title": "Orang Sakit",
+        "content": "Orang sakit yang merasa berat untuk berpuasa atau puasanya dapat memperparah sakitnya dibolehkan tidak berpuasa dan menggantinya di hari lain."
+      },
+      {
+        "id": 18,
+        "title": "Musafir (Orang dalam Perjalanan)",
+        "content": "Musafir dibolehkan tidak berpuasa jika perjalanannya mencapai jarak qashar (sekitar 80km) dan bukan perjalanan maksiat."
+      },
+      {
+        "id": 19,
+        "title": "Lanjut Usia",
+        "content": "Orang tua yang sudah tidak mampu berpuasa tidak wajib berpuasa dan wajib membayar fidyah (memberi makan satu orang miskin untuk setiap hari yang ditinggalkan)."
+      },
+      {
+        "id": 20,
+        "title": "Wanita Hamil dan Menyusui",
+        "content": "Jika khawatir akan kesehatan diri atau bayinya, wanita hamil/menyusui boleh tidak berpuasa dan menggantinya (qadha) di kemudian hari."
+      }
+    ]
+  },
+  {
+    "category": "Hal-hal yang Dibolehkan",
+    "points": [
+      {
+        "id": 21,
+        "title": "Mandi dan Menyiram Air ke Kepala",
+        "content": "Boleh mandi atau menyiramkan air ke kepala untuk mendinginkan tubuh dari cuaca panas."
+      },
+      {
+        "id": 22,
+        "title": "Berkumur dan Istinsyaq",
+        "content": "Boleh berkumur-kumur dan menghirup air ke hidung (saat wudhu) asalkan tidak berlebihan."
+      },
+      {
+        "id": 23,
+        "title": "Menggunakan Siwak atau Sikat Gigi",
+        "content": "Bersiwak atau menyikat gigi dibolehkan, namun harus berhati-hati agar tidak ada pasta gigi yang tertelan."
+      },
+      {
+        "id": 24,
+        "title": "Mencicipi Makanan",
+        "content": "Mencicipi makanan bagi juru masak dibolehkan asalkan hanya di ujung lidah dan tidak sampai tertelan ke tenggorokan."
+      },
+      {
+        "id": 25,
+        "title": "Menggunakan Celak atau Tetes Mata",
+        "content": "Menggunakan celak, tetes mata, atau tetes telinga dibolehkan dan tidak membatalkan puasa menurut pendapat yang lebih kuat."
+      },
+      {
+        "id": 26,
+        "title": "Menelan Ludah",
+        "content": "Menelan ludah sendiri tidak membatalkan puasa karena hal itu sulit dihindari."
+      }
+    ]
+  },
+  {
+    "category": "Adab & Sunnah Puasa",
+    "source": "IslamQA (70 Matters Related to Fasting)",
+    "points": [
+      {
+        "id": 27,
+        "title": "Makan Sahur",
+        "content": "Sangat dianjurkan untuk makan sahur karena di dalamnya terdapat keberkahan, meskipun hanya dengan seteguk air."
+      },
+      {
+        "id": 28,
+        "title": "Mengakhirkan Sahur",
+        "content": "Sunnah hukumnya mengakhirkan makan sahur hingga mendekati waktu fajar (Shubuh)."
+      },
+      {
+        "id": 29,
+        "title": "Menyegerakan Berbuka",
+        "content": "Disunnahkan untuk segera berbuka ketika waktu Maghrib telah tiba (matahari terbenam)."
+      },
+      {
+        "id": 30,
+        "title": "Berbuka dengan Kurma atau Air",
+        "content": "Sunnah berbuka dengan ruthab (kurma basah), jika tidak ada maka tamr (kurma kering), jika tidak ada maka air putih."
+      },
+      {
+        "id": 31,
+        "title": "Berdoa saat Berbuka",
+        "content": "Waktu berbuka adalah salah satu waktu mustajab untuk berdoa. Doa yang masyhur: 'Dzahabazh zhama'u wabtallatil 'uruuqu wa tsabatal ajru insya Allah'."
+      },
+      {
+        "id": 32,
+        "title": "Meninggalkan Perkataan Buruk",
+        "content": "Orang yang berpuasa harus menjauhi dusta, ghibah (gunjingan), dan perkataan kotor agar pahala puasanya tidak hilang."
+      },
+      {
+        "id": 33,
+        "title": "Memperbanyak Sedekah dan Al-Qur'an",
+        "content": "Sunnah memperbanyak kedermawanan dan membaca Al-Qur'an selama bulan Ramadhan sebagaimana teladan Rasulullah SAW."
+      }
+    ]
+  },
+  {
+    "category": "Masalah Kontemporer",
+    "points": [
+      {
+        "id": 34,
+        "title": "Penggunaan Inhaler",
+        "content": "Penggunaan inhaler bagi penderita asma dibolehkan karena uap tersebut menuju ke paru-paru, bukan ke lambung."
+      },
+      {
+        "id": 35,
+        "title": "Pasta Gigi dan Mouthwash",
+        "content": "Boleh digunakan asalkan tidak tertelan. Namun lebih utama menggunakan siwak atau menyikat gigi sebelum waktu imsak."
+      },
+      {
+        "id": 36,
+        "title": "Donor Darah",
+        "content": "Donor darah dibolehkan selama tidak membuat tubuh menjadi sangat lemas yang mengharuskan berbuka."
+      },
+      {
+        "id": 37,
+        "title": "Obat Kumur",
+        "content": "Obat kumur diperbolehkan selama tidak ada yang tertelan."
+      }
+    ]
+  },
+  {
+    "category": "Akhir Ramadhan",
+    "points": [
+      {
+        "id": 38,
+        "title": "I'tikaf",
+        "content": "Berdiam diri di masjid dengan niat ibadah, khususnya pada 10 hari terakhir Ramadhan untuk mencari Lailatul Qadar."
+      },
+      {
+        "id": 39,
+        "title": "Lailatul Qadar",
+        "content": "Malam yang lebih baik dari seribu bulan, dianjurkan untuk memperbanyak ibadah pada malam-malam ganjil di akhir Ramadhan."
+      },
+      {
+        "id": 40,
+        "title": "Zakat Fitrah",
+        "content": "Kewajiban bagi setiap Muslim untuk mensucikan diri dan membantu fakir miskin di akhir Ramadhan sebelum shalat Idul Fitri."
+      }
+    ]
+  },
+  {
+    "category": "Qadha & Fidyah",
+    "source": "IslamQA (70 Matters Related to Fasting)",
+    "points": [
+      {
+        "id": 41,
+        "title": "Kewajiban Qadha",
+        "content": "Wajib mengganti (qadha) puasa yang ditinggalkan karena udzur syar'i sebanyak jumlah hari yang ditinggalkan."
+      },
+      {
+        "id": 42,
+        "title": "Waktu Pelaksanaan Qadha",
+        "content": "Qadha boleh dilakukan kapan saja sepanjang tahun, kecuali pada hari-hari yang diharamkan, sebelum datang Ramadhan berikutnya."
+      },
+      {
+        "id": 43,
+        "title": "Qadha Tidak Harus Berurutan",
+        "content": "Pelaksanaan qadha puasa tidak wajib dilakukan secara berturut-turut, boleh dilakukan secara terpisah."
+      },
+      {
+        "id": 44,
+        "title": "Fidyah bagi Sakit Menahun",
+        "content": "Orang sakit yang tidak ada harapan sembuh sehingga tidak mampu meng-qadha, wajib membayar fidyah (memberi makan satu orang miskin per hari)."
+      },
+      {
+        "id": 45,
+        "title": "Meninggal Sebelum Qadha",
+        "content": "Jika seseorang meninggal dan memiliki hutang puasa, maka wali (ahli warisnya) disunnahkan mempuasakannya atau membayar fidyah dari hartanya."
+      }
+    ]
+  },
+  {
+    "category": "Kesalahan Umum",
+    "source": "IslamQA (70 Matters Related to Fasting)",
+    "points": [
+      {
+        "id": 46,
+        "title": "Sengaja Tidak Sahur",
+        "content": "Meninggalkan sahur berarti melewatkan keberkahan dan sunnah Rasulullah SAW yang sangat ditekankan."
+      },
+      {
+        "id": 47,
+        "title": "Berhenti Makan Terlalu Cepat",
+        "content": "Waktu imsak adalah peringatan, namun makan/minum masih dibolehkan hingga terdengar adzan Shubuh atau terbit fajar shadiq."
+      },
+      {
+        "id": 48,
+        "title": "Marah dan Berkata Buruk",
+        "content": "Puasa bukan sekadar menahan lapar, tapi juga menahan lisan dan emosi. Perkataan buruk dapat menghapus pahala puasa."
+      },
+      {
+        "id": 49,
+        "title": "Tidur Berlebihan",
+        "content": "Menghabiskan waktu puasa dengan tidur sepanjang hari sehingga melalaikan kewajiban lain (seperti shalat) adalah kesalahan."
+      },
+      {
+        "id": 50,
+        "title": "Berlebih-lebihan saat Berbuka",
+        "content": "Makan dan minum secara berlebihan (israf) saat berbuka bertentangan dengan tujuan puasa untuk melatih kesederhanaan."
+      }
+    ]
+  },
+  {
+    "category": "Hal-hal Makruh",
+    "source": "IslamQA (70 Matters Related to Fasting)",
+    "points": [
+      {
+        "id": 51,
+        "title": "Berlebihan dalam Istinsyaq",
+        "content": "Menghirup air ke hidung secara berlebihan saat wudhu dimakruhkan karena dikhawatirkan air masuk ke tenggorokan."
+      },
+      {
+        "id": 52,
+        "title": "Mencicipi Makanan Tanpa Alasan",
+        "content": "Mencicipi makanan tanpa ada keperluan mendesak hukumnya makruh, meskipun tidak membatalkan jika tidak tertelan."
+      },
+      {
+        "id": 53,
+        "title": "Puasa Wishal",
+        "content": "Menyambung puasa selama dua hari atau lebih tanpa berbuka di malam harinya dilarang oleh Rasulullah SAW."
+      },
+      {
+        "id": 54,
+        "title": "Bercumbu bagi yang Tak Kuat",
+        "content": "Bermesraan atau bercumbu bagi orang yang tidak mampu menahan syahwatnya dimakruhkan karena dikhawatirkan membatalkan puasa."
+      },
+      {
+        "id": 55,
+        "title": "Berbekam bagi yang Lemah",
+        "content": "Melakukan bekam bagi orang yang fisiknya lemah sehingga dikhawatirkan akan membatalkan puasa karena kelelahan."
+      }
+    ]
+  },
+  {
+    "category": "Keadaan Khusus",
+    "source": "IslamQA (70 Matters Related to Fasting)",
+    "points": [
+      {
+        "id": 56,
+        "title": "Pekerja Berat",
+        "content": "Pekerja berat tetap wajib berniat puasa. Jika di tengah kerja merasa sangat kepayahan dan darurat, boleh berbuka dan wajib qadha."
+      },
+      {
+        "id": 57,
+        "title": "Pelajar Saat Ujian",
+        "content": "Ujian sekolah bukan alasan syar'i untuk tidak berpuasa. Hendaknya mengatur waktu belajar agar tetap kuat berpuasa."
+      },
+      {
+        "id": 58,
+        "title": "Wanita Istihadhah",
+        "content": "Wanita yang mengeluarkan darah penyakit (bukan haid/nifas) tetap wajib berpuasa dan shalat."
+      },
+      {
+        "id": 59,
+        "title": "Berenang dan Menyelam",
+        "content": "Boleh berenang atau menyelam selama yakin air tidak masuk ke dalam lubang-lubang tubuh (rongga)."
+      },
+      {
+        "id": 60,
+        "title": "Menggunakan Parfum",
+        "content": "Menggunakan wangi-wangian atau parfum hukumnya boleh dan tidak membatalkan puasa."
+      }
+    ]
+  },
+  {
+    "category": "Penentuan Bulan",
+    "source": "IslamQA (70 Matters Related to Fasting)",
+    "points": [
+      {
+        "id": 61,
+        "title": "Rukyatul Hilal",
+        "content": "Metode utama menentukan awal Ramadhan adalah dengan melihat hilal (bulan sabit muda) secara langsung."
+      },
+      {
+        "id": 62,
+        "title": "Hisab Astronomi",
+        "content": "Hisab digunakan sebagai alat bantu dalam memprediksi posisi hilal untuk memudahkan pelaksanaan rukyat."
+      },
+      {
+        "id": 63,
+        "title": "Persatuan dalam Puasa",
+        "content": "Sangat dianjurkan untuk mengikuti keputusan pemerintah (Ulil Amri) dalam menetapkan awal dan akhir Ramadhan demi persatuan umat."
+      },
+      {
+        "id": 64,
+        "title": "Puasa Yaumush Syakk",
+        "content": "Dilarang mendahului Ramadhan dengan berpuasa sehari atau dua hari sebelumnya, kecuali bagi yang sudah terbiasa puasa sunnah."
+      },
+      {
+        "id": 65,
+        "title": "Perbedaan Lokasi (Mathla')",
+        "content": "Perbedaan waktu mulai puasa antar wilayah/negara karena perbedaan letak geografis (mathla') adalah hal yang lumrah."
+      }
+    ]
+  },
+  {
+    "category": "Puasa Lainnya & Penutup",
+    "source": "IslamQA (70 Matters Related to Fasting)",
+    "points": [
+      {
+        "id": 66,
+        "title": "Niat Puasa Sunnah",
+        "content": "Niat puasa sunnah boleh dilakukan di pagi atau siang hari sebelum waktu Zhuhur, selama belum makan/minum sejak fajar."
+      },
+      {
+        "id": 67,
+        "title": "Membatalkan Puasa Sunnah",
+        "content": "Orang yang berpuasa sunnah boleh membatalkan puasanya meskipun tanpa udzur, namun lebih utama menyelesaikannya."
+      },
+      {
+        "id": 68,
+        "title": "Larangan Puasa di Hari Raya",
+        "content": "Haram hukumnya berpuasa pada hari Idul Fitri dan Idul Adha."
+      },
+      {
+        "id": 69,
+        "title": "Hari Tasyriq",
+        "content": "Haram berpuasa pada hari Tasyriq (11, 12, dan 13 Dzulhijjah), kecuali bagi jamaah haji yang tidak mampu membayar dam."
+      },
+      {
+        "id": 70,
+        "title": "Puasa di Hari Jumat Saja",
+        "content": "Dimakruhkan mengkhususkan hari Jumat untuk berpuasa, kecuali dibarengi dengan hari Kamis atau Sabtu."
+      }
+    ]
+  }
+]

@@ -1,11 +1,13 @@
 import { Hono } from 'hono';
-import { query as dbQuery, get as dbGet } from '../../../database/config.js';
+import { getQari, getSurahList } from '../../../utils/jsonHandler.js';
 
 const murotal = new Hono();
 
 murotal.get('/qari', async (c) => {
   try {
-    const data = await dbQuery("SELECT * FROM qari ORDER BY id ASC");
+    const data = await getQari();
+    if (!data) return c.json({ status: false, message: 'Daftar qari tidak tersedia.', data: [] }, 404);
+    
     return c.json({
       status: true,
       message: 'Berhasil mendapatkan daftar qari.',
@@ -22,16 +24,18 @@ murotal.get('/', async (c) => {
     const surahId = c.req.query('surahId');
 
     // Get Qari Info
-    const qari = await dbGet("SELECT * FROM qari WHERE id = ?", [qariId]);
+    const allQari = await getQari();
+    const qari = allQari ? allQari.find(q => q.id == qariId) : null;
 
     if (surahId) {
-      const data = await dbQuery("SELECT number, name_id, name_short, audio_full FROM surah WHERE number = ?", [surahId]);
-      if (data.length === 0) {
+      const allSurahs = await getSurahList();
+      const surah = allSurahs ? allSurahs.find(s => s.number == surahId) : null;
+      
+      if (!surah) {
         return c.json({ status: false, message: 'Surah tidak ditemukan.' }, 404);
       }
       
-      const surah = data[0];
-      const audioFull = JSON.parse(surah.audio_full || '{}');
+      const audioFull = typeof surah.audio_full === 'string' ? JSON.parse(surah.audio_full || '{}') : (surah.audio_full || {});
       
       return c.json({
         status: true,
@@ -47,10 +51,11 @@ murotal.get('/', async (c) => {
     }
 
     // If no surahId, return all surahs with audio for that qari
-    const allSurahs = await dbQuery("SELECT number, name_id, name_short, audio_full FROM surah ORDER BY CAST(number as INTEGER) ASC");
+    const allSurahs = await getSurahList();
+    if (!allSurahs) return c.json({ status: false, message: 'Daftar surah tidak tersedia.', data: [] }, 404);
     
-    const result = allSurahs.map(s => {
-      const audioFull = JSON.parse(s.audio_full || '{}');
+    const result = allSurahs.sort((a, b) => parseInt(a.number) - parseInt(b.number)).map(s => {
+      const audioFull = typeof s.audio_full === 'string' ? JSON.parse(s.audio_full || '{}') : (s.audio_full || {});
       return {
         surahId: s.number,
         name: s.name_id,

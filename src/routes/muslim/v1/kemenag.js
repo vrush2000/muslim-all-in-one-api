@@ -1,8 +1,22 @@
 import { Hono } from 'hono';
-import { query as dbQuery } from '../../../database/config.js';
+import { getMasjid } from '../../../utils/jsonHandler.js';
 import { API_CONFIG } from '../../../config.js';
 
 const kemenag = new Hono();
+
+// Helper for Haversine distance
+function getDistance(lat1, lon1, lat2, lon2) {
+  const R = 6371; // Radius of the earth in km
+  const dLat = (lat2 - lat1) * Math.PI / 180;
+  const dLon = (lon2 - lon1) * Math.PI / 180;
+  const a = 
+    Math.sin(dLat/2) * Math.sin(dLat/2) +
+    Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) * 
+    Math.sin(dLon/2) * Math.sin(dLon/2);
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+  const d = R * c; // Distance in km
+  return d;
+}
 
 // Data Hari Libur Nasional (Source: https://github.com/kresnasatya/api-harilibur)
 kemenag.get('/libur', async (c) => {
@@ -80,32 +94,28 @@ kemenag.get('/masjid', async (c) => {
     const jenis = c.req.query('jenis'); // Masjid, Mushalla
     const tipologi = c.req.query('tipologi'); // Nasional, Raya, Agung, Besar, Jami, Bersejarah, Publik, dll
     
-    let sql = "SELECT * FROM masjid";
-    let params = [];
-    let conditions = [];
+    const allMasjid = await getMasjid();
+    if (!allMasjid) return c.json({ status: false, message: 'Daftar masjid tidak tersedia.', data: [] }, 404);
+
+    let data = allMasjid;
 
     if (search) {
-      conditions.push("(nama LIKE ? OR deskripsi LIKE ?)");
-      params.push(`%${search}%`, `%${search}%`);
+      const searchLower = search.toLowerCase();
+      data = data.filter(m => 
+        (m.nama && m.nama.toLowerCase().includes(searchLower)) || 
+        (m.deskripsi && m.deskripsi.toLowerCase().includes(searchLower))
+      );
     }
     if (lokasi) {
-      conditions.push("lokasi LIKE ?");
-      params.push(`%${lokasi}%`);
+      const lokasiLower = lokasi.toLowerCase();
+      data = data.filter(m => m.lokasi && m.lokasi.toLowerCase().includes(lokasiLower));
     }
     if (jenis) {
-      conditions.push("jenis = ?");
-      params.push(jenis);
+      data = data.filter(m => m.jenis === jenis);
     }
     if (tipologi) {
-      conditions.push("tipologi = ?");
-      params.push(tipologi);
+      data = data.filter(m => m.tipologi === tipologi);
     }
-
-    if (conditions.length > 0) {
-      sql += " WHERE " + conditions.join(" AND ");
-    }
-
-    const data = await dbQuery(sql, params);
 
     return c.json({
       status: true,
@@ -125,11 +135,13 @@ kemenag.get('/masjid/detail', async (c) => {
   if (!id) return c.json({ status: false, message: 'Parameter id diperlukan.' }, 400);
 
   try {
-    const data = await dbQuery("SELECT * FROM masjid WHERE id = ?", [id]);
-    if (data.length === 0) {
+    const allMasjid = await getMasjid();
+    const data = allMasjid ? allMasjid.find(m => m.id == id) : null;
+    
+    if (!data) {
       return c.json({ status: false, message: 'Masjid tidak ditemukan.', data: {} }, 404);
     }
-    return c.json({ status: true, message: 'Berhasil mendapatkan detail masjid.', data: data[0] });
+    return c.json({ status: true, message: 'Berhasil mendapatkan detail masjid.', data: data });
   } catch (error) {
     return c.json({ status: false, message: 'Gagal mendapatkan detail masjid: ' + error.message }, 500);
   }
@@ -138,17 +150,17 @@ kemenag.get('/masjid/detail', async (c) => {
 kemenag.get('/masjid/:id', async (c) => {
   try {
     const id = c.req.param('id');
-    const sql = "SELECT * FROM masjid WHERE id = ?";
-    const data = await dbQuery(sql, [id]);
+    const allMasjid = await getMasjid();
+    const data = allMasjid ? allMasjid.find(m => m.id == id) : null;
 
-    if (data.length === 0) {
+    if (!data) {
       return c.json({ status: false, message: "Masjid tidak ditemukan.", data: {} }, 404);
     }
 
     return c.json({
       status: true,
       message: 'Berhasil mendapatkan detail masjid.',
-      data: data[0]
+      data: data
     });
   } catch (error) {
     return c.json({ status: false, message: 'Gagal mendapatkan detail masjid: ' + error.message }, 500);
@@ -166,24 +178,18 @@ kemenag.get('/masjid/nearby', async (c) => {
       return c.json({ status: false, message: 'Parameter lat dan lng diperlukan.' }, 400);
     }
 
-    // Menggunakan formula Haversine untuk menghitung jarak di SQLite
-    // 6371 adalah radius bumi dalam KM
-    // SQLite tidak mendukung HAVING secara langsung untuk alias di beberapa versi, 
-    // kita gunakan subquery atau filter manual jika perlu. 
-    // Untuk performa, kita gunakan pendekatan bounding box dulu sebelum Haversine.
-    
-    const data = await dbQuery(`
-      SELECT * FROM (
-        SELECT *, 
-        (6371 * acos(cos(radians(${lat})) * cos(radians(latitude)) * cos(radians(longitude) - radians(${lng})) + sin(radians(${lat})) * sin(radians(latitude)))) AS distance
-        FROM masjid
-        WHERE latitude BETWEEN ${lat - (radius/111)} AND ${lat + (radius/111)}
-        AND longitude BETWEEN ${lng - (radius/(111 * Math.cos(lat * Math.PI/180)))} AND ${lng + (radius/(111 * Math.cos(lat * Math.PI/180)))}
-      ) AS t
-      WHERE distance <= ${radius}
-      ORDER BY distance ASC
-      LIMIT 20
-    `);
+    const allMasjid = await getMasjid();
+    if (!allMasjid) return c.json({ status: false, message: 'Daftar masjid tidak tersedia.', data: [] }, 404);
+
+    // Calculate distance and filter
+    const data = allMasjid
+      .map(m => {
+        const distance = getDistance(lat, lng, parseFloat(m.latitude), parseFloat(m.longitude));
+        return { ...m, distance };
+      })
+      .filter(m => m.distance <= radius)
+      .sort((a, b) => a.distance - b.distance)
+      .slice(0, 20);
 
     return c.json({
       status: true,

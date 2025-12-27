@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "nama": "Puasa Senin Kamis",
+    "deskripsi": "Puasa sunnah yang dilaksanakan pada hari Senin dan Kamis setiap minggunya.",
+    "hukum": "Sunnah",
+    "dalil": "Dari Abu Hurairah, Rasulullah SAW bersabda: 'Amal-amal manusia diperiksa pada hari Senin dan Kamis, maka aku menyukai amalku diperiksa saat aku sedang berpuasa.' (HR. Tirmidzi)",
+    "type": "mingguan"
+  },
+  {
+    "id": 2,
+    "nama": "Puasa Ayyamul Bidh",
+    "deskripsi": "Puasa sunnah yang dilaksanakan pada pertengahan bulan Hijriah, yaitu tanggal 13, 14, dan 15 setiap bulan kecuali bulan Ramadhan.",
+    "hukum": "Sunnah Muakkad",
+    "dalil": "Rasulullah SAW memerintahkan kami untuk berpuasa tiga hari putih (Ayyamul Bidh) yaitu tanggal 13, 14, dan 15. (HR. An-Nasa'i)",
+    "type": "bulanan",
+    "jadwal_hijri": [13, 14, 15]
+  },
+  {
+    "id": 3,
+    "nama": "Puasa Daud",
+    "deskripsi": "Puasa sunnah yang paling dicintai Allah, yaitu sehari berpuasa dan sehari berbuka secara berselang-seling.",
+    "hukum": "Sunnah",
+    "dalil": "Puasa yang paling dicintai Allah adalah puasa Nabi Daud AS. Beliau berpuasa sehari dan berbuka sehari. (HR. Bukhari & Muslim)",
+    "type": "selang-seling"
+  },
+  {
+    "id": 4,
+    "nama": "Puasa Arafah",
+    "deskripsi": "Puasa sunnah yang dilaksanakan pada tanggal 9 Dzulhijjah bagi orang yang tidak melaksanakan ibadah haji.",
+    "hukum": "Sunnah Muakkad",
+    "dalil": "Puasa Arafah dapat menghapuskan dosa setahun yang lalu dan setahun yang akan datang. (HR. Muslim)",
+    "type": "tahunan",
+    "jadwal_hijri": "9 Dzulhijjah"
+  },
+  {
+    "id": 5,
+    "nama": "Puasa Asyura",
+    "deskripsi": "Puasa sunnah yang dilaksanakan pada tanggal 10 Muharram.",
+    "hukum": "Sunnah Muakkad",
+    "dalil": "Puasa hari Asyura, aku berharap kepada Allah agar menghapuskan dosa setahun yang lalu. (HR. Muslim)",
+    "type": "tahunan",
+    "jadwal_hijri": "10 Muharram"
+  },
+  {
+    "id": 6,
+    "nama": "Puasa Tasu'a",
+    "deskripsi": "Puasa sunnah yang dilaksanakan pada tanggal 9 Muharram sebagai pembeda dengan kaum Yahudi.",
+    "hukum": "Sunnah",
+    "dalil": "Seandainya aku masih hidup hingga tahun depan, niscaya aku akan berpuasa pada hari kesembilan (Tasu'a). (HR. Muslim)",
+    "type": "tahunan",
+    "jadwal_hijri": "9 Muharram"
+  },
+  {
+    "id": 7,
+    "nama": "Puasa Syawal",
+    "deskripsi": "Puasa sunnah 6 hari di bulan Syawal setelah hari raya Idul Fitri.",
+    "hukum": "Sunnah",
+    "dalil": "Barangsiapa berpuasa Ramadhan kemudian diikuti dengan enam hari di bulan Syawal, maka ia seperti berpuasa setahun penuh. (HR. Muslim)",
+    "type": "tahunan",
+    "jadwal_hijri": "Syawal (6 hari)"
+  },
+  {
+    "id": 8,
+    "nama": "Puasa Ramadhan",
+    "deskripsi": "Puasa wajib yang dilaksanakan selama satu bulan penuh di bulan Ramadhan.",
+    "hukum": "Wajib (Fardhu 'Ain)",
+    "dalil": "Wahai orang-orang yang beriman, diwajibkan atas kamu berpuasa sebagaimana diwajibkan atas orang-orang sebelum kamu agar kamu bertakwa. (QS. Al-Baqarah: 183)",
+    "type": "wajib",
+    "jadwal_hijri": "Ramadhan (sebulan penuh)"
+  }
+]

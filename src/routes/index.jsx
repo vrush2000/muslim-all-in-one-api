@@ -7,6 +7,7 @@ import { Other } from '../components/Other.jsx';
 import { Landing } from '../components/Landing.jsx';
 import { Playground } from '../components/Playground.jsx';
 import { Status } from '../components/Status.jsx';
+import { getSejarah } from '../utils/jsonHandler.js';
 
 const router = new Hono();
 
@@ -16,10 +17,11 @@ const getBaseUrl = (c) => {
   return `${proto}://${url.host}/v1`;
 };
 
-router.get("/", (c) => {
+router.get("/", async (c) => {
+  const sejarah = await getSejarah();
   return c.html(
     <Layout title="Muslim All-In-One API | Platform Data Islami Terlengkap">
-      <Landing />
+      <Landing sejarah={sejarah} />
     </Layout>
   );
 });

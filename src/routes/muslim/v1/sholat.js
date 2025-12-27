@@ -43,6 +43,14 @@ sholat.get('/kota/cari', async (c) => {
       }, response.status || 502);
     }
 
+    if (!data.data || data.data.length === 0) {
+      return c.json({
+        status: false,
+        message: `Tidak ada kota yang ditemukan dengan kata kunci: ${query}.`,
+        data: []
+      }, 404);
+    }
+
     return c.json({
       status: true,
       message: `Berhasil mencari kota dengan kata kunci: ${query}.`,
@@ -113,14 +121,14 @@ sholat.get('/jadwal/koordinat', async (c) => {
     }
 
     // 2. Cari ID Kota di MyQuran berdasarkan nama kota
-    const cleanCityName = city.replace(/Kota |Kabupaten /g, '').trim();
+    const cleanCityName = city.replace(/Kota Adm. |Kota |Kabupaten |Kab. /g, '').trim();
     const kotaRes = await fetch(`${BASE_API}/kota/cari/${cleanCityName}`);
     const kotaData = await kotaRes.json();
 
     if (!kotaRes.ok || !kotaData.status || !kotaData.data || kotaData.data.length === 0) {
       return c.json({ 
         status: false, 
-        message: `Kota ${cleanCityName} tidak terdaftar di database Kemenag.`,
+        message: `Kota ${cleanCityName} tidak ditemukan dalam daftar wilayah Kemenag.`,
         location: city 
       }, 404);
     }
@@ -178,7 +186,7 @@ sholat.get('/next', async (c) => {
       return c.json({ status: false, message: 'Lokasi tidak ditemukan.' }, 404);
     }
 
-    const cleanCityName = city.replace(/Kota |Kabupaten /g, '').trim();
+    const cleanCityName = city.replace(/Kota Adm. |Kota |Kabupaten |Kab. /g, '').trim();
     
     const kotaRes = await fetch(`${BASE_API}/kota/cari/${cleanCityName}`);
     const kotaData = await kotaRes.json();
