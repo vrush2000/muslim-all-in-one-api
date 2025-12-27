@@ -37,7 +37,7 @@ export const Playground = ({ baseUrl }) => {
                   <option value="kemenag">Kemenag Open Data</option>
                   <option value="sejarah">Sejarah Islam</option>
                   <option value="tools">Tools & Fitur Cerdas</option>
-                  <option value="integrity">Integrity & Blockchain</option>
+                  <option value="integrity">Integrity Chain</option>
                   <option value="other">Lainnya (Asmaul Husna, Doa, dll)</option>
                 </select>
               </div>

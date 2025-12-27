@@ -37,7 +37,7 @@ export const Status = ({ baseUrl }) => {
           <StatusCard 
             name="Core API Engine" 
             endpoint="/health" 
-            description="Status inti sistem dan database"
+            description="Status inti sistem"
             type="internal"
           />
           <StatusCard 
@@ -73,7 +73,7 @@ export const Status = ({ baseUrl }) => {
           <StatusCard 
             name="Integrity System" 
             endpoint="/integrity/verify" 
-            description="Blockchain-based data verification"
+            description="Data integrity verification chain"
             type="internal"
           />
 

@@ -32,24 +32,62 @@ Project ini telah dimigrasi dari Express ke **Hono Node.js** untuk performa yang
 
 - **Backend**: [Hono](https://hono.dev/) (Fast, Lightweight, and Web-standard)
 - **Frontend**: [Hono JSX](https://hono.dev/middleware/builtin/jsx) + [Tailwind CSS](https://tailwindcss.com/) (Bundled with Esbuild for Vercel)
-- **Database**: [SQLite](https://www.sqlite.org/) dengan [better-sqlite3](https://github.com/WiseLibs/node-better-sqlite3)
+- **Database**: [JSON Storage](https://www.json.org/) (High-performance static data)
 - **Runtime**: Node.js (ES Modules)
-- **Deployment**: [Vercel](https://vercel.com/) (Using zero-config with bundled logic)
+- **Deployment**: [Vercel](https://vercel.com/) (Serverless with Edge Caching)
 
 ## ✨ Fitur Utama
 
 Menyediakan berbagai data keislaman dari sumber terpercaya:
 
 - 📖 **Al-Quran Indonesia**: Daftar Surah, Juz, Tafsir Kemenag, dan Kata per Kata.
-- 🛡️ **Data Integrity (Blockchain-style)**: Verifikasi kemurnian teks Al-Quran menggunakan SHA-256.
+- 🛡️ **Data Integrity Chain**: Verifikasi kemurnian teks Al-Quran menggunakan sistem SHA-256 Hashing yang transparan.
 - 🕌 **Jadwal Sholat**: Waktu sholat akurat berdasarkan lokasi (Kota/Kabupaten) di seluruh Indonesia.
 - 📅 **Kalender**: Integrasi Kalender Hijriah dan Kalender Jawa yang sinkron.
 - 🤲 **Doa-doa & Dzikir**: Kumpulan doa harian dan dzikir pagi/petang.
-- 📚 **Hadits**: Kumpulan Hadits Arba'in dengan fitur pencarian.
-- � **Sejarah Islam**: Informasi peristiwa sejarah Islam yang penting.
-- �� **Audio**: Murottal merdu dari 6 Qari terkemuka.
+- 📚 **Hadits**: Kumpulan Hadits Arba'in dan 9 Imam dengan fitur pencarian.
+- 🏛️ **Sejarah Islam**: Informasi peristiwa sejarah Islam yang penting.
+- 🎧 **Audio**: Murottal merdu dari 6 Qari terkemuka.
+- 🛡️ **Data Integrity Chain**: Verifikasi kemurnian teks Al-Quran menggunakan sistem SHA-256 Hashing yang transparan.
+- 🔍 **Search Engine**: Sistem pencarian cepat untuk Ayat, Hadits, dan Doa.
 - 🛠️ **Admin Management**: API khusus untuk koreksi data secara instan (Local mode).
-- 🔍 **Search Engine**: Sistem pencarian cepat untuk Ayat dan Doa.
+
+## 🛡️ Verifikasi Integritas Data (Proof of Authenticity)
+
+Kami sangat menjunjung tinggi kemurnian teks Al-Quran. Untuk memastikan data tidak dimanipulasi, kami menyediakan sistem **Integrity Chain**.
+
+### Cara Verifikasi Mandiri:
+1. Panggil endpoint `/v1/integrity/chain` untuk mendapatkan daftar hash resmi.
+2. Bandingkan `content_hash` dengan hasil hashing manual dari data ayat:
+   ```javascript
+   // Contoh verifikasi menggunakan Node.js
+   const crypto = require('crypto');
+   
+   // Ambil data dari /v1/ayah/surah?surahId=1
+   const ayahs = [/* data dari API */];
+   
+   // Filter hanya field yang di-hash (arab & text)
+   const dataToHash = ayahs.map(a => ({ arab: a.arab, text: a.text }));
+   
+   const hash = crypto.createHash('sha256')
+     .update(JSON.stringify(dataToHash))
+     .digest('hex');
+     
+   console.log('Hash Valid:', hash === officialContentHash);
+   ```
+
+Setiap perubahan satu karakter saja pada teks Arab atau terjemahan akan merusak rantai hash, sehingga integritas data selalu terjaga secara publik.
+
+### Fitur Live Comparison:
+Endpoint `/v1/integrity/verify/ayah` kini mendukung **Live Comparison**. Saat dipanggil, sistem akan mengambil data pembanding secara real-time dari sumber resmi (Kemenag via EQuran.id) dan menyajikannya berdampingan dengan data kami untuk membuktikan bahwa tidak ada perbedaan teks.
+
+## 🤝 Kontribusi & Koreksi Data
+
+Akurasi data adalah prioritas utama kami. Jika Anda menemukan perbedaan teks dengan sumber resmi (Kemenag RI):
+1. Verifikasi melalui [quran.kemenag.go.id](https://quran.kemenag.go.id/quran/per-ayat/surah/1?from=1&to=1).
+2. Laporkan melalui **GitHub Issues** dengan menyertakan nomor Surah dan Ayat.
+3. Kami akan melakukan koreksi pada file JSON di `src/data` dan melakukan push update secepatnya.
+4. Setiap koreksi akan secara otomatis memperbarui **Integrity Chain** untuk memastikan transparansi.
 
 
 ## 🛠️ Instalasi Lokal
@@ -80,13 +118,13 @@ Ikuti langkah berikut untuk menjalankan project di komputer Anda:
 
 ## 📝 Manajemen Data & Koreksi Typo
 
-Project ini menggunakan strategi **Local Update + Git Push** karena keterbatasan sistem file read-only pada Vercel.
+Project ini menggunakan strategi **Local Update + Git Push** dengan penyimpanan berbasis file JSON untuk memastikan kompatibilitas penuh dengan Vercel.
 
 Jika Anda menemukan typo pada Al-Quran, Doa, atau Dzikir:
 1. Jalankan aplikasi di **Lokal**.
-2. Gunakan endpoint `/v1/admin/ayah`, `/v1/admin/dzikir`, atau `/v1/admin/doa` dengan method `PATCH`.
+2. Gunakan endpoint `/v1/admin/ayah`, `/v1/admin/dzikir`, atau `/v1/admin/doa` with method `PATCH`.
 3. Sertakan Header `x-api-key` (default: `muslim-api-admin-secret` atau cek `.env`).
-4. Setelah database lokal terupdate, lakukan `git commit` pada file `src/database/alquran.db` dan `git push` ke repository Anda.
+4. Setelah file JSON lokal di `src/data` terupdate, lakukan `git commit` dan `git push` ke repository Anda. Vercel akan secara otomatis melakukan redeploy dengan data terbaru.
 
 
 ## 🌍 Deployment (Vercel)
@@ -144,7 +182,7 @@ Project ini merupakan hasil pengembangan lanjut (migrasi & modernisasi) dari pro
 Kami memberikan apresiasi setinggi-tingginya kepada para penyedia data dan sumber inspirasi:
 
 - **[Kemenag RI](https://quran.kemenag.go.id/)**: Atas penyediaan data Al-Quran, Terjemahan, dan Tafsir resmi.
-- **[Otangid](https://github.com/Otangid/muslim-api)**: Atas penyediaan dataset keislaman (SQLite) dan logika dasar API yang menjadi fondasi project ini.
+- **[Otangid](https://github.com/Otangid/muslim-api)**: Atas penyediaan dataset keislaman dan logika dasar API yang menjadi fondasi project ini.
 - **[equran.id](https://equran.id)**: Atas penyediaan API v2 dan Content Delivery Network (CDN) untuk data murottal audio (6 Qari).
 - **[MyQuran (SutanLab)](https://api.myquran.com/)**: Atas penyediaan dataset jadwal sholat akurat untuk seluruh wilayah Indonesia.
 - **[Hadith Gading](https://api.hadith.gading.dev/)**: Atas penyediaan koleksi hadits digital yang sangat lengkap.

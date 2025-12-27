@@ -763,7 +763,7 @@ export const Other = () => {
               { name: 'equran.id (Audio)', url: 'https://equran.id/', desc: 'Quran audio and digital text' },
               { name: 'Muslim API Dataset (Repo)', url: 'https://github.com/Otangid/muslim-api', desc: 'Alternative Muslim API provider' },
               { name: 'Hadith Collection (Repo)', url: 'https://github.com/gadingnst/hadith-api', desc: 'Comprehensive Hadith collection API' },
-              { name: 'Data Pesantren (Repo)', url: 'https://github.com/nasrul21/data-pesantren-indonesia', desc: 'Database pesantren se-Indonesia (Source)' },
+              { name: 'Data Pesantren (Repo)', url: 'https://github.com/nasrul21/data-pesantren-indonesia', desc: 'Kumpulan data pesantren se-Indonesia (Source)' },
               { name: 'Libur Nasional (Repo)', url: 'https://github.com/kresnasatya/api-harilibur', desc: 'Data hari libur nasional Indonesia (Source)' },
             ].map((resource) => (
               <a 

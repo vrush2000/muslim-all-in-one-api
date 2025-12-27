@@ -1,5 +1,10 @@
 import { Hono } from 'hono';
-import { query as dbQuery, get as dbGet } from '../../../database/config.js';
+import { 
+  getAyahBySurah, 
+  getDzikir, 
+  getDoa, 
+  writeJson 
+} from '../../../utils/jsonHandler.js';
 
 const admin = new Hono();
 
@@ -31,45 +36,35 @@ admin.patch('/ayah', async (c) => {
       return c.json({ status: false, message: 'surahId dan ayahId diperlukan.' }, 400);
     }
 
-    // Get old data for diff
-    const oldData = await dbGet(
-      "SELECT arab, text, latin FROM ayah WHERE surah = ? AND ayah = ?",
-      [surahId, ayahId]
-    );
+    const ayahs = await getAyahBySurah(surahId);
+    if (!ayahs) {
+      return c.json({ status: false, message: 'Surah tidak ditemukan.' }, 404);
+    }
 
-    if (!oldData) {
+    const index = ayahs.findIndex(a => a.ayah == ayahId);
+    if (index === -1) {
       return c.json({ status: false, message: 'Ayat tidak ditemukan.' }, 404);
     }
 
-    const updates = [];
-    const params = [];
-
-    if (arab) { updates.push("arab = ?"); params.push(arab); }
-    if (text) { updates.push("text = ?"); params.push(text); }
-    if (latin) { updates.push("latin = ?"); params.push(latin); }
-
-    if (updates.length === 0) {
-      return c.json({ status: false, message: 'Tidak ada bidang yang disediakan untuk diperbarui.' }, 400);
-    }
-
-    params.push(surahId, ayahId);
+    const oldData = { ...ayahs[index] };
     
-    await dbQuery(
-      `UPDATE ayah SET ${updates.join(", ")} WHERE surah = ? AND ayah = ?`,
-      params
-    );
+    // Update fields
+    if (arab) ayahs[index].arab = arab;
+    if (text) ayahs[index].text = text;
+    if (latin) ayahs[index].latin = latin;
 
-    const newData = await dbGet(
-      "SELECT arab, text, latin FROM ayah WHERE surah = ? AND ayah = ?",
-      [surahId, ayahId]
-    );
+    const success = await writeJson(`quran/ayah/${surahId}.json`, ayahs);
+
+    if (!success) {
+      return c.json({ status: false, message: 'Gagal menyimpan perubahan ke file JSON.' }, 500);
+    }
 
     return c.json({ 
       status: true, 
       message: 'Berhasil memperbarui ayat.',
       diff: {
-        before: oldData,
-        after: newData
+        before: { arab: oldData.arab, text: oldData.text, latin: oldData.latin },
+        after: { arab: ayahs[index].arab, text: ayahs[index].text, latin: ayahs[index].latin }
       },
       integrity_status: 'Hash akan diperbarui otomatis pada pengecekan integritas berikutnya.'
     });
@@ -85,33 +80,30 @@ admin.patch('/dzikir', async (c) => {
     
     if (!id) return c.json({ status: false, message: 'Parameter id diperlukan.' }, 400);
 
-    const oldData = await dbGet("SELECT title, arabic, translation FROM dzikir WHERE id = ?", [id]);
-    if (!oldData) return c.json({ status: false, message: 'Dzikir tidak ditemukan.', data: {} }, 404);
+    const dzikirs = await getDzikir();
+    if (!dzikirs) return c.json({ status: false, message: 'Daftar dzikir tidak tersedia.' }, 500);
 
-    const updates = [];
-    const params = [];
+    const index = dzikirs.findIndex(d => d.id == id);
+    if (index === -1) return c.json({ status: false, message: 'Dzikir tidak ditemukan.' }, 404);
 
-    if (title) { updates.push("title = ?"); params.push(title); }
-    if (arabic) { updates.push("arabic = ?"); params.push(arabic); }
-    if (translation) { updates.push("translation = ?"); params.push(translation); }
+    const oldData = { ...dzikirs[index] };
 
-    if (updates.length === 0) return c.json({ status: false, message: 'Tidak ada data yang diubah.' }, 400);
+    if (title) dzikirs[index].title = title;
+    if (arabic) dzikirs[index].arabic = arabic;
+    if (translation) dzikirs[index].translation = translation;
 
-    params.push(id);
-    
-    await dbQuery(
-      `UPDATE dzikir SET ${updates.join(", ")} WHERE id = ?`,
-      params
-    );
+    const success = await writeJson('common/dzikir.json', dzikirs);
 
-    const newData = await dbGet("SELECT title, arabic, translation FROM dzikir WHERE id = ?", [id]);
+    if (!success) {
+      return c.json({ status: false, message: 'Gagal menyimpan perubahan ke file JSON.' }, 500);
+    }
 
     return c.json({
       status: true,
       message: 'Berhasil memperbarui dzikir.',
       diff: {
-        before: oldData,
-        after: newData
+        before: { title: oldData.title, arabic: oldData.arabic, translation: oldData.translation },
+        after: { title: dzikirs[index].title, arabic: dzikirs[index].arabic, translation: dzikirs[index].translation }
       }
     });
   } catch (error) {
@@ -122,37 +114,38 @@ admin.patch('/dzikir', async (c) => {
 // Update Doa
 admin.patch('/doa', async (c) => {
   try {
-    const { id, judul, arab, indo } = await c.req.json();
+    const { id, title, arabic, translation } = await c.req.json();
     
-    if (!id) return c.json({ status: false, message: 'id diperlukan.' }, 400);
+    if (!id) return c.json({ status: false, message: 'Parameter id diperlukan.' }, 400);
 
-    const oldData = await dbGet("SELECT judul, arab, indo FROM doa WHERE id = ?", [id]);
-    if (!oldData) return c.json({ status: false, message: 'Doa tidak ditemukan.' }, 404);
+    const doas = await getDoa();
+    if (!doas) return c.json({ status: false, message: 'Daftar doa tidak tersedia.' }, 500);
 
-    const updates = [];
-    const params = [];
+    const index = doas.findIndex(d => d.id == id);
+    if (index === -1) return c.json({ status: false, message: 'Doa tidak ditemukan.' }, 404);
 
-    if (judul) { updates.push("judul = ?"); params.push(judul); }
-    if (arab) { updates.push("arab = ?"); params.push(arab); }
-    if (indo) { updates.push("indo = ?"); params.push(indo); }
+    const oldData = { ...doas[index] };
 
-    if (updates.length === 0) return c.json({ status: false, message: 'Tidak ada bidang untuk diperbarui.' }, 400);
+    if (title) doas[index].title = title;
+    if (arabic) doas[index].arabic = arabic;
+    if (translation) doas[index].translation = translation;
 
-    params.push(id);
-    await dbQuery(`UPDATE doa SET ${updates.join(", ")} WHERE id = ?`, params);
+    const success = await writeJson('common/doa.json', doas);
 
-    const newData = await dbGet("SELECT judul, arab, indo FROM doa WHERE id = ?", [id]);
+    if (!success) {
+      return c.json({ status: false, message: 'Gagal menyimpan perubahan ke file JSON.' }, 500);
+    }
 
-    return c.json({ 
-      status: true, 
+    return c.json({
+      status: true,
       message: 'Berhasil memperbarui doa.',
       diff: {
-        before: oldData,
-        after: newData
+        before: { title: oldData.title, arabic: oldData.arabic, translation: oldData.translation },
+        after: { title: doas[index].title, arabic: doas[index].arabic, translation: doas[index].translation }
       }
     });
   } catch (error) {
-    return c.json({ status: false, message: error.message }, 500);
+    return c.json({ status: false, message: 'Gagal memperbarui doa: ' + error.message }, 500);
   }
 });
 

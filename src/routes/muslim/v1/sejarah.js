@@ -35,9 +35,10 @@ sejarah.get('/detail', async (c) => {
     const allSejarah = await getSejarah();
     if (!allSejarah) return c.json({ status: false, message: 'Daftar sejarah tidak tersedia.', data: {} }, 404);
 
-    const item = allSejarah.find(s => s.id == id);
+    // Cari dengan ID sebagai string atau number
+    const item = allSejarah.find(s => s.id == id || (s.id && s.id.toString() === id.toString()));
     
-    if (!item) return c.json({ status: false, message: 'Data sejarah tidak ditemukan.', data: {} }, 404);
+    if (!item) return c.json({ status: false, message: `Data sejarah dengan ID ${id} tidak ditemukan.`, data: {} }, 404);
     
     return c.json({ status: true, message: 'Berhasil mendapatkan detail sejarah.', data: item });
   } catch (error) {
@@ -59,17 +60,34 @@ sejarah.get('/today', async (c) => {
     if (!allSejarah) return c.json({ status: false, message: 'Daftar sejarah tidak tersedia.', data: [] }, 404);
 
     const searchStr = `${day} ${month}`;
-    const data = allSejarah.filter(s => 
-      (s.tahun && s.tahun.includes(searchStr)) || 
-      (s.tahun && s.tahun.includes(month)) || 
-      (s.deskripsi && s.deskripsi.includes(searchStr))
-    ).slice(0, 10);
+    const searchMonth = month;
+    
+    // Perbaikan logika filter: pastikan pencarian lebih akurat
+    const data = allSejarah.filter(s => {
+      const deskripsiLower = (s.deskripsi || '').toLowerCase();
+      const tahunLower = (s.tahun || '').toLowerCase();
+      const searchStrLower = searchStr.toLowerCase();
+      const monthLower = searchMonth.toLowerCase();
+
+      return tahunLower.includes(searchStrLower) || 
+             tahunLower.includes(monthLower) || 
+             deskripsiLower.includes(searchStrLower);
+    });
+
+    // Jika data kosong, coba cari berdasarkan bulan saja sebagai fallback
+    let finalData = data;
+    if (finalData.length === 0) {
+      finalData = allSejarah.filter(s => 
+        (s.tahun && s.tahun.toLowerCase().includes(month.toLowerCase())) ||
+        (s.deskripsi && s.deskripsi.toLowerCase().includes(month.toLowerCase()))
+      );
+    }
 
     return c.json({
       status: true,
       message: `Berhasil mendapatkan peristiwa sejarah untuk hari ini (${day} ${month}).`,
       data: {
-        events: data,
+        events: finalData.slice(0, 10),
         today: `${day} ${month}`
       }
     });

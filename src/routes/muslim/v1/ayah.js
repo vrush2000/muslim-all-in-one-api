@@ -127,14 +127,20 @@ ayah.get('/specific', async (c) => {
     const surahId = c.req.query('surahId') || c.req.query('id');
     const ayahId = c.req.query('ayahId');
     if (surahId != null && ayahId != null) {
-      const data = await get(
-        "SELECT * FROM ayah WHERE surah = ? AND ayah = ?",
-        [surahId, ayahId]
-      );
+      const ayahs = await getAyahBySurah(surahId);
+      if (!ayahs) {
+        return c.json({ status: false, message: `Surah ${surahId} tidak ditemukan.`, data: {} }, 404);
+      }
+      
+      const data = ayahs.find(a => a.ayah == ayahId);
       if (!data) {
         return c.json({ status: false, message: `Ayat ${ayahId} pada surah ${surahId} tidak ditemukan.`, data: {} }, 404);
       } else {
-        return c.json({ status: true, message: `Berhasil mendapatkan detail ayat ${ayahId} pada surah ${surahId}.`, data: formatAyah(data) });
+        const formatted = formatAyah(data);
+        // Tambahkan link verifikasi eksternal ke Kemenag RI
+        formatted.external_verification = `https://quran.kemenag.go.id/quran/per-ayat/surah/${surahId}?from=${ayahId}&to=${ayahId}`;
+        
+        return c.json({ status: true, message: `Berhasil mendapatkan detail ayat ${ayahId} pada surah ${surahId}.`, data: formatted });
       }
     } else {
       return c.json({
@@ -151,12 +157,21 @@ ayah.get('/find', async (c) => {
   try {
     const q = c.req.query('query');
     if (q != null && q.length > 3) {
-      const data = await dbQuery(
-        "SELECT * FROM ayah WHERE text LIKE ? ORDER BY CAST(id as INTEGER) ASC",
-        [`%${q}%`]
-      );
+      const surahList = await getSurahList();
+      let results = [];
+      const queryLower = q.toLowerCase();
+
+      for (const s of surahList) {
+        const ayahs = await getAyahBySurah(s.number);
+        if (ayahs) {
+          const matched = ayahs.filter(a => a.text && a.text.toLowerCase().includes(queryLower));
+          results.push(...matched);
+        }
+        // Batasi hasil pencarian agar tidak terlalu berat
+        if (results.length >= 100) break;
+      }
       
-      if (!data || data.length === 0) {
+      if (results.length === 0) {
         return c.json({ 
           status: false, 
           message: `Tidak ada ayat yang ditemukan dengan kata kunci: ${q}.`,
@@ -164,7 +179,7 @@ ayah.get('/find', async (c) => {
         }, 404);
       }
 
-      return c.json({ status: true, message: `Berhasil mencari ayat dengan kata kunci: ${q}.`, data: (data || []).map(formatAyah) });
+      return c.json({ status: true, message: `Berhasil mencari ayat dengan kata kunci: ${q}.`, data: results.map(formatAyah) });
     } else {
       return c.json({
         status: false,

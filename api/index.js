@@ -666,26 +666,26 @@ var handleParsingNestedValues = (form3, key, value) => {
 };
 
 // node_modules/hono/dist/utils/url.js
-var splitPath = (path5) => {
-  const paths = path5.split("/");
+var splitPath = (path3) => {
+  const paths = path3.split("/");
   if (paths[0] === "") {
     paths.shift();
   }
   return paths;
 };
 var splitRoutingPath = (routePath) => {
-  const { groups, path: path5 } = extractGroupsFromPath(routePath);
-  const paths = splitPath(path5);
+  const { groups, path: path3 } = extractGroupsFromPath(routePath);
+  const paths = splitPath(path3);
   return replaceGroupMarks(paths, groups);
 };
-var extractGroupsFromPath = (path5) => {
+var extractGroupsFromPath = (path3) => {
   const groups = [];
-  path5 = path5.replace(/\{[^}]+\}/g, (match2, index) => {
+  path3 = path3.replace(/\{[^}]+\}/g, (match2, index) => {
     const mark = `@${index}`;
     groups.push([mark, match2]);
     return mark;
   });
-  return { groups, path: path5 };
+  return { groups, path: path3 };
 };
 var replaceGroupMarks = (paths, groups) => {
   for (let i = groups.length - 1; i >= 0; i--) {
@@ -740,8 +740,8 @@ var getPath = (request) => {
     const charCode = url.charCodeAt(i);
     if (charCode === 37) {
       const queryIndex = url.indexOf("?", i);
-      const path5 = url.slice(start, queryIndex === -1 ? void 0 : queryIndex);
-      return tryDecodeURI(path5.includes("%25") ? path5.replace(/%25/g, "%2525") : path5);
+      const path3 = url.slice(start, queryIndex === -1 ? void 0 : queryIndex);
+      return tryDecodeURI(path3.includes("%25") ? path3.replace(/%25/g, "%2525") : path3);
     } else if (charCode === 63) {
       break;
     }
@@ -758,11 +758,11 @@ var mergePath = (base, sub, ...rest) => {
   }
   return `${base?.[0] === "/" ? "" : "/"}${base}${sub === "/" ? "" : `${base?.at(-1) === "/" ? "" : "/"}${sub?.[0] === "/" ? sub.slice(1) : sub}`}`;
 };
-var checkOptionalParameter = (path5) => {
-  if (path5.charCodeAt(path5.length - 1) !== 63 || !path5.includes(":")) {
+var checkOptionalParameter = (path3) => {
+  if (path3.charCodeAt(path3.length - 1) !== 63 || !path3.includes(":")) {
     return null;
   }
-  const segments = path5.split("/");
+  const segments = path3.split("/");
   const results = [];
   let basePath = "";
   segments.forEach((segment) => {
@@ -903,9 +903,9 @@ var HonoRequest = class {
    */
   path;
   bodyCache = {};
-  constructor(request, path5 = "/", matchResult = [[]]) {
+  constructor(request, path3 = "/", matchResult = [[]]) {
     this.raw = request;
-    this.path = path5;
+    this.path = path3;
     this.#matchResult = matchResult;
     this.#validatedData = {};
   }
@@ -1715,8 +1715,8 @@ var Hono = class _Hono {
         return this;
       };
     });
-    this.on = (method, path5, ...handlers) => {
-      for (const p of [path5].flat()) {
+    this.on = (method, path3, ...handlers) => {
+      for (const p of [path3].flat()) {
         this.#path = p;
         for (const m of [method].flat()) {
           handlers.map((handler) => {
@@ -1773,8 +1773,8 @@ var Hono = class _Hono {
    * app.route("/api", app2) // GET /api/user
    * ```
    */
-  route(path5, app2) {
-    const subApp = this.basePath(path5);
+  route(path3, app2) {
+    const subApp = this.basePath(path3);
     app2.routes.map((r) => {
       let handler;
       if (app2.errorHandler === errorHandler) {
@@ -1800,9 +1800,9 @@ var Hono = class _Hono {
    * const api = new Hono().basePath('/api')
    * ```
    */
-  basePath(path5) {
+  basePath(path3) {
     const subApp = this.#clone();
-    subApp._basePath = mergePath(this._basePath, path5);
+    subApp._basePath = mergePath(this._basePath, path3);
     return subApp;
   }
   /**
@@ -1876,7 +1876,7 @@ var Hono = class _Hono {
    * })
    * ```
    */
-  mount(path5, applicationHandler, options) {
+  mount(path3, applicationHandler, options) {
     let replaceRequest;
     let optionHandler;
     if (options) {
@@ -1903,7 +1903,7 @@ var Hono = class _Hono {
       return [c.env, executionContext];
     };
     replaceRequest ||= (() => {
-      const mergedPath = mergePath(this._basePath, path5);
+      const mergedPath = mergePath(this._basePath, path3);
       const pathPrefixLength = mergedPath === "/" ? 0 : mergedPath.length;
       return (request) => {
         const url = new URL(request.url);
@@ -1918,14 +1918,14 @@ var Hono = class _Hono {
       }
       await next();
     };
-    this.#addRoute(METHOD_NAME_ALL, mergePath(path5, "*"), handler);
+    this.#addRoute(METHOD_NAME_ALL, mergePath(path3, "*"), handler);
     return this;
   }
-  #addRoute(method, path5, handler) {
+  #addRoute(method, path3, handler) {
     method = method.toUpperCase();
-    path5 = mergePath(this._basePath, path5);
-    const r = { basePath: this._basePath, path: path5, method, handler };
-    this.router.add(method, path5, [handler, r]);
+    path3 = mergePath(this._basePath, path3);
+    const r = { basePath: this._basePath, path: path3, method, handler };
+    this.router.add(method, path3, [handler, r]);
     this.routes.push(r);
   }
   #handleError(err, c) {
@@ -1938,10 +1938,10 @@ var Hono = class _Hono {
     if (method === "HEAD") {
       return (async () => new Response(null, await this.#dispatch(request, executionCtx, env, "GET")))();
     }
-    const path5 = this.getPath(request, { env });
-    const matchResult = this.router.match(method, path5);
+    const path3 = this.getPath(request, { env });
+    const matchResult = this.router.match(method, path3);
     const c = new Context(request, {
-      path: path5,
+      path: path3,
       matchResult,
       env,
       executionCtx,
@@ -2041,7 +2041,7 @@ var Hono = class _Hono {
 
 // node_modules/hono/dist/router/reg-exp-router/matcher.js
 var emptyParam = [];
-function match(method, path5) {
+function match(method, path3) {
   const matchers = this.buildAllMatchers();
   const match2 = ((method2, path22) => {
     const matcher = matchers[method2] || matchers[METHOD_NAME_ALL];
@@ -2057,7 +2057,7 @@ function match(method, path5) {
     return [matcher[1][index], match3];
   });
   this.match = match2;
-  return match2(method, path5);
+  return match2(method, path3);
 }
 
 // node_modules/hono/dist/router/reg-exp-router/node.js
@@ -2172,12 +2172,12 @@ var Node = class _Node {
 var Trie = class {
   #context = { varIndex: 0 };
   #root = new Node();
-  insert(path5, index, pathErrorCheckOnly) {
+  insert(path3, index, pathErrorCheckOnly) {
     const paramAssoc = [];
     const groups = [];
     for (let i = 0; ; ) {
       let replaced = false;
-      path5 = path5.replace(/\{[^}]+\}/g, (m) => {
+      path3 = path3.replace(/\{[^}]+\}/g, (m) => {
         const mark = `@\\${i}`;
         groups[i] = [mark, m];
         i++;
@@ -2188,7 +2188,7 @@ var Trie = class {
         break;
       }
     }
-    const tokens = path5.match(/(?::[^\/]+)|(?:\/\*$)|./g) || [];
+    const tokens = path3.match(/(?::[^\/]+)|(?:\/\*$)|./g) || [];
     for (let i = groups.length - 1; i >= 0; i--) {
       const [mark] = groups[i];
       for (let j = tokens.length - 1; j >= 0; j--) {
@@ -2227,9 +2227,9 @@ var Trie = class {
 // node_modules/hono/dist/router/reg-exp-router/router.js
 var nullMatcher = [/^$/, [], /* @__PURE__ */ Object.create(null)];
 var wildcardRegExpCache = /* @__PURE__ */ Object.create(null);
-function buildWildcardRegExp(path5) {
-  return wildcardRegExpCache[path5] ??= new RegExp(
-    path5 === "*" ? "" : `^${path5.replace(
+function buildWildcardRegExp(path3) {
+  return wildcardRegExpCache[path3] ??= new RegExp(
+    path3 === "*" ? "" : `^${path3.replace(
       /\/\*$|([.\\+*[^\]$()])/g,
       (_, metaChar) => metaChar ? `\\${metaChar}` : "(?:|/.*)"
     )}$`
@@ -2251,17 +2251,17 @@ function buildMatcherFromPreprocessedRoutes(routes) {
   );
   const staticMap = /* @__PURE__ */ Object.create(null);
   for (let i = 0, j = -1, len = routesWithStaticPathFlag.length; i < len; i++) {
-    const [pathErrorCheckOnly, path5, handlers] = routesWithStaticPathFlag[i];
+    const [pathErrorCheckOnly, path3, handlers] = routesWithStaticPathFlag[i];
     if (pathErrorCheckOnly) {
-      staticMap[path5] = [handlers.map(([h]) => [h, /* @__PURE__ */ Object.create(null)]), emptyParam];
+      staticMap[path3] = [handlers.map(([h]) => [h, /* @__PURE__ */ Object.create(null)]), emptyParam];
     } else {
       j++;
     }
     let paramAssoc;
     try {
-      paramAssoc = trie.insert(path5, j, pathErrorCheckOnly);
+      paramAssoc = trie.insert(path3, j, pathErrorCheckOnly);
     } catch (e) {
-      throw e === PATH_ERROR ? new UnsupportedPathError(path5) : e;
+      throw e === PATH_ERROR ? new UnsupportedPathError(path3) : e;
     }
     if (pathErrorCheckOnly) {
       continue;
@@ -2295,12 +2295,12 @@ function buildMatcherFromPreprocessedRoutes(routes) {
   }
   return [regexp, handlerMap, staticMap];
 }
-function findMiddleware(middleware, path5) {
+function findMiddleware(middleware, path3) {
   if (!middleware) {
     return void 0;
   }
   for (const k of Object.keys(middleware).sort((a, b) => b.length - a.length)) {
-    if (buildWildcardRegExp(k).test(path5)) {
+    if (buildWildcardRegExp(k).test(path3)) {
       return [...middleware[k]];
     }
   }
@@ -2314,7 +2314,7 @@ var RegExpRouter = class {
     this.#middleware = { [METHOD_NAME_ALL]: /* @__PURE__ */ Object.create(null) };
     this.#routes = { [METHOD_NAME_ALL]: /* @__PURE__ */ Object.create(null) };
   }
-  add(method, path5, handler) {
+  add(method, path3, handler) {
     const middleware = this.#middleware;
     const routes = this.#routes;
     if (!middleware || !routes) {
@@ -2329,18 +2329,18 @@ var RegExpRouter = class {
         });
       });
     }
-    if (path5 === "/*") {
-      path5 = "*";
+    if (path3 === "/*") {
+      path3 = "*";
     }
-    const paramCount = (path5.match(/\/:/g) || []).length;
-    if (/\*$/.test(path5)) {
-      const re = buildWildcardRegExp(path5);
+    const paramCount = (path3.match(/\/:/g) || []).length;
+    if (/\*$/.test(path3)) {
+      const re = buildWildcardRegExp(path3);
       if (method === METHOD_NAME_ALL) {
         Object.keys(middleware).forEach((m) => {
-          middleware[m][path5] ||= findMiddleware(middleware[m], path5) || findMiddleware(middleware[METHOD_NAME_ALL], path5) || [];
+          middleware[m][path3] ||= findMiddleware(middleware[m], path3) || findMiddleware(middleware[METHOD_NAME_ALL], path3) || [];
         });
       } else {
-        middleware[method][path5] ||= findMiddleware(middleware[method], path5) || findMiddleware(middleware[METHOD_NAME_ALL], path5) || [];
+        middleware[method][path3] ||= findMiddleware(middleware[method], path3) || findMiddleware(middleware[METHOD_NAME_ALL], path3) || [];
       }
       Object.keys(middleware).forEach((m) => {
         if (method === METHOD_NAME_ALL || method === m) {
@@ -2358,7 +2358,7 @@ var RegExpRouter = class {
       });
       return;
     }
-    const paths = checkOptionalParameter(path5) || [path5];
+    const paths = checkOptionalParameter(path3) || [path3];
     for (let i = 0, len = paths.length; i < len; i++) {
       const path22 = paths[i];
       Object.keys(routes).forEach((m) => {
@@ -2385,13 +2385,13 @@ var RegExpRouter = class {
     const routes = [];
     let hasOwnRoute = method === METHOD_NAME_ALL;
     [this.#middleware, this.#routes].forEach((r) => {
-      const ownRoute = r[method] ? Object.keys(r[method]).map((path5) => [path5, r[method][path5]]) : [];
+      const ownRoute = r[method] ? Object.keys(r[method]).map((path3) => [path3, r[method][path3]]) : [];
       if (ownRoute.length !== 0) {
         hasOwnRoute ||= true;
         routes.push(...ownRoute);
       } else if (method !== METHOD_NAME_ALL) {
         routes.push(
-          ...Object.keys(r[METHOD_NAME_ALL]).map((path5) => [path5, r[METHOD_NAME_ALL][path5]])
+          ...Object.keys(r[METHOD_NAME_ALL]).map((path3) => [path3, r[METHOD_NAME_ALL][path3]])
         );
       }
     });
@@ -2411,13 +2411,13 @@ var SmartRouter = class {
   constructor(init) {
     this.#routers = init.routers;
   }
-  add(method, path5, handler) {
+  add(method, path3, handler) {
     if (!this.#routes) {
       throw new Error(MESSAGE_MATCHER_IS_ALREADY_BUILT);
     }
-    this.#routes.push([method, path5, handler]);
+    this.#routes.push([method, path3, handler]);
   }
-  match(method, path5) {
+  match(method, path3) {
     if (!this.#routes) {
       throw new Error("Fatal error");
     }
@@ -2432,7 +2432,7 @@ var SmartRouter = class {
         for (let i2 = 0, len2 = routes.length; i2 < len2; i2++) {
           router3.add(...routes[i2]);
         }
-        res = router3.match(method, path5);
+        res = router3.match(method, path3);
       } catch (e) {
         if (e instanceof UnsupportedPathError) {
           continue;
@@ -2476,10 +2476,10 @@ var Node2 = class _Node2 {
     }
     this.#patterns = [];
   }
-  insert(method, path5, handler) {
+  insert(method, path3, handler) {
     this.#order = ++this.#order;
     let curNode = this;
-    const parts = splitRoutingPath(path5);
+    const parts = splitRoutingPath(path3);
     const possibleKeys = [];
     for (let i = 0, len = parts.length; i < len; i++) {
       const p = parts[i];
@@ -2530,12 +2530,12 @@ var Node2 = class _Node2 {
     }
     return handlerSets;
   }
-  search(method, path5) {
+  search(method, path3) {
     const handlerSets = [];
     this.#params = emptyParams;
     const curNode = this;
     let curNodes = [curNode];
-    const parts = splitPath(path5);
+    const parts = splitPath(path3);
     const curNodesQueue = [];
     for (let i = 0, len = parts.length; i < len; i++) {
       const part = parts[i];
@@ -2623,18 +2623,18 @@ var TrieRouter = class {
   constructor() {
     this.#node = new Node2();
   }
-  add(method, path5, handler) {
-    const results = checkOptionalParameter(path5);
+  add(method, path3, handler) {
+    const results = checkOptionalParameter(path3);
     if (results) {
       for (let i = 0, len = results.length; i < len; i++) {
         this.#node.insert(method, results[i], handler);
       }
       return;
     }
-    this.#node.insert(method, path5, handler);
+    this.#node.insert(method, path3, handler);
   }
-  match(method, path5) {
-    return this.#node.search(method, path5);
+  match(method, path3) {
+    return this.#node.search(method, path3);
   }
 };
 
@@ -2713,18 +2713,18 @@ var colorStatus = async (status) => {
   }
   return `${status}`;
 };
-async function log(fn, prefix, method, path5, status = 0, elapsed) {
-  const out = prefix === "<--" ? `${prefix} ${method} ${path5}` : `${prefix} ${method} ${path5} ${await colorStatus(status)} ${elapsed}`;
+async function log(fn, prefix, method, path3, status = 0, elapsed) {
+  const out = prefix === "<--" ? `${prefix} ${method} ${path3}` : `${prefix} ${method} ${path3} ${await colorStatus(status)} ${elapsed}`;
   fn(out);
 }
 var logger = (fn = console.log) => {
   return async function logger2(c, next) {
     const { method, url } = c.req;
-    const path5 = url.slice(url.indexOf("/", 8));
-    await log(fn, "<--", method, path5);
+    const path3 = url.slice(url.indexOf("/", 8));
+    await log(fn, "<--", method, path3);
     const start = Date.now();
     await next();
-    await log(fn, "-->", method, path5, c.res.status, time(start));
+    await log(fn, "-->", method, path3, c.res.status, time(start));
   };
 };
 
@@ -2817,17 +2817,27 @@ var cors = (options) => {
 import fs from "fs/promises";
 import path from "path";
 import { fileURLToPath } from "url";
-var __filename = fileURLToPath(import.meta.url);
-var __dirname = path.dirname(__filename);
-var DATA_PATH = path.join(__dirname, "../data");
+var DATA_PATH = path.join(process.cwd(), "src/data");
 async function readJson(filePath) {
   try {
     const fullPath = path.join(DATA_PATH, filePath);
     const data = await fs.readFile(fullPath, "utf8");
     return JSON.parse(data);
   } catch (error) {
-    console.error(`Error reading JSON file ${filePath}:`, error);
+    console.error(`Error reading JSON from ${filePath}:`, error.message);
     return null;
+  }
+}
+async function writeJson(filePath, data) {
+  try {
+    const fullPath = path.join(DATA_PATH, filePath);
+    const dir = path.dirname(fullPath);
+    await fs.mkdir(dir, { recursive: true });
+    await fs.writeFile(fullPath, JSON.stringify(data, null, 2), "utf8");
+    return true;
+  } catch (error) {
+    console.error(`Error writing JSON to ${filePath}:`, error.message);
+    return false;
   }
 }
 async function getSurahList() {
@@ -2881,6 +2891,9 @@ async function getCalendarDays() {
 }
 async function getMasjid() {
   return await readJson("common/masjid.json");
+}
+async function getLocalHadits(bookName) {
+  return await readJson(`hadits/${bookName}.json`);
 }
 
 // node_modules/hono/dist/jsx/constants.js
@@ -4973,17 +4986,17 @@ var Layout = ({ children, title: title3 }) => {
           #modal-json-editor .jsoneditor-tree::-webkit-scrollbar-thumb:hover {
             background: #475569;
           }
-        `)), /* @__PURE__ */ jsx("body", { class: "bg-slate-50 text-slate-900 min-h-screen flex flex-col" }, /* @__PURE__ */ jsx(Search, null), /* @__PURE__ */ jsx("header", { class: "sticky top-0 z-50 glass border-b border-slate-200" }, /* @__PURE__ */ jsx("div", { class: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" }, /* @__PURE__ */ jsx("div", { class: "flex justify-between h-16 items-center" }, /* @__PURE__ */ jsx(
+        `)), /* @__PURE__ */ jsx("body", { class: "flex flex-col min-h-screen bg-slate-50 text-slate-900" }, /* @__PURE__ */ jsx(Search, null), /* @__PURE__ */ jsx("header", { class: "sticky top-0 z-50 border-b glass border-slate-200" }, /* @__PURE__ */ jsx("div", { class: "px-4 mx-auto max-w-7xl sm:px-6 lg:px-8" }, /* @__PURE__ */ jsx("div", { class: "flex justify-between items-center h-16" }, /* @__PURE__ */ jsx(
     "a",
     {
       href: "/",
-      class: "flex items-center gap-2 group transition-all shrink-0"
+      class: "flex gap-2 items-center transition-all group shrink-0"
     },
-    /* @__PURE__ */ jsx("div", { class: "w-8 h-8 bg-emerald-600 rounded-lg flex items-center justify-center group-hover:shadow-lg group-hover:shadow-emerald-200 transition-all" }, /* @__PURE__ */ jsx(
+    /* @__PURE__ */ jsx("div", { class: "flex justify-center items-center w-8 h-8 bg-emerald-600 rounded-lg transition-all group-hover:shadow-lg group-hover:shadow-emerald-200" }, /* @__PURE__ */ jsx(
       "svg",
       {
         xmlns: "http://www.w3.org/2000/svg",
-        class: "h-5 w-5 text-white",
+        class: "w-5 h-5 text-white",
         fill: "none",
         viewBox: "0 0 24 24",
         stroke: "currentColor"
@@ -4998,12 +5011,12 @@ var Layout = ({ children, title: title3 }) => {
         }
       )
     )),
-    /* @__PURE__ */ jsx("span", { class: "text-xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent group-hover:from-emerald-500 group-hover:to-teal-500 transition-all" }, "Muslim API")
-  ), /* @__PURE__ */ jsx("div", { class: "flex items-center gap-1 md:gap-4 lg:gap-4" }, /* @__PURE__ */ jsx("div", { class: "relative group w-40 md:w-64" }, /* @__PURE__ */ jsx("div", { class: "absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none" }, /* @__PURE__ */ jsx(
+    /* @__PURE__ */ jsx("span", { class: "text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-600 transition-all group-hover:from-emerald-500 group-hover:to-teal-500" }, "Muslim API")
+  ), /* @__PURE__ */ jsx("div", { class: "flex gap-1 items-center md:gap-4 lg:gap-4" }, /* @__PURE__ */ jsx("div", { class: "relative w-40 group md:w-64" }, /* @__PURE__ */ jsx("div", { class: "flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none" }, /* @__PURE__ */ jsx(
     "svg",
     {
       xmlns: "http://www.w3.org/2000/svg",
-      class: "h-4 w-4 text-slate-400 group-focus-within:text-emerald-500 transition-colors",
+      class: "w-4 h-4 transition-colors text-slate-400 group-focus-within:text-emerald-500",
       fill: "none",
       viewBox: "0 0 24 24",
       stroke: "currentColor"
@@ -5026,7 +5039,7 @@ var Layout = ({ children, title: title3 }) => {
       onfocus: "window.handleSearch(this.value)",
       autocomplete: "off",
       placeholder: "Search...",
-      class: "block w-full pl-10 pr-3 py-1.5 bg-slate-100 border border-slate-200 rounded-lg text-sm placeholder-slate-400 focus:outline-none focus:bg-white focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition-all"
+      class: "block py-1.5 pr-3 pl-10 w-full text-sm rounded-lg border transition-all bg-slate-100 border-slate-200 placeholder-slate-400 focus:outline-none focus:bg-white focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500"
     }
   ), /* @__PURE__ */ jsx(
     "div",
@@ -5034,19 +5047,19 @@ var Layout = ({ children, title: title3 }) => {
       id: "search-results-dropdown",
       class: "absolute top-full left-0 right-0 mt-2 bg-white rounded-xl shadow-xl border border-slate-200 hidden overflow-hidden z-[100] max-h-[400px] overflow-y-auto"
     },
-    /* @__PURE__ */ jsx("div", { id: "search-results-content", class: "p-2" }, /* @__PURE__ */ jsx("div", { class: "text-center py-4 text-slate-400 text-xs" }, "Type to search..."))
-  )), /* @__PURE__ */ jsx("nav", { class: "hidden md:flex items-center space-x-8" }, /* @__PURE__ */ jsx(
+    /* @__PURE__ */ jsx("div", { id: "search-results-content", class: "p-2" }, /* @__PURE__ */ jsx("div", { class: "py-4 text-xs text-center text-slate-400" }, "Type to search..."))
+  )), /* @__PURE__ */ jsx("nav", { class: "hidden items-center space-x-8 md:flex" }, /* @__PURE__ */ jsx(
     "a",
     {
       href: "/",
-      class: "text-slate-600 hover:text-emerald-600 font-medium transition-colors"
+      class: "font-medium transition-colors text-slate-600 hover:text-emerald-600"
     },
     "Home"
-  ), /* @__PURE__ */ jsx("div", { class: "relative group" }, /* @__PURE__ */ jsx("button", { class: "flex items-center gap-1 text-slate-600 group-hover:text-emerald-600 font-medium transition-colors py-4" }, "Documentation", /* @__PURE__ */ jsx(
+  ), /* @__PURE__ */ jsx("div", { class: "relative group" }, /* @__PURE__ */ jsx("button", { class: "flex gap-1 items-center py-4 font-medium transition-colors text-slate-600 group-hover:text-emerald-600" }, "Documentation", /* @__PURE__ */ jsx(
     "svg",
     {
       xmlns: "http://www.w3.org/2000/svg",
-      class: "h-4 w-4 transition-transform group-hover:rotate-180",
+      class: "w-4 h-4 transition-transform group-hover:rotate-180",
       fill: "none",
       viewBox: "0 0 24 24",
       stroke: "currentColor"
@@ -5060,13 +5073,13 @@ var Layout = ({ children, title: title3 }) => {
         d: "M19 9l-7 7-7-7"
       }
     )
-  )), /* @__PURE__ */ jsx("div", { class: "absolute top-full left-1/2 -translate-x-1/2 w-[500px] bg-white rounded-2xl shadow-2xl border border-slate-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 p-6 z-[100]" }, /* @__PURE__ */ jsx("div", { class: "grid grid-cols-3 gap-8" }, /* @__PURE__ */ jsx("div", null, /* @__PURE__ */ jsx("h5", { class: "text-xs font-bold text-slate-400 uppercase tracking-wider mb-4" }, "Internal Services"), /* @__PURE__ */ jsx("ul", { class: "space-y-3" }, /* @__PURE__ */ jsx("li", null, /* @__PURE__ */ jsx(
+  )), /* @__PURE__ */ jsx("div", { class: "absolute top-full left-1/2 -translate-x-1/2 w-[500px] bg-white rounded-2xl shadow-2xl border border-slate-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 p-6 z-[100]" }, /* @__PURE__ */ jsx("div", { class: "grid grid-cols-3 gap-8" }, /* @__PURE__ */ jsx("div", null, /* @__PURE__ */ jsx("h5", { class: "mb-4 text-xs font-bold tracking-wider uppercase text-slate-400" }, "Internal Services"), /* @__PURE__ */ jsx("ul", { class: "space-y-3" }, /* @__PURE__ */ jsx("li", null, /* @__PURE__ */ jsx(
     "a",
     {
       href: "/docs",
-      class: "group/item flex items-start gap-3"
+      class: "flex gap-3 items-start group/item"
     },
-    /* @__PURE__ */ jsx("div", { class: "w-8 h-8 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0 group-hover/item:bg-emerald-600 group-hover/item:text-white transition-colors" }, /* @__PURE__ */ jsx(
+    /* @__PURE__ */ jsx("div", { class: "flex justify-center items-center w-8 h-8 text-emerald-600 bg-emerald-50 rounded-lg transition-colors shrink-0 group-hover/item:bg-emerald-600 group-hover/item:text-white" }, /* @__PURE__ */ jsx(
       "svg",
       {
         class: "w-4 h-4",
@@ -5089,9 +5102,9 @@ var Layout = ({ children, title: title3 }) => {
     "a",
     {
       href: "/other",
-      class: "group/item flex items-start gap-3"
+      class: "flex gap-3 items-start group/item"
     },
-    /* @__PURE__ */ jsx("div", { class: "w-8 h-8 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center shrink-0 group-hover/item:bg-blue-600 group-hover/item:text-white transition-colors" }, /* @__PURE__ */ jsx(
+    /* @__PURE__ */ jsx("div", { class: "flex justify-center items-center w-8 h-8 text-blue-600 bg-blue-50 rounded-lg transition-colors shrink-0 group-hover/item:bg-blue-600 group-hover/item:text-white" }, /* @__PURE__ */ jsx(
       "svg",
       {
         class: "w-4 h-4",
@@ -5114,9 +5127,9 @@ var Layout = ({ children, title: title3 }) => {
     "a",
     {
       href: "/status",
-      class: "group/item flex items-start gap-3"
+      class: "flex gap-3 items-start group/item"
     },
-    /* @__PURE__ */ jsx("div", { class: "w-8 h-8 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center shrink-0 group-hover/item:bg-amber-600 group-hover/item:text-white transition-colors" }, /* @__PURE__ */ jsx(
+    /* @__PURE__ */ jsx("div", { class: "flex justify-center items-center w-8 h-8 text-amber-600 bg-amber-50 rounded-lg transition-colors shrink-0 group-hover/item:bg-amber-600 group-hover/item:text-white" }, /* @__PURE__ */ jsx(
       "svg",
       {
         class: "w-4 h-4",
@@ -5135,13 +5148,13 @@ var Layout = ({ children, title: title3 }) => {
       )
     )),
     /* @__PURE__ */ jsx("div", null, /* @__PURE__ */ jsx("div", { class: "text-sm font-bold text-slate-900" }, "System Status"), /* @__PURE__ */ jsx("div", { class: "text-xs text-slate-500" }, "Uptime & Latency"))
-  )))), /* @__PURE__ */ jsx("div", { class: "col-span-2" }, /* @__PURE__ */ jsx("h5", { class: "text-xs font-bold text-slate-400 uppercase tracking-wider mb-4" }, "Other API Resources"), /* @__PURE__ */ jsx("ul", { class: "grid grid-cols-2 gap-x-8 gap-y-4" }, /* @__PURE__ */ jsx("li", null, /* @__PURE__ */ jsx(
+  )))), /* @__PURE__ */ jsx("div", { class: "col-span-2" }, /* @__PURE__ */ jsx("h5", { class: "mb-4 text-xs font-bold tracking-wider uppercase text-slate-400" }, "Other API Resources"), /* @__PURE__ */ jsx("ul", { class: "grid grid-cols-2 gap-y-4 gap-x-8" }, /* @__PURE__ */ jsx("li", null, /* @__PURE__ */ jsx(
     "a",
     {
       href: "/other#hadits",
-      class: "group/item flex items-start gap-3"
+      class: "flex gap-3 items-start group/item"
     },
-    /* @__PURE__ */ jsx("div", { class: "w-8 h-8 rounded-lg bg-rose-50 text-rose-600 flex items-center justify-center shrink-0 group-hover/item:bg-rose-600 group-hover/item:text-white transition-colors" }, /* @__PURE__ */ jsx(
+    /* @__PURE__ */ jsx("div", { class: "flex justify-center items-center w-8 h-8 text-rose-600 bg-rose-50 rounded-lg transition-colors shrink-0 group-hover/item:bg-rose-600 group-hover/item:text-white" }, /* @__PURE__ */ jsx(
       "svg",
       {
         class: "w-4 h-4",
@@ -5164,9 +5177,9 @@ var Layout = ({ children, title: title3 }) => {
     "a",
     {
       href: "/other#doa",
-      class: "group/item flex items-start gap-3"
+      class: "flex gap-3 items-start group/item"
     },
-    /* @__PURE__ */ jsx("div", { class: "w-8 h-8 rounded-lg bg-purple-50 text-purple-600 flex items-center justify-center shrink-0 group-hover/item:bg-purple-600 group-hover/item:text-white transition-colors" }, /* @__PURE__ */ jsx(
+    /* @__PURE__ */ jsx("div", { class: "flex justify-center items-center w-8 h-8 text-purple-600 bg-purple-50 rounded-lg transition-colors shrink-0 group-hover/item:bg-purple-600 group-hover/item:text-white" }, /* @__PURE__ */ jsx(
       "svg",
       {
         class: "w-4 h-4",
@@ -5189,9 +5202,9 @@ var Layout = ({ children, title: title3 }) => {
     "a",
     {
       href: "/other#calendar",
-      class: "group/item flex items-start gap-3"
+      class: "flex gap-3 items-start group/item"
     },
-    /* @__PURE__ */ jsx("div", { class: "w-8 h-8 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center shrink-0 group-hover/item:bg-indigo-600 group-hover/item:text-white transition-colors" }, /* @__PURE__ */ jsx(
+    /* @__PURE__ */ jsx("div", { class: "flex justify-center items-center w-8 h-8 text-indigo-600 bg-indigo-50 rounded-lg transition-colors shrink-0 group-hover/item:bg-indigo-600 group-hover/item:text-white" }, /* @__PURE__ */ jsx(
       "svg",
       {
         class: "w-4 h-4",
@@ -5214,9 +5227,9 @@ var Layout = ({ children, title: title3 }) => {
     "a",
     {
       href: "/other#asma",
-      class: "group/item flex items-start gap-3"
+      class: "flex gap-3 items-start group/item"
     },
-    /* @__PURE__ */ jsx("div", { class: "w-8 h-8 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center shrink-0 group-hover/item:bg-amber-600 group-hover/item:text-white transition-colors" }, /* @__PURE__ */ jsx(
+    /* @__PURE__ */ jsx("div", { class: "flex justify-center items-center w-8 h-8 text-amber-600 bg-amber-50 rounded-lg transition-colors shrink-0 group-hover/item:bg-amber-600 group-hover/item:text-white" }, /* @__PURE__ */ jsx(
       "svg",
       {
         class: "w-4 h-4",
@@ -5239,9 +5252,9 @@ var Layout = ({ children, title: title3 }) => {
     "a",
     {
       href: "/other#kemenag",
-      class: "group/item flex items-start gap-3"
+      class: "flex gap-3 items-start group/item"
     },
-    /* @__PURE__ */ jsx("div", { class: "w-8 h-8 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0 group-hover/item:bg-emerald-600 group-hover/item:text-white transition-colors" }, /* @__PURE__ */ jsx(
+    /* @__PURE__ */ jsx("div", { class: "flex justify-center items-center w-8 h-8 text-emerald-600 bg-emerald-50 rounded-lg transition-colors shrink-0 group-hover/item:bg-emerald-600 group-hover/item:text-white" }, /* @__PURE__ */ jsx(
       "svg",
       {
         class: "w-4 h-4",
@@ -5264,7 +5277,7 @@ var Layout = ({ children, title: title3 }) => {
     "a",
     {
       href: "/playground",
-      class: "px-4 py-1.5 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 font-medium transition-all shadow-sm hover:shadow-emerald-200"
+      class: "px-4 py-1.5 font-medium text-white bg-emerald-600 rounded-lg shadow-sm transition-all hover:bg-emerald-700 hover:shadow-emerald-200"
     },
     "Playground"
   )), /* @__PURE__ */ jsx("div", { class: "md:hidden" }, /* @__PURE__ */ jsx(
@@ -5272,13 +5285,13 @@ var Layout = ({ children, title: title3 }) => {
     {
       type: "button",
       onclick: "document.getElementById('mobile-menu').classList.toggle('open')",
-      class: "text-slate-600 hover:text-emerald-600 p-2 rounded-lg hover:bg-slate-100 transition-all"
+      class: "p-2 rounded-lg transition-all text-slate-600 hover:text-emerald-600 hover:bg-slate-100"
     },
     /* @__PURE__ */ jsx(
       "svg",
       {
         xmlns: "http://www.w3.org/2000/svg",
-        class: "h-6 w-6",
+        class: "w-6 h-6",
         fill: "none",
         viewBox: "0 0 24 24",
         stroke: "currentColor"
@@ -5293,45 +5306,45 @@ var Layout = ({ children, title: title3 }) => {
         }
       )
     )
-  )))), /* @__PURE__ */ jsx("div", { id: "mobile-menu", class: "md:hidden border-t border-slate-100" }, /* @__PURE__ */ jsx("nav", { class: "flex flex-col space-y-1 px-2 pb-4" }, /* @__PURE__ */ jsx(
+  )))), /* @__PURE__ */ jsx("div", { id: "mobile-menu", class: "border-t md:hidden border-slate-100" }, /* @__PURE__ */ jsx("nav", { class: "flex flex-col px-2 pb-4 space-y-1" }, /* @__PURE__ */ jsx(
     "a",
     {
       href: "/",
-      class: "text-slate-600 hover:text-emerald-600 hover:bg-emerald-50 px-3 py-2 rounded-lg font-medium transition-all"
+      class: "px-3 py-2 font-medium rounded-lg transition-all text-slate-600 hover:text-emerald-600 hover:bg-emerald-50"
     },
     "Home"
-  ), /* @__PURE__ */ jsx("div", { class: "px-3 py-2 text-xs font-bold text-slate-400 uppercase tracking-wider mt-2" }, "Internal Services"), /* @__PURE__ */ jsx(
+  ), /* @__PURE__ */ jsx("div", { class: "px-3 py-2 mt-2 text-xs font-bold tracking-wider uppercase text-slate-400" }, "Internal Services"), /* @__PURE__ */ jsx(
     "a",
     {
       href: "/docs",
-      class: "text-slate-600 hover:text-emerald-600 hover:bg-emerald-50 px-3 py-2 rounded-lg font-medium transition-all flex items-center gap-2"
+      class: "flex gap-2 items-center px-3 py-2 font-medium rounded-lg transition-all text-slate-600 hover:text-emerald-600 hover:bg-emerald-50"
     },
-    /* @__PURE__ */ jsx("div", { class: "w-1.5 h-1.5 rounded-full bg-emerald-500" }),
+    /* @__PURE__ */ jsx("div", { class: "w-1.5 h-1.5 bg-emerald-500 rounded-full" }),
     " ",
     "Al-Quran API"
   ), /* @__PURE__ */ jsx(
     "a",
     {
       href: "/other",
-      class: "text-slate-600 hover:text-emerald-600 hover:bg-emerald-50 px-3 py-2 rounded-lg font-medium transition-all flex items-center gap-2"
+      class: "flex gap-2 items-center px-3 py-2 font-medium rounded-lg transition-all text-slate-600 hover:text-emerald-600 hover:bg-emerald-50"
     },
-    /* @__PURE__ */ jsx("div", { class: "w-1.5 h-1.5 rounded-full bg-blue-500" }),
+    /* @__PURE__ */ jsx("div", { class: "w-1.5 h-1.5 bg-blue-500 rounded-full" }),
     " Other APIs"
   ), /* @__PURE__ */ jsx(
     "a",
     {
       href: "/status",
-      class: "text-slate-600 hover:text-emerald-600 hover:bg-emerald-50 px-3 py-2 rounded-lg font-medium transition-all flex items-center gap-2"
+      class: "flex gap-2 items-center px-3 py-2 font-medium rounded-lg transition-all text-slate-600 hover:text-emerald-600 hover:bg-emerald-50"
     },
-    /* @__PURE__ */ jsx("div", { class: "w-1.5 h-1.5 rounded-full bg-amber-500" }),
+    /* @__PURE__ */ jsx("div", { class: "w-1.5 h-1.5 bg-amber-500 rounded-full" }),
     " ",
     "System Status"
-  ), /* @__PURE__ */ jsx("div", { class: "px-3 py-2 text-xs font-bold text-slate-400 uppercase tracking-wider mt-2" }, "External Resources"), /* @__PURE__ */ jsx(
+  ), /* @__PURE__ */ jsx("div", { class: "px-3 py-2 mt-2 text-xs font-bold tracking-wider uppercase text-slate-400" }, "External Resources"), /* @__PURE__ */ jsx(
     "a",
     {
       href: "https://quran.kemenag.go.id/",
       target: "_blank",
-      class: "text-slate-600 hover:text-emerald-600 hover:bg-emerald-50 px-3 py-2 rounded-lg font-medium transition-all"
+      class: "px-3 py-2 font-medium rounded-lg transition-all text-slate-600 hover:text-emerald-600 hover:bg-emerald-50"
     },
     "Quran Kemenag"
   ), /* @__PURE__ */ jsx(
@@ -5339,27 +5352,27 @@ var Layout = ({ children, title: title3 }) => {
     {
       href: "https://github.com/vrush2000/muslim-all-in-one-api",
       target: "_blank",
-      class: "text-slate-600 hover:text-emerald-600 hover:bg-emerald-50 px-3 py-2 rounded-lg font-medium transition-all"
+      class: "px-3 py-2 font-medium rounded-lg transition-all text-slate-600 hover:text-emerald-600 hover:bg-emerald-50"
     },
     "GitHub Repository"
   ), /* @__PURE__ */ jsx(
     "a",
     {
       href: "/playground",
-      class: "mt-4 text-center text-white bg-emerald-600 px-3 py-2.5 rounded-xl font-bold transition-all shadow-lg shadow-emerald-100"
+      class: "px-3 py-2.5 mt-4 font-bold text-center text-white bg-emerald-600 rounded-xl shadow-lg transition-all shadow-emerald-100"
     },
     "Open Playground"
   ))))), /* @__PURE__ */ jsx("main", { class: "flex-grow" }, children), /* @__PURE__ */ jsx("div", { id: "api-preview-modal", class: "fixed inset-0 z-[200] hidden" }, /* @__PURE__ */ jsx(
     "div",
     {
-      class: "absolute inset-0 bg-slate-900/60 backdrop-blur-sm",
+      class: "absolute inset-0 backdrop-blur-sm bg-slate-900/60",
       onclick: "window.closeApiModal()"
     }
-  ), /* @__PURE__ */ jsx("div", { class: "absolute inset-0 flex items-center justify-center p-2 sm:p-4 pointer-events-none" }, /* @__PURE__ */ jsx("div", { class: "bg-white w-full max-w-4xl h-full sm:h-auto sm:max-h-[90vh] rounded-xl sm:rounded-2xl shadow-2xl flex flex-col pointer-events-auto overflow-hidden border border-slate-200" }, /* @__PURE__ */ jsx("div", { class: "flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4 border-b border-slate-100 bg-slate-50/50 shrink-0" }, /* @__PURE__ */ jsx("div", { class: "flex items-center gap-2 sm:gap-3 overflow-hidden" }, /* @__PURE__ */ jsx("div", { class: "w-8 h-8 sm:w-10 sm:h-10 bg-emerald-100 text-emerald-600 rounded-lg sm:rounded-xl flex items-center justify-center shrink-0" }, /* @__PURE__ */ jsx(
+  ), /* @__PURE__ */ jsx("div", { class: "flex absolute inset-0 justify-center items-center p-2 pointer-events-none sm:p-4" }, /* @__PURE__ */ jsx("div", { class: "bg-white w-full max-w-4xl h-full sm:h-auto sm:max-h-[90vh] rounded-xl sm:rounded-2xl shadow-2xl flex flex-col pointer-events-auto overflow-hidden border border-slate-200" }, /* @__PURE__ */ jsx("div", { class: "flex justify-between items-center px-4 py-3 border-b sm:px-6 sm:py-4 border-slate-100 bg-slate-50/50 shrink-0" }, /* @__PURE__ */ jsx("div", { class: "flex overflow-hidden gap-2 items-center sm:gap-3" }, /* @__PURE__ */ jsx("div", { class: "flex justify-center items-center w-8 h-8 text-emerald-600 bg-emerald-100 rounded-lg sm:w-10 sm:h-10 sm:rounded-xl shrink-0" }, /* @__PURE__ */ jsx(
     "svg",
     {
       xmlns: "http://www.w3.org/2000/svg",
-      class: "h-5 w-5 sm:h-6 sm:w-6",
+      class: "w-5 h-5 sm:h-6 sm:w-6",
       fill: "none",
       viewBox: "0 0 24 24",
       stroke: "currentColor"
@@ -5382,7 +5395,7 @@ var Layout = ({ children, title: title3 }) => {
         d: "M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
       }
     )
-  )), /* @__PURE__ */ jsx("div", { class: "overflow-hidden" }, /* @__PURE__ */ jsx("h3", { class: "text-sm sm:text-lg font-bold text-slate-900 truncate" }, "API Response Preview"), /* @__PURE__ */ jsx(
+  )), /* @__PURE__ */ jsx("div", { class: "overflow-hidden" }, /* @__PURE__ */ jsx("h3", { class: "text-sm font-bold truncate sm:text-lg text-slate-900" }, "API Response Preview"), /* @__PURE__ */ jsx(
     "p",
     {
       id: "modal-endpoint-url",
@@ -5392,13 +5405,13 @@ var Layout = ({ children, title: title3 }) => {
     "button",
     {
       onclick: "window.closeApiModal()",
-      class: "p-1.5 sm:p-2 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-lg transition-all shrink-0"
+      class: "p-1.5 rounded-lg transition-all sm:p-2 text-slate-400 hover:text-slate-600 hover:bg-slate-100 shrink-0"
     },
     /* @__PURE__ */ jsx(
       "svg",
       {
         xmlns: "http://www.w3.org/2000/svg",
-        class: "h-5 w-5 sm:h-6 sm:w-6",
+        class: "w-5 h-5 sm:h-6 sm:w-6",
         fill: "none",
         viewBox: "0 0 24 24",
         stroke: "currentColor"
@@ -5413,13 +5426,13 @@ var Layout = ({ children, title: title3 }) => {
         }
       )
     )
-  )), /* @__PURE__ */ jsx("div", { class: "flex-grow p-4 sm:p-6 overflow-hidden flex flex-col gap-3 sm:gap-4" }, /* @__PURE__ */ jsx("div", { class: "flex flex-col sm:flex-row sm:items-center justify-between gap-3 shrink-0" }, /* @__PURE__ */ jsx("div", { class: "flex items-center gap-3" }, /* @__PURE__ */ jsx("span", { class: "inline-flex items-center px-2 py-0.5 rounded-md text-[10px] sm:text-xs font-bold bg-emerald-100 text-emerald-800 uppercase tracking-wider" }, "GET"), /* @__PURE__ */ jsx(
+  )), /* @__PURE__ */ jsx("div", { class: "flex overflow-hidden flex-col flex-grow gap-3 p-4 sm:p-6 sm:gap-4" }, /* @__PURE__ */ jsx("div", { class: "flex flex-col gap-3 justify-between sm:flex-row sm:items-center shrink-0" }, /* @__PURE__ */ jsx("div", { class: "flex gap-3 items-center" }, /* @__PURE__ */ jsx("span", { class: "inline-flex items-center px-2 py-0.5 rounded-md text-[10px] sm:text-xs font-bold bg-emerald-100 text-emerald-800 uppercase tracking-wider" }, "GET"), /* @__PURE__ */ jsx(
     "span",
     {
       id: "modal-status-badge",
       class: "hidden inline-flex items-center px-2 py-0.5 rounded-md text-[10px] sm:text-xs font-bold uppercase tracking-wider"
     }
-  )), /* @__PURE__ */ jsx("div", { class: "flex items-center gap-2" }, /* @__PURE__ */ jsx(
+  )), /* @__PURE__ */ jsx("div", { class: "flex gap-2 items-center" }, /* @__PURE__ */ jsx(
     "button",
     {
       onclick: "window.copyModalResponse()",
@@ -5429,7 +5442,7 @@ var Layout = ({ children, title: title3 }) => {
       "svg",
       {
         xmlns: "http://www.w3.org/2000/svg",
-        class: "h-3.5 w-3.5 sm:h-4 sm:w-4",
+        class: "w-3.5 h-3.5 sm:h-4 sm:w-4",
         fill: "none",
         viewBox: "0 0 24 24",
         stroke: "currentColor"
@@ -5457,7 +5470,7 @@ var Layout = ({ children, title: title3 }) => {
       "svg",
       {
         xmlns: "http://www.w3.org/2000/svg",
-        class: "h-3.5 w-3.5 sm:h-4 sm:w-4",
+        class: "w-3.5 h-3.5 sm:h-4 sm:w-4",
         fill: "none",
         viewBox: "0 0 24 24",
         stroke: "currentColor"
@@ -5478,11 +5491,11 @@ var Layout = ({ children, title: title3 }) => {
       id: "modal-json-pure",
       class: "flex-grow h-full w-full p-4 sm:p-6 text-emerald-400 font-mono text-[11px] sm:text-sm overflow-auto custom-scrollbar whitespace-pre"
     }
-  ))), /* @__PURE__ */ jsx("div", { class: "px-4 sm:px-6 py-3 sm:py-4 border-t border-slate-100 bg-slate-50/50 flex shrink-0" }, /* @__PURE__ */ jsx(
+  ))), /* @__PURE__ */ jsx("div", { class: "flex px-4 py-3 border-t sm:px-6 sm:py-4 border-slate-100 bg-slate-50/50 shrink-0" }, /* @__PURE__ */ jsx(
     "button",
     {
       onclick: "window.closeApiModal()",
-      class: "w-full sm:w-auto sm:ml-auto px-6 py-2 bg-slate-900 text-white rounded-lg sm:rounded-xl font-bold hover:bg-slate-800 transition-all shadow-lg shadow-slate-200"
+      class: "px-6 py-2 w-full font-bold text-white rounded-lg shadow-lg transition-all sm:w-auto sm:ml-auto bg-slate-900 sm:rounded-xl hover:bg-slate-800 shadow-slate-200"
     },
     "Close Preview"
   ))))), /* @__PURE__ */ jsx(
@@ -5518,13 +5531,13 @@ var Layout = ({ children, title: title3 }) => {
               jsonDisplay.textContent = JSON.stringify(data, null, 2);
               
               statusBadge.textContent = response.status + ' ' + response.statusText + ' (' + Math.round(end - start) + 'ms)';
-              statusBadge.className = 'inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ' + 
+              statusBadge.className = 'inline-flex items-center px-2.5 py-0.5 text-xs font-medium rounded-full' + 
                 (response.ok ? 'bg-blue-100 text-blue-800' : 'bg-red-100 text-red-800');
               statusBadge.classList.remove('hidden');
             } catch (error) {
               jsonDisplay.textContent = JSON.stringify({ error: 'Failed to fetch API', details: error.message }, null, 2);
               statusBadge.textContent = 'Error';
-              statusBadge.className = 'inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800';
+              statusBadge.className = 'inline-flex items-center px-2.5 py-0.5 text-xs font-medium text-red-800 bg-red-100 rounded-full';
               statusBadge.classList.remove('hidden');
             }
           };
@@ -5541,7 +5554,7 @@ var Layout = ({ children, title: title3 }) => {
               navigator.clipboard.writeText(json).then(() => {
                 const btn = event.currentTarget;
                 const originalText = btn.innerHTML;
-                btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg> Copied!';
+                btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg> Copied!';
                 setTimeout(() => btn.innerHTML = originalText, 2000);
               });
             }
@@ -5614,11 +5627,11 @@ var Layout = ({ children, title: title3 }) => {
         `
       }
     }
-  ), /* @__PURE__ */ jsx("footer", { class: "bg-white border-t border-slate-200 py-12 mt-12" }, /* @__PURE__ */ jsx("div", { class: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" }, /* @__PURE__ */ jsx("div", { class: "grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4 gap-8" }, /* @__PURE__ */ jsx("div", { class: "col-span-1 md:col-span-1" }, /* @__PURE__ */ jsx("div", { class: "flex items-center gap-2 mb-4" }, /* @__PURE__ */ jsx("div", { class: "w-6 h-6 bg-emerald-600 rounded flex items-center justify-center" }, /* @__PURE__ */ jsx(
+  ), /* @__PURE__ */ jsx("footer", { class: "py-12 mt-12 bg-white border-t border-slate-200" }, /* @__PURE__ */ jsx("div", { class: "px-4 mx-auto max-w-7xl sm:px-6 lg:px-8" }, /* @__PURE__ */ jsx("div", { class: "grid grid-cols-1 gap-8 md:grid-cols-4 lg:grid-cols-4" }, /* @__PURE__ */ jsx("div", { class: "col-span-1 md:col-span-1" }, /* @__PURE__ */ jsx("div", { class: "flex gap-2 items-center mb-4" }, /* @__PURE__ */ jsx("div", { class: "flex justify-center items-center w-6 h-6 bg-emerald-600 rounded" }, /* @__PURE__ */ jsx(
     "svg",
     {
       xmlns: "http://www.w3.org/2000/svg",
-      class: "h-4 w-4 text-white",
+      class: "w-4 h-4 text-white",
       fill: "none",
       viewBox: "0 0 24 24",
       stroke: "currentColor"
@@ -5632,12 +5645,12 @@ var Layout = ({ children, title: title3 }) => {
         d: "M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
       }
     )
-  )), /* @__PURE__ */ jsx("span", { class: "text-lg font-bold" }, "Muslim API")), /* @__PURE__ */ jsx("p", { class: "text-slate-500 text-sm leading-relaxed mb-4" }, "Penyedia layanan API Muslim gratis untuk mempermudah pengembang dalam membangun aplikasi islami."), /* @__PURE__ */ jsx("div", { class: "flex items-center gap-3" }, /* @__PURE__ */ jsx(
+  )), /* @__PURE__ */ jsx("span", { class: "text-lg font-bold" }, "Muslim API")), /* @__PURE__ */ jsx("p", { class: "mb-4 text-sm leading-relaxed text-slate-500" }, "Penyedia layanan API Muslim gratis untuk mempermudah pengembang dalam membangun aplikasi islami."), /* @__PURE__ */ jsx("div", { class: "flex gap-3 items-center" }, /* @__PURE__ */ jsx(
     "a",
     {
       href: "https://github.com/vrush2000/muslim-all-in-one-api",
       target: "_blank",
-      class: "p-2 bg-slate-100 hover:bg-emerald-100 text-slate-600 hover:text-emerald-600 rounded-lg transition-all",
+      class: "p-2 rounded-lg transition-all bg-slate-100 hover:bg-emerald-100 text-slate-600 hover:text-emerald-600",
       title: "GitHub Repository"
     },
     /* @__PURE__ */ jsx(
@@ -5653,7 +5666,7 @@ var Layout = ({ children, title: title3 }) => {
     "a",
     {
       href: "/status",
-      class: "p-2 bg-slate-100 hover:bg-emerald-100 text-slate-600 hover:text-emerald-600 rounded-lg transition-all",
+      class: "p-2 rounded-lg transition-all bg-slate-100 hover:bg-emerald-100 text-slate-600 hover:text-emerald-600",
       title: "System Status"
     },
     /* @__PURE__ */ jsx(
@@ -5674,19 +5687,19 @@ var Layout = ({ children, title: title3 }) => {
         }
       )
     )
-  ))), /* @__PURE__ */ jsx("div", null, /* @__PURE__ */ jsx("h4", { class: "font-semibold text-slate-900 mb-4" }, "API Documentation"), /* @__PURE__ */ jsx("ul", { class: "space-y-2 text-sm text-slate-500" }, /* @__PURE__ */ jsx("li", null, /* @__PURE__ */ jsx("a", { href: "/docs", class: "hover:text-emerald-600" }, "Al-Quran API")), /* @__PURE__ */ jsx("li", null, /* @__PURE__ */ jsx("a", { href: "/other#hadits", class: "hover:text-emerald-600" }, "Hadits & Doa")), /* @__PURE__ */ jsx("li", null, /* @__PURE__ */ jsx("a", { href: "/other#sholat", class: "hover:text-emerald-600" }, "Jadwal Sholat")), /* @__PURE__ */ jsx("li", null, /* @__PURE__ */ jsx("a", { href: "/other#kemenag", class: "hover:text-emerald-600" }, "Kemenag Data")), /* @__PURE__ */ jsx("li", null, /* @__PURE__ */ jsx("a", { href: "/other#sejarah", class: "hover:text-emerald-600" }, "Sejarah Islam")), /* @__PURE__ */ jsx("li", null, /* @__PURE__ */ jsx(
+  ))), /* @__PURE__ */ jsx("div", null, /* @__PURE__ */ jsx("h4", { class: "mb-4 font-semibold text-slate-900" }, "API Documentation"), /* @__PURE__ */ jsx("ul", { class: "space-y-2 text-sm text-slate-500" }, /* @__PURE__ */ jsx("li", null, /* @__PURE__ */ jsx("a", { href: "/docs", class: "hover:text-emerald-600" }, "Al-Quran API")), /* @__PURE__ */ jsx("li", null, /* @__PURE__ */ jsx("a", { href: "/other#hadits", class: "hover:text-emerald-600" }, "Hadits & Doa")), /* @__PURE__ */ jsx("li", null, /* @__PURE__ */ jsx("a", { href: "/other#sholat", class: "hover:text-emerald-600" }, "Jadwal Sholat")), /* @__PURE__ */ jsx("li", null, /* @__PURE__ */ jsx("a", { href: "/other#kemenag", class: "hover:text-emerald-600" }, "Kemenag Data")), /* @__PURE__ */ jsx("li", null, /* @__PURE__ */ jsx("a", { href: "/other#sejarah", class: "hover:text-emerald-600" }, "Sejarah Islam")), /* @__PURE__ */ jsx("li", null, /* @__PURE__ */ jsx(
     "a",
     {
       href: "/playground",
-      class: "text-emerald-600 font-semibold hover:underline"
+      class: "font-semibold text-emerald-600 hover:underline"
     },
     "API Playground"
-  )))), /* @__PURE__ */ jsx("div", null, /* @__PURE__ */ jsx("h4", { class: "font-semibold text-slate-900 mb-4" }, "Official Sources"), /* @__PURE__ */ jsx("ul", { class: "space-y-2 text-sm text-slate-500" }, /* @__PURE__ */ jsx("li", null, /* @__PURE__ */ jsx(
+  )))), /* @__PURE__ */ jsx("div", null, /* @__PURE__ */ jsx("h4", { class: "mb-4 font-semibold text-slate-900" }, "Official Sources"), /* @__PURE__ */ jsx("ul", { class: "space-y-2 text-sm text-slate-500" }, /* @__PURE__ */ jsx("li", null, /* @__PURE__ */ jsx(
     "a",
     {
       href: "https://quran.kemenag.go.id/",
       target: "_blank",
-      class: "hover:text-emerald-600 flex items-center gap-1"
+      class: "flex gap-1 items-center hover:text-emerald-600"
     },
     "Quran Kemenag",
     " ",
@@ -5716,14 +5729,14 @@ var Layout = ({ children, title: title3 }) => {
       class: "hover:text-emerald-600"
     },
     "MyQuran API (Jadwal Sholat)"
-  )))), /* @__PURE__ */ jsx("div", null, /* @__PURE__ */ jsx("h4", { class: "font-semibold text-slate-900 mb-4" }, "Community Repos"), /* @__PURE__ */ jsx("ul", { class: "space-y-2 text-sm text-slate-500" }, /* @__PURE__ */ jsx("li", null, /* @__PURE__ */ jsx(
+  )))), /* @__PURE__ */ jsx("div", null, /* @__PURE__ */ jsx("h4", { class: "mb-4 font-semibold text-slate-900" }, "Community Repos"), /* @__PURE__ */ jsx("ul", { class: "space-y-2 text-sm text-slate-500" }, /* @__PURE__ */ jsx("li", null, /* @__PURE__ */ jsx(
     "a",
     {
       href: "https://github.com/Otangid/muslim-api",
       target: "_blank",
       class: "hover:text-emerald-600"
     },
-    "Dataset keislaman (SQLite)"
+    "Dataset keislaman"
   )), /* @__PURE__ */ jsx("li", null, /* @__PURE__ */ jsx(
     "a",
     {
@@ -5748,7 +5761,7 @@ var Layout = ({ children, title: title3 }) => {
       class: "hover:text-emerald-600"
     },
     "Koleksi Hadith"
-  )))), /* @__PURE__ */ jsx("div", null, /* @__PURE__ */ jsx("h4", { class: "font-semibold text-slate-900 mb-4" }, "Inspiration"), /* @__PURE__ */ jsx("p", { class: "text-slate-500 text-sm leading-relaxed" }, "Original template by", " ", /* @__PURE__ */ jsx(
+  )))), /* @__PURE__ */ jsx("div", null, /* @__PURE__ */ jsx("h4", { class: "mb-4 font-semibold text-slate-900" }, "Inspiration"), /* @__PURE__ */ jsx("p", { class: "text-sm leading-relaxed text-slate-500" }, "Original template by", " ", /* @__PURE__ */ jsx(
     "a",
     {
       href: "http://www.designstub.com/",
@@ -5756,17 +5769,17 @@ var Layout = ({ children, title: title3 }) => {
       class: "hover:text-emerald-600"
     },
     "Designstub"
-  ))), /* @__PURE__ */ jsx("div", null, /* @__PURE__ */ jsx("h4", { class: "font-semibold text-slate-900 mb-4" }, "Support Project"), /* @__PURE__ */ jsx(
+  ))), /* @__PURE__ */ jsx("div", null, /* @__PURE__ */ jsx("h4", { class: "mb-4 font-semibold text-slate-900" }, "Support Project"), /* @__PURE__ */ jsx(
     "div",
     {
       onclick: "window.openDonationModal()",
-      class: "w-full group flex items-center gap-3 p-3 bg-gradient-to-br from-emerald-50 to-teal-50 rounded-xl border border-emerald-100 hover:border-emerald-300 transition-all shadow-sm hover:shadow-md cursor-pointer mb-3"
+      class: "flex gap-3 items-center p-3 mb-3 w-full bg-gradient-to-br from-emerald-50 to-teal-50 rounded-xl border border-emerald-100 shadow-sm transition-all cursor-pointer group hover:border-emerald-300 hover:shadow-md"
     },
-    /* @__PURE__ */ jsx("div", { class: "w-10 h-10 bg-emerald-600 rounded-lg flex items-center justify-center text-white shadow-lg shadow-emerald-200 group-hover:scale-110 transition-transform" }, /* @__PURE__ */ jsx(
+    /* @__PURE__ */ jsx("div", { class: "flex justify-center items-center w-10 h-10 text-white bg-emerald-600 rounded-lg shadow-lg transition-transform shadow-emerald-200 group-hover:scale-110" }, /* @__PURE__ */ jsx(
       "svg",
       {
         xmlns: "http://www.w3.org/2000/svg",
-        class: "h-6 w-6",
+        class: "w-6 h-6",
         fill: "none",
         viewBox: "0 0 24 24",
         stroke: "currentColor"
@@ -5782,7 +5795,7 @@ var Layout = ({ children, title: title3 }) => {
       )
     )),
     /* @__PURE__ */ jsx("div", { class: "text-left" }, /* @__PURE__ */ jsx("div", { class: "text-[10px] text-emerald-600 font-medium" }, "Donasi via QRIS"), /* @__PURE__ */ jsx("div", { class: "text-xs font-bold text-slate-900" }, "Support Developer"))
-  ))), /* @__PURE__ */ jsx("div", { class: "border-t border-slate-100 mt-12 pt-8 text-center" }, /* @__PURE__ */ jsx("p", { class: "text-slate-500 text-sm mb-4" }, "Dikembangkan dengan \u2764\uFE0F untuk Ummat."), /* @__PURE__ */ jsx("p", { class: "text-slate-400 text-xs" }, "\xA9 ", (/* @__PURE__ */ new Date()).getFullYear(), " Muslim All-in-One API. Created by Vrush Studio.")))), /* @__PURE__ */ jsx(
+  ))), /* @__PURE__ */ jsx("div", { class: "pt-8 mt-12 text-center border-t border-slate-100" }, /* @__PURE__ */ jsx("p", { class: "mb-4 text-sm text-slate-500" }, "Dikembangkan dengan \u2764\uFE0F untuk Ummat."), /* @__PURE__ */ jsx("p", { class: "text-xs text-slate-400" }, "\xA9 ", (/* @__PURE__ */ new Date()).getFullYear(), " Muslim All-in-One API. Created by Vrush Studio.")))), /* @__PURE__ */ jsx(
     "div",
     {
       id: "donation-modal",
@@ -5791,10 +5804,10 @@ var Layout = ({ children, title: title3 }) => {
       role: "dialog",
       "aria-modal": "true"
     },
-    /* @__PURE__ */ jsx("div", { class: "flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0" }, /* @__PURE__ */ jsx(
+    /* @__PURE__ */ jsx("div", { class: "flex justify-center items-center px-4 pt-4 pb-20 min-h-screen text-center sm:block sm:p-0" }, /* @__PURE__ */ jsx(
       "div",
       {
-        class: "fixed inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity",
+        class: "fixed inset-0 backdrop-blur-sm transition-opacity bg-slate-900/60",
         onclick: "window.closeDonationModal()",
         style: "z-index: -1;"
       }
@@ -5805,11 +5818,11 @@ var Layout = ({ children, title: title3 }) => {
         "aria-hidden": "true"
       },
       "\u200B"
-    ), /* @__PURE__ */ jsx("div", { class: "inline-block align-bottom bg-white rounded-3xl text-left overflow-hidden shadow-2xl transform transition-all sm:my-8 sm:align-middle sm:max-w-md sm:w-full border border-slate-100 relative z-10" }, /* @__PURE__ */ jsx("div", { class: "bg-gradient-to-r from-emerald-600 to-teal-600 px-6 py-4 flex items-center justify-between relative z-20" }, /* @__PURE__ */ jsx("div", { class: "flex items-center gap-3 text-white" }, /* @__PURE__ */ jsx("div", { class: "p-2 bg-white/20 rounded-lg backdrop-blur-md" }, /* @__PURE__ */ jsx(
+    ), /* @__PURE__ */ jsx("div", { class: "inline-block overflow-hidden relative z-10 text-left align-bottom bg-white rounded-3xl border shadow-2xl transition-all transform sm:my-8 sm:align-middle sm:max-w-md sm:w-full border-slate-100" }, /* @__PURE__ */ jsx("div", { class: "flex relative z-20 justify-between items-center px-6 py-4 bg-gradient-to-r from-emerald-600 to-teal-600" }, /* @__PURE__ */ jsx("div", { class: "flex gap-3 items-center text-white" }, /* @__PURE__ */ jsx("div", { class: "p-2 rounded-lg backdrop-blur-md bg-white/20" }, /* @__PURE__ */ jsx(
       "svg",
       {
         xmlns: "http://www.w3.org/2000/svg",
-        class: "h-5 w-5",
+        class: "w-5 h-5",
         fill: "none",
         viewBox: "0 0 24 24",
         stroke: "currentColor"
@@ -5827,12 +5840,12 @@ var Layout = ({ children, title: title3 }) => {
       "button",
       {
         onclick: "window.closeDonationModal()",
-        class: "text-white/80 hover:text-white transition-colors"
+        class: "transition-colors text-white/80 hover:text-white"
       },
       /* @__PURE__ */ jsx(
         "svg",
         {
-          class: "h-6 w-6",
+          class: "w-6 h-6",
           fill: "none",
           viewBox: "0 0 24 24",
           stroke: "currentColor"
@@ -5847,19 +5860,19 @@ var Layout = ({ children, title: title3 }) => {
           }
         )
       )
-    )), /* @__PURE__ */ jsx("div", { class: "px-6 py-6" }, /* @__PURE__ */ jsx("div", { id: "donation-options-section" }, /* @__PURE__ */ jsx("p", { class: "text-slate-600 text-sm mb-6 text-center" }, "Pilih atau masukkan nominal donasi untuk mendukung pengembangan Muslim API."), /* @__PURE__ */ jsx("div", { class: "grid grid-cols-3 gap-3 mb-6" }, [5e3, 1e4, 2e4, 5e4, 1e5, 25e4].map((amount) => /* @__PURE__ */ jsx(
+    )), /* @__PURE__ */ jsx("div", { class: "px-6 py-6" }, /* @__PURE__ */ jsx("div", { id: "donation-options-section" }, /* @__PURE__ */ jsx("p", { class: "mb-6 text-sm text-center text-slate-600" }, "Pilih atau masukkan nominal donasi untuk mendukung pengembangan Muslim API."), /* @__PURE__ */ jsx("div", { class: "grid grid-cols-3 gap-3 mb-6" }, [5e3, 1e4, 2e4, 5e4, 1e5, 25e4].map((amount) => /* @__PURE__ */ jsx(
       "button",
       {
         onclick: `window.selectPreset(${amount})`,
-        class: "preset-btn relative z-20 py-3 px-2 bg-slate-50 border border-slate-200 rounded-xl text-sm font-bold text-slate-700 hover:border-emerald-500 hover:bg-emerald-50 transition-all focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
+        class: "relative z-20 px-2 py-3 text-sm font-bold rounded-xl border transition-all preset-btn bg-slate-50 border-slate-200 text-slate-700 hover:border-emerald-500 hover:bg-emerald-50 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
       },
       new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR", minimumFractionDigits: 0 }).format(amount)
-    ))), /* @__PURE__ */ jsx("div", { class: "relative z-20 mb-6" }, /* @__PURE__ */ jsx("div", { class: "absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none" }, /* @__PURE__ */ jsx("span", { class: "text-slate-400 font-bold" }, "Rp")), /* @__PURE__ */ jsx(
+    ))), /* @__PURE__ */ jsx("div", { class: "relative z-20 mb-6" }, /* @__PURE__ */ jsx("div", { class: "flex absolute inset-y-0 left-0 items-center pl-4 pointer-events-none" }, /* @__PURE__ */ jsx("span", { class: "font-bold text-slate-400" }, "Rp")), /* @__PURE__ */ jsx(
       "input",
       {
         type: "number",
         id: "custom-amount",
-        class: "block w-full pl-12 pr-4 py-4 bg-slate-50 border border-slate-200 rounded-2xl text-lg font-bold placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition-all",
+        class: "block py-4 pr-4 pl-12 w-full text-lg font-bold rounded-2xl border transition-all bg-slate-50 border-slate-200 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500",
         placeholder: "Nominal lainnya..."
       }
     )), /* @__PURE__ */ jsx(
@@ -5867,14 +5880,14 @@ var Layout = ({ children, title: title3 }) => {
       {
         id: "generate-qris-btn",
         onclick: "window.generateDonationQR()",
-        class: "w-full py-4 bg-slate-900 text-white rounded-2xl font-bold hover:bg-slate-800 transition-all shadow-xl shadow-slate-200 flex items-center justify-center gap-2 relative z-20"
+        class: "flex relative z-20 gap-2 justify-center items-center py-4 w-full font-bold text-white rounded-2xl shadow-xl transition-all bg-slate-900 hover:bg-slate-800 shadow-slate-200"
       },
       "Generate QRIS"
-    )), /* @__PURE__ */ jsx("div", { id: "qris-display-section", class: "hidden text-center" }, /* @__PURE__ */ jsx("div", { class: "mb-4" }, /* @__PURE__ */ jsx("div", { id: "display-amount", class: "text-2xl font-black text-slate-800" }, "Rp 0"), /* @__PURE__ */ jsx("div", { class: "text-xs text-slate-400 font-medium" }, "Scan QRIS untuk membayar"), /* @__PURE__ */ jsx("div", { class: "text-xs text-slate-400 font-medium" }, "dan akan diarahkan ke Hariistimewa.com - DANA")), /* @__PURE__ */ jsx("div", { class: "bg-white p-4 border-2 border-slate-100 rounded-2xl mb-6 inline-block shadow-sm" }, /* @__PURE__ */ jsx("img", { id: "qris-image", src: "", alt: "QRIS", class: "w-64 h-64" })), /* @__PURE__ */ jsx("div", { class: "bg-slate-50 p-4 rounded-xl mb-6 text-left" }, /* @__PURE__ */ jsx("div", { class: "flex items-start gap-3" }, /* @__PURE__ */ jsx("div", { class: "w-5 h-5 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center flex-shrink-0 text-[10px] font-bold" }, "1"), /* @__PURE__ */ jsx("p", { class: "text-xs text-slate-600" }, "Buka aplikasi pembayaran (Gopay, OVO, Dana, LinkAja, atau Mobile Banking).")), /* @__PURE__ */ jsx("div", { class: "flex items-start gap-3 mt-3" }, /* @__PURE__ */ jsx("div", { class: "w-5 h-5 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center flex-shrink-0 text-[10px] font-bold" }, "2"), /* @__PURE__ */ jsx("p", { class: "text-xs text-slate-600" }, "Pilih menu ", /* @__PURE__ */ jsx("b", null, "Scan/Bayar"), " lalu arahkan kamera ke QR Code di atas.")), /* @__PURE__ */ jsx("div", { class: "flex items-start gap-3 mt-3" }, /* @__PURE__ */ jsx("div", { class: "w-5 h-5 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center flex-shrink-0 text-[10px] font-bold" }, "3"), /* @__PURE__ */ jsx("p", { class: "text-xs text-slate-600" }, "Pastikan nominal sesuai dan selesaikan pembayaran."))), /* @__PURE__ */ jsx(
+    )), /* @__PURE__ */ jsx("div", { id: "qris-display-section", class: "hidden text-center" }, /* @__PURE__ */ jsx("div", { class: "mb-4" }, /* @__PURE__ */ jsx("div", { id: "display-amount", class: "text-2xl font-black text-slate-800" }, "Rp 0"), /* @__PURE__ */ jsx("div", { class: "text-xs font-medium text-slate-400" }, "Scan QRIS untuk membayar"), /* @__PURE__ */ jsx("div", { class: "text-xs font-medium text-slate-400" }, "dan akan diarahkan ke Hariistimewa.com - DANA")), /* @__PURE__ */ jsx("div", { class: "inline-block p-4 mb-6 bg-white rounded-2xl border-2 shadow-sm border-slate-100" }, /* @__PURE__ */ jsx("img", { id: "qris-image", src: "", alt: "QRIS", class: "w-64 h-64" })), /* @__PURE__ */ jsx("div", { class: "p-4 mb-6 text-left rounded-xl bg-slate-50" }, /* @__PURE__ */ jsx("div", { class: "flex gap-3 items-start" }, /* @__PURE__ */ jsx("div", { class: "w-5 h-5 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center flex-shrink-0 text-[10px] font-bold" }, "1"), /* @__PURE__ */ jsx("p", { class: "text-xs text-slate-600" }, "Buka aplikasi pembayaran (Gopay, OVO, Dana, LinkAja, atau Mobile Banking).")), /* @__PURE__ */ jsx("div", { class: "flex gap-3 items-start mt-3" }, /* @__PURE__ */ jsx("div", { class: "w-5 h-5 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center flex-shrink-0 text-[10px] font-bold" }, "2"), /* @__PURE__ */ jsx("p", { class: "text-xs text-slate-600" }, "Pilih menu ", /* @__PURE__ */ jsx("b", null, "Scan/Bayar"), " lalu arahkan kamera ke QR Code di atas.")), /* @__PURE__ */ jsx("div", { class: "flex gap-3 items-start mt-3" }, /* @__PURE__ */ jsx("div", { class: "w-5 h-5 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center flex-shrink-0 text-[10px] font-bold" }, "3"), /* @__PURE__ */ jsx("p", { class: "text-xs text-slate-600" }, "Pastikan nominal sesuai dan selesaikan pembayaran."))), /* @__PURE__ */ jsx(
       "button",
       {
         onclick: "window.resetDonationModal()",
-        class: "text-emerald-600 font-bold text-sm hover:underline"
+        class: "text-sm font-bold text-emerald-600 hover:underline"
       },
       "Ganti Nominal"
     )))))
@@ -5913,7 +5926,7 @@ var Layout = ({ children, title: title3 }) => {
             }
 
             btn.disabled = true;
-            btn.innerHTML = '<svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> Generating...';
+            btn.innerHTML = '<svg class="w-5 h-5 text-white animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> Generating...';
 
             try {
               const response = await fetch('/api/qris/generate?amount=' + amount);
@@ -5961,10 +5974,10 @@ var Layout = ({ children, title: title3 }) => {
 };
 
 // src/components/Home.jsx
-var ApiEndpoint = ({ method, path: path5, title: title3, responseJson, category, endpointId }) => /* @__PURE__ */ jsx("div", { class: "overflow-hidden mb-8 bg-white rounded-xl border shadow-sm transition-all duration-300 border-slate-200 hover:shadow-md" }, /* @__PURE__ */ jsx("div", { class: "flex justify-between items-center px-6 py-4 border-b border-slate-100 bg-slate-50/50" }, /* @__PURE__ */ jsx("h4", { class: "font-semibold text-slate-900" }, title3), /* @__PURE__ */ jsx("div", { class: "flex gap-2" }, /* @__PURE__ */ jsx("span", { class: `px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider ${method === "GET" ? "bg-emerald-100 text-emerald-700" : "bg-blue-100 text-blue-700"}` }, method))), /* @__PURE__ */ jsx("div", { class: "p-6" }, /* @__PURE__ */ jsx("div", { class: "flex gap-2 items-center mb-6 group" }, /* @__PURE__ */ jsx("div", { class: "flex flex-grow gap-2 items-center px-3 py-2 rounded-lg border transition-colors bg-slate-100 border-slate-200 group-hover:border-emerald-200" }, /* @__PURE__ */ jsx("code", { class: "font-mono text-sm truncate text-slate-600" }, path5)), /* @__PURE__ */ jsx("div", { class: "flex gap-2" }, /* @__PURE__ */ jsx(
+var ApiEndpoint = ({ method, path: path3, title: title3, responseJson, category, endpointId }) => /* @__PURE__ */ jsx("div", { class: "overflow-hidden mb-8 bg-white rounded-xl border shadow-sm transition-all duration-300 border-slate-200 hover:shadow-md" }, /* @__PURE__ */ jsx("div", { class: "flex justify-between items-center px-6 py-4 border-b border-slate-100 bg-slate-50/50" }, /* @__PURE__ */ jsx("h4", { class: "font-semibold text-slate-900" }, title3), /* @__PURE__ */ jsx("div", { class: "flex gap-2" }, /* @__PURE__ */ jsx("span", { class: `px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider ${method === "GET" ? "bg-emerald-100 text-emerald-700" : "bg-blue-100 text-blue-700"}` }, method))), /* @__PURE__ */ jsx("div", { class: "p-6" }, /* @__PURE__ */ jsx("div", { class: "flex gap-2 items-center mb-6 group" }, /* @__PURE__ */ jsx("div", { class: "flex flex-grow gap-2 items-center px-3 py-2 rounded-lg border transition-colors bg-slate-100 border-slate-200 group-hover:border-emerald-200" }, /* @__PURE__ */ jsx("code", { class: "font-mono text-sm truncate text-slate-600" }, path3)), /* @__PURE__ */ jsx("div", { class: "flex gap-2" }, /* @__PURE__ */ jsx(
   "button",
   {
-    onclick: `window.openApiModal('${category}', '${endpointId}', '/v1${path5}')`,
+    onclick: `window.openApiModal('${category}', '${endpointId}', '/v1${path3}')`,
     class: "p-2 rounded-lg transition-all text-slate-400 hover:text-blue-600 hover:bg-blue-50",
     title: "Try in Playground"
   },
@@ -5972,7 +5985,7 @@ var ApiEndpoint = ({ method, path: path5, title: title3, responseJson, category,
 ), /* @__PURE__ */ jsx(
   "button",
   {
-    onclick: `navigator.clipboard.writeText(window.location.origin + '/v1${path5}')`,
+    onclick: `navigator.clipboard.writeText(window.location.origin + '/v1${path3}')`,
     class: "p-2 rounded-lg transition-all text-slate-400 hover:text-emerald-600 hover:bg-emerald-50",
     title: "Copy URL"
   },
@@ -6318,14 +6331,14 @@ var Home = ({ baseUrl }) => {
     SectionTitle,
     {
       id: "integrity",
-      title: "Integrity & Blockchain",
+      title: "Integrity Chain",
       icon: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z",
       color: "emerald"
     }
-  ), /* @__PURE__ */ jsx("div", { className: "p-4 mb-6 bg-emerald-50 rounded-r-lg border-l-4 border-emerald-500" }, /* @__PURE__ */ jsx("p", { className: "text-sm font-medium text-emerald-800" }, "\u{1F6E1}\uFE0F ", /* @__PURE__ */ jsx("strong", null, "Data Integrity Proof:"), ' Kami menggunakan teknologi cryptographic hashing (SHA-256) untuk memastikan kemurnian teks Al-Quran. Setiap Surah dan Ayah memiliki "Digital Fingerprint" yang unik. Jika ada perubahan satu karakter saja pada database kami, maka hash integrity akan berubah, memberitahukan pengguna bahwa data tidak lagi murni.')), /* @__PURE__ */ jsx(
+  ), /* @__PURE__ */ jsx("div", { className: "p-4 mb-6 bg-emerald-50 rounded-r-lg border-l-4 border-emerald-500" }, /* @__PURE__ */ jsx("p", { className: "text-sm font-medium text-emerald-800" }, "\u{1F6E1}\uFE0F ", /* @__PURE__ */ jsx("strong", null, "Data Integrity Proof:"), ' Kami menggunakan teknologi cryptographic hashing (SHA-256) untuk memastikan kemurnian teks Al-Quran. Setiap Surah dan Ayah memiliki "Digital Fingerprint" yang unik. Jika ada perubahan satu karakter saja pada data kami, maka hash integrity akan berubah, memberitahukan pengguna bahwa data tidak lagi murni.')), /* @__PURE__ */ jsx(
     ApiEndpoint,
     {
-      title: "Integrity Chain (Blockchain)",
+      title: "Integrity Chain (Proof of Authenticity)",
       method: "GET",
       path: "/integrity/chain",
       category: "integrity",
@@ -6364,12 +6377,34 @@ var Home = ({ baseUrl }) => {
   "data": {
     "surahId": "1",
     "ayahId": "1",
+    "local_data": {
+      "arab": "\u0628\u0650\u0633\u0652\u0645\u0650 \u0627\u0644\u0644\u0651\u064E\u0647\u0650 \u0627\u0644\u0631\u0651\u064E\u062D\u0652\u0645\u064E\u0670\u0646\u0650 \u0627\u0644\u0631\u0651\u064E\u062D\u0650\u064A\u0645\u0650",
+      "text": "Dengan nama Allah Yang Maha Pengasih, Maha Penyayang."
+    },
     "hash": "e3b0c442...",
+    "comparison": {
+      "status": "Success",
+      "source": "Kemenag (via EQuran.id)",
+      "is_match": true,
+      "details": {
+        "arab_match": true,
+        "translation_match": true
+      },
+      "external_data": {
+        "arab": "\u0628\u0650\u0633\u0652\u0645\u0650 \u0627\u0644\u0644\u0651\u064E\u0647\u0650 \u0627\u0644\u0631\u0651\u064E\u062D\u0652\u0645\u064E\u0670\u0646\u0650 \u0627\u0644\u0631\u0651\u064E\u062D\u0650\u064A\u0645\u0650",
+        "text": "Dengan nama Allah Yang Maha Pengasih, Maha Penyayang."
+      }
+    },
+    "external_verification_url": "https://quran.kemenag.go.id/quran/per-ayat/surah/1?from=1&to=1",
     "timestamp": "2025-12-24T00:00:00Z"
   }
 }`
     }
-  ), /* @__PURE__ */ jsx("div", { class: "overflow-hidden relative p-8 mb-20 text-white bg-gradient-to-br from-emerald-600 to-teal-700 rounded-2xl shadow-xl group" }, /* @__PURE__ */ jsx("div", { class: "absolute -right-10 -bottom-10 opacity-10 transition-transform duration-500 group-hover:scale-110" }, /* @__PURE__ */ jsx("svg", { xmlns: "http://www.w3.org/2000/svg", class: "w-64 h-64", fill: "none", viewBox: "0 0 24 24", stroke: "currentColor" }, /* @__PURE__ */ jsx("path", { "stroke-linecap": "round", "stroke-linejoin": "round", "stroke-width": "1", d: "M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" }))), /* @__PURE__ */ jsx("div", { class: "relative z-10" }, /* @__PURE__ */ jsx("h3", { class: "mb-3 text-2xl font-bold" }, "Butuh Resource Lainnya?"), /* @__PURE__ */ jsx("p", { class: "mb-6 max-w-lg text-emerald-50" }, "Temukan API tambahan seperti Murottal, Jadwal Sholat, Kalender Hijriah, Hadits, Asmaul Husna, dan banyak lagi di halaman Resources."), /* @__PURE__ */ jsx(
+  ), /* @__PURE__ */ jsx("div", { class: "p-8 mb-20 bg-white rounded-2xl border shadow-sm border-slate-200" }, /* @__PURE__ */ jsx("h3", { class: "flex gap-2 items-center mb-4 text-xl font-bold text-slate-900" }, /* @__PURE__ */ jsx("svg", { xmlns: "http://www.w3.org/2000/svg", class: "w-6 h-6 text-emerald-600", fill: "none", viewBox: "0 0 24 24", stroke: "currentColor" }, /* @__PURE__ */ jsx("path", { "stroke-linecap": "round", "stroke-linejoin": "round", "stroke-width": "2", d: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" })), "Transparansi & Verifikasi Mandiri"), /* @__PURE__ */ jsx("p", { class: "mb-6 text-slate-600" }, "Kami percaya bahwa kepercayaan dibangun di atas transparansi. Anda tidak perlu hanya percaya pada klaim kami; Anda dapat memverifikasi keaslian data Al-Quran secara mandiri menggunakan metode standar industri."), /* @__PURE__ */ jsx("div", { class: "grid grid-cols-1 gap-6 md:grid-cols-2" }, /* @__PURE__ */ jsx("div", { class: "p-5 rounded-xl bg-slate-50" }, /* @__PURE__ */ jsx("h4", { class: "mb-3 font-bold text-slate-900" }, "Metode Verifikasi"), /* @__PURE__ */ jsx("ul", { class: "space-y-3 text-sm text-slate-600" }, /* @__PURE__ */ jsx("li", { class: "flex gap-2" }, /* @__PURE__ */ jsx("span", { class: "font-bold text-emerald-600" }, "1."), "Ambil data mentah (raw data) dari endpoint ", /* @__PURE__ */ jsx("code", { class: "px-1 bg-white rounded border" }, "/v1/ayah/surah?surahId=1")), /* @__PURE__ */ jsx("li", { class: "flex gap-2" }, /* @__PURE__ */ jsx("span", { class: "font-bold text-emerald-600" }, "2."), "Ekstrak hanya field ", /* @__PURE__ */ jsx("code", { class: "px-1 bg-white rounded border" }, "arab"), " dan ", /* @__PURE__ */ jsx("code", { class: "px-1 bg-white rounded border" }, "text"), " untuk setiap ayat."), /* @__PURE__ */ jsx("li", { class: "flex gap-2" }, /* @__PURE__ */ jsx("span", { class: "font-bold text-emerald-600" }, "3."), "Lakukan hashing SHA-256 pada array objek tersebut."), /* @__PURE__ */ jsx("li", { class: "flex gap-2" }, /* @__PURE__ */ jsx("span", { class: "font-bold text-emerald-600" }, "4."), "Bandingkan hasilnya dengan ", /* @__PURE__ */ jsx("code", { class: "px-1 bg-white rounded border" }, "content_hash"), " di ", /* @__PURE__ */ jsx("code", { class: "px-1 bg-white rounded border" }, "/v1/integrity/chain"), "."))), /* @__PURE__ */ jsx("div", { class: "p-5 rounded-xl bg-slate-50" }, /* @__PURE__ */ jsx("h4", { class: "mb-3 font-bold text-slate-900" }, "Algoritma Hashing"), /* @__PURE__ */ jsx("p", { class: "mb-4 text-sm text-slate-600" }, "Kami menggunakan algoritma SHA-256 yang standar dan tidak dapat dimanipulasi. Berikut adalah contoh snippet kode Node.js untuk verifikasi:"), /* @__PURE__ */ jsx("div", { class: "p-3 rounded-lg bg-slate-900" }, /* @__PURE__ */ jsx("pre", { class: "text-[10px] text-emerald-400 overflow-x-auto" }, `const crypto = require('crypto');
+const data = ayahs.map(a => ({ arab: a.arab, text: a.text }));
+const hash = crypto.createHash('sha256')
+  .update(JSON.stringify(data))
+  .digest('hex');`)))), /* @__PURE__ */ jsx("div", { class: "p-4 mt-6 rounded-xl border border-blue-100 bg-blue-50/50" }, /* @__PURE__ */ jsx("p", { class: "text-xs leading-relaxed text-blue-700" }, /* @__PURE__ */ jsx("strong", null, "Catatan Keamanan:"), " Struktur rantai integritas kami (Integrity Chain) juga menyertakan ", /* @__PURE__ */ jsx("code", { class: "px-1 bg-blue-100 rounded" }, "previous_hash"), ", yang berarti jika satu Surah diubah, seluruh rantai setelahnya akan menjadi tidak valid. Ini adalah mekanisme yang sama yang digunakan oleh teknologi blockchain untuk menjamin imutabilitas data."))), /* @__PURE__ */ jsx("div", { class: "overflow-hidden relative p-8 mb-20 text-white bg-gradient-to-br from-emerald-600 to-teal-700 rounded-2xl shadow-xl group" }, /* @__PURE__ */ jsx("div", { class: "absolute -right-10 -bottom-10 opacity-10 transition-transform duration-500 group-hover:scale-110" }, /* @__PURE__ */ jsx("svg", { xmlns: "http://www.w3.org/2000/svg", class: "w-64 h-64", fill: "none", viewBox: "0 0 24 24", stroke: "currentColor" }, /* @__PURE__ */ jsx("path", { "stroke-linecap": "round", "stroke-linejoin": "round", "stroke-width": "1", d: "M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" }))), /* @__PURE__ */ jsx("div", { class: "relative z-10" }, /* @__PURE__ */ jsx("h3", { class: "mb-3 text-2xl font-bold" }, "Butuh Resource Lainnya?"), /* @__PURE__ */ jsx("p", { class: "mb-6 max-w-lg text-emerald-50" }, "Temukan API tambahan seperti Murottal, Jadwal Sholat, Kalender Hijriah, Hadits, Asmaul Husna, dan banyak lagi di halaman Resources."), /* @__PURE__ */ jsx(
     "a",
     {
       href: "/other",
@@ -6392,14 +6427,14 @@ var Home = ({ baseUrl }) => {
     },
     {
       q: "Bagaimana keaslian dan akurasi data Al-Quran?",
-      a: "Kami menjamin keaslian data Al-Quran dalam API ini. Data teks, terjemahan, dan tafsir (Wajiz & Tahlili) diwarisi dari dataset muslim-api-three milik Otangid yang telah diverifikasi sesuai dengan database Kemenag RI. Struktur data kami mencakup Tafsir Tahlili yang sangat mendalam, yang merupakan produk intelektual resmi dari Kementerian Agama RI dan mengikuti standar Mushaf Al-Quran Standar Indonesia (MSI)."
+      a: "Kami menjamin keaslian data Al-Quran dalam API ini. Data teks, terjemahan, dan tafsir (Wajiz & Tahlili) diwarisi dari dataset muslim-api-three milik Otangid yang telah diverifikasi sesuai dengan data resmi Kemenag RI. Struktur data kami mencakup Tafsir Tahlili yang sangat mendalam, yang merupakan produk intelektual resmi dari Kementerian Agama RI dan mengikuti standar Mushaf Al-Quran Standar Indonesia (MSI)."
     },
     {
       q: "Bagaimana dengan performa dan keamanan?",
       a: "API ini sudah dilengkapi dengan 'Enterprise-grade Caching' (SWR) yang membuat respon sangat cepat lewat CDN. Kami juga menerapkan CORS policy and Rate Limiting untuk menjaga stabilitas server dari penggunaan berlebihan."
     },
     {
-      q: "Apakah data ini sesuai dengan database Kemenag?",
+      q: "Apakah data ini sesuai dengan sumber resmi Kemenag?",
       a: "Ya, benar. Secara teknis, dataset kami menggunakan skema 'Wajiz' dan 'Tahlili' yang hanya dimiliki oleh publikasi resmi Kemenag RI. Teks Arab yang digunakan juga mengikuti kaidah rasm utsmani standar Indonesia dengan tanda waqaf dan harakat yang telah disesuaikan untuk pengguna di Indonesia. Anda dapat membandingkan output API kami dengan situs resmi quran.kemenag.go.id untuk verifikasi mandiri."
     },
     {
@@ -6411,12 +6446,16 @@ var Home = ({ baseUrl }) => {
       a: "Jadwal sholat bersumber dari Kemenag RI (via MyQuran API). Dataset Al-Quran, Doa, dan Dzikir diwarisi dari project milik Otangid (muslim-api-three). Audio murottal disediakan melalui CDN equran.id."
     },
     {
+      q: "Bagaimana jika saya menemukan perbedaan dengan mushaf resmi Kemenag?",
+      a: "Meskipun kami berusaha 100% akurat, kesalahan manusia dalam entry data bisa saja terjadi. Jika Anda menemukan perbedaan teks atau tanda baca dengan quran.kemenag.go.id, silakan laporkan melalui GitHub Issues. Kami menyediakan endpoint Admin khusus untuk melakukan koreksi instan secara lokal sebelum di-push ke server, sehingga perbaikan dapat dilakukan dengan sangat cepat tanpa menunggu siklus update database yang lama."
+    },
+    {
       q: "Bagaimana cara melakukan perubahan data atau memperbaiki typo?",
-      a: "Data lokal seperti Al-Quran, Dzikir, dan Doa disimpan dalam database SQLite di `src/database/alquran.db`. Anda dapat melakukan koreksi langsung pada database tersebut menggunakan SQLite client. Berkat sistem Integrity & Blockchain kami, setiap perubahan pada teks Al-Quran akan secara otomatis mengubah 'Digital Fingerprint' (hash) pada sistem, sehingga transparansi data tetap terjaga."
+      a: "Data lokal seperti Al-Quran, Dzikir, dan Doa disimpan dalam format JSON di folder `src/data`. Anda dapat melakukan koreksi langsung pada file tersebut. Berkat sistem Integrity Chain kami, setiap perubahan pada teks Al-Quran akan secara otomatis mengubah 'Digital Fingerprint' (hash) pada sistem, sehingga transparansi data tetap terjaga."
     },
     {
       q: "Bagaimana jika saya menemukan kesalahan penulisan atau bug?",
-      a: "Kami sangat menghargai laporan Anda. Jika Anda adalah pengguna API, silakan laporkan melalui Issue di repository GitHub kami. Jika Anda adalah pengembang, Anda dapat melakukan Pull Request atau memperbaiki data langsung di database lokal."
+      a: "Kami sangat menghargai laporan Anda. Jika Anda adalah pengguna API, silakan laporkan melalui Issue di repository GitHub kami. Jika Anda adalah pengembang, Anda dapat melakukan Pull Request atau memperbaiki data langsung di file JSON lokal."
     },
     {
       q: "Apakah API ini gratis untuk digunakan?",
@@ -6430,10 +6469,10 @@ var Home = ({ baseUrl }) => {
 };
 
 // src/components/Other.jsx
-var ApiEndpoint2 = ({ method, path: path5, title: title3, responseJson, category, endpointId }) => /* @__PURE__ */ jsx("div", { class: "overflow-hidden mb-8 bg-white rounded-xl border shadow-sm transition-all duration-300 border-slate-200 hover:shadow-md" }, /* @__PURE__ */ jsx("div", { class: "flex justify-between items-center px-6 py-4 border-b border-slate-100 bg-slate-50/50" }, /* @__PURE__ */ jsx("h4", { class: "font-semibold text-slate-900" }, title3), /* @__PURE__ */ jsx("div", { class: "flex gap-2" }, /* @__PURE__ */ jsx("span", { class: `px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider ${method === "GET" ? "bg-emerald-100 text-emerald-700" : "bg-blue-100 text-blue-700"}` }, method))), /* @__PURE__ */ jsx("div", { class: "p-6" }, /* @__PURE__ */ jsx("div", { class: "flex gap-2 items-center mb-6 group" }, /* @__PURE__ */ jsx("div", { class: "flex flex-grow gap-2 items-center px-3 py-2 rounded-lg border transition-colors bg-slate-100 border-slate-200 group-hover:border-emerald-200" }, /* @__PURE__ */ jsx("code", { class: "font-mono text-sm truncate text-slate-600" }, path5)), /* @__PURE__ */ jsx("div", { class: "flex gap-2" }, /* @__PURE__ */ jsx(
+var ApiEndpoint2 = ({ method, path: path3, title: title3, responseJson, category, endpointId }) => /* @__PURE__ */ jsx("div", { class: "overflow-hidden mb-8 bg-white rounded-xl border shadow-sm transition-all duration-300 border-slate-200 hover:shadow-md" }, /* @__PURE__ */ jsx("div", { class: "flex justify-between items-center px-6 py-4 border-b border-slate-100 bg-slate-50/50" }, /* @__PURE__ */ jsx("h4", { class: "font-semibold text-slate-900" }, title3), /* @__PURE__ */ jsx("div", { class: "flex gap-2" }, /* @__PURE__ */ jsx("span", { class: `px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider ${method === "GET" ? "bg-emerald-100 text-emerald-700" : "bg-blue-100 text-blue-700"}` }, method))), /* @__PURE__ */ jsx("div", { class: "p-6" }, /* @__PURE__ */ jsx("div", { class: "flex gap-2 items-center mb-6 group" }, /* @__PURE__ */ jsx("div", { class: "flex flex-grow gap-2 items-center px-3 py-2 rounded-lg border transition-colors bg-slate-100 border-slate-200 group-hover:border-emerald-200" }, /* @__PURE__ */ jsx("code", { class: "font-mono text-sm truncate text-slate-600" }, path3)), /* @__PURE__ */ jsx("div", { class: "flex gap-2" }, /* @__PURE__ */ jsx(
   "button",
   {
-    onclick: `window.openApiModal('${category}', '${endpointId}', '/v1${path5}')`,
+    onclick: `window.openApiModal('${category}', '${endpointId}', '/v1${path3}')`,
     class: "p-2 rounded-lg transition-all text-slate-400 hover:text-blue-600 hover:bg-blue-50",
     title: "Try in Playground"
   },
@@ -6441,7 +6480,7 @@ var ApiEndpoint2 = ({ method, path: path5, title: title3, responseJson, category
 ), /* @__PURE__ */ jsx(
   "button",
   {
-    onclick: `navigator.clipboard.writeText(window.location.origin + '/v1${path5}')`,
+    onclick: `navigator.clipboard.writeText(window.location.origin + '/v1${path3}')`,
     class: "p-2 rounded-lg transition-all text-slate-400 hover:text-emerald-600 hover:bg-emerald-50",
     title: "Copy URL"
   },
@@ -7187,7 +7226,7 @@ var Other = () => {
     { name: "equran.id (Audio)", url: "https://equran.id/", desc: "Quran audio and digital text" },
     { name: "Muslim API Dataset (Repo)", url: "https://github.com/Otangid/muslim-api", desc: "Alternative Muslim API provider" },
     { name: "Hadith Collection (Repo)", url: "https://github.com/gadingnst/hadith-api", desc: "Comprehensive Hadith collection API" },
-    { name: "Data Pesantren (Repo)", url: "https://github.com/nasrul21/data-pesantren-indonesia", desc: "Database pesantren se-Indonesia (Source)" },
+    { name: "Data Pesantren (Repo)", url: "https://github.com/nasrul21/data-pesantren-indonesia", desc: "Kumpulan data pesantren se-Indonesia (Source)" },
     { name: "Libur Nasional (Repo)", url: "https://github.com/kresnasatya/api-harilibur", desc: "Data hari libur nasional Indonesia (Source)" }
   ].map((resource) => /* @__PURE__ */ jsx(
     "a",
@@ -7349,7 +7388,7 @@ var Landing = () => {
       class: "w-full sm:w-auto px-8 py-4 bg-slate-100 text-slate-900 rounded-2xl font-bold text-lg hover:bg-slate-200 transition-all flex items-center justify-center gap-2"
     },
     "GitHub Project"
-  ))), /* @__PURE__ */ jsx("div", { class: "absolute inset-0 z-0 pointer-events-none overflow-hidden" }, /* @__PURE__ */ jsx("div", { class: "absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-emerald-50 rounded-full blur-[120px] opacity-60" }), /* @__PURE__ */ jsx("div", { class: "absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-teal-50 rounded-full blur-[120px] opacity-60" }))), /* @__PURE__ */ jsx("section", { class: "py-24 bg-slate-50 border-y border-slate-200" }, /* @__PURE__ */ jsx("div", { class: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" }, /* @__PURE__ */ jsx("div", { class: "grid grid-cols-1 lg:grid-cols-2 gap-16 items-center" }, /* @__PURE__ */ jsx("div", { class: "space-y-8" }, /* @__PURE__ */ jsx("div", { class: "inline-block px-4 py-1.5 bg-emerald-100 text-emerald-700 rounded-lg text-sm font-bold uppercase tracking-wider" }, "Visi & Latar Belakang"), /* @__PURE__ */ jsx("h2", { class: "text-3xl md:text-4xl font-bold text-slate-900" }, "Mengapa Muslim API?"), /* @__PURE__ */ jsx("div", { class: "space-y-6 text-lg text-slate-600 leading-relaxed" }, /* @__PURE__ */ jsx("p", null, "Di era digital saat ini, akses terhadap data keislaman yang akurat, cepat, dan mudah diintegrasikan adalah sebuah kebutuhan fundamental. Banyak pengembang menghadapi kesulitan dalam menemukan API yang menyediakan data lengkap tanpa batasan yang memberatkan."), /* @__PURE__ */ jsx("div", { class: "grid grid-cols-1 md:grid-cols-2 gap-8 mt-8" }, /* @__PURE__ */ jsx("div", { class: "space-y-3" }, /* @__PURE__ */ jsx("h4", { class: "font-bold text-slate-900 flex items-center gap-2 text-xl" }, /* @__PURE__ */ jsx("span", { class: "w-2 h-2 bg-emerald-500 rounded-full" }), "Misi Kami"), /* @__PURE__ */ jsx("p", { class: "text-base" }, "Menjadi ", /* @__PURE__ */ jsx("span", { class: "text-emerald-600 font-semibold" }, '"Single Source of Truth"'), " untuk data keislaman digital di Indonesia. Kami menyediakan infrastruktur data yang andal bagi siapapun yang ingin berdakwah melalui teknologi.")), /* @__PURE__ */ jsx("div", { class: "space-y-3" }, /* @__PURE__ */ jsx("h4", { class: "font-bold text-slate-900 flex items-center gap-2 text-xl" }, /* @__PURE__ */ jsx("span", { class: "w-2 h-2 bg-emerald-500 rounded-full" }), "Filosofi Terbuka"), /* @__PURE__ */ jsx("p", { class: "text-base" }, "Muslim API dibangun dengan semangat ", /* @__PURE__ */ jsx("span", { class: "text-emerald-600 font-semibold" }, "Open Source"), ". Kami percaya bahwa ilmu agama harus dapat diakses seluas-luasnya tanpa ada penghalang teknis atau biaya."))), /* @__PURE__ */ jsx("div", { class: "mt-8 pt-8 border-t border-slate-200 italic text-slate-500 text-center md:text-left" }, '"Sebaik-baik manusia adalah yang paling bermanfaat bagi orang lain."'))), /* @__PURE__ */ jsx("div", { class: "relative" }, /* @__PURE__ */ jsx("div", { class: "bg-white p-8 rounded-3xl shadow-2xl border border-slate-200 relative z-10" }, /* @__PURE__ */ jsx("div", { class: "space-y-6" }, /* @__PURE__ */ jsx("div", { class: "flex items-start gap-4" }, /* @__PURE__ */ jsx("div", { class: "w-10 h-10 bg-emerald-100 rounded-xl flex items-center justify-center shrink-0" }, /* @__PURE__ */ jsx("svg", { xmlns: "http://www.w3.org/2000/svg", class: "h-6 w-6 text-emerald-600", fill: "none", viewBox: "0 0 24 24", stroke: "currentColor" }, /* @__PURE__ */ jsx("path", { "stroke-linecap": "round", "stroke-linejoin": "round", "stroke-width": "2", d: "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" }))), /* @__PURE__ */ jsx("div", null, /* @__PURE__ */ jsx("h4", { class: "font-bold text-slate-900 mb-1" }, "Data Terverifikasi"), /* @__PURE__ */ jsx("p", { class: "text-slate-500 text-sm" }, "Sumber data Al-Quran kami mengikuti standar Mushaf Al-Quran Standar Indonesia (MSI) Kemenag RI."))), /* @__PURE__ */ jsx("div", { class: "flex items-start gap-4" }, /* @__PURE__ */ jsx("div", { class: "w-10 h-10 bg-emerald-100 rounded-xl flex items-center justify-center shrink-0" }, /* @__PURE__ */ jsx("svg", { xmlns: "http://www.w3.org/2000/svg", class: "h-6 w-6 text-emerald-600", fill: "none", viewBox: "0 0 24 24", stroke: "currentColor" }, /* @__PURE__ */ jsx("path", { "stroke-linecap": "round", "stroke-linejoin": "round", "stroke-width": "2", d: "M13 10V3L4 14h7v7l9-11h-7z" }))), /* @__PURE__ */ jsx("div", null, /* @__PURE__ */ jsx("h4", { class: "font-bold text-slate-900 mb-1" }, "High Availability"), /* @__PURE__ */ jsx("p", { class: "text-slate-500 text-sm" }, "Dibangun di atas infrastruktur serverless untuk memastikan API selalu tersedia kapanpun dibutuhkan."))), /* @__PURE__ */ jsx("div", { class: "flex items-start gap-4" }, /* @__PURE__ */ jsx("div", { class: "w-10 h-10 bg-emerald-100 rounded-xl flex items-center justify-center shrink-0" }, /* @__PURE__ */ jsx("svg", { xmlns: "http://www.w3.org/2000/svg", class: "h-6 w-6 text-emerald-600", fill: "none", viewBox: "0 0 24 24", stroke: "currentColor" }, /* @__PURE__ */ jsx("path", { "stroke-linecap": "round", "stroke-linejoin": "round", "stroke-width": "2", d: "M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" }))), /* @__PURE__ */ jsx("div", null, /* @__PURE__ */ jsx("h4", { class: "font-bold text-slate-900 mb-1" }, "Blockchain Integrity"), /* @__PURE__ */ jsx("p", { class: "text-slate-500 text-sm" }, "Keaslian data dijamin melalui cryptographic hashing untuk menjaga kemurnian teks suci."))))), /* @__PURE__ */ jsx("div", { class: "absolute -bottom-6 -right-6 w-full h-full bg-emerald-600/5 rounded-3xl -z-0" }))))), /* @__PURE__ */ jsx("section", { class: "py-24 bg-white" }, /* @__PURE__ */ jsx("div", { class: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" }, /* @__PURE__ */ jsx("div", { class: "text-center mb-16" }, /* @__PURE__ */ jsx("h2", { class: "text-3xl md:text-4xl font-bold text-slate-900 mb-4" }, "Layanan API Kami"), /* @__PURE__ */ jsx("p", { class: "text-lg text-slate-600 max-w-2xl mx-auto" }, "Berbagai kategori API yang siap Anda integrasikan ke dalam aplikasi Anda secara instan.")), /* @__PURE__ */ jsx("div", { class: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" }, apiCategories.map((api, index) => /* @__PURE__ */ jsx(
+  ))), /* @__PURE__ */ jsx("div", { class: "absolute inset-0 z-0 pointer-events-none overflow-hidden" }, /* @__PURE__ */ jsx("div", { class: "absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-emerald-50 rounded-full blur-[120px] opacity-60" }), /* @__PURE__ */ jsx("div", { class: "absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-teal-50 rounded-full blur-[120px] opacity-60" }))), /* @__PURE__ */ jsx("section", { class: "py-24 bg-slate-50 border-y border-slate-200" }, /* @__PURE__ */ jsx("div", { class: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" }, /* @__PURE__ */ jsx("div", { class: "grid grid-cols-1 lg:grid-cols-2 gap-16 items-center" }, /* @__PURE__ */ jsx("div", { class: "space-y-8" }, /* @__PURE__ */ jsx("div", { class: "inline-block px-4 py-1.5 bg-emerald-100 text-emerald-700 rounded-lg text-sm font-bold uppercase tracking-wider" }, "Visi & Latar Belakang"), /* @__PURE__ */ jsx("h2", { class: "text-3xl md:text-4xl font-bold text-slate-900" }, "Mengapa Muslim API?"), /* @__PURE__ */ jsx("div", { class: "space-y-6 text-lg text-slate-600 leading-relaxed" }, /* @__PURE__ */ jsx("p", null, "Di era digital saat ini, akses terhadap data keislaman yang akurat, cepat, dan mudah diintegrasikan adalah sebuah kebutuhan fundamental. Banyak pengembang menghadapi kesulitan dalam menemukan API yang menyediakan data lengkap tanpa batasan yang memberatkan."), /* @__PURE__ */ jsx("div", { class: "grid grid-cols-1 md:grid-cols-2 gap-8 mt-8" }, /* @__PURE__ */ jsx("div", { class: "space-y-3" }, /* @__PURE__ */ jsx("h4", { class: "font-bold text-slate-900 flex items-center gap-2 text-xl" }, /* @__PURE__ */ jsx("span", { class: "w-2 h-2 bg-emerald-500 rounded-full" }), "Misi Kami"), /* @__PURE__ */ jsx("p", { class: "text-base" }, "Menjadi ", /* @__PURE__ */ jsx("span", { class: "text-emerald-600 font-semibold" }, '"Single Source of Truth"'), " untuk data keislaman digital di Indonesia. Kami menyediakan infrastruktur data yang andal bagi siapapun yang ingin berdakwah melalui teknologi.")), /* @__PURE__ */ jsx("div", { class: "space-y-3" }, /* @__PURE__ */ jsx("h4", { class: "font-bold text-slate-900 flex items-center gap-2 text-xl" }, /* @__PURE__ */ jsx("span", { class: "w-2 h-2 bg-emerald-500 rounded-full" }), "Filosofi Terbuka"), /* @__PURE__ */ jsx("p", { class: "text-base" }, "Muslim API dibangun dengan semangat ", /* @__PURE__ */ jsx("span", { class: "text-emerald-600 font-semibold" }, "Open Source"), ". Kami percaya bahwa ilmu agama harus dapat diakses seluas-luasnya tanpa ada penghalang teknis atau biaya."))), /* @__PURE__ */ jsx("div", { class: "mt-8 pt-8 border-t border-slate-200 italic text-slate-500 text-center md:text-left" }, '"Sebaik-baik manusia adalah yang paling bermanfaat bagi orang lain."'))), /* @__PURE__ */ jsx("div", { class: "relative" }, /* @__PURE__ */ jsx("div", { class: "bg-white p-8 rounded-3xl shadow-2xl border border-slate-200 relative z-10" }, /* @__PURE__ */ jsx("div", { class: "space-y-6" }, /* @__PURE__ */ jsx("div", { class: "flex items-start gap-4" }, /* @__PURE__ */ jsx("div", { class: "w-10 h-10 bg-emerald-100 rounded-xl flex items-center justify-center shrink-0" }, /* @__PURE__ */ jsx("svg", { xmlns: "http://www.w3.org/2000/svg", class: "h-6 w-6 text-emerald-600", fill: "none", viewBox: "0 0 24 24", stroke: "currentColor" }, /* @__PURE__ */ jsx("path", { "stroke-linecap": "round", "stroke-linejoin": "round", "stroke-width": "2", d: "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" }))), /* @__PURE__ */ jsx("div", null, /* @__PURE__ */ jsx("h4", { class: "font-bold text-slate-900 mb-1" }, "Data Terverifikasi"), /* @__PURE__ */ jsx("p", { class: "text-slate-500 text-sm" }, "Sumber data Al-Quran kami mengikuti standar Mushaf Al-Quran Standar Indonesia (MSI) Kemenag RI."))), /* @__PURE__ */ jsx("div", { class: "flex items-start gap-4" }, /* @__PURE__ */ jsx("div", { class: "w-10 h-10 bg-emerald-100 rounded-xl flex items-center justify-center shrink-0" }, /* @__PURE__ */ jsx("svg", { xmlns: "http://www.w3.org/2000/svg", class: "h-6 w-6 text-emerald-600", fill: "none", viewBox: "0 0 24 24", stroke: "currentColor" }, /* @__PURE__ */ jsx("path", { "stroke-linecap": "round", "stroke-linejoin": "round", "stroke-width": "2", d: "M13 10V3L4 14h7v7l9-11h-7z" }))), /* @__PURE__ */ jsx("div", null, /* @__PURE__ */ jsx("h4", { class: "font-bold text-slate-900 mb-1" }, "High Availability"), /* @__PURE__ */ jsx("p", { class: "text-slate-500 text-sm" }, "Dibangun di atas infrastruktur serverless untuk memastikan API selalu tersedia kapanpun dibutuhkan."))), /* @__PURE__ */ jsx("div", { class: "flex items-start gap-4" }, /* @__PURE__ */ jsx("div", { class: "w-10 h-10 bg-emerald-100 rounded-xl flex items-center justify-center shrink-0" }, /* @__PURE__ */ jsx("svg", { xmlns: "http://www.w3.org/2000/svg", class: "h-6 w-6 text-emerald-600", fill: "none", viewBox: "0 0 24 24", stroke: "currentColor" }, /* @__PURE__ */ jsx("path", { "stroke-linecap": "round", "stroke-linejoin": "round", "stroke-width": "2", d: "M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" }))), /* @__PURE__ */ jsx("div", null, /* @__PURE__ */ jsx("h4", { class: "font-bold text-slate-900 mb-1" }, "Data Integrity Chain"), /* @__PURE__ */ jsx("p", { class: "text-slate-500 text-sm" }, "Keaslian data dijamin melalui cryptographic hashing untuk menjaga kemurnian teks suci secara transparan."))))), /* @__PURE__ */ jsx("div", { class: "absolute -bottom-6 -right-6 w-full h-full bg-emerald-600/5 rounded-3xl -z-0" }))))), /* @__PURE__ */ jsx("section", { class: "py-24 bg-white" }, /* @__PURE__ */ jsx("div", { class: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" }, /* @__PURE__ */ jsx("div", { class: "text-center mb-16" }, /* @__PURE__ */ jsx("h2", { class: "text-3xl md:text-4xl font-bold text-slate-900 mb-4" }, "Layanan API Kami"), /* @__PURE__ */ jsx("p", { class: "text-lg text-slate-600 max-w-2xl mx-auto" }, "Berbagai kategori API yang siap Anda integrasikan ke dalam aplikasi Anda secara instan.")), /* @__PURE__ */ jsx("div", { class: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" }, apiCategories.map((api, index) => /* @__PURE__ */ jsx(
     "a",
     {
       key: index,
@@ -7411,7 +7450,7 @@ var Playground = ({ baseUrl }) => {
     /* @__PURE__ */ jsx("option", { value: "kemenag" }, "Kemenag Open Data"),
     /* @__PURE__ */ jsx("option", { value: "sejarah" }, "Sejarah Islam"),
     /* @__PURE__ */ jsx("option", { value: "tools" }, "Tools & Fitur Cerdas"),
-    /* @__PURE__ */ jsx("option", { value: "integrity" }, "Integrity & Blockchain"),
+    /* @__PURE__ */ jsx("option", { value: "integrity" }, "Integrity Chain"),
     /* @__PURE__ */ jsx("option", { value: "other" }, "Lainnya (Asmaul Husna, Doa, dll)")
   )), /* @__PURE__ */ jsx("div", null, /* @__PURE__ */ jsx("label", { class: "block mb-2 text-sm font-semibold text-slate-700" }, "Endpoint"), /* @__PURE__ */ jsx(
     "select",
@@ -7755,7 +7794,7 @@ var Status = ({ baseUrl }) => {
     {
       name: "Core API Engine",
       endpoint: "/health",
-      description: "Status inti sistem dan database",
+      description: "Status inti sistem",
       type: "internal"
     }
   ), /* @__PURE__ */ jsx(
@@ -7803,7 +7842,7 @@ var Status = ({ baseUrl }) => {
     {
       name: "Integrity System",
       endpoint: "/integrity/verify",
-      description: "Blockchain-based data verification",
+      description: "Data integrity verification chain",
       type: "internal"
     }
   ), /* @__PURE__ */ jsx("div", { class: "col-span-full mt-8 mb-4" }, /* @__PURE__ */ jsx("h2", { class: "text-xl font-bold text-slate-900 flex items-center gap-2" }, /* @__PURE__ */ jsx("div", { class: "w-2 h-6 bg-blue-500 rounded-full" }), "External Data Providers")), /* @__PURE__ */ jsx(
@@ -8131,14 +8170,17 @@ ayah.get("/specific", async (c) => {
     const surahId = c.req.query("surahId") || c.req.query("id");
     const ayahId = c.req.query("ayahId");
     if (surahId != null && ayahId != null) {
-      const data = await get(
-        "SELECT * FROM ayah WHERE surah = ? AND ayah = ?",
-        [surahId, ayahId]
-      );
+      const ayahs = await getAyahBySurah(surahId);
+      if (!ayahs) {
+        return c.json({ status: false, message: `Surah ${surahId} tidak ditemukan.`, data: {} }, 404);
+      }
+      const data = ayahs.find((a) => a.ayah == ayahId);
       if (!data) {
         return c.json({ status: false, message: `Ayat ${ayahId} pada surah ${surahId} tidak ditemukan.`, data: {} }, 404);
       } else {
-        return c.json({ status: true, message: `Berhasil mendapatkan detail ayat ${ayahId} pada surah ${surahId}.`, data: formatAyah(data) });
+        const formatted = formatAyah(data);
+        formatted.external_verification = `https://quran.kemenag.go.id/quran/per-ayat/surah/${surahId}?from=${ayahId}&to=${ayahId}`;
+        return c.json({ status: true, message: `Berhasil mendapatkan detail ayat ${ayahId} pada surah ${surahId}.`, data: formatted });
       }
     } else {
       return c.json({
@@ -8154,18 +8196,25 @@ ayah.get("/find", async (c) => {
   try {
     const q = c.req.query("query");
     if (q != null && q.length > 3) {
-      const data = await dbQuery(
-        "SELECT * FROM ayah WHERE text LIKE ? ORDER BY CAST(id as INTEGER) ASC",
-        [`%${q}%`]
-      );
-      if (!data || data.length === 0) {
+      const surahList = await getSurahList();
+      let results = [];
+      const queryLower = q.toLowerCase();
+      for (const s of surahList) {
+        const ayahs = await getAyahBySurah(s.number);
+        if (ayahs) {
+          const matched = ayahs.filter((a) => a.text && a.text.toLowerCase().includes(queryLower));
+          results.push(...matched);
+        }
+        if (results.length >= 100) break;
+      }
+      if (results.length === 0) {
         return c.json({
           status: false,
           message: `Tidak ada ayat yang ditemukan dengan kata kunci: ${q}.`,
           data: []
         }, 404);
       }
-      return c.json({ status: true, message: `Berhasil mencari ayat dengan kata kunci: ${q}.`, data: (data || []).map(formatAyah) });
+      return c.json({ status: true, message: `Berhasil mencari ayat dengan kata kunci: ${q}.`, data: results.map(formatAyah) });
     } else {
       return c.json({
         status: false,
@@ -8388,22 +8437,7 @@ dzikir.get("/", async (c) => {
 var dzikir_default = dzikir;
 
 // src/routes/muslim/v1/hadits.js
-import fs3 from "fs/promises";
-import path3 from "path";
-import { fileURLToPath as fileURLToPath2 } from "url";
-var __filename2 = fileURLToPath2(import.meta.url);
-var __dirname2 = path3.dirname(__filename2);
 var hadits = new Hono2();
-async function getLocalHadits(bookName) {
-  try {
-    const filePath = path3.join(__dirname2, "../../../../src/data/hadits", `${bookName}.json`);
-    const data = await fs3.readFile(filePath, "utf8");
-    return JSON.parse(data);
-  } catch (error) {
-    console.error(`Error reading local hadits ${bookName}:`, error.message);
-    return null;
-  }
-}
 var bookFileMapping = {
   "bukhari": "bukhari",
   "muslim": "muslim",
@@ -8464,6 +8498,42 @@ hadits.get("/books", (c) => {
     ]
   });
 });
+hadits.get("/books/:name", async (c) => {
+  try {
+    const name = c.req.param("name").toLowerCase();
+    const page = parseInt(c.req.query("page") || 1);
+    const limit = 50;
+    const offset = (page - 1) * limit;
+    const targetBookFile = bookFileMapping[name];
+    if (!targetBookFile) {
+      return c.json({ status: false, message: `Kitab ${name} tidak ditemukan.` }, 404);
+    }
+    const allHadits = await getLocalHadits(targetBookFile);
+    if (!allHadits) {
+      return c.json({ status: false, message: `Gagal memuat data kitab ${name}.` }, 500);
+    }
+    const displayName = bookDisplayNames[targetBookFile] || name;
+    const paginatedData = allHadits.slice(offset, offset + limit).map((h) => ({
+      number: h.number,
+      arab: h.arab,
+      id: h.id,
+      name: `HR. ${displayName.replace("Sahih ", "").replace("Sunan ", "").replace("Musnad ", "").replace("Muwatha ", "")}`
+    }));
+    return c.json({
+      status: true,
+      message: `Berhasil mendapatkan daftar hadits dari kitab ${displayName} (Halaman ${page}).`,
+      data: {
+        book: displayName,
+        total: allHadits.length,
+        page,
+        limit,
+        hadiths: paginatedData
+      }
+    });
+  } catch (error) {
+    return c.json({ status: false, message: "Gagal mendapatkan daftar hadits: " + error.message }, 500);
+  }
+});
 hadits.get("/books/:name/:number", async (c) => {
   try {
     const name = c.req.param("name").toLowerCase();
@@ -8507,11 +8577,19 @@ hadits.get("/find", async (c) => {
       }, 400);
     }
     if (!book || book.toLowerCase() === "arbain") {
-      const data = await dbQuery(
-        "SELECT * FROM hadits WHERE judul LIKE ? OR indo LIKE ? ORDER BY CAST(no as INTEGER) ASC",
-        [`%${q}%`, `%${q}%`]
+      const allArbain = await getHaditsArbain();
+      if (!allArbain || allArbain.length === 0) {
+        return c.json({
+          status: false,
+          message: `Daftar hadits Arbain tidak tersedia.`,
+          data: []
+        }, 404);
+      }
+      const queryLower = q.toLowerCase();
+      const results = allArbain.filter(
+        (r) => r.judul && r.judul.toLowerCase().includes(queryLower) || r.indo && r.indo.toLowerCase().includes(queryLower)
       );
-      if (!data || data.length === 0) {
+      if (results.length === 0) {
         return c.json({
           status: false,
           message: `Tidak ada hadits Arbain yang ditemukan dengan kata kunci: ${q}.`,
@@ -8521,7 +8599,7 @@ hadits.get("/find", async (c) => {
       return c.json({
         status: true,
         message: `Berhasil mencari hadits Arbain dengan kata kunci: ${q}.`,
-        data: data.map((r) => ({
+        data: results.map((r) => ({
           ...r,
           sumber: `Hadits Arbain No. ${r.no}: ${r.judul}`
         }))
@@ -8699,6 +8777,8 @@ integrity.get("/chain", async (c) => {
     return c.json({
       status: true,
       message: "Data Integrity Chain (Proof of Authenticity) berhasil dibuat.",
+      algorithm: "SHA-256",
+      structure: "Array of Objects { arab, text }",
       network: "Muslim-API Data Ledger",
       root_hash: previousHash,
       chain
@@ -8743,13 +8823,52 @@ integrity.get("/verify/ayah", async (c) => {
       return c.json({ status: false, message: `Ayat ${ayahId} pada surah ${surahId} tidak ditemukan.`, data: {} }, 404);
     }
     const verificationData = { arab: data.arab, text: data.text };
+    let comparison = {
+      status: "Comparison source unavailable",
+      source: "Kemenag (via EQuran.id)",
+      is_match: null,
+      external_data: null
+    };
+    try {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 3e3);
+      const response = await fetch(`https://equran.id/api/v2/surat/${surahId}`, { signal: controller.signal });
+      clearTimeout(timeoutId);
+      if (response.ok) {
+        const json = await response.json();
+        const externalAyah = json.data && json.data.ayat ? json.data.ayat.find((a) => a.nomorAyat == ayahId) : null;
+        if (externalAyah) {
+          const normalize = (str) => str.replace(/\s+/g, " ").trim();
+          const arabMatch = normalize(externalAyah.teksArab) === normalize(data.arab);
+          const textMatch = normalize(externalAyah.teksIndonesia) === normalize(data.text);
+          comparison = {
+            status: "Success",
+            source: "Kemenag (via EQuran.id)",
+            is_match: arabMatch && textMatch,
+            details: {
+              arab_match: arabMatch,
+              translation_match: textMatch
+            },
+            external_data: {
+              arab: externalAyah.teksArab,
+              text: externalAyah.teksIndonesia
+            }
+          };
+        }
+      }
+    } catch (e) {
+      comparison.status = "Error: " + e.message;
+    }
     return c.json({
       status: true,
       message: `Berhasil memverifikasi integritas ayat ${ayahId} pada surah ${surahId}.`,
       data: {
         surahId,
         ayahId,
+        local_data: verificationData,
         hash: generateHash(verificationData),
+        comparison,
+        external_verification_url: `https://quran.kemenag.go.id/quran/per-ayat/surah/${surahId}?from=${ayahId}&to=${ayahId}`,
         timestamp: (/* @__PURE__ */ new Date()).toISOString()
       }
     });
@@ -8793,28 +8912,28 @@ sholat.get("/kota/semua", async (c) => {
   }
 });
 sholat.get("/kota/cari", async (c) => {
-  const query2 = c.req.query("nama");
-  if (!query2) return c.json({ status: false, message: "Parameter nama diperlukan." }, 400);
+  const query = c.req.query("nama");
+  if (!query) return c.json({ status: false, message: "Parameter nama diperlukan." }, 400);
   try {
-    const response = await fetch(`${BASE_API}/kota/cari/${query2}`);
+    const response = await fetch(`${BASE_API}/kota/cari/${query}`);
     const data = await response.json();
     if (!response.ok || !data.status) {
       return c.json({
         status: false,
-        message: `Gagal mencari kota dengan kata kunci: ${query2} dari API sumber.`,
+        message: `Gagal mencari kota dengan kata kunci: ${query} dari API sumber.`,
         error: data.message || "Unknown error"
       }, response.status || 502);
     }
     if (!data.data || data.data.length === 0) {
       return c.json({
         status: false,
-        message: `Tidak ada kota yang ditemukan dengan kata kunci: ${query2}.`,
+        message: `Tidak ada kota yang ditemukan dengan kata kunci: ${query}.`,
         data: []
       }, 404);
     }
     return c.json({
       status: true,
-      message: `Berhasil mencari kota dengan kata kunci: ${query2}.`,
+      message: `Berhasil mencari kota dengan kata kunci: ${query}.`,
       data: data.data || []
     });
   } catch (error) {
@@ -8864,13 +8983,13 @@ sholat.get("/jadwal/koordinat", async (c) => {
     if (!city) {
       return c.json({ status: false, message: "Lokasi tidak ditemukan." }, 404);
     }
-    const cleanCityName = city.replace(/Kota |Kabupaten /g, "").trim();
+    const cleanCityName = city.replace(/Kota Adm. |Kota |Kabupaten |Kab. /g, "").trim();
     const kotaRes = await fetch(`${BASE_API}/kota/cari/${cleanCityName}`);
     const kotaData = await kotaRes.json();
     if (!kotaRes.ok || !kotaData.status || !kotaData.data || kotaData.data.length === 0) {
       return c.json({
         status: false,
-        message: `Kota ${cleanCityName} tidak terdaftar di database Kemenag.`,
+        message: `Kota ${cleanCityName} tidak ditemukan dalam daftar wilayah Kemenag.`,
         location: city
       }, 404);
     }
@@ -8913,7 +9032,7 @@ sholat.get("/next", async (c) => {
     if (!city) {
       return c.json({ status: false, message: "Lokasi tidak ditemukan." }, 404);
     }
-    const cleanCityName = city.replace(/Kota |Kabupaten /g, "").trim();
+    const cleanCityName = city.replace(/Kota Adm. |Kota |Kabupaten |Kab. /g, "").trim();
     const kotaRes = await fetch(`${BASE_API}/kota/cari/${cleanCityName}`);
     const kotaData = await kotaRes.json();
     if (!kotaRes.ok || !kotaData.status || !kotaData.data || kotaData.data.length === 0) {
@@ -9101,61 +9220,6 @@ word.get("/", async (c) => {
 });
 var word_default = word;
 
-// src/database/config.js
-import Database from "better-sqlite3";
-import { join } from "path";
-import fs4 from "fs";
-var isProduction = process.env.VERCEL === "1";
-var db;
-var dbInitialized = false;
-var initializeDatabase = () => {
-  if (dbInitialized && db) return db;
-  try {
-    let dbPath;
-    if (isProduction) {
-      const tmpDbPath = "/tmp/alquran.db";
-      const sourceDbPath = join(process.cwd(), "src", "database", "alquran.db");
-      console.log("Production mode - copying DB to /tmp");
-      if (!fs4.existsSync(tmpDbPath)) {
-        if (!fs4.existsSync(sourceDbPath)) {
-          throw new Error(`Source database not found: ${sourceDbPath}`);
-        }
-        fs4.copyFileSync(sourceDbPath, tmpDbPath);
-        console.log("Database copied to /tmp");
-      }
-      dbPath = tmpDbPath;
-    } else {
-      dbPath = join(process.cwd(), "src", "database", "alquran.db");
-    }
-    console.log(`Initializing database at: ${dbPath}`);
-    db = new Database(dbPath, {
-      readonly: true,
-      fileMustExist: true
-    });
-    db.pragma("journal_mode = OFF");
-    db.pragma("query_only = ON");
-    db.pragma("synchronous = OFF");
-    db.pragma("temp_store = MEMORY");
-    db.pragma("cache_size = -8000");
-    dbInitialized = true;
-    console.log("Database initialized successfully");
-    return db;
-  } catch (error) {
-    console.error("Failed to initialize database:", error);
-    throw error;
-  }
-};
-var query = async (sql, params = []) => {
-  const database = initializeDatabase();
-  const stmt = database.prepare(sql);
-  return stmt.all(params);
-};
-var get2 = async (sql, params = []) => {
-  const database = initializeDatabase();
-  const stmt = database.prepare(sql);
-  return stmt.get(params);
-};
-
 // src/routes/muslim/v1/admin.js
 var admin = new Hono2();
 var API_KEY = process.env.ADMIN_API_KEY || "muslim-api-admin-secret";
@@ -9178,45 +9242,28 @@ admin.patch("/ayah", async (c) => {
     if (!surahId || !ayahId) {
       return c.json({ status: false, message: "surahId dan ayahId diperlukan." }, 400);
     }
-    const oldData = await get2(
-      "SELECT arab, text, latin FROM ayah WHERE surah = ? AND ayah = ?",
-      [surahId, ayahId]
-    );
-    if (!oldData) {
+    const ayahs = await getAyahBySurah(surahId);
+    if (!ayahs) {
+      return c.json({ status: false, message: "Surah tidak ditemukan." }, 404);
+    }
+    const index = ayahs.findIndex((a) => a.ayah == ayahId);
+    if (index === -1) {
       return c.json({ status: false, message: "Ayat tidak ditemukan." }, 404);
     }
-    const updates = [];
-    const params = [];
-    if (arab) {
-      updates.push("arab = ?");
-      params.push(arab);
+    const oldData = { ...ayahs[index] };
+    if (arab) ayahs[index].arab = arab;
+    if (text) ayahs[index].text = text;
+    if (latin) ayahs[index].latin = latin;
+    const success = await writeJson(`quran/ayah/${surahId}.json`, ayahs);
+    if (!success) {
+      return c.json({ status: false, message: "Gagal menyimpan perubahan ke file JSON." }, 500);
     }
-    if (text) {
-      updates.push("text = ?");
-      params.push(text);
-    }
-    if (latin) {
-      updates.push("latin = ?");
-      params.push(latin);
-    }
-    if (updates.length === 0) {
-      return c.json({ status: false, message: "Tidak ada bidang yang disediakan untuk diperbarui." }, 400);
-    }
-    params.push(surahId, ayahId);
-    await query(
-      `UPDATE ayah SET ${updates.join(", ")} WHERE surah = ? AND ayah = ?`,
-      params
-    );
-    const newData = await get2(
-      "SELECT arab, text, latin FROM ayah WHERE surah = ? AND ayah = ?",
-      [surahId, ayahId]
-    );
     return c.json({
       status: true,
       message: "Berhasil memperbarui ayat.",
       diff: {
-        before: oldData,
-        after: newData
+        before: { arab: oldData.arab, text: oldData.text, latin: oldData.latin },
+        after: { arab: ayahs[index].arab, text: ayahs[index].text, latin: ayahs[index].latin }
       },
       integrity_status: "Hash akan diperbarui otomatis pada pengecekan integritas berikutnya."
     });
@@ -9228,35 +9275,24 @@ admin.patch("/dzikir", async (c) => {
   try {
     const { id, title: title3, arabic, translation } = await c.req.json();
     if (!id) return c.json({ status: false, message: "Parameter id diperlukan." }, 400);
-    const oldData = await get2("SELECT title, arabic, translation FROM dzikir WHERE id = ?", [id]);
-    if (!oldData) return c.json({ status: false, message: "Dzikir tidak ditemukan.", data: {} }, 404);
-    const updates = [];
-    const params = [];
-    if (title3) {
-      updates.push("title = ?");
-      params.push(title3);
+    const dzikirs = await getDzikir();
+    if (!dzikirs) return c.json({ status: false, message: "Daftar dzikir tidak tersedia." }, 500);
+    const index = dzikirs.findIndex((d) => d.id == id);
+    if (index === -1) return c.json({ status: false, message: "Dzikir tidak ditemukan." }, 404);
+    const oldData = { ...dzikirs[index] };
+    if (title3) dzikirs[index].title = title3;
+    if (arabic) dzikirs[index].arabic = arabic;
+    if (translation) dzikirs[index].translation = translation;
+    const success = await writeJson("common/dzikir.json", dzikirs);
+    if (!success) {
+      return c.json({ status: false, message: "Gagal menyimpan perubahan ke file JSON." }, 500);
     }
-    if (arabic) {
-      updates.push("arabic = ?");
-      params.push(arabic);
-    }
-    if (translation) {
-      updates.push("translation = ?");
-      params.push(translation);
-    }
-    if (updates.length === 0) return c.json({ status: false, message: "Tidak ada data yang diubah." }, 400);
-    params.push(id);
-    await query(
-      `UPDATE dzikir SET ${updates.join(", ")} WHERE id = ?`,
-      params
-    );
-    const newData = await get2("SELECT title, arabic, translation FROM dzikir WHERE id = ?", [id]);
     return c.json({
       status: true,
       message: "Berhasil memperbarui dzikir.",
       diff: {
-        before: oldData,
-        after: newData
+        before: { title: oldData.title, arabic: oldData.arabic, translation: oldData.translation },
+        after: { title: dzikirs[index].title, arabic: dzikirs[index].arabic, translation: dzikirs[index].translation }
       }
     });
   } catch (error) {
@@ -9265,38 +9301,30 @@ admin.patch("/dzikir", async (c) => {
 });
 admin.patch("/doa", async (c) => {
   try {
-    const { id, judul, arab, indo } = await c.req.json();
-    if (!id) return c.json({ status: false, message: "id diperlukan." }, 400);
-    const oldData = await get2("SELECT judul, arab, indo FROM doa WHERE id = ?", [id]);
-    if (!oldData) return c.json({ status: false, message: "Doa tidak ditemukan." }, 404);
-    const updates = [];
-    const params = [];
-    if (judul) {
-      updates.push("judul = ?");
-      params.push(judul);
+    const { id, title: title3, arabic, translation } = await c.req.json();
+    if (!id) return c.json({ status: false, message: "Parameter id diperlukan." }, 400);
+    const doas = await getDoa();
+    if (!doas) return c.json({ status: false, message: "Daftar doa tidak tersedia." }, 500);
+    const index = doas.findIndex((d) => d.id == id);
+    if (index === -1) return c.json({ status: false, message: "Doa tidak ditemukan." }, 404);
+    const oldData = { ...doas[index] };
+    if (title3) doas[index].title = title3;
+    if (arabic) doas[index].arabic = arabic;
+    if (translation) doas[index].translation = translation;
+    const success = await writeJson("common/doa.json", doas);
+    if (!success) {
+      return c.json({ status: false, message: "Gagal menyimpan perubahan ke file JSON." }, 500);
     }
-    if (arab) {
-      updates.push("arab = ?");
-      params.push(arab);
-    }
-    if (indo) {
-      updates.push("indo = ?");
-      params.push(indo);
-    }
-    if (updates.length === 0) return c.json({ status: false, message: "Tidak ada bidang untuk diperbarui." }, 400);
-    params.push(id);
-    await query(`UPDATE doa SET ${updates.join(", ")} WHERE id = ?`, params);
-    const newData = await get2("SELECT judul, arab, indo FROM doa WHERE id = ?", [id]);
     return c.json({
       status: true,
       message: "Berhasil memperbarui doa.",
       diff: {
-        before: oldData,
-        after: newData
+        before: { title: oldData.title, arabic: oldData.arabic, translation: oldData.translation },
+        after: { title: doas[index].title, arabic: doas[index].arabic, translation: doas[index].translation }
       }
     });
   } catch (error) {
-    return c.json({ status: false, message: error.message }, 500);
+    return c.json({ status: false, message: "Gagal memperbarui doa: " + error.message }, 500);
   }
 });
 var admin_default = admin;
@@ -9488,8 +9516,8 @@ sejarah.get("/detail", async (c) => {
     if (!id) return c.json({ status: false, message: "Parameter id diperlukan." }, 400);
     const allSejarah = await getSejarah();
     if (!allSejarah) return c.json({ status: false, message: "Daftar sejarah tidak tersedia.", data: {} }, 404);
-    const item = allSejarah.find((s) => s.id == id);
-    if (!item) return c.json({ status: false, message: "Data sejarah tidak ditemukan.", data: {} }, 404);
+    const item = allSejarah.find((s) => s.id == id || s.id && s.id.toString() === id.toString());
+    if (!item) return c.json({ status: false, message: `Data sejarah dengan ID ${id} tidak ditemukan.`, data: {} }, 404);
     return c.json({ status: true, message: "Berhasil mendapatkan detail sejarah.", data: item });
   } catch (error) {
     return c.json({ status: false, message: "Gagal mendapatkan detail sejarah: " + error.message }, 500);
@@ -9517,14 +9545,25 @@ sejarah.get("/today", async (c) => {
     const allSejarah = await getSejarah();
     if (!allSejarah) return c.json({ status: false, message: "Daftar sejarah tidak tersedia.", data: [] }, 404);
     const searchStr = `${day} ${month}`;
-    const data = allSejarah.filter(
-      (s) => s.tahun && s.tahun.includes(searchStr) || s.tahun && s.tahun.includes(month) || s.deskripsi && s.deskripsi.includes(searchStr)
-    ).slice(0, 10);
+    const searchMonth = month;
+    const data = allSejarah.filter((s) => {
+      const deskripsiLower = (s.deskripsi || "").toLowerCase();
+      const tahunLower = (s.tahun || "").toLowerCase();
+      const searchStrLower = searchStr.toLowerCase();
+      const monthLower = searchMonth.toLowerCase();
+      return tahunLower.includes(searchStrLower) || tahunLower.includes(monthLower) || deskripsiLower.includes(searchStrLower);
+    });
+    let finalData = data;
+    if (finalData.length === 0) {
+      finalData = allSejarah.filter(
+        (s) => s.tahun && s.tahun.toLowerCase().includes(month.toLowerCase()) || s.deskripsi && s.deskripsi.toLowerCase().includes(month.toLowerCase())
+      );
+    }
     return c.json({
       status: true,
       message: `Berhasil mendapatkan peristiwa sejarah untuk hari ini (${day} ${month}).`,
       data: {
-        events: data,
+        events: finalData.slice(0, 10),
         today: `${day} ${month}`
       }
     });
@@ -9535,21 +9574,7 @@ sejarah.get("/today", async (c) => {
 var sejarah_default = sejarah;
 
 // src/routes/muslim/v1/tools.js
-import fs5 from "fs/promises";
-import path4 from "path";
-import { fileURLToPath as fileURLToPath3 } from "url";
-var __filename3 = fileURLToPath3(import.meta.url);
-var __dirname3 = path4.dirname(__filename3);
 var tools = new Hono2();
-async function getLocalHadits2(bookName) {
-  try {
-    const filePath = path4.join(__dirname3, "../../../../src/data/hadits", `${bookName}.json`);
-    const data = await fs5.readFile(filePath, "utf8");
-    return JSON.parse(data);
-  } catch (error) {
-    return null;
-  }
-}
 tools.get("/quotes/daily", async (c) => {
   try {
     const surahList = await getSurahList();
@@ -9658,10 +9683,10 @@ tools.get("/qibla", async (c) => {
   });
 });
 tools.get("/semantic-search", async (c) => {
-  const query2 = c.req.query("query");
-  if (!query2) return c.json({ status: false, message: "Parameter query diperlukan." }, 400);
+  const query = c.req.query("query");
+  if (!query) return c.json({ status: false, message: "Parameter query diperlukan." }, 400);
   try {
-    const queryLower = query2.toLowerCase();
+    const queryLower = query.toLowerCase();
     const searchTerms = queryLower.split(" ");
     const surahList = await getSurahList();
     let quranResults = [];
@@ -9696,7 +9721,7 @@ tools.get("/semantic-search", async (c) => {
     let globalHadits = [];
     const mainBooks = ["bukhari", "muslim"];
     for (const book of mainBooks) {
-      const allHadits = await getLocalHadits2(book);
+      const allHadits = await getLocalHadits(book);
       if (allHadits) {
         const matches = allHadits.filter((h) => {
           const text = (h.id || "").toLowerCase();
@@ -9715,9 +9740,9 @@ tools.get("/semantic-search", async (c) => {
     if (quranResults.length === 0 && totalHadits.length === 0) {
       return c.json({
         status: false,
-        message: `Tidak ada hasil pencarian semantik untuk '${query2}'.`,
+        message: `Tidak ada hasil pencarian semantik untuk '${query}'.`,
         data: {
-          query: query2,
+          query,
           quran: [],
           hadits: []
         }
@@ -9725,9 +9750,9 @@ tools.get("/semantic-search", async (c) => {
     }
     return c.json({
       status: true,
-      message: `Pencarian semantik untuk '${query2}' berhasil.`,
+      message: `Pencarian semantik untuk '${query}' berhasil.`,
       data: {
-        query: query2,
+        query,
         quran: quranResults,
         hadits: totalHadits
       }
@@ -11771,9 +11796,9 @@ app.use("/v1/*", async (c, next) => {
   const ip = c.req.header("x-forwarded-for") || c.req.header("x-real-ip") || "local";
   const userAgent = c.req.header("user-agent") || "unknown";
   const method = c.req.method;
-  const path5 = c.req.path;
+  const path3 = c.req.path;
   if (process.env.NODE_ENV === "production") {
-    console.log(`[HIT] ${(/* @__PURE__ */ new Date()).toISOString()} | IP: ${ip} | Path: ${path5} | UA: ${userAgent}`);
+    console.log(`[HIT] ${(/* @__PURE__ */ new Date()).toISOString()} | IP: ${ip} | Path: ${path3} | UA: ${userAgent}`);
     return await next();
   }
   const now = Date.now();
@@ -11796,7 +11821,7 @@ app.use("/v1/*", async (c, next) => {
       client_info: { ip, user_agent: userAgent }
     }, 429);
   }
-  console.log(`[HIT] ${(/* @__PURE__ */ new Date()).toISOString()} | IP: ${ip} | Method: ${method} | Path: ${path5}`);
+  console.log(`[HIT] ${(/* @__PURE__ */ new Date()).toISOString()} | IP: ${ip} | Method: ${method} | Path: ${path3}`);
   await next();
 });
 app.route("/v1", v1_default);

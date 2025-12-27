@@ -72,6 +72,48 @@ hadits.get('/books', (c) => {
   });
 });
 
+// Specific Hadith Book (Local) - List first 50 hadiths
+hadits.get('/books/:name', async (c) => {
+  try {
+    const name = c.req.param('name').toLowerCase();
+    const page = parseInt(c.req.query('page') || 1);
+    const limit = 50;
+    const offset = (page - 1) * limit;
+
+    const targetBookFile = bookFileMapping[name];
+    if (!targetBookFile) {
+      return c.json({ status: false, message: `Kitab ${name} tidak ditemukan.` }, 404);
+    }
+
+    const allHadits = await getLocalHadits(targetBookFile);
+    if (!allHadits) {
+      return c.json({ status: false, message: `Gagal memuat data kitab ${name}.` }, 500);
+    }
+
+    const displayName = bookDisplayNames[targetBookFile] || name;
+    const paginatedData = allHadits.slice(offset, offset + limit).map(h => ({
+      number: h.number,
+      arab: h.arab,
+      id: h.id,
+      name: `HR. ${displayName.replace('Sahih ', '').replace('Sunan ', '').replace('Musnad ', '').replace('Muwatha ', '')}`
+    }));
+
+    return c.json({
+      status: true,
+      message: `Berhasil mendapatkan daftar hadits dari kitab ${displayName} (Halaman ${page}).`,
+      data: {
+        book: displayName,
+        total: allHadits.length,
+        page,
+        limit,
+        hadiths: paginatedData
+      }
+    });
+  } catch (error) {
+    return c.json({ status: false, message: 'Gagal mendapatkan daftar hadits: ' + error.message }, 500);
+  }
+});
+
 // Specific Hadith by Number (Local)
 hadits.get('/books/:name/:number', async (c) => {
   try {
@@ -122,14 +164,25 @@ hadits.get('/find', async (c) => {
       }, 400);
     }
 
-    // Opsi B: Hadits Arbain (DB Lokal)
+    // Opsi B: Hadits Arbain (Data JSON)
     if (!book || book.toLowerCase() === 'arbain') {
-      const data = await dbQuery(
-        "SELECT * FROM hadits WHERE judul LIKE ? OR indo LIKE ? ORDER BY CAST(no as INTEGER) ASC",
-        [`%${q}%`, `%${q}%`]
+      const allArbain = await getHaditsArbain();
+      
+      if (!allArbain || allArbain.length === 0) {
+        return c.json({ 
+          status: false, 
+          message: `Daftar hadits Arbain tidak tersedia.`,
+          data: []
+        }, 404);
+      }
+
+      const queryLower = q.toLowerCase();
+      const results = allArbain.filter(r => 
+        (r.judul && r.judul.toLowerCase().includes(queryLower)) || 
+        (r.indo && r.indo.toLowerCase().includes(queryLower))
       );
 
-      if (!data || data.length === 0) {
+      if (results.length === 0) {
         return c.json({ 
           status: false, 
           message: `Tidak ada hadits Arbain yang ditemukan dengan kata kunci: ${q}.`,
@@ -140,7 +193,7 @@ hadits.get('/find', async (c) => {
       return c.json({ 
         status: true, 
         message: `Berhasil mencari hadits Arbain dengan kata kunci: ${q}.`, 
-        data: data.map(r => ({
+        data: results.map(r => ({
           ...r,
           sumber: `Hadits Arbain No. ${r.no}: ${r.judul}`
         }))

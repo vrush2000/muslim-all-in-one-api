@@ -165,19 +165,19 @@ export const Layout = ({ children, title }) => {
           }
         `}</style>
       </head>
-      <body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col">
+      <body class="flex flex-col min-h-screen bg-slate-50 text-slate-900">
         <Search />
-        <header class="sticky top-0 z-50 glass border-b border-slate-200">
-          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16 items-center">
+        <header class="sticky top-0 z-50 border-b glass border-slate-200">
+          <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
               <a
                 href="/"
-                class="flex items-center gap-2 group transition-all shrink-0"
+                class="flex gap-2 items-center transition-all group shrink-0"
               >
-                <div class="w-8 h-8 bg-emerald-600 rounded-lg flex items-center justify-center group-hover:shadow-lg group-hover:shadow-emerald-200 transition-all">
+                <div class="flex justify-center items-center w-8 h-8 bg-emerald-600 rounded-lg transition-all group-hover:shadow-lg group-hover:shadow-emerald-200">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    class="h-5 w-5 text-white"
+                    class="w-5 h-5 text-white"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -190,17 +190,17 @@ export const Layout = ({ children, title }) => {
                     />
                   </svg>
                 </div>
-                <span class="text-xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent group-hover:from-emerald-500 group-hover:to-teal-500 transition-all">
+                <span class="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-600 transition-all group-hover:from-emerald-500 group-hover:to-teal-500">
                   Muslim API
                 </span>
               </a>
-              <div class="flex items-center gap-1 md:gap-4 lg:gap-4">
+              <div class="flex gap-1 items-center md:gap-4 lg:gap-4">
                 {/* Real Search Input */}
-                <div class="relative group w-40 md:w-64">
-                  <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <div class="relative w-40 group md:w-64">
+                  <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      class="h-4 w-4 text-slate-400 group-focus-within:text-emerald-500 transition-colors"
+                      class="w-4 h-4 transition-colors text-slate-400 group-focus-within:text-emerald-500"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -220,7 +220,7 @@ export const Layout = ({ children, title }) => {
                     onfocus="window.handleSearch(this.value)"
                     autocomplete="off"
                     placeholder="Search..."
-                    class="block w-full pl-10 pr-3 py-1.5 bg-slate-100 border border-slate-200 rounded-lg text-sm placeholder-slate-400 focus:outline-none focus:bg-white focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition-all"
+                    class="block py-1.5 pr-3 pl-10 w-full text-sm rounded-lg border transition-all bg-slate-100 border-slate-200 placeholder-slate-400 focus:outline-none focus:bg-white focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500"
                   />
 
                   {/* Results Dropdown */}
@@ -229,28 +229,28 @@ export const Layout = ({ children, title }) => {
                     class="absolute top-full left-0 right-0 mt-2 bg-white rounded-xl shadow-xl border border-slate-200 hidden overflow-hidden z-[100] max-h-[400px] overflow-y-auto"
                   >
                     <div id="search-results-content" class="p-2">
-                      <div class="text-center py-4 text-slate-400 text-xs">
+                      <div class="py-4 text-xs text-center text-slate-400">
                         Type to search...
                       </div>
                     </div>
                   </div>
                 </div>
 
-                <nav class="hidden md:flex items-center space-x-8">
+                <nav class="hidden items-center space-x-8 md:flex">
                   <a
                     href="/"
-                    class="text-slate-600 hover:text-emerald-600 font-medium transition-colors"
+                    class="font-medium transition-colors text-slate-600 hover:text-emerald-600"
                   >
                     Home
                   </a>
 
                   {/* Resources Dropdown */}
                   <div class="relative group">
-                    <button class="flex items-center gap-1 text-slate-600 group-hover:text-emerald-600 font-medium transition-colors py-4">
+                    <button class="flex gap-1 items-center py-4 font-medium transition-colors text-slate-600 group-hover:text-emerald-600">
                       Documentation
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        class="h-4 w-4 transition-transform group-hover:rotate-180"
+                        class="w-4 h-4 transition-transform group-hover:rotate-180"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -267,16 +267,16 @@ export const Layout = ({ children, title }) => {
                     <div class="absolute top-full left-1/2 -translate-x-1/2 w-[500px] bg-white rounded-2xl shadow-2xl border border-slate-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 p-6 z-[100]">
                       <div class="grid grid-cols-3 gap-8">
                         <div>
-                          <h5 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-4">
+                          <h5 class="mb-4 text-xs font-bold tracking-wider uppercase text-slate-400">
                             Internal Services
                           </h5>
                           <ul class="space-y-3">
                             <li>
                               <a
                                 href="/docs"
-                                class="group/item flex items-start gap-3"
+                                class="flex gap-3 items-start group/item"
                               >
-                                <div class="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0 group-hover/item:bg-emerald-600 group-hover/item:text-white transition-colors">
+                                <div class="flex justify-center items-center w-8 h-8 text-emerald-600 bg-emerald-50 rounded-lg transition-colors shrink-0 group-hover/item:bg-emerald-600 group-hover/item:text-white">
                                   <svg
                                     class="w-4 h-4"
                                     fill="none"
@@ -304,9 +304,9 @@ export const Layout = ({ children, title }) => {
                             <li>
                               <a
                                 href="/other"
-                                class="group/item flex items-start gap-3"
+                                class="flex gap-3 items-start group/item"
                               >
-                                <div class="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center shrink-0 group-hover/item:bg-blue-600 group-hover/item:text-white transition-colors">
+                                <div class="flex justify-center items-center w-8 h-8 text-blue-600 bg-blue-50 rounded-lg transition-colors shrink-0 group-hover/item:bg-blue-600 group-hover/item:text-white">
                                   <svg
                                     class="w-4 h-4"
                                     fill="none"
@@ -334,9 +334,9 @@ export const Layout = ({ children, title }) => {
                             <li>
                               <a
                                 href="/status"
-                                class="group/item flex items-start gap-3"
+                                class="flex gap-3 items-start group/item"
                               >
-                                <div class="w-8 h-8 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center shrink-0 group-hover/item:bg-amber-600 group-hover/item:text-white transition-colors">
+                                <div class="flex justify-center items-center w-8 h-8 text-amber-600 bg-amber-50 rounded-lg transition-colors shrink-0 group-hover/item:bg-amber-600 group-hover/item:text-white">
                                   <svg
                                     class="w-4 h-4"
                                     fill="none"
@@ -365,16 +365,16 @@ export const Layout = ({ children, title }) => {
                         </div>
 
                         <div class="col-span-2">
-                          <h5 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-4">
+                          <h5 class="mb-4 text-xs font-bold tracking-wider uppercase text-slate-400">
                             Other API Resources
                           </h5>
-                          <ul class="grid grid-cols-2 gap-x-8 gap-y-4">
+                          <ul class="grid grid-cols-2 gap-y-4 gap-x-8">
                             <li>
                               <a
                                 href="/other#hadits"
-                                class="group/item flex items-start gap-3"
+                                class="flex gap-3 items-start group/item"
                               >
-                                <div class="w-8 h-8 rounded-lg bg-rose-50 text-rose-600 flex items-center justify-center shrink-0 group-hover/item:bg-rose-600 group-hover/item:text-white transition-colors">
+                                <div class="flex justify-center items-center w-8 h-8 text-rose-600 bg-rose-50 rounded-lg transition-colors shrink-0 group-hover/item:bg-rose-600 group-hover/item:text-white">
                                   <svg
                                     class="w-4 h-4"
                                     fill="none"
@@ -402,9 +402,9 @@ export const Layout = ({ children, title }) => {
                             <li>
                               <a
                                 href="/other#doa"
-                                class="group/item flex items-start gap-3"
+                                class="flex gap-3 items-start group/item"
                               >
-                                <div class="w-8 h-8 rounded-lg bg-purple-50 text-purple-600 flex items-center justify-center shrink-0 group-hover/item:bg-purple-600 group-hover/item:text-white transition-colors">
+                                <div class="flex justify-center items-center w-8 h-8 text-purple-600 bg-purple-50 rounded-lg transition-colors shrink-0 group-hover/item:bg-purple-600 group-hover/item:text-white">
                                   <svg
                                     class="w-4 h-4"
                                     fill="none"
@@ -432,9 +432,9 @@ export const Layout = ({ children, title }) => {
                             <li>
                               <a
                                 href="/other#calendar"
-                                class="group/item flex items-start gap-3"
+                                class="flex gap-3 items-start group/item"
                               >
-                                <div class="w-8 h-8 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center shrink-0 group-hover/item:bg-indigo-600 group-hover/item:text-white transition-colors">
+                                <div class="flex justify-center items-center w-8 h-8 text-indigo-600 bg-indigo-50 rounded-lg transition-colors shrink-0 group-hover/item:bg-indigo-600 group-hover/item:text-white">
                                   <svg
                                     class="w-4 h-4"
                                     fill="none"
@@ -462,9 +462,9 @@ export const Layout = ({ children, title }) => {
                             <li>
                               <a
                                 href="/other#asma"
-                                class="group/item flex items-start gap-3"
+                                class="flex gap-3 items-start group/item"
                               >
-                                <div class="w-8 h-8 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center shrink-0 group-hover/item:bg-amber-600 group-hover/item:text-white transition-colors">
+                                <div class="flex justify-center items-center w-8 h-8 text-amber-600 bg-amber-50 rounded-lg transition-colors shrink-0 group-hover/item:bg-amber-600 group-hover/item:text-white">
                                   <svg
                                     class="w-4 h-4"
                                     fill="none"
@@ -492,9 +492,9 @@ export const Layout = ({ children, title }) => {
                             <li>
                               <a
                                 href="/other#kemenag"
-                                class="group/item flex items-start gap-3"
+                                class="flex gap-3 items-start group/item"
                               >
-                                <div class="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0 group-hover/item:bg-emerald-600 group-hover/item:text-white transition-colors">
+                                <div class="flex justify-center items-center w-8 h-8 text-emerald-600 bg-emerald-50 rounded-lg transition-colors shrink-0 group-hover/item:bg-emerald-600 group-hover/item:text-white">
                                   <svg
                                     class="w-4 h-4"
                                     fill="none"
@@ -527,7 +527,7 @@ export const Layout = ({ children, title }) => {
 
                   <a
                     href="/playground"
-                    class="px-4 py-1.5 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 font-medium transition-all shadow-sm hover:shadow-emerald-200"
+                    class="px-4 py-1.5 font-medium text-white bg-emerald-600 rounded-lg shadow-sm transition-all hover:bg-emerald-700 hover:shadow-emerald-200"
                   >
                     Playground
                   </a>
@@ -537,11 +537,11 @@ export const Layout = ({ children, title }) => {
                   <button
                     type="button"
                     onclick="document.getElementById('mobile-menu').classList.toggle('open')"
-                    class="text-slate-600 hover:text-emerald-600 p-2 rounded-lg hover:bg-slate-100 transition-all"
+                    class="p-2 rounded-lg transition-all text-slate-600 hover:text-emerald-600 hover:bg-slate-100"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      class="h-6 w-6"
+                      class="w-6 h-6"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -559,61 +559,61 @@ export const Layout = ({ children, title }) => {
             </div>
 
             {/* Mobile Menu Content */}
-            <div id="mobile-menu" class="md:hidden border-t border-slate-100">
-              <nav class="flex flex-col space-y-1 px-2 pb-4">
+            <div id="mobile-menu" class="border-t md:hidden border-slate-100">
+              <nav class="flex flex-col px-2 pb-4 space-y-1">
                 <a
                   href="/"
-                  class="text-slate-600 hover:text-emerald-600 hover:bg-emerald-50 px-3 py-2 rounded-lg font-medium transition-all"
+                  class="px-3 py-2 font-medium rounded-lg transition-all text-slate-600 hover:text-emerald-600 hover:bg-emerald-50"
                 >
                   Home
                 </a>
 
-                <div class="px-3 py-2 text-xs font-bold text-slate-400 uppercase tracking-wider mt-2">
+                <div class="px-3 py-2 mt-2 text-xs font-bold tracking-wider uppercase text-slate-400">
                   Internal Services
                 </div>
                 <a
                   href="/docs"
-                  class="text-slate-600 hover:text-emerald-600 hover:bg-emerald-50 px-3 py-2 rounded-lg font-medium transition-all flex items-center gap-2"
+                  class="flex gap-2 items-center px-3 py-2 font-medium rounded-lg transition-all text-slate-600 hover:text-emerald-600 hover:bg-emerald-50"
                 >
-                  <div class="w-1.5 h-1.5 rounded-full bg-emerald-500"></div>{" "}
+                  <div class="w-1.5 h-1.5 bg-emerald-500 rounded-full"></div>{" "}
                   Al-Quran API
                 </a>
                 <a
                   href="/other"
-                  class="text-slate-600 hover:text-emerald-600 hover:bg-emerald-50 px-3 py-2 rounded-lg font-medium transition-all flex items-center gap-2"
+                  class="flex gap-2 items-center px-3 py-2 font-medium rounded-lg transition-all text-slate-600 hover:text-emerald-600 hover:bg-emerald-50"
                 >
-                  <div class="w-1.5 h-1.5 rounded-full bg-blue-500"></div> Other
+                  <div class="w-1.5 h-1.5 bg-blue-500 rounded-full"></div> Other
                   APIs
                 </a>
                 <a
                   href="/status"
-                  class="text-slate-600 hover:text-emerald-600 hover:bg-emerald-50 px-3 py-2 rounded-lg font-medium transition-all flex items-center gap-2"
+                  class="flex gap-2 items-center px-3 py-2 font-medium rounded-lg transition-all text-slate-600 hover:text-emerald-600 hover:bg-emerald-50"
                 >
-                  <div class="w-1.5 h-1.5 rounded-full bg-amber-500"></div>{" "}
+                  <div class="w-1.5 h-1.5 bg-amber-500 rounded-full"></div>{" "}
                   System Status
                 </a>
 
-                <div class="px-3 py-2 text-xs font-bold text-slate-400 uppercase tracking-wider mt-2">
+                <div class="px-3 py-2 mt-2 text-xs font-bold tracking-wider uppercase text-slate-400">
                   External Resources
                 </div>
                 <a
                   href="https://quran.kemenag.go.id/"
                   target="_blank"
-                  class="text-slate-600 hover:text-emerald-600 hover:bg-emerald-50 px-3 py-2 rounded-lg font-medium transition-all"
+                  class="px-3 py-2 font-medium rounded-lg transition-all text-slate-600 hover:text-emerald-600 hover:bg-emerald-50"
                 >
                   Quran Kemenag
                 </a>
                 <a
                   href="https://github.com/vrush2000/muslim-all-in-one-api"
                   target="_blank"
-                  class="text-slate-600 hover:text-emerald-600 hover:bg-emerald-50 px-3 py-2 rounded-lg font-medium transition-all"
+                  class="px-3 py-2 font-medium rounded-lg transition-all text-slate-600 hover:text-emerald-600 hover:bg-emerald-50"
                 >
                   GitHub Repository
                 </a>
 
                 <a
                   href="/playground"
-                  class="mt-4 text-center text-white bg-emerald-600 px-3 py-2.5 rounded-xl font-bold transition-all shadow-lg shadow-emerald-100"
+                  class="px-3 py-2.5 mt-4 font-bold text-center text-white bg-emerald-600 rounded-xl shadow-lg transition-all shadow-emerald-100"
                 >
                   Open Playground
                 </a>
@@ -627,18 +627,18 @@ export const Layout = ({ children, title }) => {
         {/* Global API Preview Modal */}
         <div id="api-preview-modal" class="fixed inset-0 z-[200] hidden">
           <div
-            class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm"
+            class="absolute inset-0 backdrop-blur-sm bg-slate-900/60"
             onclick="window.closeApiModal()"
           ></div>
-          <div class="absolute inset-0 flex items-center justify-center p-2 sm:p-4 pointer-events-none">
+          <div class="flex absolute inset-0 justify-center items-center p-2 pointer-events-none sm:p-4">
             <div class="bg-white w-full max-w-4xl h-full sm:h-auto sm:max-h-[90vh] rounded-xl sm:rounded-2xl shadow-2xl flex flex-col pointer-events-auto overflow-hidden border border-slate-200">
               {/* Header */}
-              <div class="flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4 border-b border-slate-100 bg-slate-50/50 shrink-0">
-                <div class="flex items-center gap-2 sm:gap-3 overflow-hidden">
-                  <div class="w-8 h-8 sm:w-10 sm:h-10 bg-emerald-100 text-emerald-600 rounded-lg sm:rounded-xl flex items-center justify-center shrink-0">
+              <div class="flex justify-between items-center px-4 py-3 border-b sm:px-6 sm:py-4 border-slate-100 bg-slate-50/50 shrink-0">
+                <div class="flex overflow-hidden gap-2 items-center sm:gap-3">
+                  <div class="flex justify-center items-center w-8 h-8 text-emerald-600 bg-emerald-100 rounded-lg sm:w-10 sm:h-10 sm:rounded-xl shrink-0">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      class="h-5 w-5 sm:h-6 sm:w-6"
+                      class="w-5 h-5 sm:h-6 sm:w-6"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -658,7 +658,7 @@ export const Layout = ({ children, title }) => {
                     </svg>
                   </div>
                   <div class="overflow-hidden">
-                    <h3 class="text-sm sm:text-lg font-bold text-slate-900 truncate">
+                    <h3 class="text-sm font-bold truncate sm:text-lg text-slate-900">
                       API Response Preview
                     </h3>
                     <p
@@ -669,11 +669,11 @@ export const Layout = ({ children, title }) => {
                 </div>
                 <button
                   onclick="window.closeApiModal()"
-                  class="p-1.5 sm:p-2 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-lg transition-all shrink-0"
+                  class="p-1.5 rounded-lg transition-all sm:p-2 text-slate-400 hover:text-slate-600 hover:bg-slate-100 shrink-0"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    class="h-5 w-5 sm:h-6 sm:w-6"
+                    class="w-5 h-5 sm:h-6 sm:w-6"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -689,9 +689,9 @@ export const Layout = ({ children, title }) => {
               </div>
 
               {/* Body */}
-              <div class="flex-grow p-4 sm:p-6 overflow-hidden flex flex-col gap-3 sm:gap-4">
-                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 shrink-0">
-                  <div class="flex items-center gap-3">
+              <div class="flex overflow-hidden flex-col flex-grow gap-3 p-4 sm:p-6 sm:gap-4">
+                <div class="flex flex-col gap-3 justify-between sm:flex-row sm:items-center shrink-0">
+                  <div class="flex gap-3 items-center">
                     <span class="inline-flex items-center px-2 py-0.5 rounded-md text-[10px] sm:text-xs font-bold bg-emerald-100 text-emerald-800 uppercase tracking-wider">
                       GET
                     </span>
@@ -700,14 +700,14 @@ export const Layout = ({ children, title }) => {
                       class="hidden inline-flex items-center px-2 py-0.5 rounded-md text-[10px] sm:text-xs font-bold uppercase tracking-wider"
                     ></span>
                   </div>
-                  <div class="flex items-center gap-2">
+                  <div class="flex gap-2 items-center">
                     <button
                       onclick="window.copyModalResponse()"
                       class="flex-1 sm:flex-none flex items-center justify-center gap-2 px-3 py-1.5 text-[11px] sm:text-sm font-medium text-slate-600 hover:text-emerald-600 hover:bg-emerald-50 border border-slate-200 sm:border-transparent rounded-lg transition-all"
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        class="h-3.5 w-3.5 sm:h-4 sm:w-4"
+                        class="w-3.5 h-3.5 sm:h-4 sm:w-4"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -729,7 +729,7 @@ export const Layout = ({ children, title }) => {
                       Playground
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        class="h-3.5 w-3.5 sm:h-4 sm:w-4"
+                        class="w-3.5 h-3.5 sm:h-4 sm:w-4"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -753,10 +753,10 @@ export const Layout = ({ children, title }) => {
               </div>
 
               {/* Footer */}
-              <div class="px-4 sm:px-6 py-3 sm:py-4 border-t border-slate-100 bg-slate-50/50 flex shrink-0">
+              <div class="flex px-4 py-3 border-t sm:px-6 sm:py-4 border-slate-100 bg-slate-50/50 shrink-0">
                 <button
                   onclick="window.closeApiModal()"
-                  class="w-full sm:w-auto sm:ml-auto px-6 py-2 bg-slate-900 text-white rounded-lg sm:rounded-xl font-bold hover:bg-slate-800 transition-all shadow-lg shadow-slate-200"
+                  class="px-6 py-2 w-full font-bold text-white rounded-lg shadow-lg transition-all sm:w-auto sm:ml-auto bg-slate-900 sm:rounded-xl hover:bg-slate-800 shadow-slate-200"
                 >
                   Close Preview
                 </button>
@@ -796,13 +796,13 @@ export const Layout = ({ children, title }) => {
               jsonDisplay.textContent = JSON.stringify(data, null, 2);
               
               statusBadge.textContent = response.status + ' ' + response.statusText + ' (' + Math.round(end - start) + 'ms)';
-              statusBadge.className = 'inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ' + 
+              statusBadge.className = 'inline-flex items-center px-2.5 py-0.5 text-xs font-medium rounded-full' + 
                 (response.ok ? 'bg-blue-100 text-blue-800' : 'bg-red-100 text-red-800');
               statusBadge.classList.remove('hidden');
             } catch (error) {
               jsonDisplay.textContent = JSON.stringify({ error: 'Failed to fetch API', details: error.message }, null, 2);
               statusBadge.textContent = 'Error';
-              statusBadge.className = 'inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800';
+              statusBadge.className = 'inline-flex items-center px-2.5 py-0.5 text-xs font-medium text-red-800 bg-red-100 rounded-full';
               statusBadge.classList.remove('hidden');
             }
           };
@@ -819,7 +819,7 @@ export const Layout = ({ children, title }) => {
               navigator.clipboard.writeText(json).then(() => {
                 const btn = event.currentTarget;
                 const originalText = btn.innerHTML;
-                btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg> Copied!';
+                btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg> Copied!';
                 setTimeout(() => btn.innerHTML = originalText, 2000);
               });
             }
@@ -894,15 +894,15 @@ export const Layout = ({ children, title }) => {
           }}
         />
 
-        <footer class="bg-white border-t border-slate-200 py-12 mt-12">
-          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4 gap-8">
+        <footer class="py-12 mt-12 bg-white border-t border-slate-200">
+          <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 gap-8 md:grid-cols-4 lg:grid-cols-4">
               <div class="col-span-1 md:col-span-1">
-                <div class="flex items-center gap-2 mb-4">
-                  <div class="w-6 h-6 bg-emerald-600 rounded flex items-center justify-center">
+                <div class="flex gap-2 items-center mb-4">
+                  <div class="flex justify-center items-center w-6 h-6 bg-emerald-600 rounded">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      class="h-4 w-4 text-white"
+                      class="w-4 h-4 text-white"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -917,15 +917,15 @@ export const Layout = ({ children, title }) => {
                   </div>
                   <span class="text-lg font-bold">Muslim API</span>
                 </div>
-                <p class="text-slate-500 text-sm leading-relaxed mb-4">
+                <p class="mb-4 text-sm leading-relaxed text-slate-500">
                   Penyedia layanan API Muslim gratis untuk mempermudah
                   pengembang dalam membangun aplikasi islami.
                 </p>
-                <div class="flex items-center gap-3">
+                <div class="flex gap-3 items-center">
                   <a
                     href="https://github.com/vrush2000/muslim-all-in-one-api"
                     target="_blank"
-                    class="p-2 bg-slate-100 hover:bg-emerald-100 text-slate-600 hover:text-emerald-600 rounded-lg transition-all"
+                    class="p-2 rounded-lg transition-all bg-slate-100 hover:bg-emerald-100 text-slate-600 hover:text-emerald-600"
                     title="GitHub Repository"
                   >
                     <svg
@@ -938,7 +938,7 @@ export const Layout = ({ children, title }) => {
                   </a>
                   <a
                     href="/status"
-                    class="p-2 bg-slate-100 hover:bg-emerald-100 text-slate-600 hover:text-emerald-600 rounded-lg transition-all"
+                    class="p-2 rounded-lg transition-all bg-slate-100 hover:bg-emerald-100 text-slate-600 hover:text-emerald-600"
                     title="System Status"
                   >
                     <svg
@@ -958,7 +958,7 @@ export const Layout = ({ children, title }) => {
                 </div>
               </div>
               <div>
-                <h4 class="font-semibold text-slate-900 mb-4">
+                <h4 class="mb-4 font-semibold text-slate-900">
                   API Documentation
                 </h4>
                 <ul class="space-y-2 text-sm text-slate-500">
@@ -990,7 +990,7 @@ export const Layout = ({ children, title }) => {
                   <li>
                     <a
                       href="/playground"
-                      class="text-emerald-600 font-semibold hover:underline"
+                      class="font-semibold text-emerald-600 hover:underline"
                     >
                       API Playground
                     </a>
@@ -998,7 +998,7 @@ export const Layout = ({ children, title }) => {
                 </ul>
               </div>
               <div>
-                <h4 class="font-semibold text-slate-900 mb-4">
+                <h4 class="mb-4 font-semibold text-slate-900">
                   Official Sources
                 </h4>
                 <ul class="space-y-2 text-sm text-slate-500">
@@ -1006,7 +1006,7 @@ export const Layout = ({ children, title }) => {
                     <a
                       href="https://quran.kemenag.go.id/"
                       target="_blank"
-                      class="hover:text-emerald-600 flex items-center gap-1"
+                      class="flex gap-1 items-center hover:text-emerald-600"
                     >
                       Quran Kemenag{" "}
                       <svg
@@ -1040,7 +1040,7 @@ export const Layout = ({ children, title }) => {
                 </ul>
               </div>
               <div>
-                <h4 class="font-semibold text-slate-900 mb-4">
+                <h4 class="mb-4 font-semibold text-slate-900">
                   Community Repos
                 </h4>
                 <ul class="space-y-2 text-sm text-slate-500">
@@ -1050,7 +1050,7 @@ export const Layout = ({ children, title }) => {
                       target="_blank"
                       class="hover:text-emerald-600"
                     >
-                      Dataset keislaman (SQLite)
+                      Dataset keislaman
                     </a>
                   </li>
                   <li>
@@ -1083,8 +1083,8 @@ export const Layout = ({ children, title }) => {
                 </ul>
               </div>
               <div>
-                <h4 class="font-semibold text-slate-900 mb-4">Inspiration</h4>
-                <p class="text-slate-500 text-sm leading-relaxed">
+                <h4 class="mb-4 font-semibold text-slate-900">Inspiration</h4>
+                <p class="text-sm leading-relaxed text-slate-500">
                   Original template by{" "}
                   <a
                     href="http://www.designstub.com/"
@@ -1096,15 +1096,15 @@ export const Layout = ({ children, title }) => {
                 </p>
               </div>
               <div>
-                <h4 class="font-semibold text-slate-900 mb-4">Support Project</h4>
+                <h4 class="mb-4 font-semibold text-slate-900">Support Project</h4>
                 <div
                   onclick="window.openDonationModal()"
-                  class="w-full group flex items-center gap-3 p-3 bg-gradient-to-br from-emerald-50 to-teal-50 rounded-xl border border-emerald-100 hover:border-emerald-300 transition-all shadow-sm hover:shadow-md cursor-pointer mb-3"
+                  class="flex gap-3 items-center p-3 mb-3 w-full bg-gradient-to-br from-emerald-50 to-teal-50 rounded-xl border border-emerald-100 shadow-sm transition-all cursor-pointer group hover:border-emerald-300 hover:shadow-md"
                 >
-                  <div class="w-10 h-10 bg-emerald-600 rounded-lg flex items-center justify-center text-white shadow-lg shadow-emerald-200 group-hover:scale-110 transition-transform">
+                  <div class="flex justify-center items-center w-10 h-10 text-white bg-emerald-600 rounded-lg shadow-lg transition-transform shadow-emerald-200 group-hover:scale-110">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      class="h-6 w-6"
+                      class="w-6 h-6"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -1129,12 +1129,12 @@ export const Layout = ({ children, title }) => {
                 {/* <a
                   href="https://github.com/vrush2000/muslim-all-in-one-api"
                   target="_blank"
-                  class="w-full group flex items-center gap-3 p-3 bg-gradient-to-br from-emerald-50 to-teal-50 rounded-xl border border-emerald-100 hover:border-emerald-300 transition-all shadow-sm hover:shadow-md cursor-pointer"
+                  class="flex gap-3 items-center p-3 w-full bg-gradient-to-br from-emerald-50 to-teal-50 rounded-xl border border-emerald-100 shadow-sm transition-all cursor-pointer group hover:border-emerald-300 hover:shadow-md"
                 >
-                  <div class="w-10 h-10 bg-emerald-600 rounded-lg flex items-center justify-center text-white shadow-lg shadow-emerald-200 group-hover:scale-110 transition-transform">
+                  <div class="flex justify-center items-center w-10 h-10 text-white bg-emerald-600 rounded-lg shadow-lg transition-transform shadow-emerald-200 group-hover:scale-110">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      class="h-6 w-6"
+                      class="w-6 h-6"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -1155,11 +1155,11 @@ export const Layout = ({ children, title }) => {
                 </a> */}
               </div>
             </div>
-            <div class="border-t border-slate-100 mt-12 pt-8 text-center">
-              <p class="text-slate-500 text-sm mb-4">
+            <div class="pt-8 mt-12 text-center border-t border-slate-100">
+              <p class="mb-4 text-sm text-slate-500">
                 Dikembangkan dengan ❤️ untuk Ummat.
               </p>
-              <p class="text-slate-400 text-xs">
+              <p class="text-xs text-slate-400">
                 © {new Date().getFullYear()} Muslim All-in-One API. Created by
                 Vrush Studio.
               </p>
@@ -1175,9 +1175,9 @@ export const Layout = ({ children, title }) => {
           role="dialog"
           aria-modal="true"
         >
-          <div class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+          <div class="flex justify-center items-center px-4 pt-4 pb-20 min-h-screen text-center sm:block sm:p-0">
             <div
-              class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity"
+              class="fixed inset-0 backdrop-blur-sm transition-opacity bg-slate-900/60"
               onclick="window.closeDonationModal()"
               style="z-index: -1;"
             ></div>
@@ -1189,14 +1189,14 @@ export const Layout = ({ children, title }) => {
               &#8203;
             </span>
 
-            <div class="inline-block align-bottom bg-white rounded-3xl text-left overflow-hidden shadow-2xl transform transition-all sm:my-8 sm:align-middle sm:max-w-md sm:w-full border border-slate-100 relative z-10">
+            <div class="inline-block overflow-hidden relative z-10 text-left align-bottom bg-white rounded-3xl border shadow-2xl transition-all transform sm:my-8 sm:align-middle sm:max-w-md sm:w-full border-slate-100">
               {/* Header */}
-              <div class="bg-gradient-to-r from-emerald-600 to-teal-600 px-6 py-4 flex items-center justify-between relative z-20">
-                <div class="flex items-center gap-3 text-white">
-                  <div class="p-2 bg-white/20 rounded-lg backdrop-blur-md">
+              <div class="flex relative z-20 justify-between items-center px-6 py-4 bg-gradient-to-r from-emerald-600 to-teal-600">
+                <div class="flex gap-3 items-center text-white">
+                  <div class="p-2 rounded-lg backdrop-blur-md bg-white/20">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      class="h-5 w-5"
+                      class="w-5 h-5"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -1215,10 +1215,10 @@ export const Layout = ({ children, title }) => {
                 </div>
                 <button
                   onclick="window.closeDonationModal()"
-                  class="text-white/80 hover:text-white transition-colors"
+                  class="transition-colors text-white/80 hover:text-white"
                 >
                   <svg
-                    class="h-6 w-6"
+                    class="w-6 h-6"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -1236,7 +1236,7 @@ export const Layout = ({ children, title }) => {
               {/* Content */}
               <div class="px-6 py-6">
                 <div id="donation-options-section">
-                  <p class="text-slate-600 text-sm mb-6 text-center">
+                  <p class="mb-6 text-sm text-center text-slate-600">
                     Pilih atau masukkan nominal donasi untuk mendukung pengembangan Muslim API.
                   </p>
 
@@ -1244,7 +1244,7 @@ export const Layout = ({ children, title }) => {
                     {[5000, 10000, 20000, 50000, 100000, 250000].map((amount) => (
                       <button
                         onclick={`window.selectPreset(${amount})`}
-                        class="preset-btn relative z-20 py-3 px-2 bg-slate-50 border border-slate-200 rounded-xl text-sm font-bold text-slate-700 hover:border-emerald-500 hover:bg-emerald-50 transition-all focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
+                        class="relative z-20 px-2 py-3 text-sm font-bold rounded-xl border transition-all preset-btn bg-slate-50 border-slate-200 text-slate-700 hover:border-emerald-500 hover:bg-emerald-50 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
                       >
                         {new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(amount)}
                       </button>
@@ -1252,13 +1252,13 @@ export const Layout = ({ children, title }) => {
                   </div>
 
                   <div class="relative z-20 mb-6">
-                    <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                      <span class="text-slate-400 font-bold">Rp</span>
+                    <div class="flex absolute inset-y-0 left-0 items-center pl-4 pointer-events-none">
+                      <span class="font-bold text-slate-400">Rp</span>
                     </div>
                     <input
                       type="number"
                       id="custom-amount"
-                      class="block w-full pl-12 pr-4 py-4 bg-slate-50 border border-slate-200 rounded-2xl text-lg font-bold placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition-all"
+                      class="block py-4 pr-4 pl-12 w-full text-lg font-bold rounded-2xl border transition-all bg-slate-50 border-slate-200 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500"
                       placeholder="Nominal lainnya..."
                     />
                   </div>
@@ -1266,7 +1266,7 @@ export const Layout = ({ children, title }) => {
                   <button
                     id="generate-qris-btn"
                     onclick="window.generateDonationQR()"
-                    class="w-full py-4 bg-slate-900 text-white rounded-2xl font-bold hover:bg-slate-800 transition-all shadow-xl shadow-slate-200 flex items-center justify-center gap-2 relative z-20"
+                    class="flex relative z-20 gap-2 justify-center items-center py-4 w-full font-bold text-white rounded-2xl shadow-xl transition-all bg-slate-900 hover:bg-slate-800 shadow-slate-200"
                   >
                     Generate QRIS
                   </button>
@@ -1275,24 +1275,24 @@ export const Layout = ({ children, title }) => {
                 <div id="qris-display-section" class="hidden text-center">
                   <div class="mb-4">
                     <div id="display-amount" class="text-2xl font-black text-slate-800">Rp 0</div>
-                    <div class="text-xs text-slate-400 font-medium">Scan QRIS untuk membayar</div>
-                    <div class="text-xs text-slate-400 font-medium">dan akan diarahkan ke Hariistimewa.com - DANA</div>
+                    <div class="text-xs font-medium text-slate-400">Scan QRIS untuk membayar</div>
+                    <div class="text-xs font-medium text-slate-400">dan akan diarahkan ke Hariistimewa.com - DANA</div>
                   </div>
 
-                  <div class="bg-white p-4 border-2 border-slate-100 rounded-2xl mb-6 inline-block shadow-sm">
+                  <div class="inline-block p-4 mb-6 bg-white rounded-2xl border-2 shadow-sm border-slate-100">
                     <img id="qris-image" src="" alt="QRIS" class="w-64 h-64" />
                   </div>
 
-                  <div class="bg-slate-50 p-4 rounded-xl mb-6 text-left">
-                    <div class="flex items-start gap-3">
+                  <div class="p-4 mb-6 text-left rounded-xl bg-slate-50">
+                    <div class="flex gap-3 items-start">
                       <div class="w-5 h-5 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center flex-shrink-0 text-[10px] font-bold">1</div>
                       <p class="text-xs text-slate-600">Buka aplikasi pembayaran (Gopay, OVO, Dana, LinkAja, atau Mobile Banking).</p>
                     </div>
-                    <div class="flex items-start gap-3 mt-3">
+                    <div class="flex gap-3 items-start mt-3">
                       <div class="w-5 h-5 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center flex-shrink-0 text-[10px] font-bold">2</div>
                       <p class="text-xs text-slate-600">Pilih menu <b>Scan/Bayar</b> lalu arahkan kamera ke QR Code di atas.</p>
                     </div>
-                    <div class="flex items-start gap-3 mt-3">
+                    <div class="flex gap-3 items-start mt-3">
                       <div class="w-5 h-5 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center flex-shrink-0 text-[10px] font-bold">3</div>
                       <p class="text-xs text-slate-600">Pastikan nominal sesuai dan selesaikan pembayaran.</p>
                     </div>
@@ -1300,7 +1300,7 @@ export const Layout = ({ children, title }) => {
 
                   <button
                     onclick="window.resetDonationModal()"
-                    class="text-emerald-600 font-bold text-sm hover:underline"
+                    class="text-sm font-bold text-emerald-600 hover:underline"
                   >
                     Ganti Nominal
                   </button>
@@ -1345,7 +1345,7 @@ export const Layout = ({ children, title }) => {
             }
 
             btn.disabled = true;
-            btn.innerHTML = '<svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> Generating...';
+            btn.innerHTML = '<svg class="w-5 h-5 text-white animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> Generating...';
 
             try {
               const response = await fetch('/api/qris/generate?amount=' + amount);

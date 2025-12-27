@@ -10,8 +10,22 @@ export async function readJson(filePath) {
     const data = await fs.readFile(fullPath, 'utf8');
     return JSON.parse(data);
   } catch (error) {
-    console.error(`Error reading JSON file ${filePath}:`, error);
+    console.error(`Error reading JSON from ${filePath}:`, error.message);
     return null;
+  }
+}
+
+export async function writeJson(filePath, data) {
+  try {
+    const fullPath = path.join(DATA_PATH, filePath);
+    // Ensure directory exists
+    const dir = path.dirname(fullPath);
+    await fs.mkdir(dir, { recursive: true });
+    await fs.writeFile(fullPath, JSON.stringify(data, null, 2), 'utf8');
+    return true;
+  } catch (error) {
+    console.error(`Error writing JSON to ${filePath}:`, error.message);
+    return false;
   }
 }
 

@@ -252,8 +252,8 @@ export const Landing = () => {
                       </svg>
                     </div>
                     <div>
-                      <h4 class="font-bold text-slate-900 mb-1">Blockchain Integrity</h4>
-                      <p class="text-slate-500 text-sm">Keaslian data dijamin melalui cryptographic hashing untuk menjaga kemurnian teks suci.</p>
+                      <h4 class="font-bold text-slate-900 mb-1">Data Integrity Chain</h4>
+                      <p class="text-slate-500 text-sm">Keaslian data dijamin melalui cryptographic hashing untuk menjaga kemurnian teks suci secara transparan.</p>
                     </div>
                   </div>
                 </div>

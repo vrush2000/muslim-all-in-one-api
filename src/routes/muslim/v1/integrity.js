@@ -9,7 +9,7 @@ const generateHash = (data) => {
   return crypto.createHash('sha256').update(JSON.stringify(data)).digest('hex');
 };
 
-// Endpoint: Get Integrity Chain (Blockchain-style)
+// Endpoint: Get Integrity Chain (Proof of Authenticity)
 integrity.get('/chain', async (c) => {
   try {
     const allSurahs = await getSurahList();
@@ -54,6 +54,8 @@ integrity.get('/chain', async (c) => {
     return c.json({
       status: true,
       message: "Data Integrity Chain (Proof of Authenticity) berhasil dibuat.",
+      algorithm: "SHA-256",
+      structure: "Array of Objects { arab, text }",
       network: "Muslim-API Data Ledger",
       root_hash: previousHash,
       chain: chain
@@ -111,13 +113,61 @@ integrity.get('/verify/ayah', async (c) => {
 
     const verificationData = { arab: data.arab, text: data.text };
 
+    // Fetch comparison data from EQuran (Kemenag source) for live verification
+    let comparison = {
+      status: "Comparison source unavailable",
+      source: "Kemenag (via EQuran.id)",
+      is_match: null,
+      external_data: null
+    };
+
+    try {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 3000); // 3 seconds timeout
+
+      const response = await fetch(`https://equran.id/api/v2/surat/${surahId}`, { signal: controller.signal });
+      clearTimeout(timeoutId);
+
+      if (response.ok) {
+        const json = await response.json();
+        const externalAyah = json.data && json.data.ayat ? json.data.ayat.find(a => a.nomorAyat == ayahId) : null;
+        
+        if (externalAyah) {
+          // Normalize text for comparison (remove extra spaces/newlines)
+          const normalize = (str) => str.replace(/\s+/g, ' ').trim();
+          
+          const arabMatch = normalize(externalAyah.teksArab) === normalize(data.arab);
+          const textMatch = normalize(externalAyah.teksIndonesia) === normalize(data.text);
+          
+          comparison = {
+            status: "Success",
+            source: "Kemenag (via EQuran.id)",
+            is_match: arabMatch && textMatch,
+            details: {
+              arab_match: arabMatch,
+              translation_match: textMatch
+            },
+            external_data: {
+              arab: externalAyah.teksArab,
+              text: externalAyah.teksIndonesia
+            }
+          };
+        }
+      }
+    } catch (e) {
+      comparison.status = "Error: " + e.message;
+    }
+
     return c.json({
       status: true,
       message: `Berhasil memverifikasi integritas ayat ${ayahId} pada surah ${surahId}.`,
       data: {
         surahId,
         ayahId,
+        local_data: verificationData,
         hash: generateHash(verificationData),
+        comparison: comparison,
+        external_verification_url: `https://quran.kemenag.go.id/quran/per-ayat/surah/${surahId}?from=${ayahId}&to=${ayahId}`,
         timestamp: new Date().toISOString()
       }
     });

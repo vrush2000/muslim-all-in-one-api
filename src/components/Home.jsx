@@ -444,17 +444,17 @@ export const Home = ({ baseUrl }) => {
 
           <SectionTitle 
             id="integrity" 
-            title="Integrity & Blockchain" 
+            title="Integrity Chain" 
             icon="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" 
             color="emerald"
           />
           <div className="p-4 mb-6 bg-emerald-50 rounded-r-lg border-l-4 border-emerald-500">
             <p className="text-sm font-medium text-emerald-800">
-              🛡️ <strong>Data Integrity Proof:</strong> Kami menggunakan teknologi cryptographic hashing (SHA-256) untuk memastikan kemurnian teks Al-Quran. Setiap Surah dan Ayah memiliki "Digital Fingerprint" yang unik. Jika ada perubahan satu karakter saja pada database kami, maka hash integrity akan berubah, memberitahukan pengguna bahwa data tidak lagi murni.
+              🛡️ <strong>Data Integrity Proof:</strong> Kami menggunakan teknologi cryptographic hashing (SHA-256) untuk memastikan kemurnian teks Al-Quran. Setiap Surah dan Ayah memiliki "Digital Fingerprint" yang unik. Jika ada perubahan satu karakter saja pada data kami, maka hash integrity akan berubah, memberitahukan pengguna bahwa data tidak lagi murni.
             </p>
           </div>
           <ApiEndpoint 
-            title="Integrity Chain (Blockchain)" 
+            title="Integrity Chain (Proof of Authenticity)" 
             method="GET" 
             path="/integrity/chain" 
             category="integrity"
@@ -491,11 +491,87 @@ export const Home = ({ baseUrl }) => {
   "data": {
     "surahId": "1",
     "ayahId": "1",
+    "local_data": {
+      "arab": "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ",
+      "text": "Dengan nama Allah Yang Maha Pengasih, Maha Penyayang."
+    },
     "hash": "e3b0c442...",
+    "comparison": {
+      "status": "Success",
+      "source": "Kemenag (via EQuran.id)",
+      "is_match": true,
+      "details": {
+        "arab_match": true,
+        "translation_match": true
+      },
+      "external_data": {
+        "arab": "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ",
+        "text": "Dengan nama Allah Yang Maha Pengasih, Maha Penyayang."
+      }
+    },
+    "external_verification_url": "https://quran.kemenag.go.id/quran/per-ayat/surah/1?from=1&to=1",
     "timestamp": "2025-12-24T00:00:00Z"
   }
 }`}
           />
+
+          <div class="p-8 mb-20 bg-white rounded-2xl border shadow-sm border-slate-200">
+            <h3 class="flex gap-2 items-center mb-4 text-xl font-bold text-slate-900">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+              </svg>
+              Transparansi & Verifikasi Mandiri
+            </h3>
+            <p class="mb-6 text-slate-600">
+              Kami percaya bahwa kepercayaan dibangun di atas transparansi. Anda tidak perlu hanya percaya pada klaim kami; Anda dapat memverifikasi keaslian data Al-Quran secara mandiri menggunakan metode standar industri.
+            </p>
+            
+            <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+              <div class="p-5 rounded-xl bg-slate-50">
+                <h4 class="mb-3 font-bold text-slate-900">Metode Verifikasi</h4>
+                <ul class="space-y-3 text-sm text-slate-600">
+                  <li class="flex gap-2">
+                    <span class="font-bold text-emerald-600">1.</span>
+                    Ambil data mentah (raw data) dari endpoint <code class="px-1 bg-white rounded border">/v1/ayah/surah?surahId=1</code>
+                  </li>
+                  <li class="flex gap-2">
+                    <span class="font-bold text-emerald-600">2.</span>
+                    Ekstrak hanya field <code class="px-1 bg-white rounded border">arab</code> dan <code class="px-1 bg-white rounded border">text</code> untuk setiap ayat.
+                  </li>
+                  <li class="flex gap-2">
+                    <span class="font-bold text-emerald-600">3.</span>
+                    Lakukan hashing SHA-256 pada array objek tersebut.
+                  </li>
+                  <li class="flex gap-2">
+                    <span class="font-bold text-emerald-600">4.</span>
+                    Bandingkan hasilnya dengan <code class="px-1 bg-white rounded border">content_hash</code> di <code class="px-1 bg-white rounded border">/v1/integrity/chain</code>.
+                  </li>
+                </ul>
+              </div>
+              
+              <div class="p-5 rounded-xl bg-slate-50">
+                <h4 class="mb-3 font-bold text-slate-900">Algoritma Hashing</h4>
+                <p class="mb-4 text-sm text-slate-600">
+                  Kami menggunakan algoritma SHA-256 yang standar dan tidak dapat dimanipulasi. Berikut adalah contoh snippet kode Node.js untuk verifikasi:
+                </p>
+                <div class="p-3 rounded-lg bg-slate-900">
+                  <pre class="text-[10px] text-emerald-400 overflow-x-auto">
+{`const crypto = require('crypto');
+const data = ayahs.map(a => ({ arab: a.arab, text: a.text }));
+const hash = crypto.createHash('sha256')
+  .update(JSON.stringify(data))
+  .digest('hex');`}
+                  </pre>
+                </div>
+              </div>
+            </div>
+            
+            <div class="p-4 mt-6 rounded-xl border border-blue-100 bg-blue-50/50">
+              <p class="text-xs leading-relaxed text-blue-700">
+                <strong>Catatan Keamanan:</strong> Struktur rantai integritas kami (Integrity Chain) juga menyertakan <code class="px-1 bg-blue-100 rounded">previous_hash</code>, yang berarti jika satu Surah diubah, seluruh rantai setelahnya akan menjadi tidak valid. Ini adalah mekanisme yang sama yang digunakan oleh teknologi blockchain untuk menjamin imutabilitas data.
+              </p>
+            </div>
+          </div>
 
           {/* Other Resources Banner */}
           <div class="overflow-hidden relative p-8 mb-20 text-white bg-gradient-to-br from-emerald-600 to-teal-700 rounded-2xl shadow-xl group">
@@ -536,14 +612,14 @@ export const Home = ({ baseUrl }) => {
               },
               {
                 q: "Bagaimana keaslian dan akurasi data Al-Quran?",
-                a: "Kami menjamin keaslian data Al-Quran dalam API ini. Data teks, terjemahan, dan tafsir (Wajiz & Tahlili) diwarisi dari dataset muslim-api-three milik Otangid yang telah diverifikasi sesuai dengan database Kemenag RI. Struktur data kami mencakup Tafsir Tahlili yang sangat mendalam, yang merupakan produk intelektual resmi dari Kementerian Agama RI dan mengikuti standar Mushaf Al-Quran Standar Indonesia (MSI)."
+                a: "Kami menjamin keaslian data Al-Quran dalam API ini. Data teks, terjemahan, dan tafsir (Wajiz & Tahlili) diwarisi dari dataset muslim-api-three milik Otangid yang telah diverifikasi sesuai dengan data resmi Kemenag RI. Struktur data kami mencakup Tafsir Tahlili yang sangat mendalam, yang merupakan produk intelektual resmi dari Kementerian Agama RI dan mengikuti standar Mushaf Al-Quran Standar Indonesia (MSI)."
               },
               {
                 q: "Bagaimana dengan performa dan keamanan?",
                 a: "API ini sudah dilengkapi dengan 'Enterprise-grade Caching' (SWR) yang membuat respon sangat cepat lewat CDN. Kami juga menerapkan CORS policy and Rate Limiting untuk menjaga stabilitas server dari penggunaan berlebihan."
               },
               {
-                q: "Apakah data ini sesuai dengan database Kemenag?",
+                q: "Apakah data ini sesuai dengan sumber resmi Kemenag?",
                 a: "Ya, benar. Secara teknis, dataset kami menggunakan skema 'Wajiz' dan 'Tahlili' yang hanya dimiliki oleh publikasi resmi Kemenag RI. Teks Arab yang digunakan juga mengikuti kaidah rasm utsmani standar Indonesia dengan tanda waqaf dan harakat yang telah disesuaikan untuk pengguna di Indonesia. Anda dapat membandingkan output API kami dengan situs resmi quran.kemenag.go.id untuk verifikasi mandiri."
               },
               {
@@ -555,12 +631,16 @@ export const Home = ({ baseUrl }) => {
                 a: "Jadwal sholat bersumber dari Kemenag RI (via MyQuran API). Dataset Al-Quran, Doa, dan Dzikir diwarisi dari project milik Otangid (muslim-api-three). Audio murottal disediakan melalui CDN equran.id."
               },
               {
+                q: "Bagaimana jika saya menemukan perbedaan dengan mushaf resmi Kemenag?",
+                a: "Meskipun kami berusaha 100% akurat, kesalahan manusia dalam entry data bisa saja terjadi. Jika Anda menemukan perbedaan teks atau tanda baca dengan quran.kemenag.go.id, silakan laporkan melalui GitHub Issues. Kami menyediakan endpoint Admin khusus untuk melakukan koreksi instan secara lokal sebelum di-push ke server, sehingga perbaikan dapat dilakukan dengan sangat cepat tanpa menunggu siklus rilis yang lama."
+              },
+              {
                 q: "Bagaimana cara melakukan perubahan data atau memperbaiki typo?",
-                a: "Data lokal seperti Al-Quran, Dzikir, dan Doa disimpan dalam database SQLite di `src/database/alquran.db`. Anda dapat melakukan koreksi langsung pada database tersebut menggunakan SQLite client. Berkat sistem Integrity & Blockchain kami, setiap perubahan pada teks Al-Quran akan secara otomatis mengubah 'Digital Fingerprint' (hash) pada sistem, sehingga transparansi data tetap terjaga."
+                a: "Data lokal seperti Al-Quran, Dzikir, dan Doa disimpan dalam format JSON di folder `src/data`. Anda dapat melakukan koreksi langsung pada file tersebut. Berkat sistem Integrity Chain kami, setiap perubahan pada teks Al-Quran akan secara otomatis mengubah 'Digital Fingerprint' (hash) pada sistem, sehingga transparansi data tetap terjaga."
               },
               {
                 q: "Bagaimana jika saya menemukan kesalahan penulisan atau bug?",
-                a: "Kami sangat menghargai laporan Anda. Jika Anda adalah pengguna API, silakan laporkan melalui Issue di repository GitHub kami. Jika Anda adalah pengembang, Anda dapat melakukan Pull Request atau memperbaiki data langsung di database lokal."
+                a: "Kami sangat menghargai laporan Anda. Jika Anda adalah pengguna API, silakan laporkan melalui Issue di repository GitHub kami. Jika Anda adalah pengembang, Anda dapat melakukan Pull Request atau memperbaiki data langsung di file JSON lokal."
               },
               {
                 q: "Apakah API ini gratis untuk digunakan?",
