@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "vite",
     "build:css": "tailwindcss -i ./src/style.css -o ./src/compiled.css --minify",
-    "build": "npm run build:css && esbuild vercel-entry.js --bundle --platform=node --target=node20 --format=esm --outfile=api/index.js --bundle --minify --sourcemap --external:fs --external:path --external:os --external:url --external:http --external:https --external:stream --external:crypto --external:zlib --external:events --external:util --external:buffer --external:querystring --external:ws --banner:js=\"import { createRequire } from 'module'; const require = createRequire(import.meta.url);\""
+    "build": "npm run build:css && esbuild vercel-entry.js --bundle --platform=node --target=node20 --format=esm --outfile=api/index.js --minify --sourcemap --external:fs --external:path --external:os --external:url --external:http --external:https --external:stream --external:crypto --external:zlib --external:events --external:util --external:buffer --external:querystring --external:ws --banner:js=\"import { createRequire } from 'module'; const require = createRequire(import.meta.url);\""
   },
   "dependencies": {
     "@hono/node-server": "^1.19.7",
