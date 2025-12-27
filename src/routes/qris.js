@@ -1,6 +1,6 @@
 import { Hono } from 'hono';
 import { qrisdynamicgenerator } from "@misterdevs/qris-static-to-dynamic";
-import QRCode from 'qrcode';
+import qrcode from 'qrcode-generator';
 
 const router = new Hono();
 
@@ -17,16 +17,19 @@ router.get('/generate', async (c) => {
   try {
     const qrisDynamic = qrisdynamicgenerator(STATIC_QRIS, amount);
     
-    // Menggunakan qrcode.toString dengan type: 'svg' adalah cara paling aman 
-    // untuk lingkungan serverless karena tidak bergantung pada modul 'fs' atau canvas.
-    const qrSvg = await QRCode.toString(qrisDynamic, {
-      type: 'svg',
-      margin: 2,
-      errorCorrectionLevel: 'M'
-    });
-
-    // Konversi SVG ke Base64 agar tetap kompatibel dengan frontend yang mengharapkan URL gambar
-    const qrImage = `data:image/svg+xml;base64,${Buffer.from(qrSvg).toString('base64')}`;
+    // Menggunakan qrcode-generator karena library 'qrcode' standar memiliki side-effect 
+    // mencoba mengimpor 'fs' pada saat inisialisasi di lingkungan Node.js/Vercel.
+    const qr = qrcode(0, 'M');
+    qr.addData(qrisDynamic);
+    qr.make();
+    
+    // Menghasilkan tag SVG
+    const cellSize = 6;
+    const margin = 2;
+    const svgTag = qr.createSvgTag(cellSize, margin);
+    
+    // Ekstrak konten SVG dari tag atau gunakan langsung sebagai base64
+    const qrImage = `data:image/svg+xml;base64,${Buffer.from(svgTag).toString('base64')}`;
 
     return c.json({
       status: 200,
