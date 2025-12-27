@@ -4,5 +4,11 @@
     "api/index.js": {
       "includeFiles": "src/data/**"
     }
-  }
+  },
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/api/index.js"
+    }
+  ]
 }

@@ -3,6 +3,7 @@ import { trimTrailingSlash } from 'hono/trailing-slash';
 import { logger } from 'hono/logger';
 import { cors } from 'hono/cors';
 import { getSurahList } from './utils/jsonHandler.js';
+import { initDB } from './utils/db.js';
 
 import apiRouter from './routes/index.jsx';
 import apiV1Router from './routes/muslim/v1/index.js';
@@ -98,5 +99,8 @@ app.onError((err, c) => {
   console.error(`${err}`);
   return c.json({ status: 500, message: err.message }, 500);
 });
+
+// Initialize Database Tables
+initDB().catch(err => console.error('DB Init Error:', err));
 
 export default app;

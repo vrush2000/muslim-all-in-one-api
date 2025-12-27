@@ -46,3 +46,40 @@ export async function dbAll(sql, args = []) {
   const result = await dbQuery(sql, args);
   return result.rows;
 }
+
+/**
+ * Initialize database tables if they don't exist
+ */
+export async function initDB() {
+  try {
+    // Create global_stats table
+    await dbQuery(`
+      CREATE TABLE IF NOT EXISTS global_stats (
+        key TEXT PRIMARY KEY,
+        value INTEGER DEFAULT 0,
+        last_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+      )
+    `);
+
+    // Create item_stats table
+    await dbQuery(`
+      CREATE TABLE IF NOT EXISTS item_stats (
+        type TEXT,
+        item_id TEXT,
+        count INTEGER DEFAULT 0,
+        last_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        PRIMARY KEY (type, item_id)
+      )
+    `);
+
+    // Initialize global_stats if empty
+    const stats = await dbAll("SELECT key FROM global_stats");
+    if (stats.length === 0) {
+      await dbQuery("INSERT INTO global_stats (key, value) VALUES ('total_reads', 0)");
+      await dbQuery("INSERT INTO global_stats (key, value) VALUES ('global_khatam', 0)");
+      console.log('Database initialized with default stats.');
+    }
+  } catch (error) {
+    console.error('Failed to initialize database:', error);
+  }
+}
