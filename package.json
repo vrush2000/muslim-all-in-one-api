@@ -11,7 +11,6 @@
   },
   "dependencies": {
     "@hono/node-server": "^1.19.7",
-    "@misterdevs/qris-static-to-dynamic": "^1.1.2",
     "better-sqlite3": "^12.5.0",
     "crypto": "^1.0.1",
     "hono": "^4.11.1",
