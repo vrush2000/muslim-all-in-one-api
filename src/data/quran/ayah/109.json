@@ -13,7 +13,19 @@
     "theme": null,
     "text": "Katakanlah (Nabi Muhammad), “Wahai orang-orang kafir,",
     "notes": null,
-    "audio_partial": "{\"01\":\"https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/109001.mp3\",\"02\":\"https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/109001.mp3\",\"03\":\"https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/109001.mp3\",\"04\":\"https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/109001.mp3\",\"05\":\"https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/109001.mp3\",\"06\":\"https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/109001.mp3\"}"
+    "audio_partial": {
+      "10": "https://www.everyayah.com/data/Maher_AlMuaiqly_64kbps/109001.mp3",
+      "11": "https://www.everyayah.com/data/Ali_Jaber_64kbps/109001.mp3",
+      "01": "https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/109001.mp3",
+      "02": "https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/109001.mp3",
+      "03": "https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/109001.mp3",
+      "04": "https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/109001.mp3",
+      "05": "https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/109001.mp3",
+      "06": "https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/109001.mp3",
+      "07": "https://www.everyayah.com/data/Husary_128kbps/109001.mp3",
+      "08": "https://www.everyayah.com/data/Ghamadi_40kbps/109001.mp3",
+      "09": "https://www.everyayah.com/data/Abdul_Basit_Mujawwad_128kbps/109001.mp3"
+    }
   },
   {
     "id": "6209",
@@ -29,7 +41,19 @@
     "theme": null,
     "text": "aku tidak akan menyembah apa yang kamu sembah.",
     "notes": null,
-    "audio_partial": "{\"01\":\"https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/109002.mp3\",\"02\":\"https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/109002.mp3\",\"03\":\"https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/109002.mp3\",\"04\":\"https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/109002.mp3\",\"05\":\"https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/109002.mp3\",\"06\":\"https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/109002.mp3\"}"
+    "audio_partial": {
+      "10": "https://www.everyayah.com/data/Maher_AlMuaiqly_64kbps/109002.mp3",
+      "11": "https://www.everyayah.com/data/Ali_Jaber_64kbps/109002.mp3",
+      "01": "https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/109002.mp3",
+      "02": "https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/109002.mp3",
+      "03": "https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/109002.mp3",
+      "04": "https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/109002.mp3",
+      "05": "https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/109002.mp3",
+      "06": "https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/109002.mp3",
+      "07": "https://www.everyayah.com/data/Husary_128kbps/109002.mp3",
+      "08": "https://www.everyayah.com/data/Ghamadi_40kbps/109002.mp3",
+      "09": "https://www.everyayah.com/data/Abdul_Basit_Mujawwad_128kbps/109002.mp3"
+    }
   },
   {
     "id": "6210",
@@ -45,7 +69,19 @@
     "theme": null,
     "text": "Kamu juga bukan penyembah apa yang aku sembah.",
     "notes": null,
-    "audio_partial": "{\"01\":\"https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/109003.mp3\",\"02\":\"https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/109003.mp3\",\"03\":\"https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/109003.mp3\",\"04\":\"https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/109003.mp3\",\"05\":\"https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/109003.mp3\",\"06\":\"https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/109003.mp3\"}"
+    "audio_partial": {
+      "10": "https://www.everyayah.com/data/Maher_AlMuaiqly_64kbps/109003.mp3",
+      "11": "https://www.everyayah.com/data/Ali_Jaber_64kbps/109003.mp3",
+      "01": "https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/109003.mp3",
+      "02": "https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/109003.mp3",
+      "03": "https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/109003.mp3",
+      "04": "https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/109003.mp3",
+      "05": "https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/109003.mp3",
+      "06": "https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/109003.mp3",
+      "07": "https://www.everyayah.com/data/Husary_128kbps/109003.mp3",
+      "08": "https://www.everyayah.com/data/Ghamadi_40kbps/109003.mp3",
+      "09": "https://www.everyayah.com/data/Abdul_Basit_Mujawwad_128kbps/109003.mp3"
+    }
   },
   {
     "id": "6211",
@@ -61,7 +97,19 @@
     "theme": null,
     "text": "Aku juga tidak pernah menjadi penyembah apa yang kamu sembah.",
     "notes": null,
-    "audio_partial": "{\"01\":\"https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/109004.mp3\",\"02\":\"https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/109004.mp3\",\"03\":\"https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/109004.mp3\",\"04\":\"https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/109004.mp3\",\"05\":\"https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/109004.mp3\",\"06\":\"https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/109004.mp3\"}"
+    "audio_partial": {
+      "10": "https://www.everyayah.com/data/Maher_AlMuaiqly_64kbps/109004.mp3",
+      "11": "https://www.everyayah.com/data/Ali_Jaber_64kbps/109004.mp3",
+      "01": "https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/109004.mp3",
+      "02": "https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/109004.mp3",
+      "03": "https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/109004.mp3",
+      "04": "https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/109004.mp3",
+      "05": "https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/109004.mp3",
+      "06": "https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/109004.mp3",
+      "07": "https://www.everyayah.com/data/Husary_128kbps/109004.mp3",
+      "08": "https://www.everyayah.com/data/Ghamadi_40kbps/109004.mp3",
+      "09": "https://www.everyayah.com/data/Abdul_Basit_Mujawwad_128kbps/109004.mp3"
+    }
   },
   {
     "id": "6212",
@@ -77,7 +125,19 @@
     "theme": null,
     "text": "Kamu tidak pernah (pula) menjadi penyembah apa yang aku sembah.",
     "notes": null,
-    "audio_partial": "{\"01\":\"https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/109005.mp3\",\"02\":\"https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/109005.mp3\",\"03\":\"https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/109005.mp3\",\"04\":\"https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/109005.mp3\",\"05\":\"https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/109005.mp3\",\"06\":\"https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/109005.mp3\"}"
+    "audio_partial": {
+      "10": "https://www.everyayah.com/data/Maher_AlMuaiqly_64kbps/109005.mp3",
+      "11": "https://www.everyayah.com/data/Ali_Jaber_64kbps/109005.mp3",
+      "01": "https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/109005.mp3",
+      "02": "https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/109005.mp3",
+      "03": "https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/109005.mp3",
+      "04": "https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/109005.mp3",
+      "05": "https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/109005.mp3",
+      "06": "https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/109005.mp3",
+      "07": "https://www.everyayah.com/data/Husary_128kbps/109005.mp3",
+      "08": "https://www.everyayah.com/data/Ghamadi_40kbps/109005.mp3",
+      "09": "https://www.everyayah.com/data/Abdul_Basit_Mujawwad_128kbps/109005.mp3"
+    }
   },
   {
     "id": "6213",
@@ -93,6 +153,18 @@
     "theme": null,
     "text": "Untukmu agamamu dan untukku agamaku.”",
     "notes": null,
-    "audio_partial": "{\"01\":\"https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/109006.mp3\",\"02\":\"https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/109006.mp3\",\"03\":\"https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/109006.mp3\",\"04\":\"https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/109006.mp3\",\"05\":\"https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/109006.mp3\",\"06\":\"https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/109006.mp3\"}"
+    "audio_partial": {
+      "10": "https://www.everyayah.com/data/Maher_AlMuaiqly_64kbps/109006.mp3",
+      "11": "https://www.everyayah.com/data/Ali_Jaber_64kbps/109006.mp3",
+      "01": "https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/109006.mp3",
+      "02": "https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/109006.mp3",
+      "03": "https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/109006.mp3",
+      "04": "https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/109006.mp3",
+      "05": "https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/109006.mp3",
+      "06": "https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/109006.mp3",
+      "07": "https://www.everyayah.com/data/Husary_128kbps/109006.mp3",
+      "08": "https://www.everyayah.com/data/Ghamadi_40kbps/109006.mp3",
+      "09": "https://www.everyayah.com/data/Abdul_Basit_Mujawwad_128kbps/109006.mp3"
+    }
   }
 ]

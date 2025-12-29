@@ -13,7 +13,19 @@
     "theme": null,
     "text": "Katakanlah (Nabi Muhammad), “Dialah Allah Yang Maha Esa.",
     "notes": null,
-    "audio_partial": "{\"01\":\"https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/112001.mp3\",\"02\":\"https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/112001.mp3\",\"03\":\"https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/112001.mp3\",\"04\":\"https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/112001.mp3\",\"05\":\"https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/112001.mp3\",\"06\":\"https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/112001.mp3\"}"
+    "audio_partial": {
+      "10": "https://www.everyayah.com/data/Maher_AlMuaiqly_64kbps/112001.mp3",
+      "11": "https://www.everyayah.com/data/Ali_Jaber_64kbps/112001.mp3",
+      "01": "https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/112001.mp3",
+      "02": "https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/112001.mp3",
+      "03": "https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/112001.mp3",
+      "04": "https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/112001.mp3",
+      "05": "https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/112001.mp3",
+      "06": "https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/112001.mp3",
+      "07": "https://www.everyayah.com/data/Husary_128kbps/112001.mp3",
+      "08": "https://www.everyayah.com/data/Ghamadi_40kbps/112001.mp3",
+      "09": "https://www.everyayah.com/data/Abdul_Basit_Mujawwad_128kbps/112001.mp3"
+    }
   },
   {
     "id": "6223",
@@ -29,7 +41,19 @@
     "theme": null,
     "text": "Allah tempat meminta segala sesuatu.",
     "notes": null,
-    "audio_partial": "{\"01\":\"https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/112002.mp3\",\"02\":\"https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/112002.mp3\",\"03\":\"https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/112002.mp3\",\"04\":\"https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/112002.mp3\",\"05\":\"https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/112002.mp3\",\"06\":\"https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/112002.mp3\"}"
+    "audio_partial": {
+      "10": "https://www.everyayah.com/data/Maher_AlMuaiqly_64kbps/112002.mp3",
+      "11": "https://www.everyayah.com/data/Ali_Jaber_64kbps/112002.mp3",
+      "01": "https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/112002.mp3",
+      "02": "https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/112002.mp3",
+      "03": "https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/112002.mp3",
+      "04": "https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/112002.mp3",
+      "05": "https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/112002.mp3",
+      "06": "https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/112002.mp3",
+      "07": "https://www.everyayah.com/data/Husary_128kbps/112002.mp3",
+      "08": "https://www.everyayah.com/data/Ghamadi_40kbps/112002.mp3",
+      "09": "https://www.everyayah.com/data/Abdul_Basit_Mujawwad_128kbps/112002.mp3"
+    }
   },
   {
     "id": "6224",
@@ -45,7 +69,19 @@
     "theme": null,
     "text": "Dia tidak beranak dan tidak pula diperanakkan",
     "notes": null,
-    "audio_partial": "{\"01\":\"https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/112003.mp3\",\"02\":\"https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/112003.mp3\",\"03\":\"https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/112003.mp3\",\"04\":\"https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/112003.mp3\",\"05\":\"https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/112003.mp3\",\"06\":\"https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/112003.mp3\"}"
+    "audio_partial": {
+      "10": "https://www.everyayah.com/data/Maher_AlMuaiqly_64kbps/112003.mp3",
+      "11": "https://www.everyayah.com/data/Ali_Jaber_64kbps/112003.mp3",
+      "01": "https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/112003.mp3",
+      "02": "https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/112003.mp3",
+      "03": "https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/112003.mp3",
+      "04": "https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/112003.mp3",
+      "05": "https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/112003.mp3",
+      "06": "https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/112003.mp3",
+      "07": "https://www.everyayah.com/data/Husary_128kbps/112003.mp3",
+      "08": "https://www.everyayah.com/data/Ghamadi_40kbps/112003.mp3",
+      "09": "https://www.everyayah.com/data/Abdul_Basit_Mujawwad_128kbps/112003.mp3"
+    }
   },
   {
     "id": "6225",
@@ -61,6 +97,18 @@
     "theme": null,
     "text": "serta tidak ada sesuatu pun yang setara dengan-Nya.”",
     "notes": null,
-    "audio_partial": "{\"01\":\"https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/112004.mp3\",\"02\":\"https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/112004.mp3\",\"03\":\"https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/112004.mp3\",\"04\":\"https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/112004.mp3\",\"05\":\"https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/112004.mp3\",\"06\":\"https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/112004.mp3\"}"
+    "audio_partial": {
+      "10": "https://www.everyayah.com/data/Maher_AlMuaiqly_64kbps/112004.mp3",
+      "11": "https://www.everyayah.com/data/Ali_Jaber_64kbps/112004.mp3",
+      "01": "https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/112004.mp3",
+      "02": "https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/112004.mp3",
+      "03": "https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/112004.mp3",
+      "04": "https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/112004.mp3",
+      "05": "https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/112004.mp3",
+      "06": "https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/112004.mp3",
+      "07": "https://www.everyayah.com/data/Husary_128kbps/112004.mp3",
+      "08": "https://www.everyayah.com/data/Ghamadi_40kbps/112004.mp3",
+      "09": "https://www.everyayah.com/data/Abdul_Basit_Mujawwad_128kbps/112004.mp3"
+    }
   }
 ]

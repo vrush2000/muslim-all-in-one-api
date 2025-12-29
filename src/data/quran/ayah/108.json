@@ -13,7 +13,19 @@
     "theme": null,
     "text": "Sesungguhnya Kami telah memberimu (Nabi Muhammad) nikmat yang banyak.",
     "notes": null,
-    "audio_partial": "{\"01\":\"https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/108001.mp3\",\"02\":\"https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/108001.mp3\",\"03\":\"https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/108001.mp3\",\"04\":\"https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/108001.mp3\",\"05\":\"https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/108001.mp3\",\"06\":\"https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/108001.mp3\"}"
+    "audio_partial": {
+      "10": "https://www.everyayah.com/data/Maher_AlMuaiqly_64kbps/108001.mp3",
+      "11": "https://www.everyayah.com/data/Ali_Jaber_64kbps/108001.mp3",
+      "01": "https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/108001.mp3",
+      "02": "https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/108001.mp3",
+      "03": "https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/108001.mp3",
+      "04": "https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/108001.mp3",
+      "05": "https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/108001.mp3",
+      "06": "https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/108001.mp3",
+      "07": "https://www.everyayah.com/data/Husary_128kbps/108001.mp3",
+      "08": "https://www.everyayah.com/data/Ghamadi_40kbps/108001.mp3",
+      "09": "https://www.everyayah.com/data/Abdul_Basit_Mujawwad_128kbps/108001.mp3"
+    }
   },
   {
     "id": "6206",
@@ -29,7 +41,19 @@
     "theme": null,
     "text": "Maka, laksanakanlah salat karena Tuhanmu dan berkurbanlah!",
     "notes": null,
-    "audio_partial": "{\"01\":\"https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/108002.mp3\",\"02\":\"https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/108002.mp3\",\"03\":\"https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/108002.mp3\",\"04\":\"https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/108002.mp3\",\"05\":\"https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/108002.mp3\",\"06\":\"https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/108002.mp3\"}"
+    "audio_partial": {
+      "10": "https://www.everyayah.com/data/Maher_AlMuaiqly_64kbps/108002.mp3",
+      "11": "https://www.everyayah.com/data/Ali_Jaber_64kbps/108002.mp3",
+      "01": "https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/108002.mp3",
+      "02": "https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/108002.mp3",
+      "03": "https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/108002.mp3",
+      "04": "https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/108002.mp3",
+      "05": "https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/108002.mp3",
+      "06": "https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/108002.mp3",
+      "07": "https://www.everyayah.com/data/Husary_128kbps/108002.mp3",
+      "08": "https://www.everyayah.com/data/Ghamadi_40kbps/108002.mp3",
+      "09": "https://www.everyayah.com/data/Abdul_Basit_Mujawwad_128kbps/108002.mp3"
+    }
   },
   {
     "id": "6207",
@@ -45,6 +69,18 @@
     "theme": null,
     "text": "Sesungguhnya orang yang membencimu, dialah yang terputus (dari rahmat Allah).",
     "notes": null,
-    "audio_partial": "{\"01\":\"https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/108003.mp3\",\"02\":\"https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/108003.mp3\",\"03\":\"https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/108003.mp3\",\"04\":\"https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/108003.mp3\",\"05\":\"https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/108003.mp3\",\"06\":\"https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/108003.mp3\"}"
+    "audio_partial": {
+      "10": "https://www.everyayah.com/data/Maher_AlMuaiqly_64kbps/108003.mp3",
+      "11": "https://www.everyayah.com/data/Ali_Jaber_64kbps/108003.mp3",
+      "01": "https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/108003.mp3",
+      "02": "https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/108003.mp3",
+      "03": "https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/108003.mp3",
+      "04": "https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/108003.mp3",
+      "05": "https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/108003.mp3",
+      "06": "https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/108003.mp3",
+      "07": "https://www.everyayah.com/data/Husary_128kbps/108003.mp3",
+      "08": "https://www.everyayah.com/data/Ghamadi_40kbps/108003.mp3",
+      "09": "https://www.everyayah.com/data/Abdul_Basit_Mujawwad_128kbps/108003.mp3"
+    }
   }
 ]

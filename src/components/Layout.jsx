@@ -78,6 +78,21 @@ export const Layout = ({ children, title }) => {
             font-family: 'JetBrains Mono', monospace;
           }
 
+          .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+          }
+          .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+          }
+          .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+          }
+          .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+          }
+
           /* JSONEditor Custom Style for Modal */
           #modal-json-editor {
             border: none !important;
@@ -1026,6 +1041,24 @@ export const Layout = ({ children, title }) => {
                       class="hover:text-emerald-600"
                     >
                       equran.id (Audio)
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://quranicaudio.com/"
+                      target="_blank"
+                      class="hover:text-emerald-600"
+                    >
+                      quranicaudio (Audio)
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://everyayah.com/"
+                      target="_blank"
+                      class="hover:text-emerald-600"
+                    >
+                      everyayah (Audio)
                     </a>
                   </li>
                   <li>

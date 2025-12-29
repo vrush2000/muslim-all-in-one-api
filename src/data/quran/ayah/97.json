@@ -13,7 +13,19 @@
     "theme": null,
     "text": "Sesungguhnya Kami telah menurunkannya (Al-Qur’an) pada Lailatulqadar.",
     "notes": null,
-    "audio_partial": "{\"01\":\"https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/097001.mp3\",\"02\":\"https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/097001.mp3\",\"03\":\"https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/097001.mp3\",\"04\":\"https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/097001.mp3\",\"05\":\"https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/097001.mp3\",\"06\":\"https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/097001.mp3\"}"
+    "audio_partial": {
+      "10": "https://www.everyayah.com/data/Maher_AlMuaiqly_64kbps/097001.mp3",
+      "11": "https://www.everyayah.com/data/Ali_Jaber_64kbps/097001.mp3",
+      "01": "https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/097001.mp3",
+      "02": "https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/097001.mp3",
+      "03": "https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/097001.mp3",
+      "04": "https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/097001.mp3",
+      "05": "https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/097001.mp3",
+      "06": "https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/097001.mp3",
+      "07": "https://www.everyayah.com/data/Husary_128kbps/097001.mp3",
+      "08": "https://www.everyayah.com/data/Ghamadi_40kbps/097001.mp3",
+      "09": "https://www.everyayah.com/data/Abdul_Basit_Mujawwad_128kbps/097001.mp3"
+    }
   },
   {
     "id": "6127",
@@ -29,7 +41,19 @@
     "theme": null,
     "text": "Tahukah kamu apakah Lailatulqadar itu?",
     "notes": null,
-    "audio_partial": "{\"01\":\"https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/097002.mp3\",\"02\":\"https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/097002.mp3\",\"03\":\"https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/097002.mp3\",\"04\":\"https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/097002.mp3\",\"05\":\"https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/097002.mp3\",\"06\":\"https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/097002.mp3\"}"
+    "audio_partial": {
+      "10": "https://www.everyayah.com/data/Maher_AlMuaiqly_64kbps/097002.mp3",
+      "11": "https://www.everyayah.com/data/Ali_Jaber_64kbps/097002.mp3",
+      "01": "https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/097002.mp3",
+      "02": "https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/097002.mp3",
+      "03": "https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/097002.mp3",
+      "04": "https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/097002.mp3",
+      "05": "https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/097002.mp3",
+      "06": "https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/097002.mp3",
+      "07": "https://www.everyayah.com/data/Husary_128kbps/097002.mp3",
+      "08": "https://www.everyayah.com/data/Ghamadi_40kbps/097002.mp3",
+      "09": "https://www.everyayah.com/data/Abdul_Basit_Mujawwad_128kbps/097002.mp3"
+    }
   },
   {
     "id": "6128",
@@ -45,7 +69,19 @@
     "theme": null,
     "text": "Lailatulqadar itu lebih baik daripada seribu bulan.",
     "notes": null,
-    "audio_partial": "{\"01\":\"https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/097003.mp3\",\"02\":\"https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/097003.mp3\",\"03\":\"https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/097003.mp3\",\"04\":\"https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/097003.mp3\",\"05\":\"https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/097003.mp3\",\"06\":\"https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/097003.mp3\"}"
+    "audio_partial": {
+      "10": "https://www.everyayah.com/data/Maher_AlMuaiqly_64kbps/097003.mp3",
+      "11": "https://www.everyayah.com/data/Ali_Jaber_64kbps/097003.mp3",
+      "01": "https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/097003.mp3",
+      "02": "https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/097003.mp3",
+      "03": "https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/097003.mp3",
+      "04": "https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/097003.mp3",
+      "05": "https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/097003.mp3",
+      "06": "https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/097003.mp3",
+      "07": "https://www.everyayah.com/data/Husary_128kbps/097003.mp3",
+      "08": "https://www.everyayah.com/data/Ghamadi_40kbps/097003.mp3",
+      "09": "https://www.everyayah.com/data/Abdul_Basit_Mujawwad_128kbps/097003.mp3"
+    }
   },
   {
     "id": "6129",
@@ -61,7 +97,19 @@
     "theme": null,
     "text": "Pada malam itu turun para malaikat dan Rūḥ (Jibril) dengan izin Tuhannya untuk mengatur semua urusan.",
     "notes": null,
-    "audio_partial": "{\"01\":\"https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/097004.mp3\",\"02\":\"https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/097004.mp3\",\"03\":\"https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/097004.mp3\",\"04\":\"https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/097004.mp3\",\"05\":\"https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/097004.mp3\",\"06\":\"https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/097004.mp3\"}"
+    "audio_partial": {
+      "10": "https://www.everyayah.com/data/Maher_AlMuaiqly_64kbps/097004.mp3",
+      "11": "https://www.everyayah.com/data/Ali_Jaber_64kbps/097004.mp3",
+      "01": "https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/097004.mp3",
+      "02": "https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/097004.mp3",
+      "03": "https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/097004.mp3",
+      "04": "https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/097004.mp3",
+      "05": "https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/097004.mp3",
+      "06": "https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/097004.mp3",
+      "07": "https://www.everyayah.com/data/Husary_128kbps/097004.mp3",
+      "08": "https://www.everyayah.com/data/Ghamadi_40kbps/097004.mp3",
+      "09": "https://www.everyayah.com/data/Abdul_Basit_Mujawwad_128kbps/097004.mp3"
+    }
   },
   {
     "id": "6130",
@@ -77,6 +125,18 @@
     "theme": null,
     "text": "Sejahteralah (malam) itu sampai terbit fajar.",
     "notes": null,
-    "audio_partial": "{\"01\":\"https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/097005.mp3\",\"02\":\"https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/097005.mp3\",\"03\":\"https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/097005.mp3\",\"04\":\"https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/097005.mp3\",\"05\":\"https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/097005.mp3\",\"06\":\"https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/097005.mp3\"}"
+    "audio_partial": {
+      "10": "https://www.everyayah.com/data/Maher_AlMuaiqly_64kbps/097005.mp3",
+      "11": "https://www.everyayah.com/data/Ali_Jaber_64kbps/097005.mp3",
+      "01": "https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/097005.mp3",
+      "02": "https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/097005.mp3",
+      "03": "https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/097005.mp3",
+      "04": "https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/097005.mp3",
+      "05": "https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/097005.mp3",
+      "06": "https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/097005.mp3",
+      "07": "https://www.everyayah.com/data/Husary_128kbps/097005.mp3",
+      "08": "https://www.everyayah.com/data/Ghamadi_40kbps/097005.mp3",
+      "09": "https://www.everyayah.com/data/Abdul_Basit_Mujawwad_128kbps/097005.mp3"
+    }
   }
 ]

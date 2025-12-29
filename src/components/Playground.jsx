@@ -39,7 +39,6 @@ export const Playground = ({ baseUrl }) => {
                   <option value="puasa">Puasa & Fiqh</option>
                   <option value="tools">Tools & Fitur Cerdas</option>
                   <option value="integrity">Integrity Chain</option>
-                  <option value="analytics">Spiritual Analytics</option>
                   <option value="other">Lainnya (Asmaul Husna, Doa, dll)</option>
                 </select>
               </div>
@@ -282,6 +281,11 @@ export const Playground = ({ baseUrl }) => {
                   { value: '04', label: '04 - Ibrahim Al-Dossari' },
                   { value: '05', label: '05 - Misyari Rasyid Al-Afasi' },
                   { value: '06', label: '06 - Yasser Al-Dosari' },
+                  { value: '07', label: '07 - Mahmud Khalil Al-Husary' },
+                  { value: '08', label: '08 - Saad Al-Ghamdi' },
+                  { value: '09', label: '09 - Abdul Basit Abdus Samad' },
+                  { value: '10', label: '10 - Maher Al-Muaiqly' },
+                  { value: '11', label: '11 - Ali Jaber' },
                 ]
               }
             ] },
@@ -335,10 +339,6 @@ export const Playground = ({ baseUrl }) => {
           integrity: [
             { id: 'integrity-chain', path: '/integrity/chain', name: 'Integrity Chain', params: [] },
             { id: 'integrity-verify', path: '/integrity/verify/ayah', name: 'Verifikasi Ayah', params: [{ name: 'surahId', placeholder: '1', type: 'number', default: '1' }, { name: 'ayahId', placeholder: '1', type: 'number', default: '1' }] },
-          ],
-          analytics: [
-            { id: 'analytics-global', path: '/analytics', name: 'Global Spiritual Analytics', params: [] },
-            { id: 'analytics-khatam', path: '/analytics/khatam', name: 'Lapor Khatam (Post)', params: [], method: 'POST' },
           ],
           other: [
             { id: 'asma-list', path: '/asma', name: 'Semua Asmaul Husna', params: [] },

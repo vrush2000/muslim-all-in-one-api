@@ -18,7 +18,7 @@ import admin from './admin.js';
 import kemenag from './kemenag.js';
 import sejarah from './sejarah.js';
 import tools from './tools.js';
-import analytics from './analytics.js';
+// import analytics from './analytics.js';
 import puasa from './puasa.js';
 
 const v1 = new Hono();
@@ -42,7 +42,7 @@ v1.route('/admin', admin);
 v1.route('/kemenag', kemenag);
 v1.route('/sejarah', sejarah);
 v1.route('/tools', tools);
-v1.route('/analytics', analytics);
+// v1.route('/analytics', analytics);
 v1.route('/puasa', puasa);
 
 v1.get('/', (c) => {
@@ -304,15 +304,6 @@ v1.get('/', (c) => {
         semanticSearch: {
           pattern: "/v1/tools/semantic-search?query={query}",
           contoh: "/v1/tools/semantic-search?query=sabar",
-        },
-      },
-      analytics: {
-        global: {
-          pattern: "/v1/analytics",
-        },
-        laporKhatam: {
-          pattern: "/v1/analytics/khatam",
-          method: "POST",
         },
       },
       integrity: {

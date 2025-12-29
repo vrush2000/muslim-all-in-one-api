@@ -350,15 +350,15 @@ export const Landing = ({ sejarah }) => {
                   </div>
                 ))}
               </div>
-              
-              <div class="mt-12 text-center">
-                <a href="/other#sejarah" class="inline-flex gap-2 items-center px-8 py-4 font-bold text-white bg-blue-600 rounded-2xl transition-all hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-200">
-                  Lihat Seluruh Timeline
-                  <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
-                </a>
-              </div>
+            </div>
+
+            <div class="mt-20 text-center">
+              <a href="/other#sejarah" class="inline-flex relative z-10 gap-2 items-center px-8 py-4 font-bold text-white bg-blue-600 rounded-2xl transition-all hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-200">
+                Lihat Seluruh Timeline
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </a>
             </div>
 
             {/* New Widget Section */}

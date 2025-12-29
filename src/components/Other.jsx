@@ -25,11 +25,11 @@ const ApiEndpoint = ({
       </div>
     </div>
     <div class="p-6">
-      <div class="flex gap-2 items-center mb-6 group">
-        <div class="flex flex-grow gap-2 items-center px-3 py-2 rounded-lg border transition-colors bg-slate-100 border-slate-200 group-hover:border-emerald-200">
-          <code class="font-mono text-sm truncate text-slate-600">{path}</code>
+      <div class="flex flex-col gap-4 mb-6 sm:flex-row sm:items-center group">
+        <div class="flex overflow-hidden flex-grow gap-2 items-center px-3 py-2 rounded-lg border transition-colors bg-slate-100 border-slate-200 group-hover:border-emerald-200">
+          <code class="overflow-x-auto font-mono text-xs whitespace-nowrap sm:text-sm text-slate-600 custom-scrollbar">{path}</code>
         </div>
-        <div class="flex gap-2">
+        <div class="flex gap-2 justify-end">
           <button
             onclick={`window.openApiModal('${category}', '${endpointId}', '/v1${path}')`}
             class="p-2 rounded-lg transition-all text-slate-400 hover:text-blue-600 hover:bg-blue-50"
@@ -99,7 +99,7 @@ const ApiEndpoint = ({
             Example Response
           </summary>
           <div class="mt-4 duration-300 animate-in fade-in slide-in-from-top-2">
-            <pre class="text-[11px] leading-relaxed shadow-inner">
+            <pre class="overflow-x-auto p-4 leading-relaxed rounded-xl shadow-inner bg-slate-900 text-[10px] sm:text-[11px] text-emerald-400 custom-scrollbar">
               <code>{responseJson}</code>
             </pre>
           </div>
@@ -1101,7 +1101,7 @@ export const Other = ({ baseUrl = "https://muslim-api.vercel.app" }) => {
                       Copy Code
                     </button>
                   </div>
-                  <pre class="overflow-x-auto text-[11px] text-blue-300 font-mono">
+                  <pre class="overflow-x-auto text-[11px] text-blue-300 font-mono custom-scrollbar">
                     {`<iframe 
   src="${baseUrl}/widget/sholat?city=jakarta" 
   width="100%" 
@@ -1140,6 +1140,16 @@ export const Other = ({ baseUrl = "https://muslim-api.vercel.app" }) => {
               {
                 name: "equran.id (Audio)",
                 url: "https://equran.id/",
+                desc: "Quran audio and digital text",
+              },
+              {
+                name: "quranicaudio.com (Audio)",
+                url: "https://quranicaudio.com/",
+                desc: "Quran audio and digital text",
+              },
+              {
+                name: "everyayah.com (Audio)",
+                url: "https://everyayah.com/",
                 desc: "Quran audio and digital text",
               },
               {

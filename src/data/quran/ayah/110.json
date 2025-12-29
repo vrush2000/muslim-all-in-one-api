@@ -13,7 +13,19 @@
     "theme": null,
     "text": "Apabila telah datang pertolongan Allah dan kemenangan",
     "notes": null,
-    "audio_partial": "{\"01\":\"https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/110001.mp3\",\"02\":\"https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/110001.mp3\",\"03\":\"https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/110001.mp3\",\"04\":\"https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/110001.mp3\",\"05\":\"https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/110001.mp3\",\"06\":\"https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/110001.mp3\"}"
+    "audio_partial": {
+      "10": "https://www.everyayah.com/data/Maher_AlMuaiqly_64kbps/110001.mp3",
+      "11": "https://www.everyayah.com/data/Ali_Jaber_64kbps/110001.mp3",
+      "01": "https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/110001.mp3",
+      "02": "https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/110001.mp3",
+      "03": "https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/110001.mp3",
+      "04": "https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/110001.mp3",
+      "05": "https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/110001.mp3",
+      "06": "https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/110001.mp3",
+      "07": "https://www.everyayah.com/data/Husary_128kbps/110001.mp3",
+      "08": "https://www.everyayah.com/data/Ghamadi_40kbps/110001.mp3",
+      "09": "https://www.everyayah.com/data/Abdul_Basit_Mujawwad_128kbps/110001.mp3"
+    }
   },
   {
     "id": "6215",
@@ -29,7 +41,19 @@
     "theme": null,
     "text": "dan engkau melihat manusia berbondong-bondong masuk agama Allah,",
     "notes": null,
-    "audio_partial": "{\"01\":\"https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/110002.mp3\",\"02\":\"https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/110002.mp3\",\"03\":\"https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/110002.mp3\",\"04\":\"https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/110002.mp3\",\"05\":\"https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/110002.mp3\",\"06\":\"https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/110002.mp3\"}"
+    "audio_partial": {
+      "10": "https://www.everyayah.com/data/Maher_AlMuaiqly_64kbps/110002.mp3",
+      "11": "https://www.everyayah.com/data/Ali_Jaber_64kbps/110002.mp3",
+      "01": "https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/110002.mp3",
+      "02": "https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/110002.mp3",
+      "03": "https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/110002.mp3",
+      "04": "https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/110002.mp3",
+      "05": "https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/110002.mp3",
+      "06": "https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/110002.mp3",
+      "07": "https://www.everyayah.com/data/Husary_128kbps/110002.mp3",
+      "08": "https://www.everyayah.com/data/Ghamadi_40kbps/110002.mp3",
+      "09": "https://www.everyayah.com/data/Abdul_Basit_Mujawwad_128kbps/110002.mp3"
+    }
   },
   {
     "id": "6216",
@@ -45,6 +69,18 @@
     "theme": null,
     "text": "bertasbihlah dengan memuji Tuhanmu dan mohonlah ampun kepada-Nya. Sesungguhnya Dia Maha Penerima tobat.",
     "notes": null,
-    "audio_partial": "{\"01\":\"https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/110003.mp3\",\"02\":\"https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/110003.mp3\",\"03\":\"https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/110003.mp3\",\"04\":\"https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/110003.mp3\",\"05\":\"https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/110003.mp3\",\"06\":\"https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/110003.mp3\"}"
+    "audio_partial": {
+      "10": "https://www.everyayah.com/data/Maher_AlMuaiqly_64kbps/110003.mp3",
+      "11": "https://www.everyayah.com/data/Ali_Jaber_64kbps/110003.mp3",
+      "01": "https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/110003.mp3",
+      "02": "https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/110003.mp3",
+      "03": "https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/110003.mp3",
+      "04": "https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/110003.mp3",
+      "05": "https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/110003.mp3",
+      "06": "https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/110003.mp3",
+      "07": "https://www.everyayah.com/data/Husary_128kbps/110003.mp3",
+      "08": "https://www.everyayah.com/data/Ghamadi_40kbps/110003.mp3",
+      "09": "https://www.everyayah.com/data/Abdul_Basit_Mujawwad_128kbps/110003.mp3"
+    }
   }
 ]

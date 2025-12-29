@@ -13,7 +13,19 @@
     "theme": null,
     "text": "Sudahkah sampai kepadamu berita tentang al-Gāsyiyah (hari Kiamat yang menutupi kesadaran manusia dengan kedahsyatannya)?",
     "notes": null,
-    "audio_partial": "{\"01\":\"https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/088001.mp3\",\"02\":\"https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/088001.mp3\",\"03\":\"https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/088001.mp3\",\"04\":\"https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/088001.mp3\",\"05\":\"https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/088001.mp3\",\"06\":\"https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/088001.mp3\"}"
+    "audio_partial": {
+      "10": "https://www.everyayah.com/data/Maher_AlMuaiqly_64kbps/088001.mp3",
+      "11": "https://www.everyayah.com/data/Ali_Jaber_64kbps/088001.mp3",
+      "01": "https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/088001.mp3",
+      "02": "https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/088001.mp3",
+      "03": "https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/088001.mp3",
+      "04": "https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/088001.mp3",
+      "05": "https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/088001.mp3",
+      "06": "https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/088001.mp3",
+      "07": "https://www.everyayah.com/data/Husary_128kbps/088001.mp3",
+      "08": "https://www.everyayah.com/data/Ghamadi_40kbps/088001.mp3",
+      "09": "https://www.everyayah.com/data/Abdul_Basit_Mujawwad_128kbps/088001.mp3"
+    }
   },
   {
     "id": "5969",
@@ -29,7 +41,19 @@
     "theme": null,
     "text": "Pada hari itu banyak wajah yang tertunduk hina",
     "notes": null,
-    "audio_partial": "{\"01\":\"https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/088002.mp3\",\"02\":\"https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/088002.mp3\",\"03\":\"https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/088002.mp3\",\"04\":\"https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/088002.mp3\",\"05\":\"https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/088002.mp3\",\"06\":\"https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/088002.mp3\"}"
+    "audio_partial": {
+      "10": "https://www.everyayah.com/data/Maher_AlMuaiqly_64kbps/088002.mp3",
+      "11": "https://www.everyayah.com/data/Ali_Jaber_64kbps/088002.mp3",
+      "01": "https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/088002.mp3",
+      "02": "https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/088002.mp3",
+      "03": "https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/088002.mp3",
+      "04": "https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/088002.mp3",
+      "05": "https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/088002.mp3",
+      "06": "https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/088002.mp3",
+      "07": "https://www.everyayah.com/data/Husary_128kbps/088002.mp3",
+      "08": "https://www.everyayah.com/data/Ghamadi_40kbps/088002.mp3",
+      "09": "https://www.everyayah.com/data/Abdul_Basit_Mujawwad_128kbps/088002.mp3"
+    }
   },
   {
     "id": "5970",
@@ -45,7 +69,19 @@
     "theme": null,
     "text": "(karena) berusaha keras (menghindari azab neraka) lagi kepayahan (karena dibelenggu).",
     "notes": null,
-    "audio_partial": "{\"01\":\"https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/088003.mp3\",\"02\":\"https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/088003.mp3\",\"03\":\"https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/088003.mp3\",\"04\":\"https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/088003.mp3\",\"05\":\"https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/088003.mp3\",\"06\":\"https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/088003.mp3\"}"
+    "audio_partial": {
+      "10": "https://www.everyayah.com/data/Maher_AlMuaiqly_64kbps/088003.mp3",
+      "11": "https://www.everyayah.com/data/Ali_Jaber_64kbps/088003.mp3",
+      "01": "https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/088003.mp3",
+      "02": "https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/088003.mp3",
+      "03": "https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/088003.mp3",
+      "04": "https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/088003.mp3",
+      "05": "https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/088003.mp3",
+      "06": "https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/088003.mp3",
+      "07": "https://www.everyayah.com/data/Husary_128kbps/088003.mp3",
+      "08": "https://www.everyayah.com/data/Ghamadi_40kbps/088003.mp3",
+      "09": "https://www.everyayah.com/data/Abdul_Basit_Mujawwad_128kbps/088003.mp3"
+    }
   },
   {
     "id": "5971",
@@ -61,7 +97,19 @@
     "theme": null,
     "text": "Mereka memasuki api (neraka) yang sangat panas.",
     "notes": null,
-    "audio_partial": "{\"01\":\"https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/088004.mp3\",\"02\":\"https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/088004.mp3\",\"03\":\"https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/088004.mp3\",\"04\":\"https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/088004.mp3\",\"05\":\"https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/088004.mp3\",\"06\":\"https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/088004.mp3\"}"
+    "audio_partial": {
+      "10": "https://www.everyayah.com/data/Maher_AlMuaiqly_64kbps/088004.mp3",
+      "11": "https://www.everyayah.com/data/Ali_Jaber_64kbps/088004.mp3",
+      "01": "https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/088004.mp3",
+      "02": "https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/088004.mp3",
+      "03": "https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/088004.mp3",
+      "04": "https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/088004.mp3",
+      "05": "https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/088004.mp3",
+      "06": "https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/088004.mp3",
+      "07": "https://www.everyayah.com/data/Husary_128kbps/088004.mp3",
+      "08": "https://www.everyayah.com/data/Ghamadi_40kbps/088004.mp3",
+      "09": "https://www.everyayah.com/data/Abdul_Basit_Mujawwad_128kbps/088004.mp3"
+    }
   },
   {
     "id": "5972",
@@ -77,7 +125,19 @@
     "theme": null,
     "text": "(Mereka) diberi minum dari sumber mata air yang sangat panas.",
     "notes": null,
-    "audio_partial": "{\"01\":\"https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/088005.mp3\",\"02\":\"https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/088005.mp3\",\"03\":\"https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/088005.mp3\",\"04\":\"https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/088005.mp3\",\"05\":\"https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/088005.mp3\",\"06\":\"https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/088005.mp3\"}"
+    "audio_partial": {
+      "10": "https://www.everyayah.com/data/Maher_AlMuaiqly_64kbps/088005.mp3",
+      "11": "https://www.everyayah.com/data/Ali_Jaber_64kbps/088005.mp3",
+      "01": "https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/088005.mp3",
+      "02": "https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/088005.mp3",
+      "03": "https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/088005.mp3",
+      "04": "https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/088005.mp3",
+      "05": "https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/088005.mp3",
+      "06": "https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/088005.mp3",
+      "07": "https://www.everyayah.com/data/Husary_128kbps/088005.mp3",
+      "08": "https://www.everyayah.com/data/Ghamadi_40kbps/088005.mp3",
+      "09": "https://www.everyayah.com/data/Abdul_Basit_Mujawwad_128kbps/088005.mp3"
+    }
   },
   {
     "id": "5973",
@@ -93,7 +153,19 @@
     "theme": null,
     "text": "Tidak ada makanan bagi mereka selain dari pohon yang berduri,",
     "notes": null,
-    "audio_partial": "{\"01\":\"https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/088006.mp3\",\"02\":\"https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/088006.mp3\",\"03\":\"https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/088006.mp3\",\"04\":\"https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/088006.mp3\",\"05\":\"https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/088006.mp3\",\"06\":\"https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/088006.mp3\"}"
+    "audio_partial": {
+      "10": "https://www.everyayah.com/data/Maher_AlMuaiqly_64kbps/088006.mp3",
+      "11": "https://www.everyayah.com/data/Ali_Jaber_64kbps/088006.mp3",
+      "01": "https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/088006.mp3",
+      "02": "https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/088006.mp3",
+      "03": "https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/088006.mp3",
+      "04": "https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/088006.mp3",
+      "05": "https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/088006.mp3",
+      "06": "https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/088006.mp3",
+      "07": "https://www.everyayah.com/data/Husary_128kbps/088006.mp3",
+      "08": "https://www.everyayah.com/data/Ghamadi_40kbps/088006.mp3",
+      "09": "https://www.everyayah.com/data/Abdul_Basit_Mujawwad_128kbps/088006.mp3"
+    }
   },
   {
     "id": "5974",
@@ -109,7 +181,19 @@
     "theme": null,
     "text": "yang tidak menggemukkan dan tidak pula menghilangkan lapar.",
     "notes": null,
-    "audio_partial": "{\"01\":\"https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/088007.mp3\",\"02\":\"https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/088007.mp3\",\"03\":\"https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/088007.mp3\",\"04\":\"https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/088007.mp3\",\"05\":\"https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/088007.mp3\",\"06\":\"https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/088007.mp3\"}"
+    "audio_partial": {
+      "10": "https://www.everyayah.com/data/Maher_AlMuaiqly_64kbps/088007.mp3",
+      "11": "https://www.everyayah.com/data/Ali_Jaber_64kbps/088007.mp3",
+      "01": "https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/088007.mp3",
+      "02": "https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/088007.mp3",
+      "03": "https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/088007.mp3",
+      "04": "https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/088007.mp3",
+      "05": "https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/088007.mp3",
+      "06": "https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/088007.mp3",
+      "07": "https://www.everyayah.com/data/Husary_128kbps/088007.mp3",
+      "08": "https://www.everyayah.com/data/Ghamadi_40kbps/088007.mp3",
+      "09": "https://www.everyayah.com/data/Abdul_Basit_Mujawwad_128kbps/088007.mp3"
+    }
   },
   {
     "id": "5975",
@@ -125,7 +209,19 @@
     "theme": null,
     "text": "Pada hari itu banyak (pula) wajah yang berseri-seri,",
     "notes": null,
-    "audio_partial": "{\"01\":\"https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/088008.mp3\",\"02\":\"https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/088008.mp3\",\"03\":\"https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/088008.mp3\",\"04\":\"https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/088008.mp3\",\"05\":\"https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/088008.mp3\",\"06\":\"https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/088008.mp3\"}"
+    "audio_partial": {
+      "10": "https://www.everyayah.com/data/Maher_AlMuaiqly_64kbps/088008.mp3",
+      "11": "https://www.everyayah.com/data/Ali_Jaber_64kbps/088008.mp3",
+      "01": "https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/088008.mp3",
+      "02": "https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/088008.mp3",
+      "03": "https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/088008.mp3",
+      "04": "https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/088008.mp3",
+      "05": "https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/088008.mp3",
+      "06": "https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/088008.mp3",
+      "07": "https://www.everyayah.com/data/Husary_128kbps/088008.mp3",
+      "08": "https://www.everyayah.com/data/Ghamadi_40kbps/088008.mp3",
+      "09": "https://www.everyayah.com/data/Abdul_Basit_Mujawwad_128kbps/088008.mp3"
+    }
   },
   {
     "id": "5976",
@@ -141,7 +237,19 @@
     "theme": null,
     "text": "merasa puas karena usahanya.",
     "notes": null,
-    "audio_partial": "{\"01\":\"https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/088009.mp3\",\"02\":\"https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/088009.mp3\",\"03\":\"https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/088009.mp3\",\"04\":\"https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/088009.mp3\",\"05\":\"https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/088009.mp3\",\"06\":\"https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/088009.mp3\"}"
+    "audio_partial": {
+      "10": "https://www.everyayah.com/data/Maher_AlMuaiqly_64kbps/088009.mp3",
+      "11": "https://www.everyayah.com/data/Ali_Jaber_64kbps/088009.mp3",
+      "01": "https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/088009.mp3",
+      "02": "https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/088009.mp3",
+      "03": "https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/088009.mp3",
+      "04": "https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/088009.mp3",
+      "05": "https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/088009.mp3",
+      "06": "https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/088009.mp3",
+      "07": "https://www.everyayah.com/data/Husary_128kbps/088009.mp3",
+      "08": "https://www.everyayah.com/data/Ghamadi_40kbps/088009.mp3",
+      "09": "https://www.everyayah.com/data/Abdul_Basit_Mujawwad_128kbps/088009.mp3"
+    }
   },
   {
     "id": "5977",
@@ -157,7 +265,19 @@
     "theme": null,
     "text": "(Mereka) dalam surga yang tinggi.",
     "notes": null,
-    "audio_partial": "{\"01\":\"https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/088010.mp3\",\"02\":\"https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/088010.mp3\",\"03\":\"https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/088010.mp3\",\"04\":\"https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/088010.mp3\",\"05\":\"https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/088010.mp3\",\"06\":\"https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/088010.mp3\"}"
+    "audio_partial": {
+      "10": "https://www.everyayah.com/data/Maher_AlMuaiqly_64kbps/088010.mp3",
+      "11": "https://www.everyayah.com/data/Ali_Jaber_64kbps/088010.mp3",
+      "01": "https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/088010.mp3",
+      "02": "https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/088010.mp3",
+      "03": "https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/088010.mp3",
+      "04": "https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/088010.mp3",
+      "05": "https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/088010.mp3",
+      "06": "https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/088010.mp3",
+      "07": "https://www.everyayah.com/data/Husary_128kbps/088010.mp3",
+      "08": "https://www.everyayah.com/data/Ghamadi_40kbps/088010.mp3",
+      "09": "https://www.everyayah.com/data/Abdul_Basit_Mujawwad_128kbps/088010.mp3"
+    }
   },
   {
     "id": "5978",
@@ -173,7 +293,19 @@
     "theme": null,
     "text": "Di sana kamu tidak mendengar (perkataan) yang tidak berguna.",
     "notes": null,
-    "audio_partial": "{\"01\":\"https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/088011.mp3\",\"02\":\"https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/088011.mp3\",\"03\":\"https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/088011.mp3\",\"04\":\"https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/088011.mp3\",\"05\":\"https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/088011.mp3\",\"06\":\"https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/088011.mp3\"}"
+    "audio_partial": {
+      "10": "https://www.everyayah.com/data/Maher_AlMuaiqly_64kbps/088011.mp3",
+      "11": "https://www.everyayah.com/data/Ali_Jaber_64kbps/088011.mp3",
+      "01": "https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/088011.mp3",
+      "02": "https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/088011.mp3",
+      "03": "https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/088011.mp3",
+      "04": "https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/088011.mp3",
+      "05": "https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/088011.mp3",
+      "06": "https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/088011.mp3",
+      "07": "https://www.everyayah.com/data/Husary_128kbps/088011.mp3",
+      "08": "https://www.everyayah.com/data/Ghamadi_40kbps/088011.mp3",
+      "09": "https://www.everyayah.com/data/Abdul_Basit_Mujawwad_128kbps/088011.mp3"
+    }
   },
   {
     "id": "5979",
@@ -189,7 +321,19 @@
     "theme": null,
     "text": "Di sana ada mata air yang mengalir.",
     "notes": null,
-    "audio_partial": "{\"01\":\"https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/088012.mp3\",\"02\":\"https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/088012.mp3\",\"03\":\"https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/088012.mp3\",\"04\":\"https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/088012.mp3\",\"05\":\"https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/088012.mp3\",\"06\":\"https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/088012.mp3\"}"
+    "audio_partial": {
+      "10": "https://www.everyayah.com/data/Maher_AlMuaiqly_64kbps/088012.mp3",
+      "11": "https://www.everyayah.com/data/Ali_Jaber_64kbps/088012.mp3",
+      "01": "https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/088012.mp3",
+      "02": "https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/088012.mp3",
+      "03": "https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/088012.mp3",
+      "04": "https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/088012.mp3",
+      "05": "https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/088012.mp3",
+      "06": "https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/088012.mp3",
+      "07": "https://www.everyayah.com/data/Husary_128kbps/088012.mp3",
+      "08": "https://www.everyayah.com/data/Ghamadi_40kbps/088012.mp3",
+      "09": "https://www.everyayah.com/data/Abdul_Basit_Mujawwad_128kbps/088012.mp3"
+    }
   },
   {
     "id": "5980",
@@ -205,7 +349,19 @@
     "theme": null,
     "text": "Di sana ada (pula) dipan-dipan yang ditinggikan,",
     "notes": null,
-    "audio_partial": "{\"01\":\"https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/088013.mp3\",\"02\":\"https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/088013.mp3\",\"03\":\"https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/088013.mp3\",\"04\":\"https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/088013.mp3\",\"05\":\"https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/088013.mp3\",\"06\":\"https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/088013.mp3\"}"
+    "audio_partial": {
+      "10": "https://www.everyayah.com/data/Maher_AlMuaiqly_64kbps/088013.mp3",
+      "11": "https://www.everyayah.com/data/Ali_Jaber_64kbps/088013.mp3",
+      "01": "https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/088013.mp3",
+      "02": "https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/088013.mp3",
+      "03": "https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/088013.mp3",
+      "04": "https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/088013.mp3",
+      "05": "https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/088013.mp3",
+      "06": "https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/088013.mp3",
+      "07": "https://www.everyayah.com/data/Husary_128kbps/088013.mp3",
+      "08": "https://www.everyayah.com/data/Ghamadi_40kbps/088013.mp3",
+      "09": "https://www.everyayah.com/data/Abdul_Basit_Mujawwad_128kbps/088013.mp3"
+    }
   },
   {
     "id": "5981",
@@ -221,7 +377,19 @@
     "theme": null,
     "text": "gelas-gelas yang tersedia (di dekatnya),",
     "notes": null,
-    "audio_partial": "{\"01\":\"https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/088014.mp3\",\"02\":\"https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/088014.mp3\",\"03\":\"https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/088014.mp3\",\"04\":\"https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/088014.mp3\",\"05\":\"https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/088014.mp3\",\"06\":\"https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/088014.mp3\"}"
+    "audio_partial": {
+      "10": "https://www.everyayah.com/data/Maher_AlMuaiqly_64kbps/088014.mp3",
+      "11": "https://www.everyayah.com/data/Ali_Jaber_64kbps/088014.mp3",
+      "01": "https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/088014.mp3",
+      "02": "https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/088014.mp3",
+      "03": "https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/088014.mp3",
+      "04": "https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/088014.mp3",
+      "05": "https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/088014.mp3",
+      "06": "https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/088014.mp3",
+      "07": "https://www.everyayah.com/data/Husary_128kbps/088014.mp3",
+      "08": "https://www.everyayah.com/data/Ghamadi_40kbps/088014.mp3",
+      "09": "https://www.everyayah.com/data/Abdul_Basit_Mujawwad_128kbps/088014.mp3"
+    }
   },
   {
     "id": "5982",
@@ -237,7 +405,19 @@
     "theme": null,
     "text": "bantal-bantal sandaran yang tersusun,",
     "notes": null,
-    "audio_partial": "{\"01\":\"https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/088015.mp3\",\"02\":\"https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/088015.mp3\",\"03\":\"https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/088015.mp3\",\"04\":\"https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/088015.mp3\",\"05\":\"https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/088015.mp3\",\"06\":\"https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/088015.mp3\"}"
+    "audio_partial": {
+      "10": "https://www.everyayah.com/data/Maher_AlMuaiqly_64kbps/088015.mp3",
+      "11": "https://www.everyayah.com/data/Ali_Jaber_64kbps/088015.mp3",
+      "01": "https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/088015.mp3",
+      "02": "https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/088015.mp3",
+      "03": "https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/088015.mp3",
+      "04": "https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/088015.mp3",
+      "05": "https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/088015.mp3",
+      "06": "https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/088015.mp3",
+      "07": "https://www.everyayah.com/data/Husary_128kbps/088015.mp3",
+      "08": "https://www.everyayah.com/data/Ghamadi_40kbps/088015.mp3",
+      "09": "https://www.everyayah.com/data/Abdul_Basit_Mujawwad_128kbps/088015.mp3"
+    }
   },
   {
     "id": "5983",
@@ -253,7 +433,19 @@
     "theme": null,
     "text": "dan permadani-permadani yang terhampar.",
     "notes": null,
-    "audio_partial": "{\"01\":\"https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/088016.mp3\",\"02\":\"https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/088016.mp3\",\"03\":\"https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/088016.mp3\",\"04\":\"https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/088016.mp3\",\"05\":\"https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/088016.mp3\",\"06\":\"https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/088016.mp3\"}"
+    "audio_partial": {
+      "10": "https://www.everyayah.com/data/Maher_AlMuaiqly_64kbps/088016.mp3",
+      "11": "https://www.everyayah.com/data/Ali_Jaber_64kbps/088016.mp3",
+      "01": "https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/088016.mp3",
+      "02": "https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/088016.mp3",
+      "03": "https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/088016.mp3",
+      "04": "https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/088016.mp3",
+      "05": "https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/088016.mp3",
+      "06": "https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/088016.mp3",
+      "07": "https://www.everyayah.com/data/Husary_128kbps/088016.mp3",
+      "08": "https://www.everyayah.com/data/Ghamadi_40kbps/088016.mp3",
+      "09": "https://www.everyayah.com/data/Abdul_Basit_Mujawwad_128kbps/088016.mp3"
+    }
   },
   {
     "id": "5984",
@@ -269,7 +461,19 @@
     "theme": null,
     "text": "Tidakkah mereka memperhatikan unta, bagaimana ia diciptakan?",
     "notes": null,
-    "audio_partial": "{\"01\":\"https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/088017.mp3\",\"02\":\"https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/088017.mp3\",\"03\":\"https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/088017.mp3\",\"04\":\"https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/088017.mp3\",\"05\":\"https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/088017.mp3\",\"06\":\"https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/088017.mp3\"}"
+    "audio_partial": {
+      "10": "https://www.everyayah.com/data/Maher_AlMuaiqly_64kbps/088017.mp3",
+      "11": "https://www.everyayah.com/data/Ali_Jaber_64kbps/088017.mp3",
+      "01": "https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/088017.mp3",
+      "02": "https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/088017.mp3",
+      "03": "https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/088017.mp3",
+      "04": "https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/088017.mp3",
+      "05": "https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/088017.mp3",
+      "06": "https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/088017.mp3",
+      "07": "https://www.everyayah.com/data/Husary_128kbps/088017.mp3",
+      "08": "https://www.everyayah.com/data/Ghamadi_40kbps/088017.mp3",
+      "09": "https://www.everyayah.com/data/Abdul_Basit_Mujawwad_128kbps/088017.mp3"
+    }
   },
   {
     "id": "5985",
@@ -285,7 +489,19 @@
     "theme": null,
     "text": "Bagaimana langit ditinggikan?",
     "notes": null,
-    "audio_partial": "{\"01\":\"https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/088018.mp3\",\"02\":\"https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/088018.mp3\",\"03\":\"https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/088018.mp3\",\"04\":\"https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/088018.mp3\",\"05\":\"https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/088018.mp3\",\"06\":\"https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/088018.mp3\"}"
+    "audio_partial": {
+      "10": "https://www.everyayah.com/data/Maher_AlMuaiqly_64kbps/088018.mp3",
+      "11": "https://www.everyayah.com/data/Ali_Jaber_64kbps/088018.mp3",
+      "01": "https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/088018.mp3",
+      "02": "https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/088018.mp3",
+      "03": "https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/088018.mp3",
+      "04": "https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/088018.mp3",
+      "05": "https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/088018.mp3",
+      "06": "https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/088018.mp3",
+      "07": "https://www.everyayah.com/data/Husary_128kbps/088018.mp3",
+      "08": "https://www.everyayah.com/data/Ghamadi_40kbps/088018.mp3",
+      "09": "https://www.everyayah.com/data/Abdul_Basit_Mujawwad_128kbps/088018.mp3"
+    }
   },
   {
     "id": "5986",
@@ -301,7 +517,19 @@
     "theme": null,
     "text": "Bagaimana gunung-gunung ditegakkan?",
     "notes": null,
-    "audio_partial": "{\"01\":\"https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/088019.mp3\",\"02\":\"https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/088019.mp3\",\"03\":\"https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/088019.mp3\",\"04\":\"https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/088019.mp3\",\"05\":\"https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/088019.mp3\",\"06\":\"https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/088019.mp3\"}"
+    "audio_partial": {
+      "10": "https://www.everyayah.com/data/Maher_AlMuaiqly_64kbps/088019.mp3",
+      "11": "https://www.everyayah.com/data/Ali_Jaber_64kbps/088019.mp3",
+      "01": "https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/088019.mp3",
+      "02": "https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/088019.mp3",
+      "03": "https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/088019.mp3",
+      "04": "https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/088019.mp3",
+      "05": "https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/088019.mp3",
+      "06": "https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/088019.mp3",
+      "07": "https://www.everyayah.com/data/Husary_128kbps/088019.mp3",
+      "08": "https://www.everyayah.com/data/Ghamadi_40kbps/088019.mp3",
+      "09": "https://www.everyayah.com/data/Abdul_Basit_Mujawwad_128kbps/088019.mp3"
+    }
   },
   {
     "id": "5987",
@@ -317,7 +545,19 @@
     "theme": null,
     "text": "Bagaimana pula bumi dihamparkan?",
     "notes": null,
-    "audio_partial": "{\"01\":\"https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/088020.mp3\",\"02\":\"https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/088020.mp3\",\"03\":\"https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/088020.mp3\",\"04\":\"https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/088020.mp3\",\"05\":\"https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/088020.mp3\",\"06\":\"https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/088020.mp3\"}"
+    "audio_partial": {
+      "10": "https://www.everyayah.com/data/Maher_AlMuaiqly_64kbps/088020.mp3",
+      "11": "https://www.everyayah.com/data/Ali_Jaber_64kbps/088020.mp3",
+      "01": "https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/088020.mp3",
+      "02": "https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/088020.mp3",
+      "03": "https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/088020.mp3",
+      "04": "https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/088020.mp3",
+      "05": "https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/088020.mp3",
+      "06": "https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/088020.mp3",
+      "07": "https://www.everyayah.com/data/Husary_128kbps/088020.mp3",
+      "08": "https://www.everyayah.com/data/Ghamadi_40kbps/088020.mp3",
+      "09": "https://www.everyayah.com/data/Abdul_Basit_Mujawwad_128kbps/088020.mp3"
+    }
   },
   {
     "id": "5988",
@@ -333,7 +573,19 @@
     "theme": null,
     "text": "Maka, berilah peringatan karena sesungguhnya engkau (Nabi Muhammad) hanyalah pemberi peringatan.",
     "notes": null,
-    "audio_partial": "{\"01\":\"https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/088021.mp3\",\"02\":\"https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/088021.mp3\",\"03\":\"https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/088021.mp3\",\"04\":\"https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/088021.mp3\",\"05\":\"https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/088021.mp3\",\"06\":\"https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/088021.mp3\"}"
+    "audio_partial": {
+      "10": "https://www.everyayah.com/data/Maher_AlMuaiqly_64kbps/088021.mp3",
+      "11": "https://www.everyayah.com/data/Ali_Jaber_64kbps/088021.mp3",
+      "01": "https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/088021.mp3",
+      "02": "https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/088021.mp3",
+      "03": "https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/088021.mp3",
+      "04": "https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/088021.mp3",
+      "05": "https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/088021.mp3",
+      "06": "https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/088021.mp3",
+      "07": "https://www.everyayah.com/data/Husary_128kbps/088021.mp3",
+      "08": "https://www.everyayah.com/data/Ghamadi_40kbps/088021.mp3",
+      "09": "https://www.everyayah.com/data/Abdul_Basit_Mujawwad_128kbps/088021.mp3"
+    }
   },
   {
     "id": "5989",
@@ -349,7 +601,19 @@
     "theme": null,
     "text": "Engkau bukanlah orang yang berkuasa atas mereka.",
     "notes": null,
-    "audio_partial": "{\"01\":\"https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/088022.mp3\",\"02\":\"https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/088022.mp3\",\"03\":\"https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/088022.mp3\",\"04\":\"https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/088022.mp3\",\"05\":\"https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/088022.mp3\",\"06\":\"https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/088022.mp3\"}"
+    "audio_partial": {
+      "10": "https://www.everyayah.com/data/Maher_AlMuaiqly_64kbps/088022.mp3",
+      "11": "https://www.everyayah.com/data/Ali_Jaber_64kbps/088022.mp3",
+      "01": "https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/088022.mp3",
+      "02": "https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/088022.mp3",
+      "03": "https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/088022.mp3",
+      "04": "https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/088022.mp3",
+      "05": "https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/088022.mp3",
+      "06": "https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/088022.mp3",
+      "07": "https://www.everyayah.com/data/Husary_128kbps/088022.mp3",
+      "08": "https://www.everyayah.com/data/Ghamadi_40kbps/088022.mp3",
+      "09": "https://www.everyayah.com/data/Abdul_Basit_Mujawwad_128kbps/088022.mp3"
+    }
   },
   {
     "id": "5990",
@@ -365,7 +629,19 @@
     "theme": null,
     "text": "Akan tetapi, orang yang berpaling dan kufur,",
     "notes": null,
-    "audio_partial": "{\"01\":\"https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/088023.mp3\",\"02\":\"https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/088023.mp3\",\"03\":\"https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/088023.mp3\",\"04\":\"https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/088023.mp3\",\"05\":\"https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/088023.mp3\",\"06\":\"https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/088023.mp3\"}"
+    "audio_partial": {
+      "10": "https://www.everyayah.com/data/Maher_AlMuaiqly_64kbps/088023.mp3",
+      "11": "https://www.everyayah.com/data/Ali_Jaber_64kbps/088023.mp3",
+      "01": "https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/088023.mp3",
+      "02": "https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/088023.mp3",
+      "03": "https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/088023.mp3",
+      "04": "https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/088023.mp3",
+      "05": "https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/088023.mp3",
+      "06": "https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/088023.mp3",
+      "07": "https://www.everyayah.com/data/Husary_128kbps/088023.mp3",
+      "08": "https://www.everyayah.com/data/Ghamadi_40kbps/088023.mp3",
+      "09": "https://www.everyayah.com/data/Abdul_Basit_Mujawwad_128kbps/088023.mp3"
+    }
   },
   {
     "id": "5991",
@@ -381,7 +657,19 @@
     "theme": null,
     "text": "Allah akan mengazabnya dengan azab yang paling besar.",
     "notes": null,
-    "audio_partial": "{\"01\":\"https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/088024.mp3\",\"02\":\"https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/088024.mp3\",\"03\":\"https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/088024.mp3\",\"04\":\"https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/088024.mp3\",\"05\":\"https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/088024.mp3\",\"06\":\"https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/088024.mp3\"}"
+    "audio_partial": {
+      "10": "https://www.everyayah.com/data/Maher_AlMuaiqly_64kbps/088024.mp3",
+      "11": "https://www.everyayah.com/data/Ali_Jaber_64kbps/088024.mp3",
+      "01": "https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/088024.mp3",
+      "02": "https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/088024.mp3",
+      "03": "https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/088024.mp3",
+      "04": "https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/088024.mp3",
+      "05": "https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/088024.mp3",
+      "06": "https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/088024.mp3",
+      "07": "https://www.everyayah.com/data/Husary_128kbps/088024.mp3",
+      "08": "https://www.everyayah.com/data/Ghamadi_40kbps/088024.mp3",
+      "09": "https://www.everyayah.com/data/Abdul_Basit_Mujawwad_128kbps/088024.mp3"
+    }
   },
   {
     "id": "5992",
@@ -397,7 +685,19 @@
     "theme": null,
     "text": "Sesungguhnya kepada Kamilah mereka kembali.",
     "notes": null,
-    "audio_partial": "{\"01\":\"https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/088025.mp3\",\"02\":\"https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/088025.mp3\",\"03\":\"https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/088025.mp3\",\"04\":\"https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/088025.mp3\",\"05\":\"https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/088025.mp3\",\"06\":\"https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/088025.mp3\"}"
+    "audio_partial": {
+      "10": "https://www.everyayah.com/data/Maher_AlMuaiqly_64kbps/088025.mp3",
+      "11": "https://www.everyayah.com/data/Ali_Jaber_64kbps/088025.mp3",
+      "01": "https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/088025.mp3",
+      "02": "https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/088025.mp3",
+      "03": "https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/088025.mp3",
+      "04": "https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/088025.mp3",
+      "05": "https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/088025.mp3",
+      "06": "https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/088025.mp3",
+      "07": "https://www.everyayah.com/data/Husary_128kbps/088025.mp3",
+      "08": "https://www.everyayah.com/data/Ghamadi_40kbps/088025.mp3",
+      "09": "https://www.everyayah.com/data/Abdul_Basit_Mujawwad_128kbps/088025.mp3"
+    }
   },
   {
     "id": "5993",
@@ -413,6 +713,18 @@
     "theme": null,
     "text": "Kemudian, sesungguhnya Kamilah yang berhak melakukan hisab (perhitungan) atas mereka.",
     "notes": null,
-    "audio_partial": "{\"01\":\"https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/088026.mp3\",\"02\":\"https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/088026.mp3\",\"03\":\"https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/088026.mp3\",\"04\":\"https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/088026.mp3\",\"05\":\"https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/088026.mp3\",\"06\":\"https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/088026.mp3\"}"
+    "audio_partial": {
+      "10": "https://www.everyayah.com/data/Maher_AlMuaiqly_64kbps/088026.mp3",
+      "11": "https://www.everyayah.com/data/Ali_Jaber_64kbps/088026.mp3",
+      "01": "https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/088026.mp3",
+      "02": "https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/088026.mp3",
+      "03": "https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/088026.mp3",
+      "04": "https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/088026.mp3",
+      "05": "https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/088026.mp3",
+      "06": "https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/088026.mp3",
+      "07": "https://www.everyayah.com/data/Husary_128kbps/088026.mp3",
+      "08": "https://www.everyayah.com/data/Ghamadi_40kbps/088026.mp3",
+      "09": "https://www.everyayah.com/data/Abdul_Basit_Mujawwad_128kbps/088026.mp3"
+    }
   }
 ]

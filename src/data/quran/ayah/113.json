@@ -13,7 +13,19 @@
     "theme": null,
     "text": "Katakanlah (Nabi Muhammad), “Aku berlindung kepada Tuhan yang (menjaga) fajar (subuh)",
     "notes": null,
-    "audio_partial": "{\"01\":\"https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/113001.mp3\",\"02\":\"https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/113001.mp3\",\"03\":\"https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/113001.mp3\",\"04\":\"https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/113001.mp3\",\"05\":\"https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/113001.mp3\",\"06\":\"https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/113001.mp3\"}"
+    "audio_partial": {
+      "10": "https://www.everyayah.com/data/Maher_AlMuaiqly_64kbps/113001.mp3",
+      "11": "https://www.everyayah.com/data/Ali_Jaber_64kbps/113001.mp3",
+      "01": "https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/113001.mp3",
+      "02": "https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/113001.mp3",
+      "03": "https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/113001.mp3",
+      "04": "https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/113001.mp3",
+      "05": "https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/113001.mp3",
+      "06": "https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/113001.mp3",
+      "07": "https://www.everyayah.com/data/Husary_128kbps/113001.mp3",
+      "08": "https://www.everyayah.com/data/Ghamadi_40kbps/113001.mp3",
+      "09": "https://www.everyayah.com/data/Abdul_Basit_Mujawwad_128kbps/113001.mp3"
+    }
   },
   {
     "id": "6227",
@@ -29,7 +41,19 @@
     "theme": null,
     "text": "dari kejahatan (makhluk yang) Dia ciptakan,",
     "notes": null,
-    "audio_partial": "{\"01\":\"https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/113002.mp3\",\"02\":\"https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/113002.mp3\",\"03\":\"https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/113002.mp3\",\"04\":\"https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/113002.mp3\",\"05\":\"https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/113002.mp3\",\"06\":\"https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/113002.mp3\"}"
+    "audio_partial": {
+      "10": "https://www.everyayah.com/data/Maher_AlMuaiqly_64kbps/113002.mp3",
+      "11": "https://www.everyayah.com/data/Ali_Jaber_64kbps/113002.mp3",
+      "01": "https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/113002.mp3",
+      "02": "https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/113002.mp3",
+      "03": "https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/113002.mp3",
+      "04": "https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/113002.mp3",
+      "05": "https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/113002.mp3",
+      "06": "https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/113002.mp3",
+      "07": "https://www.everyayah.com/data/Husary_128kbps/113002.mp3",
+      "08": "https://www.everyayah.com/data/Ghamadi_40kbps/113002.mp3",
+      "09": "https://www.everyayah.com/data/Abdul_Basit_Mujawwad_128kbps/113002.mp3"
+    }
   },
   {
     "id": "6228",
@@ -45,7 +69,19 @@
     "theme": null,
     "text": "dari kejahatan malam apabila telah gelap gulita,",
     "notes": null,
-    "audio_partial": "{\"01\":\"https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/113003.mp3\",\"02\":\"https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/113003.mp3\",\"03\":\"https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/113003.mp3\",\"04\":\"https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/113003.mp3\",\"05\":\"https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/113003.mp3\",\"06\":\"https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/113003.mp3\"}"
+    "audio_partial": {
+      "10": "https://www.everyayah.com/data/Maher_AlMuaiqly_64kbps/113003.mp3",
+      "11": "https://www.everyayah.com/data/Ali_Jaber_64kbps/113003.mp3",
+      "01": "https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/113003.mp3",
+      "02": "https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/113003.mp3",
+      "03": "https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/113003.mp3",
+      "04": "https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/113003.mp3",
+      "05": "https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/113003.mp3",
+      "06": "https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/113003.mp3",
+      "07": "https://www.everyayah.com/data/Husary_128kbps/113003.mp3",
+      "08": "https://www.everyayah.com/data/Ghamadi_40kbps/113003.mp3",
+      "09": "https://www.everyayah.com/data/Abdul_Basit_Mujawwad_128kbps/113003.mp3"
+    }
   },
   {
     "id": "6229",
@@ -61,7 +97,19 @@
     "theme": null,
     "text": "dari kejahatan perempuan-perempuan (penyihir) yang meniup pada buhul-buhul (talinya),",
     "notes": null,
-    "audio_partial": "{\"01\":\"https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/113004.mp3\",\"02\":\"https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/113004.mp3\",\"03\":\"https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/113004.mp3\",\"04\":\"https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/113004.mp3\",\"05\":\"https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/113004.mp3\",\"06\":\"https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/113004.mp3\"}"
+    "audio_partial": {
+      "10": "https://www.everyayah.com/data/Maher_AlMuaiqly_64kbps/113004.mp3",
+      "11": "https://www.everyayah.com/data/Ali_Jaber_64kbps/113004.mp3",
+      "01": "https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/113004.mp3",
+      "02": "https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/113004.mp3",
+      "03": "https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/113004.mp3",
+      "04": "https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/113004.mp3",
+      "05": "https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/113004.mp3",
+      "06": "https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/113004.mp3",
+      "07": "https://www.everyayah.com/data/Husary_128kbps/113004.mp3",
+      "08": "https://www.everyayah.com/data/Ghamadi_40kbps/113004.mp3",
+      "09": "https://www.everyayah.com/data/Abdul_Basit_Mujawwad_128kbps/113004.mp3"
+    }
   },
   {
     "id": "6230",
@@ -77,6 +125,18 @@
     "theme": null,
     "text": "dan dari kejahatan orang yang dengki apabila dia dengki.”",
     "notes": null,
-    "audio_partial": "{\"01\":\"https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/113005.mp3\",\"02\":\"https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/113005.mp3\",\"03\":\"https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/113005.mp3\",\"04\":\"https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/113005.mp3\",\"05\":\"https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/113005.mp3\",\"06\":\"https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/113005.mp3\"}"
+    "audio_partial": {
+      "10": "https://www.everyayah.com/data/Maher_AlMuaiqly_64kbps/113005.mp3",
+      "11": "https://www.everyayah.com/data/Ali_Jaber_64kbps/113005.mp3",
+      "01": "https://cdn.equran.id/audio-partial/Abdullah-Al-Juhany/113005.mp3",
+      "02": "https://cdn.equran.id/audio-partial/Abdul-Muhsin-Al-Qasim/113005.mp3",
+      "03": "https://cdn.equran.id/audio-partial/Abdurrahman-as-Sudais/113005.mp3",
+      "04": "https://cdn.equran.id/audio-partial/Ibrahim-Al-Dossari/113005.mp3",
+      "05": "https://cdn.equran.id/audio-partial/Misyari-Rasyid-Al-Afasi/113005.mp3",
+      "06": "https://cdn.equran.id/audio-partial/Yasser-Al-Dosari/113005.mp3",
+      "07": "https://www.everyayah.com/data/Husary_128kbps/113005.mp3",
+      "08": "https://www.everyayah.com/data/Ghamadi_40kbps/113005.mp3",
+      "09": "https://www.everyayah.com/data/Abdul_Basit_Mujawwad_128kbps/113005.mp3"
+    }
   }
 ]
