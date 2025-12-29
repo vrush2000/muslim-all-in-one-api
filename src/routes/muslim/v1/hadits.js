@@ -165,8 +165,68 @@ hadits.get('/find', async (c) => {
       }, 400);
     }
 
-    // Opsi B: Hadits Arbain (Data JSON)
-    if (!book || book.toLowerCase() === 'arbain') {
+    // Opsi B: Cari di Semua Kitab (Global Search) jika book tidak ditentukan atau diset 'all'
+    if (!book || book.toLowerCase() === 'all') {
+      let combinedResults = [];
+      
+      // 1. Cari di Arbain dulu
+      const allArbain = await getHaditsArbain();
+      if (allArbain) {
+        const arbainMatches = semanticSearch(allArbain, q, {
+          fields: ['judul', 'indo'],
+          limit: 10
+        }).map(r => ({
+          no: r.no,
+          judul: r.judul,
+          arab: r.arab,
+          indo: r.indo,
+          sumber: `Hadits Arbain No. ${r.no}: ${r.judul}`,
+          kitab: 'Arbain'
+        }));
+        combinedResults.push(...arbainMatches);
+      }
+
+      // 2. Cari di kitab-kitab utama (Bukhari, Muslim, Abu Daud, dll)
+      // Kita batasi per kitab agar tidak terlalu lambat
+      const booksToSearch = ['bukhari', 'muslim', 'abu-daud', 'tirmidzi', 'nasai', 'ibnu-majah'];
+      
+      for (const bookKey of booksToSearch) {
+        const allHadits = await getLocalHadits(bookKey);
+        if (allHadits) {
+          const matches = semanticSearch(allHadits, q, {
+            fields: ['id'],
+            limit: 5
+          });
+          
+          const displayName = bookDisplayNames[bookKey];
+          combinedResults.push(...matches.map(h => ({
+            no: h.number,
+            judul: displayName,
+            arab: h.arab,
+            indo: h.id,
+            sumber: `HR. ${displayName.replace('Sahih ', '').replace('Sunan ', '')} No. ${h.number}`,
+            kitab: bookKey
+          })));
+        }
+      }
+
+      if (combinedResults.length === 0) {
+        return c.json({
+          status: false,
+          message: `Tidak ada hadits ditemukan di kitab manapun dengan kata kunci: ${q}.`,
+          data: []
+        }, 404);
+      }
+
+      return c.json({
+        status: true,
+        message: `Berhasil mencari hadits di semua kitab dengan kata kunci: ${q}.`,
+        data: combinedResults
+      });
+    }
+
+    // Opsi C: Cari di Kitab Tertentu (Arbain)
+    if (book.toLowerCase() === 'arbain') {
       const allArbain = await getHaditsArbain();
       
       if (!allArbain || allArbain.length === 0) {
@@ -194,11 +254,14 @@ hadits.get('/find', async (c) => {
         status: true, 
         message: `Berhasil mencari hadits Arbain dengan kata kunci: ${q}.`, 
         data: results.map(r => ({
-          ...r,
+          no: r.no,
+          judul: r.judul,
+          arab: r.arab,
+          indo: r.indo,
           sumber: `Hadits Arbain No. ${r.no}: ${r.judul}`
         }))
       });
-    } 
+    }
     
     // Opsi A: Hadits dari File JSON Lokal
     else {
