@@ -1,5 +1,6 @@
 import { Hono } from 'hono';
 import { getAyahBySurah, getSurahList, updateAnalytics } from '../../../utils/jsonHandler.js';
+import { semanticSearch } from '../../../utils/semanticSearch.js';
 
 const ayah = new Hono();
 
@@ -159,20 +160,22 @@ ayah.get('/specific', async (c) => {
 ayah.get('/find', async (c) => {
   try {
     const q = c.req.query('query');
-    if (q != null && q.length > 3) {
+    if (q != null && q.length >= 2) {
       const surahList = await getSurahList();
-      let results = [];
-      const queryLower = q.toLowerCase();
+      let allAyahs = [];
 
       for (const s of surahList) {
         const ayahs = await getAyahBySurah(s.number);
         if (ayahs) {
-          const matched = ayahs.filter(a => a.text && a.text.toLowerCase().includes(queryLower));
-          results.push(...matched);
+          allAyahs.push(...ayahs);
         }
-        // Batasi hasil pencarian agar tidak terlalu berat
-        if (results.length >= 100) break;
       }
+      
+      const results = semanticSearch(allAyahs, q, {
+        fields: ['text'],
+        boostFields: [],
+        limit: 100
+      });
       
       if (results.length === 0) {
         return c.json({ 
@@ -186,7 +189,7 @@ ayah.get('/find', async (c) => {
     } else {
       return c.json({
         status: false,
-        message: "Parameter diperlukan (query). Harus lebih dari 3 karakter.",
+        message: "Parameter diperlukan (query). Harus minimal 2 karakter.",
       }, 400);
     }
   } catch (error) {

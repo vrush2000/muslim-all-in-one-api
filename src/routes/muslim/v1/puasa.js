@@ -1,5 +1,6 @@
 import { Hono } from 'hono';
 import { getPuasa, getFiqhPuasa } from '../../../utils/jsonHandler.js';
+import { semanticSearch } from '../../../utils/semanticSearch.js';
 
 const puasa = new Hono();
 
@@ -42,10 +43,18 @@ puasa.get('/find', async (c) => {
 
   try {
     const data = await getPuasa();
-    const filtered = data.filter(p => 
-      p.nama.toLowerCase().includes(query.toLowerCase()) || 
-      p.deskripsi.toLowerCase().includes(query.toLowerCase())
-    );
+    const filtered = semanticSearch(data, query, {
+      fields: ['nama', 'deskripsi'],
+      boostFields: ['nama']
+    });
+
+    if (filtered.length === 0) {
+      return c.json({
+        status: false,
+        message: `Tidak ada puasa yang ditemukan dengan kata kunci: ${query}`,
+        data: []
+      }, 404);
+    }
 
     return c.json({
       status: true,

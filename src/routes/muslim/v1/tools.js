@@ -1,5 +1,6 @@
 import { Hono } from 'hono';
-import { getSurahList, getAyahBySurah, getHaditsArbain, getLocalHadits, getPuasa, getFiqhPuasa } from '../../../utils/jsonHandler.js';
+import { getAyahBySurah, getSurahList, getHaditsArbain, getLocalHadits, getPuasa, getFiqhPuasa } from '../../../utils/jsonHandler.js';
+import { semanticSearch } from '../../../utils/semanticSearch.js';
 
 const tools = new Hono();
 
@@ -147,61 +148,49 @@ tools.get('/semantic-search', async (c) => {
   if (!query) return c.json({ status: false, message: 'Parameter query diperlukan.' }, 400);
 
   try {
-    const queryLower = query.toLowerCase();
-    const searchTerms = queryLower.split(' ');
-
-    // Cari di Quran
+    // 1. Quran Search
     const surahList = await getSurahList();
-    let quranResults = [];
-    
+    let allAyahs = [];
     for (const s of surahList) {
       const ayahs = await getAyahBySurah(s.number);
       if (ayahs) {
-        const matches = ayahs.filter(a => {
-          const text = (a.text || '').toLowerCase();
-          return searchTerms.every(term => text.includes(term));
-        }).slice(0, 5);
-
-        if (matches.length > 0) {
-          const surahName = s.name_id || s.name_en || s.name_long;
-          quranResults.push(...matches.map(a => ({
-            arab: a.arab,
-            text: a.text,
-            sumber: `QS. ${surahName}: ${a.ayah}`
-          })));
-        }
+        allAyahs.push(...ayahs.map(a => ({
+          ...a,
+          surahName: s.name_id || s.name_en || s.name_long
+        })));
       }
-      if (quranResults.length >= 10) break;
     }
 
-    // Cari di Hadits Arbain
-    const allArbain = await getHaditsArbain();
-    const arbainMatches = allArbain ? allArbain.filter(h => {
-      const text = (h.judul + ' ' + h.indo).toLowerCase();
-      return searchTerms.every(term => text.includes(term));
-    }).slice(0, 5) : [];
+    const quranResults = semanticSearch(allAyahs, query, {
+      fields: ['text'],
+      limit: 10
+    }).map(a => ({
+      arab: a.arab,
+      text: a.text,
+      sumber: `QS. ${a.surahName}: ${a.ayah}`
+    }));
 
-    const formattedArbain = arbainMatches.map(h => ({
+    // 2. Hadits Arbain Search
+    const allArbain = await getHaditsArbain();
+    const arbainResults = semanticSearch(allArbain || [], query, {
+      fields: ['judul', 'indo'],
+      limit: 5
+    }).map(h => ({
       arab: h.arab,
       text: h.indo,
       sumber: `Hadits Arbain No. ${h.no}: ${h.judul}`
     }));
 
-    // Cari di Kitab Hadits (9 Kitab + Arbain) secara lokal
+    // 3. Global Hadits Search (Only top 3 books for performance)
     let globalHadits = [];
-    const allBooks = [
-      'bukhari', 'muslim', 'abu-daud', 'tirmidzi', 'nasai', 
-      'ibnu-majah', 'ahmad', 'darimi', 'malik'
-    ];
-
-    for (const book of allBooks) {
+    const books = ['bukhari', 'muslim', 'abu-daud'];
+    for (const book of books) {
       const allHadits = await getLocalHadits(book);
       if (allHadits) {
-        const matches = allHadits.filter(h => {
-          const text = (h.id || '').toLowerCase();
-          return searchTerms.every(term => text.includes(term));
-        }).slice(0, 2);
-
+        const matches = semanticSearch(allHadits, query, {
+          fields: ['id'],
+          limit: 3
+        });
         const bookName = book.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
         globalHadits.push(...matches.map(h => ({
           arab: h.arab,
@@ -209,69 +198,33 @@ tools.get('/semantic-search', async (c) => {
           sumber: `HR. ${bookName} No. ${h.number}`
         })));
       }
-      if (globalHadits.length >= 15) break;
     }
 
-    const totalHadits = [...formattedArbain, ...globalHadits];
-
-    // Cari di Puasa & Fiqh
+    // 4. Puasa Search
     const allPuasa = await getPuasa();
-    const puasaMatches = allPuasa ? allPuasa.filter(p => {
-      const text = (p.nama + ' ' + p.deskripsi + ' ' + p.dalil).toLowerCase();
-      return searchTerms.every(term => text.includes(term));
-    }).slice(0, 5) : [];
-
-    const formattedPuasa = puasaMatches.map(p => ({
+    const puasaResults = semanticSearch(allPuasa || [], query, {
+      fields: ['nama', 'deskripsi', 'dalil'],
+      limit: 5
+    }).map(p => ({
       text: `${p.nama}: ${p.deskripsi}`,
       dalil: p.dalil,
       sumber: `Fitur Puasa (${p.hukum})`
     }));
 
-    const allFiqh = await getFiqhPuasa();
-    let fiqhResults = [];
-    if (allFiqh) {
-      for (const category of allFiqh) {
-        const matches = category.points.filter(pt => {
-          const text = (pt.title + ' ' + pt.content).toLowerCase();
-          return searchTerms.every(term => text.includes(term));
-        }).slice(0, 3);
-        
-        fiqhResults.push(...matches.map(pt => ({
-          text: pt.title,
-          content: pt.content,
-          sumber: `70 Masalah Puasa - Sumber: islamqa.info`
-        })));
-        if (fiqhResults.length >= 10) break;
-      }
-    }
-
-    if (quranResults.length === 0 && totalHadits.length === 0 && formattedPuasa.length === 0 && fiqhResults.length === 0) {
-      return c.json({
-        status: false,
-        message: `Tidak ada hasil pencarian semantik untuk '${query}'.`,
-        data: {
-          query: query,
-          quran: [],
-          hadits: [],
-          puasa: [],
-          fiqh: []
-        }
-      }, 404);
-    }
-
     return c.json({
       status: true,
-      message: `Pencarian semantik untuk '${query}' berhasil.`,
+      message: `Berhasil melakukan pencarian semantik untuk: ${query}`,
       data: {
-        query: query,
-        quran: quranResults,
-        hadits: totalHadits,
-        puasa: formattedPuasa,
-        fiqh: fiqhResults
+        query,
+        results: {
+          quran: quranResults,
+          hadits: [...arbainResults, ...globalHadits],
+          puasa: puasaResults
+        }
       }
     });
   } catch (error) {
-    return c.json({ status: false, message: 'Pencarian semantik gagal: ' + error.message }, 500);
+    return c.json({ status: false, message: 'Gagal melakukan pencarian semantik: ' + error.message }, 500);
   }
 });
 
@@ -395,6 +348,12 @@ tools.get('/faraidh', (c) => {
       }
     }
 
+    // 5. Hitung Sisa Akhir (jika masih ada setelah Radd/Asabah)
+    // Biasanya ini terjadi jika hanya ada suami/istri tanpa ahli waris lain
+    const totalRasioTerbagi = furud.suami + furud.istri + furud.ibu + (furud.ayah + asabah.ayah) + asabah.anakLk + (furud.anakPr + asabah.anakPr);
+    let sisaAkhir = 1 - totalRasioTerbagi;
+    if (sisaAkhir < 0.0001) sisaAkhir = 0; // Handle floating point
+
     // Susun Response
     const addResult = (nama, rasio, jumlah = 1) => {
       if (rasio > 0) {
@@ -413,6 +372,17 @@ tools.get('/faraidh', (c) => {
     addResult('Ayah', furud.ayah + asabah.ayah);
     addResult('Anak Laki-laki', asabah.anakLk, anakLk);
     addResult('Anak Perempuan', furud.anakPr + asabah.anakPr, anakPr);
+    
+    // Tambahkan Sisa Harta jika masih ada (Baitul Mal)
+    if (sisaAkhir > 0) {
+      addResult('Sisa Harta (Baitul Mal/Ashabah Lainnya)', sisaAkhir);
+    }
+
+    // Pastikan total nominal sesuai dengan totalHarta (koreksi pembulatan ke item terakhir)
+    const totalNominal = results.reduce((acc, curr) => acc + curr.nominal, 0);
+    if (totalNominal < totalHarta && results.length > 0) {
+      results[results.length - 1].nominal += (totalHarta - totalNominal);
+    }
 
     return c.json({
       status: true,

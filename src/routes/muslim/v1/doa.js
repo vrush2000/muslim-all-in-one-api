@@ -1,5 +1,6 @@
 import { Hono } from 'hono';
 import { getDoa } from '../../../utils/jsonHandler.js';
+import { semanticSearch } from '../../../utils/semanticSearch.js';
 
 const doa = new Hono();
 
@@ -28,9 +29,10 @@ doa.get('/find', async (c) => {
       const allDoa = await getDoa();
       if (!allDoa) return c.json({ status: false, message: 'Daftar doa tidak tersedia.', data: [] }, 404);
 
-      const queryLower = q.toLowerCase();
-      const data = allDoa.filter(d => d.judul.toLowerCase().includes(queryLower))
-                        .sort((a, b) => a.judul.localeCompare(b.judul));
+      const data = semanticSearch(allDoa, q, {
+        fields: ['judul', 'indo'],
+        boostFields: ['judul']
+      });
 
       if (data.length === 0) {
         return c.json({ 

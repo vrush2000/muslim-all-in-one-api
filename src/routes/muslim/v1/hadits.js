@@ -1,5 +1,6 @@
 import { Hono } from 'hono';
 import { getHaditsArbain, getLocalHadits } from '../../../utils/jsonHandler.js';
+import { semanticSearch } from '../../../utils/semanticSearch.js';
 
 const hadits = new Hono();
 
@@ -176,11 +177,10 @@ hadits.get('/find', async (c) => {
         }, 404);
       }
 
-      const queryLower = q.toLowerCase();
-      const results = allArbain.filter(r => 
-        (r.judul && r.judul.toLowerCase().includes(queryLower)) || 
-        (r.indo && r.indo.toLowerCase().includes(queryLower))
-      );
+      const results = semanticSearch(allArbain, q, {
+        fields: ['judul', 'indo'],
+        boostFields: ['judul']
+      });
 
       if (results.length === 0) {
         return c.json({ 
@@ -220,11 +220,11 @@ hadits.get('/find', async (c) => {
       }
 
       // Cari secara manual di array
-      const searchTerms = q.toLowerCase().split(' ');
-      const results = allHadits.filter(h => {
-        const text = (h.id || '').toLowerCase(); // Field 'id' berisi terjemahan Indo
-        return searchTerms.every(term => text.includes(term));
-      }).slice(0, 50);
+      const results = semanticSearch(allHadits, q, {
+        fields: ['id'],
+        boostFields: [],
+        limit: 50
+      });
 
       if (results.length === 0) {
         return c.json({
