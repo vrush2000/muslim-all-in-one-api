@@ -342,6 +342,8 @@ export const Landing = ({ sejarah }) => {
                         <img 
                           src={item.image_url || 'https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?auto=format&fit=crop&q=80&w=800'} 
                           alt={item.peristiwa}
+                          loading={index === 0 ? 'eager' : 'lazy'}
+                          fetchpriority={index === 0 ? 'high' : 'auto'}
                           class="object-cover w-full h-full transition-transform duration-700 group-hover:scale-110"
                         />
                         <div class="absolute inset-0 bg-gradient-to-t to-transparent opacity-60 from-slate-900/60"></div>

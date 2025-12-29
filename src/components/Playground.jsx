@@ -114,7 +114,7 @@ export const Playground = ({ baseUrl }) => {
                   <span class="font-medium text-emerald-500 animate-pulse">Memuat data...</span>
                 </div>
               </div>
-              <div id="json-viewer-container" class="flex-grow w-full h-full"></div>
+              <div id="json-viewer-container" class="flex-grow w-full h-full min-h-[400px]"></div>
             </div>
             <div class="px-6 py-3 bg-slate-800 border-t border-slate-700 flex justify-between items-center text-[10px] text-slate-500 font-mono shrink-0">
               <span id="response-time">Time: 0ms</span>
@@ -191,22 +191,29 @@ export const Playground = ({ baseUrl }) => {
         let editor = null;
         
         // Initialize JSONEditor
-        const container = document.getElementById('json-viewer-container');
-        const options = {
-          mode: 'view',
-          mainMenuBar: false,
-          navigationBar: false,
-          statusBar: false,
-          onEditable: function (node) {
-            return false;
+        function initEditor() {
+          const container = document.getElementById('json-viewer-container');
+          const options = {
+            mode: 'view',
+            mainMenuBar: false,
+            navigationBar: false,
+            statusBar: false,
+            onEditable: function (node) {
+              return false;
+            }
+          };
+          
+          if (typeof JSONEditor !== 'undefined') {
+            editor = new JSONEditor(container, options);
+            editor.set({ message: "Response akan muncul di sini..." });
+            editor.expandAll();
+          } else {
+            // Wait for script to load if it's deferred
+            setTimeout(initEditor, 100);
           }
-        };
-        
-        if (typeof JSONEditor !== 'undefined') {
-          editor = new JSONEditor(container, options);
-          editor.set({ message: "Response akan muncul di sini..." });
-          editor.expandAll();
         }
+        
+        initEditor();
 
         const endpoints = {
           quran: [
@@ -410,6 +417,12 @@ export const Playground = ({ baseUrl }) => {
           const responseTime = document.getElementById('response-time');
           const responseSize = document.getElementById('response-size');
           
+          if (!editor) {
+            // If editor is not ready, wait a bit
+            setTimeout(window.sendRequest, 500);
+            return;
+          }
+          
           loader.classList.remove('hidden');
           const startTime = performance.now();
 
@@ -478,8 +491,6 @@ export const Playground = ({ baseUrl }) => {
           }
         });
       ` }} />
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jsoneditor/9.10.2/jsoneditor.min.js"></script>
-      <link href="https://cdnjs.cloudflare.com/ajax/libs/jsoneditor/9.10.2/jsoneditor.min.css" rel="stylesheet" type="text/css" />
     </div>
   )
 }

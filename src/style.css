@@ -15,4 +15,124 @@
   .glass {
     @apply bg-white/70 backdrop-blur-md border-b border-black/5;
   }
+
+  #mobile-menu {
+    transition: all 0.3s ease-in-out;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+  }
+
+  #mobile-menu.open {
+    max-height: 800px;
+    opacity: 1;
+    padding: 1rem 0;
+  }
+
+  /* Custom Scrollbar */
+  .custom-scrollbar::-webkit-scrollbar,
+  #modal-json-editor .jsoneditor-outer::-webkit-scrollbar,
+  #modal-json-editor .jsoneditor-tree::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track,
+  #modal-json-editor .jsoneditor-outer::-webkit-scrollbar-track,
+  #modal-json-editor .jsoneditor-tree::-webkit-scrollbar-track {
+    background: #0f172a;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb,
+  #modal-json-editor .jsoneditor-outer::-webkit-scrollbar-thumb,
+  #modal-json-editor .jsoneditor-tree::-webkit-scrollbar-thumb {
+    background: #334155;
+    border-radius: 4px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover,
+  #modal-json-editor .jsoneditor-outer::-webkit-scrollbar-thumb:hover,
+  #modal-json-editor .jsoneditor-tree::-webkit-scrollbar-thumb:hover {
+    background: #475569;
+  }
+}
+
+@layer utilities {
+  pre {
+    background: #1e293b;
+    color: #f8fafc;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    overflow-x: auto;
+  }
+
+  code {
+    font-family: var(--font-mono);
+  }
+
+  .font-mono {
+    font-family: var(--font-mono);
+  }
+
+  /* JSONEditor Custom Style for Modal */
+  #modal-json-editor {
+    border: none !important;
+    height: 100% !important;
+    width: 100% !important;
+  }
+  #modal-json-editor .jsoneditor {
+    border: none !important;
+  }
+  #modal-json-editor .jsoneditor-menu {
+    background-color: #1e293b !important;
+    border-bottom: 1px solid #334155 !important;
+  }
+  #modal-json-editor .jsoneditor-navigation-bar {
+    background-color: #1e293b !important;
+    border-bottom: 1px solid #334155 !important;
+  }
+  #modal-json-editor .jsoneditor-outer {
+    background-color: #0f172a !important;
+    overflow: auto !important;
+    position: relative !important;
+  }
+  #modal-json-editor .jsoneditor-tree {
+    background-color: #0f172a !important;
+    min-width: 100% !important;
+  }
+  #modal-json-editor .jsoneditor-tree-inner {
+    min-width: max-content !important;
+    padding-bottom: 50px !important;
+  }
+  #modal-json-editor .jsoneditor-content-wrapper {
+    overflow: visible !important;
+  }
+  #modal-json-editor .jsoneditor-field,
+  #modal-json-editor .jsoneditor-value {
+    white-space: nowrap !important;
+  }
+  #modal-json-editor .jsoneditor-separator {
+    background-color: transparent !important;
+  }
+  #modal-json-editor .jsoneditor-values {
+    color: #10b981 !important;
+  }
+  #modal-json-editor .jsoneditor-readonly {
+    color: #94a3b8 !important;
+  }
+  #modal-json-editor .jsoneditor-string {
+    color: #10b981 !important;
+  }
+  #modal-json-editor .jsoneditor-number {
+    color: #3b82f6 !important;
+  }
+  #modal-json-editor .jsoneditor-boolean {
+    color: #f59e0b !important;
+  }
+  #modal-json-editor .jsoneditor-null {
+    color: #ef4444 !important;
+  }
+  #modal-json-editor .jsoneditor-field {
+    color: #e2e8f0 !important;
+  }
 }

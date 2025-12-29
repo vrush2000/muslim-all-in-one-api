@@ -1,19 +1,7 @@
 /** @jsx jsx */
 import { jsx } from "hono/jsx";
 import { Search } from "./Search.jsx";
-import fs from "node:fs";
-import path from "node:path";
-
-// Read compiled CSS once at startup
-let compiledCss = "";
-try {
-  const cssPath = path.resolve(process.cwd(), "src/compiled.css");
-  if (fs.existsSync(cssPath)) {
-    compiledCss = fs.readFileSync(cssPath, "utf-8");
-  }
-} catch (e) {
-  console.error("Failed to load compiled CSS:", e);
-}
+import compiledCss from "../compiled.css";
 
 export const Layout = ({ children, title }) => {
   return (
@@ -22,6 +10,9 @@ export const Layout = ({ children, title }) => {
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>{title}</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link rel="preconnect" href="https://cdn.jsdelivr.net" />
         <link
           rel="icon"
           href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23059669%22/><path d=%22M30 35v40c10-5 20-5 20 0V35c0-5-10-5-20 0zM70 35v40c-10-5-20-5-20 0V35c0-5 10-5 20 0z%22 fill=%22white%22/></svg>"
@@ -34,155 +25,29 @@ export const Layout = ({ children, title }) => {
         <link
           href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
           rel="stylesheet"
+          media="print"
+          onload="this.media='all'"
         />
+        <noscript>
+          <link
+            href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+            rel="stylesheet"
+          />
+        </noscript>
         <link
           rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/jsoneditor@9.10.0/dist/jsoneditor.min.css"
+          media="print"
+          onload="this.media='all'"
         />
-        <script src="https://cdn.jsdelivr.net/npm/jsoneditor@9.10.0/dist/jsoneditor.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/jsoneditor@9.10.0/dist/jsoneditor.min.js" defer></script>
         {process.env.NODE_ENV === "development" && (
           <script type="module" src="/@vite/client"></script>
         )}
-        <style>{`
-          body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-          }
-          .font-mono {
-            font-family: 'JetBrains Mono', monospace;
-          }
-          .glass {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-          }
-          #mobile-menu {
-            transition: all 0.3s ease-in-out;
-            max-height: 0;
-            overflow: hidden;
-            opacity: 0;
-          }
-          #mobile-menu.open {
-            max-height: 800px;
-            opacity: 1;
-            padding: 1rem 0;
-          }
-          pre {
-            background: #1e293b;
-            color: #f8fafc;
-            padding: 1rem;
-            border-radius: 0.5rem;
-            overflow-x: auto;
-          }
-          code {
-            font-family: 'JetBrains Mono', monospace;
-          }
-
-          .custom-scrollbar::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
-          }
-          .custom-scrollbar::-webkit-scrollbar-track {
-            background: transparent;
-          }
-          .custom-scrollbar::-webkit-scrollbar-thumb {
-            background: #cbd5e1;
-            border-radius: 4px;
-          }
-          .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-            background: #94a3b8;
-          }
-
-          /* JSONEditor Custom Style for Modal */
-          #modal-json-editor {
-            border: none !important;
-            height: 100% !important;
-            width: 100% !important;
-          }
-          #modal-json-editor .jsoneditor {
-            border: none !important;
-          }
-          #modal-json-editor .jsoneditor-menu {
-            background-color: #1e293b !important;
-            border-bottom: 1px solid #334155 !important;
-          }
-          #modal-json-editor .jsoneditor-navigation-bar {
-            background-color: #1e293b !important;
-            border-bottom: 1px solid #334155 !important;
-          }
-          #modal-json-editor .jsoneditor-outer {
-            background-color: #0f172a !important;
-            overflow: auto !important;
-            position: relative !important;
-          }
-          #modal-json-editor .jsoneditor-tree {
-            background-color: #0f172a !important;
-            min-width: 100% !important;
-          }
-          #modal-json-editor .jsoneditor-tree-inner {
-            min-width: max-content !important;
-            padding-bottom: 50px !important;
-          }
-          #modal-json-editor .jsoneditor-content-wrapper {
-            overflow: visible !important;
-          }
-          #modal-json-editor .jsoneditor-field,
-          #modal-json-editor .jsoneditor-value {
-            white-space: nowrap !important;
-          }
-          #modal-json-editor .jsoneditor-separator {
-            background-color: transparent !important;
-          }
-          #modal-json-editor .jsoneditor-values {
-            color: #10b981 !important;
-          }
-          #modal-json-editor .jsoneditor-readonly {
-            color: #94a3b8 !important;
-          }
-          #modal-json-editor .jsoneditor-string {
-            color: #10b981 !important;
-          }
-          #modal-json-editor .jsoneditor-number {
-            color: #3b82f6 !important;
-          }
-          #modal-json-editor .jsoneditor-boolean {
-            color: #f59e0b !important;
-          }
-          #modal-json-editor .jsoneditor-null {
-            color: #ef4444 !important;
-          }
-          #modal-json-editor .jsoneditor-field {
-            color: #e2e8f0 !important;
-          }
-
-          /* Custom Scrollbar for both wrapper and JSONEditor internals */
-          .custom-scrollbar::-webkit-scrollbar,
-          #modal-json-editor .jsoneditor-outer::-webkit-scrollbar,
-          #modal-json-editor .jsoneditor-tree::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
-          }
-          .custom-scrollbar::-webkit-scrollbar-track,
-          #modal-json-editor .jsoneditor-outer::-webkit-scrollbar-track,
-          #modal-json-editor .jsoneditor-tree::-webkit-scrollbar-track {
-            background: #0f172a;
-          }
-          .custom-scrollbar::-webkit-scrollbar-thumb,
-          #modal-json-editor .jsoneditor-outer::-webkit-scrollbar-thumb,
-          #modal-json-editor .jsoneditor-tree::-webkit-scrollbar-thumb {
-            background: #334155;
-            border-radius: 4px;
-          }
-          .custom-scrollbar::-webkit-scrollbar-thumb:hover,
-          #modal-json-editor .jsoneditor-outer::-webkit-scrollbar-thumb:hover,
-          #modal-json-editor .jsoneditor-tree::-webkit-scrollbar-thumb:hover {
-            background: #475569;
-          }
-        `}</style>
       </head>
       <body class="flex flex-col min-h-screen bg-slate-50 text-slate-900">
         <Search />
-        <header class="sticky top-0 z-50 border-b glass border-slate-200">
+        <header class="sticky top-0 z-50 bg-white border-b glass border-slate-200">
           <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
               <a
@@ -551,7 +416,8 @@ export const Layout = ({ children, title }) => {
                 <div class="md:hidden">
                   <button
                     type="button"
-                    onclick="document.getElementById('mobile-menu').classList.toggle('open')"
+                    aria-label="Toggle Menu"
+                    onclick="const menu = document.getElementById('mobile-menu'); menu.classList.contains('hidden') ? menu.classList.remove('hidden') : menu.classList.add('hidden')"
                     class="p-2 rounded-lg transition-all text-slate-600 hover:text-emerald-600 hover:bg-slate-100"
                   >
                     <svg
@@ -574,10 +440,11 @@ export const Layout = ({ children, title }) => {
             </div>
 
             {/* Mobile Menu Content */}
-            <div id="mobile-menu" class="border-t md:hidden border-slate-100">
+            <div id="mobile-menu" class="hidden border-t md:hidden border-slate-100">
               <nav class="flex flex-col px-2 pb-4 space-y-1">
                 <a
                   href="/"
+                  onclick="document.getElementById('mobile-menu').classList.add('hidden')"
                   class="px-3 py-2 font-medium rounded-lg transition-all text-slate-600 hover:text-emerald-600 hover:bg-emerald-50"
                 >
                   Home
@@ -588,6 +455,7 @@ export const Layout = ({ children, title }) => {
                 </div>
                 <a
                   href="/docs"
+                  onclick="document.getElementById('mobile-menu').classList.add('hidden')"
                   class="flex gap-2 items-center px-3 py-2 font-medium rounded-lg transition-all text-slate-600 hover:text-emerald-600 hover:bg-emerald-50"
                 >
                   <div class="w-1.5 h-1.5 bg-emerald-500 rounded-full"></div>{" "}
@@ -595,6 +463,7 @@ export const Layout = ({ children, title }) => {
                 </a>
                 <a
                   href="/other"
+                  onclick="document.getElementById('mobile-menu').classList.add('hidden')"
                   class="flex gap-2 items-center px-3 py-2 font-medium rounded-lg transition-all text-slate-600 hover:text-emerald-600 hover:bg-emerald-50"
                 >
                   <div class="w-1.5 h-1.5 bg-blue-500 rounded-full"></div> Other
@@ -602,6 +471,7 @@ export const Layout = ({ children, title }) => {
                 </a>
                 <a
                   href="/status"
+                  onclick="document.getElementById('mobile-menu').classList.add('hidden')"
                   class="flex gap-2 items-center px-3 py-2 font-medium rounded-lg transition-all text-slate-600 hover:text-emerald-600 hover:bg-emerald-50"
                 >
                   <div class="w-1.5 h-1.5 bg-amber-500 rounded-full"></div>{" "}
@@ -614,6 +484,7 @@ export const Layout = ({ children, title }) => {
                 <a
                   href="https://quran.kemenag.go.id/"
                   target="_blank"
+                  onclick="document.getElementById('mobile-menu').classList.add('hidden')"
                   class="px-3 py-2 font-medium rounded-lg transition-all text-slate-600 hover:text-emerald-600 hover:bg-emerald-50"
                 >
                   Quran Kemenag
@@ -621,6 +492,7 @@ export const Layout = ({ children, title }) => {
                 <a
                   href="https://github.com/vrush2000/muslim-all-in-one-api"
                   target="_blank"
+                  onclick="document.getElementById('mobile-menu').classList.add('hidden')"
                   class="px-3 py-2 font-medium rounded-lg transition-all text-slate-600 hover:text-emerald-600 hover:bg-emerald-50"
                 >
                   GitHub Repository
@@ -628,6 +500,7 @@ export const Layout = ({ children, title }) => {
 
                 <a
                   href="/playground"
+                  onclick="document.getElementById('mobile-menu').classList.add('hidden')"
                   class="px-3 py-2.5 mt-4 font-bold text-center text-white bg-emerald-600 rounded-xl shadow-lg transition-all shadow-emerald-100"
                 >
                   Open Playground
