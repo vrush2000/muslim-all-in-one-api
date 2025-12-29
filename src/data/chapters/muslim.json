@@ -1,0 +1,282 @@
+[
+  {
+    "id": 1,
+    "name": "Iman",
+    "range": "1 - 222"
+  },
+  {
+    "id": 2,
+    "name": "Bersuci",
+    "range": "223 - 292"
+  },
+  {
+    "id": 3,
+    "name": "Haid",
+    "range": "293 - 376"
+  },
+  {
+    "id": 4,
+    "name": "Shalat",
+    "range": "377 - 664"
+  },
+  {
+    "id": 5,
+    "name": "Masjid dan Tempat Shalat",
+    "range": "665 - 836"
+  },
+  {
+    "id": 6,
+    "name": "Shalat Musafir dan Qashar",
+    "range": "837 - 1118"
+  },
+  {
+    "id": 7,
+    "name": "Keutamaan Al-Qur'an",
+    "range": "1119 - 1358"
+  },
+  {
+    "id": 8,
+    "name": "Jumat",
+    "range": "1359 - 1450"
+  },
+  {
+    "id": 9,
+    "name": "Shalat Dua Hari Raya",
+    "range": "1451 - 1473"
+  },
+  {
+    "id": 10,
+    "name": "Shalat Istisqa",
+    "range": "1474 - 1490"
+  },
+  {
+    "id": 11,
+    "name": "Gerhana",
+    "range": "1491 - 1524"
+  },
+  {
+    "id": 12,
+    "name": "Jenazah",
+    "range": "1525 - 1622"
+  },
+  {
+    "id": 13,
+    "name": "Zakat",
+    "range": "1623 - 1829"
+  },
+  {
+    "id": 14,
+    "name": "Puasa",
+    "range": "1830 - 2046"
+  },
+  {
+    "id": 15,
+    "name": "Itikaf",
+    "range": "2047 - 2059"
+  },
+  {
+    "id": 16,
+    "name": "Haji",
+    "range": "2060 - 2415"
+  },
+  {
+    "id": 17,
+    "name": "Nikah",
+    "range": "2416 - 2580"
+  },
+  {
+    "id": 18,
+    "name": "Persusuan",
+    "range": "2581 - 2646"
+  },
+  {
+    "id": 19,
+    "name": "Talak",
+    "range": "2647 - 2703"
+  },
+  {
+    "id": 20,
+    "name": "Lian",
+    "range": "2704 - 2719"
+  },
+  {
+    "id": 21,
+    "name": "Memerdekakan Budak",
+    "range": "2720 - 2741"
+  },
+  {
+    "id": 22,
+    "name": "Jual Beli",
+    "range": "2742 - 2854"
+  },
+  {
+    "id": 23,
+    "name": "Musaqah",
+    "range": "2855 - 2964"
+  },
+  {
+    "id": 24,
+    "name": "Warisan",
+    "range": "2965 - 2977"
+  },
+  {
+    "id": 25,
+    "name": "Hibah",
+    "range": "2978 - 2998"
+  },
+  {
+    "id": 26,
+    "name": "Wasiat",
+    "range": "2999 - 3023"
+  },
+  {
+    "id": 27,
+    "name": "Nazar",
+    "range": "3024 - 3032"
+  },
+  {
+    "id": 28,
+    "name": "Sumpah",
+    "range": "3033 - 3074"
+  },
+  {
+    "id": 29,
+    "name": "Al-Qasamah, Muharibin, Qishash, dan Diyat",
+    "range": "3075 - 3135"
+  },
+  {
+    "id": 30,
+    "name": "Hudud",
+    "range": "3136 - 3221"
+  },
+  {
+    "id": 31,
+    "name": "Peradilan",
+    "range": "3222 - 3253"
+  },
+  {
+    "id": 32,
+    "name": "Barang Temuan",
+    "range": "3254 - 3269"
+  },
+  {
+    "id": 33,
+    "name": "Jihad dan Siyar",
+    "range": "3270 - 3444"
+  },
+  {
+    "id": 34,
+    "name": "Kepemimpinan",
+    "range": "3445 - 3591"
+  },
+  {
+    "id": 35,
+    "name": "Berburu, Sembelihan, dan Hewan yang Dimakan",
+    "range": "3592 - 3645"
+  },
+  {
+    "id": 36,
+    "name": "Kurban",
+    "range": "3646 - 3682"
+  },
+  {
+    "id": 37,
+    "name": "Minuman",
+    "range": "3683 - 3796"
+  },
+  {
+    "id": 38,
+    "name": "Pakaian dan Perhiasan",
+    "range": "3797 - 3932"
+  },
+  {
+    "id": 39,
+    "name": "Adab",
+    "range": "3933 - 3982"
+  },
+  {
+    "id": 40,
+    "name": "Salam",
+    "range": "3983 - 4122"
+  },
+  {
+    "id": 41,
+    "name": "Kata-kata Santun",
+    "range": "4123 - 4138"
+  },
+  {
+    "id": 42,
+    "name": "Syair",
+    "range": "4139 - 4148"
+  },
+  {
+    "id": 43,
+    "name": "Mimpi",
+    "range": "4149 - 4171"
+  },
+  {
+    "id": 44,
+    "name": "Keutamaan",
+    "range": "4172 - 4375"
+  },
+  {
+    "id": 45,
+    "name": "Keutamaan Sahabat",
+    "range": "4376 - 4648"
+  },
+  {
+    "id": 46,
+    "name": "Kebajikan, Silaturahmi, dan Adab",
+    "range": "4649 - 4782"
+  },
+  {
+    "id": 47,
+    "name": "Takdir",
+    "range": "4783 - 4815"
+  },
+  {
+    "id": 48,
+    "name": "Ilmu",
+    "range": "4816 - 4828"
+  },
+  {
+    "id": 49,
+    "name": "Zikir, Doa, Tobat, dan Istighfar",
+    "range": "4829 - 4921"
+  },
+  {
+    "id": 50,
+    "name": "Tobat",
+    "range": "4922 - 4976"
+  },
+  {
+    "id": 51,
+    "name": "Sifat Orang Munafik dan Hukum Mereka",
+    "range": "4977 - 5011"
+  },
+  {
+    "id": 52,
+    "name": "Sifat Kiamat, Surga, dan Neraka",
+    "range": "5012 - 5103"
+  },
+  {
+    "id": 53,
+    "name": "Surga, Kenikmatan, dan Penghuninya",
+    "range": "5104 - 5188"
+  },
+  {
+    "id": 54,
+    "name": "Fitnah dan Tanda-tanda Hari Kiamat",
+    "range": "5189 - 5309"
+  },
+  {
+    "id": 55,
+    "name": "Zuhud dan Kelembutan Hati",
+    "range": "5310 - 5347"
+  },
+  {
+    "id": 56,
+    "name": "Tafsir",
+    "range": "5348 - 5362"
+  }
+]

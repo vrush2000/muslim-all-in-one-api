@@ -174,3 +174,7 @@ export async function updateAnalytics(type, id) {
 export async function getLocalHadits(bookName) {
   return await readJson(`hadits/${bookName}.json`);
 }
+
+export async function getHaditsChapters(bookName) {
+  return await readJson(`chapters/${bookName}.json`);
+}

@@ -1,5 +1,5 @@
 import { Hono } from 'hono';
-import { getHaditsArbain, getLocalHadits } from '../../../utils/jsonHandler.js';
+import { getHaditsArbain, getLocalHadits, getHaditsChapters } from '../../../utils/jsonHandler.js';
 import { semanticSearch } from '../../../utils/semanticSearch.js';
 
 const hadits = new Hono();
@@ -73,24 +73,72 @@ hadits.get('/books', (c) => {
   });
 });
 
-// Specific Hadith Book (Local) - List first 50 hadiths
+// Chapters of a Specific Book
+hadits.get('/books/:name/chapters', async (c) => {
+  try {
+    const name = c.req.param('name').toLowerCase();
+    const targetBookFile = bookFileMapping[name];
+    
+    if (!targetBookFile) {
+      return c.json({ status: false, message: `Kitab ${name} tidak ditemukan.` }, 404);
+    }
+
+    const chapters = await getHaditsChapters(targetBookFile);
+    if (!chapters) {
+      return c.json({ 
+        status: false, 
+        message: `Chapter untuk kitab ${name} belum tersedia.`,
+        data: [] 
+      }, 404);
+    }
+
+    return c.json({
+      status: true,
+      message: `Berhasil mendapatkan daftar chapter untuk kitab ${bookDisplayNames[targetBookFile]}.`,
+      data: chapters
+    });
+  } catch (error) {
+    return c.json({ status: false, message: 'Gagal mendapatkan daftar chapter: ' + error.message }, 500);
+  }
+});
+
+// Specific Hadith Book (Local) - List hadiths with optional chapter filtering
 hadits.get('/books/:name', async (c) => {
   try {
     const name = c.req.param('name').toLowerCase();
     const page = parseInt(c.req.query('page') || 1);
+    const chapterId = c.req.query('chapter');
     const limit = 50;
-    const offset = (page - 1) * limit;
-
+    
     const targetBookFile = bookFileMapping[name];
     if (!targetBookFile) {
       return c.json({ status: false, message: `Kitab ${name} tidak ditemukan.` }, 404);
     }
 
-    const allHadits = await getLocalHadits(targetBookFile);
+    let allHadits = await getLocalHadits(targetBookFile);
     if (!allHadits) {
       return c.json({ status: false, message: `Gagal memuat data kitab ${name}.` }, 500);
     }
 
+    let message = `Berhasil mendapatkan daftar hadits dari kitab ${bookDisplayNames[targetBookFile]}`;
+    let filteredByChapter = null;
+
+    // Filter by chapter if provided
+    if (chapterId) {
+      const chapters = await getHaditsChapters(targetBookFile);
+      const chapter = chapters ? chapters.find(ch => ch.id == chapterId) : null;
+      
+      if (chapter) {
+        const [start, end] = chapter.range.split(' - ').map(n => parseInt(n));
+        allHadits = allHadits.filter(h => h.number >= start && h.number <= end);
+        message += ` - Chapter ${chapter.name}`;
+        filteredByChapter = chapter.name;
+      } else {
+        return c.json({ status: false, message: `Chapter ${chapterId} tidak ditemukan untuk kitab ${name}.` }, 404);
+      }
+    }
+
+    const offset = (page - 1) * limit;
     const displayName = bookDisplayNames[targetBookFile] || name;
     const paginatedData = allHadits.slice(offset, offset + limit).map(h => ({
       number: h.number,
@@ -101,9 +149,10 @@ hadits.get('/books/:name', async (c) => {
 
     return c.json({
       status: true,
-      message: `Berhasil mendapatkan daftar hadits dari kitab ${displayName} (Halaman ${page}).`,
+      message: `${message} (Halaman ${page}).`,
       data: {
         book: displayName,
+        chapter: filteredByChapter,
         total: allHadits.length,
         page,
         limit,

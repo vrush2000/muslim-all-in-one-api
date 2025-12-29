@@ -270,7 +270,11 @@ export const Playground = ({ baseUrl }) => {
             { id: 'hadits-list', path: '/hadits', name: 'Daftar Hadits Arbain', params: [] },
             { id: 'hadits-detail', path: '/hadits', name: 'Detail Hadits Arbain', params: [{ name: 'nomor', placeholder: '1-42', type: 'number', default: '1', hint: 'Nomor Hadits (1-42)' }] },
             { id: 'hadits-books', path: '/hadits/books', name: 'Daftar Kitab Hadits', params: [] },
-            { id: 'hadits-by-book', path: '/hadits/books/abu-daud', name: 'Hadits by Kitab', params: [{ name: 'range', placeholder: '1-10', type: 'text', default: '1-10', hint: 'Contoh: 1-10 (Hadits nomor 1 sampai 10)' }] },
+            { id: 'hadits-chapters', path: '/hadits/books/bukhari/chapters', name: 'Daftar Chapter (Bukhari/Muslim)', params: [] },
+            { id: 'hadits-by-book', path: '/hadits/books/bukhari', name: 'Hadits by Kitab', params: [
+              { name: 'chapter', placeholder: '1', type: 'number', default: '1', hint: 'Filter berdasarkan ID Chapter' },
+              { name: 'page', placeholder: '1', type: 'number', default: '1', hint: 'Halaman (limit 50 per halaman)' }
+            ] },
             { id: 'hadits-cari', path: '/hadits/find', name: 'Cari Hadits (Query)', params: [{ name: 'query', placeholder: 'puasa', type: 'text', default: 'puasa' }] },
           ],
           murottal: [
