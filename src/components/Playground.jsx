@@ -352,6 +352,7 @@ export const Playground = ({ baseUrl }) => {
                   ] 
                 },
                 { name: 'chapter', placeholder: '1', type: 'number', hint: 'ID Chapter (opsional)' },
+                { name: 'range', placeholder: '1-6', type: 'text', hint: 'Range Hadits (Contoh: 1-6)' },
                 { name: 'page', placeholder: '1', type: 'number', default: '1', hint: 'Halaman (50 per hal)' }
               ] 
             },

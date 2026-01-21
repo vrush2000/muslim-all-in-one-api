@@ -105,7 +105,7 @@ export const Search = () => {
                         '</div>' +
                         '<div>' +
                           '<div class="text-[9px] font-bold text-emerald-600 uppercase tracking-wider">' + item.category + '</div>' +
-                          '<div class="text-xs font-semibold text-slate-900">' + item.title + '</div>' +
+                          '<div class="text-xs font-semibold text-slate-900 line-clamp-2 overflow-hidden">' + item.title + '</div>' +
                         '</div>' +
                       '</div>' +
                       '<div class="text-slate-300 group-hover:text-emerald-500">' +

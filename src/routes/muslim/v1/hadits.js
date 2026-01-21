@@ -6,6 +6,7 @@ const hadits = new Hono();
 
 // Mapping ID buku ke file lokal
 const bookFileMapping = {
+  'arbain': 'arbain',
   'bukhari': 'bukhari',
   'muslim': 'muslim',
   'abu-daud': 'abu-daud',
@@ -39,7 +40,8 @@ const bookDisplayNames = {
   'mustadrak': 'Al-Mustadrak',
   'syafii': 'Musnad Syafii',
   'ibnu-khuzaimah': 'Sahih Ibnu Khuzaimah',
-  'daruquthni': 'Sunan Daruquthni'
+  'daruquthni': 'Sunan Daruquthni',
+  'arbain': 'Hadits Arbain Nawawi'
 };
 
 const bookCounts = {
