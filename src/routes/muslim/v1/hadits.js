@@ -135,7 +135,8 @@ hadits.get('/books/:name', async (c) => {
     const name = c.req.param('name').toLowerCase();
     const page = parseInt(c.req.query('page') || 1);
     const chapterId = c.req.query('chapter');
-    const limit = 50;
+    const range = c.req.query('range');
+    const limit = range ? 1000 : 50; // Default limit for range is larger
     
     const targetBookFile = bookFileMapping[name];
     if (!targetBookFile) {
@@ -148,10 +149,25 @@ hadits.get('/books/:name', async (c) => {
     }
 
     let message = `Berhasil mendapatkan daftar hadits dari kitab ${bookDisplayNames[targetBookFile]}`;
-    let filteredByChapter = null;
+    let filteredInfo = null;
 
-    // Filter by chapter if provided
-    if (chapterId) {
+    // Filter by range if provided (e.g., range=1-6)
+    if (range) {
+      const rangeParts = range.split('-');
+      if (rangeParts.length === 2) {
+        const start = parseInt(rangeParts[0]);
+        const end = parseInt(rangeParts[1]);
+        
+        if (!isNaN(start) && !isNaN(end)) {
+          allHadits = allHadits.filter(h => h.number >= start && h.number <= end);
+          message += ` - Range ${start} sampai ${end}`;
+          filteredInfo = `Range ${start}-${end}`;
+        }
+      }
+    }
+
+    // Filter by chapter if provided (only if range is not provided or to further filter)
+    if (chapterId && !range) {
       const chapters = await getHaditsChapters(targetBookFile);
       const chapter = chapters ? chapters.find(ch => ch.id == chapterId) : null;
       
@@ -159,15 +175,15 @@ hadits.get('/books/:name', async (c) => {
         const [start, end] = chapter.range.split(' - ').map(n => parseInt(n));
         allHadits = allHadits.filter(h => h.number >= start && h.number <= end);
         message += ` - Chapter ${chapter.name}`;
-        filteredByChapter = chapter.name;
+        filteredInfo = chapter.name;
       } else {
         return c.json({ status: false, message: `Chapter ${chapterId} tidak ditemukan untuk kitab ${name}.` }, 404);
       }
     }
 
-    const offset = (page - 1) * limit;
+    const offset = range ? 0 : (page - 1) * limit; // If range, start from beginning
     const displayName = bookDisplayNames[targetBookFile] || name;
-    const paginatedData = allHadits.slice(offset, offset + limit).map(h => ({
+    const paginatedData = allHadits.slice(offset, range ? allHadits.length : offset + limit).map(h => ({
       number: h.number,
       arab: h.arab,
       id: h.id,
@@ -176,13 +192,13 @@ hadits.get('/books/:name', async (c) => {
 
     return c.json({
       status: true,
-      message: `${message} (Halaman ${page}).`,
+      message: `${message}${range ? '' : ` (Halaman ${page})`}.`,
       data: {
         book: displayName,
-        chapter: filteredByChapter,
+        chapter: filteredInfo,
         total: allHadits.length,
-        page,
-        limit,
+        page: range ? 1 : page,
+        limit: range ? allHadits.length : limit,
         hadiths: paginatedData
       }
     });

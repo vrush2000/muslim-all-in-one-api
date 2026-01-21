@@ -56,29 +56,29 @@ v1.get('/', (c) => {
             pattern: "/v1/surah",
           },
           infoSurah: {
-            pattern: "/v1/surah?surahId={surahId}",
+            pattern: "/v1/surah?surahId={surahId|id}",
             contoh: "/v1/surah?surahId=114",
           },
         },
         ayah: {
           range: {
-            pattern: "/v1/ayah/range?surahId={surahId}&start={start}&end={end}",
+            pattern: "/v1/ayah/range?surahId={surahId|id}&start={start}&end={end}",
             contoh: "/v1/ayah/range?surahId=1&start=1&end=7",
           },
           spesifikSurah: {
-            pattern: "/v1/ayah/surah?surahId={surahId}",
+            pattern: "/v1/ayah/surah?surahId={surahId|id}",
             contoh: "/v1/ayah/surah?surahId=1",
           },
           spesifikJuz: {
-            pattern: "/v1/ayah/juz?juzId={juzId}",
+            pattern: "/v1/ayah/juz?juzId={juzId|id}",
             contoh: "/v1/ayah/juz?juzId=30",
           },
           spesifikHalaman: {
-            pattern: "/v1/ayah/page?page={page}",
+            pattern: "/v1/ayah/page?page={page|id}",
             contoh: "/v1/ayah/page?page=604",
           },
           spesifikAyat: {
-            pattern: "/v1/ayah/specific?surahId={surahId}&ayahId={ayahId}",
+            pattern: "/v1/ayah/specific?surahId={surahId|id}&ayahId={ayahId}",
             contoh: "/v1/ayah/specific?surahId=1&ayahId=1",
           },
           cari: {
@@ -91,7 +91,7 @@ v1.get('/', (c) => {
             pattern: "/v1/juz",
           },
           spesifik: {
-            pattern: "/v1/juz?juzId={juzId}",
+            pattern: "/v1/juz?juzId={juzId|id}",
             contoh: "/v1/juz?juzId=30",
           },
         },
@@ -100,7 +100,7 @@ v1.get('/', (c) => {
             pattern: "/v1/asbab",
           },
           spesifik: {
-            pattern: "/v1/asbab?id={asbabId}",
+            pattern: "/v1/asbab?id={asbabId|id}",
             contoh: "/v1/asbab?id=1",
           },
         },
@@ -109,7 +109,7 @@ v1.get('/', (c) => {
             pattern: "/v1/asma",
           },
           spesifik: {
-            pattern: "/v1/asma?id={asmaId}",
+            pattern: "/v1/asma?id={asmaId|id}",
             contoh: "/v1/asma?id=1",
           },
         },
@@ -162,11 +162,12 @@ v1.get('/', (c) => {
         },
         tafsir: {
           semua: {
-            pattern: "/v1/tafsir",
+            pattern: "/v1/tafsir?source={kemenag|ibnu-katsir-id|ibnu-katsir-en}",
+            contoh: "/v1/tafsir?source=ibnu-katsir-id",
           },
           spesifikSurah: {
-            pattern: "/v1/tafsir?surahId={surahId}",
-            contoh: "/v1/tafsir?surahId=1",
+            pattern: "/v1/tafsir?surahId={surahId}&source={source}",
+            contoh: "/v1/tafsir?surahId=1&source=ibnu-katsir-id",
           },
         },
         theme: {
@@ -174,7 +175,7 @@ v1.get('/', (c) => {
             pattern: "/v1/theme",
           },
           spesifik: {
-            pattern: "/v1/theme?themeId={themeId}",
+            pattern: "/v1/theme?themeId={themeId|id}",
             contoh: "/v1/theme?themeId=1",
           },
         },
@@ -199,6 +200,7 @@ v1.get('/', (c) => {
         spesifikSumber: {
           pattern: "/v1/doa?source={source}",
           contoh: "/v1/doa?source=quran",
+          keterangan: "Sumber bisa berupa 'quran', 'hadits', 'harian', dll.",
         },
         cari: {
           pattern: "/v1/doa/find?query={query}",
@@ -215,12 +217,32 @@ v1.get('/', (c) => {
         },
       },
       hadits: {
-        semua: {
-          pattern: "/v1/hadits",
+        arbain: {
+          semua: {
+            pattern: "/v1/hadits",
+          },
+          spesifikNomor: {
+            pattern: "/v1/hadits?nomor={nomor}",
+            contoh: "/v1/hadits?nomor=1",
+          },
         },
-        spesifikNomor: {
-          pattern: "/v1/hadits?nomor={nomor}",
-          contoh: "/v1/hadits?nomor=1",
+        books: {
+          daftarKitab: {
+            pattern: "/v1/hadits/books",
+          },
+          daftarChapter: {
+            pattern: "/v1/hadits/books/{name}/chapters",
+            contoh: "/v1/hadits/books/bukhari/chapters",
+          },
+          isiKitab: {
+            pattern: "/v1/hadits/books/{name}?page={page}&chapter={chapterId}&range={range}",
+            contoh: "/v1/hadits/books/bukhari?range=1-10",
+            keterangan: "Parameter range (e.g. 1-100) akan mengabaikan pagination dan chapter.",
+          },
+          spesifikNomor: {
+            pattern: "/v1/hadits/books/{name}/{number}",
+            contoh: "/v1/hadits/books/bukhari/1",
+          },
         },
         cari: {
           pattern: "/v1/hadits/find?query={query}",
@@ -242,6 +264,7 @@ v1.get('/', (c) => {
         },
         fiqh: {
           pattern: "/v1/puasa/fiqh",
+          keterangan: "Mengambil 70 masalah terkait fiqh & adab puasa.",
         },
         cari: {
           pattern: "/v1/puasa/find?query={query}",
@@ -250,6 +273,7 @@ v1.get('/', (c) => {
         filterTipe: {
           pattern: "/v1/puasa/type/{type}",
           contoh: "/v1/puasa/type/mingguan",
+          keterangan: "Tipe bisa berupa 'mingguan', 'bulanan', 'tahunan'.",
         },
       },
       kemenag: {
@@ -307,17 +331,20 @@ v1.get('/', (c) => {
         },
       },
       integrity: {
-        chain: {
-          pattern: "/v1/integrity/chain",
+          chain: {
+            pattern: "/v1/integrity/chain",
+            keterangan: "Mengambil seluruh rantai hash integritas data Al-Quran.",
+          },
+          verify: {
+            pattern: "/v1/integrity/verify",
+            keterangan: "Cek cepat status integritas sistem.",
+          },
+          verifyAyah: {
+            pattern: "/v1/integrity/verify/ayah?surahId={surahId}&ayahId={ayahId}",
+            contoh: "/v1/integrity/verify/ayah?surahId=1&ayahId=1",
+            keterangan: "Verifikasi integritas ayat spesifik dengan data pembanding dari Kemenag.",
+          },
         },
-        verify: {
-          pattern: "/v1/integrity/verify",
-        },
-        verifyAyah: {
-          pattern: "/v1/integrity/verify/ayah?surahId={surahId}&ayahId={ayahId}",
-          contoh: "/v1/integrity/verify/ayah?surahId=1&ayahId=1",
-        },
-      },
     }
   });
 });
