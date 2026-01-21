@@ -1,0 +1,247 @@
+[
+  {
+    "id": 1,
+    "name": "Bersuci",
+    "range": "1 - 137"
+  },
+  {
+    "id": 2,
+    "name": "Shalat",
+    "range": "138 - 449"
+  },
+  {
+    "id": 3,
+    "name": "Jum'at",
+    "range": "450 - 559"
+  },
+  {
+    "id": 4,
+    "name": "Zakat",
+    "range": "560 - 617"
+  },
+  {
+    "id": 5,
+    "name": "Puasa",
+    "range": "618 - 736"
+  },
+  {
+    "id": 6,
+    "name": "Haji",
+    "range": "737 - 887"
+  },
+  {
+    "id": 7,
+    "name": "Jenazah",
+    "range": "888 - 999"
+  },
+  {
+    "id": 8,
+    "name": "Nikah",
+    "range": "1000 - 1064"
+  },
+  {
+    "id": 9,
+    "name": "Penyusuan",
+    "range": "1065 - 1094"
+  },
+  {
+    "id": 10,
+    "name": "Cerai dan Li'an",
+    "range": "1095 - 1125"
+  },
+  {
+    "id": 11,
+    "name": "Jual Beli",
+    "range": "1126 - 1242"
+  },
+  {
+    "id": 12,
+    "name": "Hukum-Hukum",
+    "range": "1243 - 1306"
+  },
+  {
+    "id": 13,
+    "name": "Diyat",
+    "range": "1307 - 1315"
+  },
+  {
+    "id": 14,
+    "name": "Hukum Hudud",
+    "range": "1316 - 1383"
+  },
+  {
+    "id": 15,
+    "name": "Berburu",
+    "range": "1384 - 1391"
+  },
+  {
+    "id": 16,
+    "name": "Penyembelihan",
+    "range": "1392 - 1392"
+  },
+  {
+    "id": 17,
+    "name": "Makanan",
+    "range": "1393 - 1401"
+  },
+  {
+    "id": 18,
+    "name": "Hukum-Hukum dan Faedah",
+    "range": "1402 - 1412"
+  },
+  {
+    "id": 19,
+    "name": "Hewan Kurban",
+    "range": "1413 - 1443"
+  },
+  {
+    "id": 20,
+    "name": "Nadzar dan Sumpah",
+    "range": "1444 - 1467"
+  },
+  {
+    "id": 21,
+    "name": "Ekspedisi",
+    "range": "1468 - 1543"
+  },
+  {
+    "id": 22,
+    "name": "Keutamaan Jihad",
+    "range": "1544 - 1592"
+  },
+  {
+    "id": 23,
+    "name": "Jihad",
+    "range": "1593 - 1641"
+  },
+  {
+    "id": 24,
+    "name": "Baju",
+    "range": "1642 - 1709"
+  },
+  {
+    "id": 25,
+    "name": "Makanan",
+    "range": "1710 - 1783"
+  },
+  {
+    "id": 26,
+    "name": "Minuman",
+    "range": "1784 - 1818"
+  },
+  {
+    "id": 27,
+    "name": "Berbakti dan menyambung silaturrahim",
+    "range": "1819 - 1958"
+  },
+  {
+    "id": 28,
+    "name": "Kedokteran",
+    "range": "1959 - 2015"
+  },
+  {
+    "id": 29,
+    "name": "Fara'idl",
+    "range": "2016 - 2041"
+  },
+  {
+    "id": 30,
+    "name": "Washiyat",
+    "range": "2042 - 2050"
+  },
+  {
+    "id": 31,
+    "name": "Wala' dan Hibbah (Pemberian)",
+    "range": "2051 - 2058"
+  },
+  {
+    "id": 32,
+    "name": "Qodar",
+    "range": "2059 - 2083"
+  },
+  {
+    "id": 33,
+    "name": "Fitnah",
+    "range": "2084 - 2195"
+  },
+  {
+    "id": 34,
+    "name": "Mimpi",
+    "range": "2196 - 2218"
+  },
+  {
+    "id": 35,
+    "name": "Persaksian",
+    "range": "2219 - 2225"
+  },
+  {
+    "id": 36,
+    "name": "Zuhud",
+    "range": "2226 - 2338"
+  },
+  {
+    "id": 37,
+    "name": "Sifat Kiamat, Penggugah Hati dan Waro'",
+    "range": "2339 - 2445"
+  },
+  {
+    "id": 38,
+    "name": "Sifat Surga",
+    "range": "2446 - 2495"
+  },
+  {
+    "id": 39,
+    "name": "Sifat Jahannam",
+    "range": "2496 - 2530"
+  },
+  {
+    "id": 40,
+    "name": "Iman",
+    "range": "2531 - 2568"
+  },
+  {
+    "id": 41,
+    "name": "Ilmu",
+    "range": "2569 - 2611"
+  },
+  {
+    "id": 42,
+    "name": "Meminta Izin dan Adab",
+    "range": "2612 - 2659"
+  },
+  {
+    "id": 43,
+    "name": "Adab",
+    "range": "2660 - 2785"
+  },
+  {
+    "id": 44,
+    "name": "Permisalan",
+    "range": "2786 - 2799"
+  },
+  {
+    "id": 45,
+    "name": "Keutamaan Al Qur'an",
+    "range": "2800 - 2850"
+  },
+  {
+    "id": 46,
+    "name": "Qiro'at",
+    "range": "2851 - 2873"
+  },
+  {
+    "id": 47,
+    "name": "Tafsir Al Qur'an",
+    "range": "2874 - 3291"
+  },
+  {
+    "id": 48,
+    "name": "Do'a",
+    "range": "3292 - 3537"
+  },
+  {
+    "id": 49,
+    "name": "Budi Pekerti yang Terpuji",
+    "range": "3538 - 3891"
+  }
+]

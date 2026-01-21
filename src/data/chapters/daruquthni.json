@@ -1,0 +1,137 @@
+[
+  {
+    "id": 1,
+    "name": "Thaharah (Bersuci)",
+    "range": "1 - 775"
+  },
+  {
+    "id": 2,
+    "name": "Haidl",
+    "range": "776 - 871"
+  },
+  {
+    "id": 3,
+    "name": "Shalat",
+    "range": "872 - 1559"
+  },
+  {
+    "id": 4,
+    "name": "Jum'at",
+    "range": "1560 - 1614"
+  },
+  {
+    "id": 5,
+    "name": "Witir",
+    "range": "1615 - 1692"
+  },
+  {
+    "id": 6,
+    "name": "Dua Hari Raya",
+    "range": "1693 - 1778"
+  },
+  {
+    "id": 7,
+    "name": "Meminta Hujan",
+    "range": "1779 - 1790"
+  },
+  {
+    "id": 8,
+    "name": "Jenazah",
+    "range": "1791 - 1865"
+  },
+  {
+    "id": 9,
+    "name": "Zakat",
+    "range": "1866 - 2047"
+  },
+  {
+    "id": 10,
+    "name": "Zakat Fithrah",
+    "range": "2048 - 2126"
+  },
+  {
+    "id": 11,
+    "name": "Puasa",
+    "range": "2127 - 2387"
+  },
+  {
+    "id": 12,
+    "name": "Haji",
+    "range": "2388 - 2769"
+  },
+  {
+    "id": 13,
+    "name": "Jual Beli",
+    "range": "2770 - 3067"
+  },
+  {
+    "id": 14,
+    "name": "Hudud, Diyat dan Lainnya",
+    "range": "3068 - 3470"
+  },
+  {
+    "id": 15,
+    "name": "Nikah",
+    "range": "3471 - 3842"
+  },
+  {
+    "id": 16,
+    "name": "Talak, Khulu' dan Lain-lain",
+    "range": "3843 - 4013"
+  },
+  {
+    "id": 17,
+    "name": "Faraidl, Peperangan dan Lain-lain",
+    "range": "4014 - 4115"
+  },
+  {
+    "id": 18,
+    "name": "Peperangan",
+    "range": "4116 - 4167"
+  },
+  {
+    "id": 19,
+    "name": "Budak Mukatab",
+    "range": "4168 - 4223"
+  },
+  {
+    "id": 20,
+    "name": "Permasalahan yang jarang disinggung",
+    "range": "4224 - 4242"
+  },
+  {
+    "id": 21,
+    "name": "Wasiat",
+    "range": "4243 - 4258"
+  },
+  {
+    "id": 22,
+    "name": "Perwakilan",
+    "range": "4259 - 4308"
+  },
+  {
+    "id": 23,
+    "name": "Penyusuan",
+    "range": "4309 - 4350"
+  },
+  {
+    "id": 24,
+    "name": "Wakaf",
+    "range": "4351 - 4410"
+  },
+  {
+    "id": 25,
+    "name": "Keputusan Pengadilan, Hukum dan Lain-lain",
+    "range": "4411 - 4562"
+  },
+  {
+    "id": 26,
+    "name": "Minuman dan Lain-lain",
+    "range": "4563 - 4768"
+  },
+  {
+    "id": 27,
+    "name": "Perlombaan Pacuan Kuda",
+    "range": "4769 - 4790"
+  }
+]

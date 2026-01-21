@@ -1,0 +1,162 @@
+[
+  {
+    "id": 1,
+    "name": "Waktu-Waktu Sholat",
+    "range": "1 - 28"
+  },
+  {
+    "id": 2,
+    "name": "Thoharoh",
+    "range": "29 - 133"
+  },
+  {
+    "id": 3,
+    "name": "Adzan",
+    "range": "134 - 463"
+  },
+  {
+    "id": 4,
+    "name": "Jenazah",
+    "range": "464 - 512"
+  },
+  {
+    "id": 5,
+    "name": "Zakat",
+    "range": "513 - 556"
+  },
+  {
+    "id": 6,
+    "name": "Puasa",
+    "range": "557 - 604"
+  },
+  {
+    "id": 7,
+    "name": "I'tikaf",
+    "range": "605 - 616"
+  },
+  {
+    "id": 8,
+    "name": "Haji",
+    "range": "617 - 848"
+  },
+  {
+    "id": 9,
+    "name": "Jihad",
+    "range": "849 - 894"
+  },
+  {
+    "id": 10,
+    "name": "Nadzar dan Iman",
+    "range": "895 - 911"
+  },
+  {
+    "id": 11,
+    "name": "Sembelihan Kurban",
+    "range": "912 - 924"
+  },
+  {
+    "id": 12,
+    "name": "Sembelihan",
+    "range": "925 - 933"
+  },
+  {
+    "id": 13,
+    "name": "Buruan",
+    "range": "934 - 944"
+  },
+  {
+    "id": 14,
+    "name": "Aqiqoh",
+    "range": "945 - 950"
+  },
+  {
+    "id": 15,
+    "name": "Faroidl (Pembagian Harta Waris)",
+    "range": "951 - 963"
+  },
+  {
+    "id": 16,
+    "name": "Nikah",
+    "range": "964 - 1008"
+  },
+  {
+    "id": 17,
+    "name": "Tholak",
+    "range": "1009 - 1100"
+  },
+  {
+    "id": 18,
+    "name": "Penyusuan",
+    "range": "1101 - 1118"
+  },
+  {
+    "id": 19,
+    "name": "Jual Beli",
+    "range": "1119 - 1194"
+  },
+  {
+    "id": 20,
+    "name": "Pinjaman",
+    "range": "1195 - 1196"
+  },
+  {
+    "id": 21,
+    "name": "Penyiraman",
+    "range": "1197 - 1198"
+  },
+  {
+    "id": 22,
+    "name": "Sewa Tanah",
+    "range": "1199 - 1202"
+  },
+  {
+    "id": 23,
+    "name": "Syuf'ah",
+    "range": "1203 - 1204"
+  },
+  {
+    "id": 24,
+    "name": "Peradilan",
+    "range": "1205 - 1263"
+  },
+  {
+    "id": 25,
+    "name": "Memerdekakan Budak dan Wala'",
+    "range": "1264 - 1282"
+  },
+  {
+    "id": 26,
+    "name": "Budak Yang di Merdekakan",
+    "range": "1283 - 1285"
+  },
+  {
+    "id": 27,
+    "name": "Mudabbar",
+    "range": "1286 - 1287"
+  },
+  {
+    "id": 28,
+    "name": "Hukuman Pelanggaran",
+    "range": "1288 - 1323"
+  },
+  {
+    "id": 29,
+    "name": "Minuman",
+    "range": "1324 - 1337"
+  },
+  {
+    "id": 30,
+    "name": "Tebusan",
+    "range": "1338 - 1371"
+  },
+  {
+    "id": 31,
+    "name": "Qussamah",
+    "range": "1372 - 1373"
+  },
+  {
+    "id": 32,
+    "name": "Lain-Lain",
+    "range": "1374 - 1594"
+  }
+]

@@ -6,7 +6,8 @@ const tafsir = new Hono();
 tafsir.get('/', async (c) => {
   try {
     const surahId = c.req.query('surahId') || c.req.query('id');
-    const allTafsir = await getTafsir();
+    const source = c.req.query('source') || 'kemenag';
+    const allTafsir = await getTafsir(source);
     if (!allTafsir) return c.json({ status: false, message: 'Daftar tafsir tidak tersedia.', data: [] }, 404);
 
     if (surahId != null) {

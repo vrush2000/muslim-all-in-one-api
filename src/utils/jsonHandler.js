@@ -67,8 +67,13 @@ export async function getJuz() {
   return await readJson('quran/juz.json');
 }
 
-export async function getTafsir() {
-  return await readJson('quran/tafsir.json');
+export async function getTafsir(source = 'kemenag') {
+  const sources = {
+    'kemenag': 'quran/tafsir.json',
+    'ibn_katsir_en': 'quran/tafsir_ibnu_katsir_en.json',
+    'ibn_katsir_id': 'quran/tafsir_ibnu_katsir_id.json'
+  };
+  return await readJson(sources[source] || sources['kemenag']);
 }
 
 export async function getWord() {

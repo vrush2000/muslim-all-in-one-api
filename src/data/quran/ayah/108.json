@@ -25,7 +25,8 @@
       "07": "https://www.everyayah.com/data/Husary_128kbps/108001.mp3",
       "08": "https://www.everyayah.com/data/Ghamadi_40kbps/108001.mp3",
       "09": "https://www.everyayah.com/data/Abdul_Basit_Mujawwad_128kbps/108001.mp3"
-    }
+    },
+    "translation_en": "Indeed, We have granted you, [O Muhammad], al-Kawthar."
   },
   {
     "id": "6206",
@@ -53,7 +54,8 @@
       "07": "https://www.everyayah.com/data/Husary_128kbps/108002.mp3",
       "08": "https://www.everyayah.com/data/Ghamadi_40kbps/108002.mp3",
       "09": "https://www.everyayah.com/data/Abdul_Basit_Mujawwad_128kbps/108002.mp3"
-    }
+    },
+    "translation_en": "So pray to your Lord and sacrifice [to Him alone]."
   },
   {
     "id": "6207",
@@ -81,6 +83,7 @@
       "07": "https://www.everyayah.com/data/Husary_128kbps/108003.mp3",
       "08": "https://www.everyayah.com/data/Ghamadi_40kbps/108003.mp3",
       "09": "https://www.everyayah.com/data/Abdul_Basit_Mujawwad_128kbps/108003.mp3"
-    }
+    },
+    "translation_en": "Indeed, your enemy is the one cut off."
   }
 ]

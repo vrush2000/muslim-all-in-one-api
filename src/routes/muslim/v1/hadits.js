@@ -17,7 +17,12 @@ const bookFileMapping = {
   'ahmad': 'ahmad',
   'darimi': 'darimi',
   'malik': 'malik',
-  'nasai': 'nasai'
+  'nasai': 'nasai',
+  'ibnu-hibban': 'ibnu-hibban',
+  'mustadrak': 'mustadrak',
+  'syafii': 'syafii',
+  'ibnu-khuzaimah': 'ibnu-khuzaimah',
+  'daruquthni': 'daruquthni'
 };
 
 const bookDisplayNames = {
@@ -29,7 +34,29 @@ const bookDisplayNames = {
   'ahmad': 'Musnad Ahmad',
   'darimi': 'Sunan Darimi',
   'malik': 'Muwatha Malik',
-  'nasai': 'Sunan Nasai'
+  'nasai': 'Sunan Nasai',
+  'ibnu-hibban': 'Sahih Ibnu Hibban',
+  'mustadrak': 'Al-Mustadrak',
+  'syafii': 'Musnad Syafii',
+  'ibnu-khuzaimah': 'Sahih Ibnu Khuzaimah',
+  'daruquthni': 'Sunan Daruquthni'
+};
+
+const bookCounts = {
+  'bukhari': 6638,
+  'muslim': 4933,
+  'abu-daud': 4419,
+  'ibnu-majah': 4285,
+  'tirmidzi': 3625,
+  'ahmad': 4305,
+  'darimi': 2949,
+  'malik': 1587,
+  'nasai': 5364,
+  'ibnu-hibban': 2769,
+  'mustadrak': 673,
+  'syafii': 1800,
+  'ibnu-khuzaimah': 1808,
+  'daruquthni': 4790
 };
 
 // Hadits Arbain (Existing)
@@ -60,7 +87,7 @@ hadits.get('/books', (c) => {
   const books = Object.entries(bookDisplayNames).map(([id, name]) => ({
     id,
     name: `HR. ${name.replace('Sahih ', '').replace('Sunan ', '').replace('Musnad ', '').replace('Muwatha ', '')}`,
-    available: 'Lokal (JSON)'
+    available: bookCounts[id] || 'Lokal (JSON)'
   }));
 
   return c.json({
@@ -237,7 +264,7 @@ hadits.get('/find', async (c) => {
 
       // 2. Cari di kitab-kitab utama (Bukhari, Muslim, Abu Daud, dll)
       // Kita batasi per kitab agar tidak terlalu lambat
-      const booksToSearch = ['bukhari', 'muslim', 'abu-daud', 'tirmidzi', 'nasai', 'ibnu-majah'];
+      const booksToSearch = ['bukhari', 'muslim', 'abu-daud', 'tirmidzi', 'nasai', 'ibnu-majah', 'ibnu-hibban', 'mustadrak', 'syafii'];
       
       for (const bookKey of booksToSearch) {
         const allHadits = await getLocalHadits(bookKey);
@@ -319,7 +346,7 @@ hadits.get('/find', async (c) => {
       if (!targetBookFile) {
         return c.json({
           status: false,
-          message: `Pencarian untuk buku '${book}' belum didukung. Gunakan: arbain, bukhari, muslim, abu-daud, ibnu-majah, tirmidzi, ahmad, darimi, malik, atau nasai.`
+          message: `Pencarian untuk buku '${book}' belum didukung. Gunakan: arbain, bukhari, muslim, abu-daud, ibnu-majah, tirmidzi, ahmad, darimi, malik, nasai, ibnu-hibban, mustadrak, syafii, ibnu-khuzaimah, atau daruquthni.`
         }, 400);
       }
 

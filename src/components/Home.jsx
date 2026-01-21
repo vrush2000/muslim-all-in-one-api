@@ -82,6 +82,7 @@ export const Home = ({ baseUrl }) => {
             <nav class="space-y-1">
               {[
                 { name: 'Introduction', href: '#intro', icon: 'M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z' },
+                { name: 'Sources', href: '#sources', icon: 'M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10' },
                 { name: 'Quran', href: '#quran', icon: 'M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253' },
                 { name: 'Integrity', href: '#integrity', icon: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z' },
                 { name: 'FAQ', href: '#faq', icon: 'M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z' },
@@ -160,6 +161,68 @@ export const Home = ({ baseUrl }) => {
               </div>
             </div>
           </section>
+
+          <SectionTitle 
+            id="sources" 
+            title="Sumber Data & Lisensi" 
+            icon="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" 
+            color="blue"
+          />
+          <div class="grid grid-cols-1 gap-6 mb-16 md:grid-cols-2 lg:grid-cols-3">
+            {[
+              { 
+                title: "Al-Quran & Terjemah", 
+                source: "Kemenag RI", 
+                desc: "Teks Arab (Mushaf Standar Indonesia), Latin, dan Terjemahan Bahasa Indonesia resmi.",
+                icon: "M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+              },
+              { 
+                title: "Tafsir Kemenag", 
+                source: "Kemenag RI", 
+                desc: "Tafsir Wajiz (Ringkas) dan Tafsir Tahlili (Mendalam) resmi dari Kementerian Agama.",
+                icon: "M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+              },
+              { 
+                title: "Tafsir Ibnu Katsir", 
+                source: "Ibn Kathir", 
+                desc: "Versi Indonesia (renpwn) dan English (Quran.com API). Salah satu tafsir paling otoritatif.",
+                icon: "M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+              },
+              { 
+                title: "Hadits", 
+                source: "Gading.dev / Otangid", 
+                desc: "Koleksi Hadits Arbain Nawawi dan 9 Kitab Hadits Besar (Bukhari, Muslim, dsb).",
+                icon: "M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+              },
+              { 
+                title: "Jadwal Sholat", 
+                source: "MyQuran / Kemenag", 
+                desc: "Data waktu sholat akurat untuk seluruh kota di Indonesia berdasarkan koordinat.",
+                icon: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+              },
+              { 
+                title: "Murottal Audio", 
+                source: "EQuran / EveryAyah", 
+                desc: "Audio per ayat dan per surah dari berbagai Qari internasional ternama.",
+                icon: "M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"
+              }
+            ].map((s, i) => (
+              <div key={i} class="p-6 bg-white rounded-2xl border shadow-sm transition-all border-slate-200 hover:border-blue-200 hover:shadow-md">
+                <div class="flex gap-4 items-start">
+                  <div class="flex justify-center items-center w-10 h-10 text-blue-600 bg-blue-50 rounded-xl shrink-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={s.icon} />
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 class="font-bold text-slate-900">{s.title}</h4>
+                    <span class="text-[10px] font-bold uppercase tracking-wider text-blue-600 bg-blue-50 px-2 py-0.5 rounded">{s.source}</span>
+                    <p class="mt-2 text-sm leading-relaxed text-slate-500">{s.desc}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
 
           <SectionTitle 
             id="quran" 
@@ -678,7 +741,7 @@ const hash = crypto.createHash('sha256').update(JSON.stringify(data)).digest('he
               },
               {
                 q: "Bagaimana keaslian dan akurasi data Al-Quran?",
-                a: "Kami menjamin keaslian data Al-Quran dalam API ini. Data teks, terjemahan, dan tafsir (Wajiz & Tahlili) diwarisi dari dataset muslim-api-three milik Otangid yang telah diverifikasi sesuai dengan data resmi Kemenag RI. Struktur data kami mencakup Tafsir Tahlili yang sangat mendalam, yang merupakan produk intelektual resmi dari Kementerian Agama RI dan mengikuti standar Mushaf Al-Quran Standar Indonesia (MSI)."
+                a: "Kami menjamin keaslian data Al-Quran dalam API ini. Data teks, terjemahan, dan tafsir (Wajiz & Tahlili) diwarisi dari dataset resmi yang telah diverifikasi sesuai dengan data Kemenag RI. Kami juga menyediakan Tafsir Ibnu Katsir dalam Bahasa Indonesia dan Inggris untuk referensi ilmiah yang lebih luas."
               },
               {
                 q: "Bagaimana dengan performa dan keamanan?",

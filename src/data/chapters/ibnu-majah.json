@@ -1,0 +1,162 @@
+[
+  {
+    "id": 1,
+    "name": "Mukadimah",
+    "range": "1 - 262"
+  },
+  {
+    "id": 2,
+    "name": "Thoharoh dan Sunnah-Sunnahnya",
+    "range": "263 - 658"
+  },
+  {
+    "id": 3,
+    "name": "Sholat",
+    "range": "659 - 697"
+  },
+  {
+    "id": 4,
+    "name": "Adzan dan Sunnah yang Ada di Dalamnya",
+    "range": "698 - 726"
+  },
+  {
+    "id": 5,
+    "name": "Masjid dan Berjamaah",
+    "range": "727 - 794"
+  },
+  {
+    "id": 6,
+    "name": "Mendirikan Sholat dan Sunnah yang Ada di Dalamnya",
+    "range": "795 - 1422"
+  },
+  {
+    "id": 7,
+    "name": "Jenazah",
+    "range": "1423 - 1627"
+  },
+  {
+    "id": 8,
+    "name": "Puasa",
+    "range": "1628 - 1772"
+  },
+  {
+    "id": 9,
+    "name": "Zakat",
+    "range": "1773 - 1834"
+  },
+  {
+    "id": 10,
+    "name": "Nikah",
+    "range": "1835 - 2005"
+  },
+  {
+    "id": 11,
+    "name": "Thalak",
+    "range": "2006 - 2080"
+  },
+  {
+    "id": 12,
+    "name": "Kafarah",
+    "range": "2081 - 2127"
+  },
+  {
+    "id": 13,
+    "name": "Perdagangan",
+    "range": "2128 - 2298"
+  },
+  {
+    "id": 14,
+    "name": "Hukum-Hukum",
+    "range": "2299 - 2523"
+  },
+  {
+    "id": 15,
+    "name": "Hudud",
+    "range": "2524 - 2604"
+  },
+  {
+    "id": 16,
+    "name": "Diyat",
+    "range": "2605 - 2684"
+  },
+  {
+    "id": 17,
+    "name": "Wasiat",
+    "range": "2685 - 2709"
+  },
+  {
+    "id": 18,
+    "name": "Waris",
+    "range": "2710 - 2742"
+  },
+  {
+    "id": 19,
+    "name": "Jihad",
+    "range": "2743 - 2872"
+  },
+  {
+    "id": 20,
+    "name": "Manasik",
+    "range": "2873 - 3110"
+  },
+  {
+    "id": 21,
+    "name": "Kurban",
+    "range": "3111 - 3152"
+  },
+  {
+    "id": 22,
+    "name": "Sembelihan",
+    "range": "3153 - 3190"
+  },
+  {
+    "id": 23,
+    "name": "Buruan",
+    "range": "3191 - 3241"
+  },
+  {
+    "id": 24,
+    "name": "Makanan",
+    "range": "3242 - 3361"
+  },
+  {
+    "id": 25,
+    "name": "Minuman",
+    "range": "3362 - 3426"
+  },
+  {
+    "id": 26,
+    "name": "Pengobatan",
+    "range": "3427 - 3539"
+  },
+  {
+    "id": 27,
+    "name": "Pakaian",
+    "range": "3540 - 3646"
+  },
+  {
+    "id": 28,
+    "name": "Adab",
+    "range": "3647 - 3816"
+  },
+  {
+    "id": 29,
+    "name": "Do'a",
+    "range": "3817 - 3882"
+  },
+  {
+    "id": 30,
+    "name": "Ta'bir Mimpi",
+    "range": "3883 - 3916"
+  },
+  {
+    "id": 31,
+    "name": "Fitnah",
+    "range": "3917 - 4089"
+  },
+  {
+    "id": 32,
+    "name": "Zuhud",
+    "range": "4090 - 4331"
+  }
+]

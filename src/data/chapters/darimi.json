@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "name": "Mukaddimah",
+    "range": "1 - 647"
+  },
+  {
+    "id": 2,
+    "name": "Thoharoh",
+    "range": "648 - 1158"
+  },
+  {
+    "id": 3,
+    "name": "Sholat",
+    "range": "1159 - 1562"
+  },
+  {
+    "id": 4,
+    "name": "Zakat",
+    "range": "1563 - 1619"
+  },
+  {
+    "id": 5,
+    "name": "Puasa",
+    "range": "1620 - 1717"
+  },
+  {
+    "id": 6,
+    "name": "Manasik (Haji)",
+    "range": "1718 - 1862"
+  },
+  {
+    "id": 7,
+    "name": "Udliyah (Sembelihan)",
+    "range": "1863 - 1917"
+  },
+  {
+    "id": 8,
+    "name": "Buruan",
+    "range": "1918 - 1933"
+  },
+  {
+    "id": 9,
+    "name": "Makanan",
+    "range": "1934 - 1995"
+  },
+  {
+    "id": 10,
+    "name": "Minuman",
+    "range": "1996 - 2042"
+  },
+  {
+    "id": 11,
+    "name": "Mimpi",
+    "range": "2043 - 2069"
+  },
+  {
+    "id": 12,
+    "name": "Nikah",
+    "range": "2070 - 2161"
+  },
+  {
+    "id": 13,
+    "name": "Talak",
+    "range": "2162 - 2193"
+  },
+  {
+    "id": 14,
+    "name": "Hukuman",
+    "range": "2194 - 2226"
+  },
+  {
+    "id": 15,
+    "name": "Nadzar dan Iman",
+    "range": "2227 - 2244"
+  },
+  {
+    "id": 16,
+    "name": "Diyat",
+    "range": "2245 - 2282"
+  },
+  {
+    "id": 17,
+    "name": "Jihad",
+    "range": "2283 - 2327"
+  },
+  {
+    "id": 18,
+    "name": "Sejarah",
+    "range": "2328 - 2418"
+  },
+  {
+    "id": 19,
+    "name": "Jual-Beli",
+    "range": "2419 - 2514"
+  },
+  {
+    "id": 20,
+    "name": "Meminta Izin",
+    "range": "2515 - 2589"
+  },
+  {
+    "id": 21,
+    "name": "Budak",
+    "range": "2590 - 2725"
+  },
+  {
+    "id": 22,
+    "name": "Faro'idl",
+    "range": "2726 - 3045"
+  },
+  {
+    "id": 23,
+    "name": "Washiyat",
+    "range": "3046 - 3171"
+  },
+  {
+    "id": 24,
+    "name": "Keutamaan Al Qur'an",
+    "range": "3172 - 3367"
+  }
+]

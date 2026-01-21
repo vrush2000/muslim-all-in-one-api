@@ -25,7 +25,8 @@
       "07": "https://www.everyayah.com/data/Husary_128kbps/109001.mp3",
       "08": "https://www.everyayah.com/data/Ghamadi_40kbps/109001.mp3",
       "09": "https://www.everyayah.com/data/Abdul_Basit_Mujawwad_128kbps/109001.mp3"
-    }
+    },
+    "translation_en": "Say, \"O disbelievers,"
   },
   {
     "id": "6209",
@@ -53,7 +54,8 @@
       "07": "https://www.everyayah.com/data/Husary_128kbps/109002.mp3",
       "08": "https://www.everyayah.com/data/Ghamadi_40kbps/109002.mp3",
       "09": "https://www.everyayah.com/data/Abdul_Basit_Mujawwad_128kbps/109002.mp3"
-    }
+    },
+    "translation_en": "I do not worship what you worship."
   },
   {
     "id": "6210",
@@ -81,7 +83,8 @@
       "07": "https://www.everyayah.com/data/Husary_128kbps/109003.mp3",
       "08": "https://www.everyayah.com/data/Ghamadi_40kbps/109003.mp3",
       "09": "https://www.everyayah.com/data/Abdul_Basit_Mujawwad_128kbps/109003.mp3"
-    }
+    },
+    "translation_en": "Nor are you worshippers of what I worship."
   },
   {
     "id": "6211",
@@ -109,7 +112,8 @@
       "07": "https://www.everyayah.com/data/Husary_128kbps/109004.mp3",
       "08": "https://www.everyayah.com/data/Ghamadi_40kbps/109004.mp3",
       "09": "https://www.everyayah.com/data/Abdul_Basit_Mujawwad_128kbps/109004.mp3"
-    }
+    },
+    "translation_en": "Nor will I be a worshipper of what you worship."
   },
   {
     "id": "6212",
@@ -137,7 +141,8 @@
       "07": "https://www.everyayah.com/data/Husary_128kbps/109005.mp3",
       "08": "https://www.everyayah.com/data/Ghamadi_40kbps/109005.mp3",
       "09": "https://www.everyayah.com/data/Abdul_Basit_Mujawwad_128kbps/109005.mp3"
-    }
+    },
+    "translation_en": "Nor will you be worshippers of what I worship."
   },
   {
     "id": "6213",
@@ -165,6 +170,7 @@
       "07": "https://www.everyayah.com/data/Husary_128kbps/109006.mp3",
       "08": "https://www.everyayah.com/data/Ghamadi_40kbps/109006.mp3",
       "09": "https://www.everyayah.com/data/Abdul_Basit_Mujawwad_128kbps/109006.mp3"
-    }
+    },
+    "translation_en": "For you is your religion, and for me is my religion.\""
   }
 ]

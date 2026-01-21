@@ -1,0 +1,77 @@
+[
+  {
+    "id": 1,
+    "name": "Musnad Sepuluh Sahabat yang Dijamin Masuk Surga",
+    "range": "1 - 1608"
+  },
+  {
+    "id": 2,
+    "name": "Musnad Sahabat Setelah Sepuluh Sahabat yang Dijamin Masuk Surga",
+    "range": "1609 - 1624"
+  },
+  {
+    "id": 3,
+    "name": "Musnad Ahli Bait",
+    "range": "1625 - 1670"
+  },
+  {
+    "id": 4,
+    "name": "Dari Musnad Bani Hasyim",
+    "range": "1671 - 3366"
+  },
+  {
+    "id": 5,
+    "name": "Musnad Sahabat yang Banyak Meriwayatkan Hadits",
+    "range": "3367 - 6821"
+  },
+  {
+    "id": 6,
+    "name": "Sisa Musnad Sahabat yang Banyak Meriwayatkan Hadits",
+    "range": "6822 - 14760"
+  },
+  {
+    "id": 7,
+    "name": "Musnad Penduduk Makkah",
+    "range": "14761 - 15507"
+  },
+  {
+    "id": 8,
+    "name": "Musnad Penduduk Madinah",
+    "range": "15508 - 16208"
+  },
+  {
+    "id": 9,
+    "name": "Musnad Penduduk Syam",
+    "range": "16209 - 17393"
+  },
+  {
+    "id": 10,
+    "name": "Musnad Penduduk Kuffah",
+    "range": "17394 - 18926"
+  },
+  {
+    "id": 11,
+    "name": "Musnad Penduduk Bashrah",
+    "range": "18927 - 20171"
+  },
+  {
+    "id": 12,
+    "name": "Musnad Sahabat Anshar",
+    "range": "20172 - 21119"
+  },
+  {
+    "id": 13,
+    "name": "Sisa Musnad Sahabat Anshar",
+    "range": "21120 - 25208"
+  },
+  {
+    "id": 14,
+    "name": "Musnad Wanita",
+    "range": "25209 - 25900"
+  },
+  {
+    "id": 15,
+    "name": "Musnad Dari Beberapa Kabilah",
+    "range": "25901 - 26363"
+  }
+]

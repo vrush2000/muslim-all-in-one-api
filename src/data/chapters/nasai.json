@@ -1,0 +1,257 @@
+[
+  {
+    "id": 1,
+    "name": "Thoharoh",
+    "range": "1 - 322"
+  },
+  {
+    "id": 2,
+    "name": "Air",
+    "range": "323 - 345"
+  },
+  {
+    "id": 3,
+    "name": "Haidl dan Istihadloh",
+    "range": "346 - 392"
+  },
+  {
+    "id": 4,
+    "name": "Mandi dan Tayammum",
+    "range": "393 - 443"
+  },
+  {
+    "id": 5,
+    "name": "Sholat",
+    "range": "444 - 489"
+  },
+  {
+    "id": 6,
+    "name": "Waktu-Waktu Sholat",
+    "range": "490 - 621"
+  },
+  {
+    "id": 7,
+    "name": "Adzan",
+    "range": "622 - 680"
+  },
+  {
+    "id": 8,
+    "name": "Masjid",
+    "range": "681 - 733"
+  },
+  {
+    "id": 9,
+    "name": "Kiblat",
+    "range": "734 - 768"
+  },
+  {
+    "id": 10,
+    "name": "Keimaman",
+    "range": "769 - 865"
+  },
+  {
+    "id": 11,
+    "name": "Iftitah (Pembukaan)",
+    "range": "866 - 1018"
+  },
+  {
+    "id": 12,
+    "name": "Pelaksanaan",
+    "range": "1019 - 1165"
+  },
+  {
+    "id": 13,
+    "name": "Sahwi (Lupa)",
+    "range": "1166 - 1349"
+  },
+  {
+    "id": 14,
+    "name": "Jum'at",
+    "range": "1350 - 1415"
+  },
+  {
+    "id": 15,
+    "name": "Mengqoshor Sholat Saat Safar",
+    "range": "1416 - 1441"
+  },
+  {
+    "id": 16,
+    "name": "Sholat Kusuf (Gerhana)",
+    "range": "1442 - 1486"
+  },
+  {
+    "id": 17,
+    "name": "Istisqo (Meminta Hujan)",
+    "range": "1487 - 1511"
+  },
+  {
+    "id": 18,
+    "name": "Sholat Khouf (Dalam Kondisi Takut)",
+    "range": "1512 - 1537"
+  },
+  {
+    "id": 19,
+    "name": "Sholat Idul Adha dan Idul Fithri",
+    "range": "1538 - 1579"
+  },
+  {
+    "id": 20,
+    "name": "Qiyamul Lail dan Sholat Sunnah Siang Hari",
+    "range": "1580 - 1794"
+  },
+  {
+    "id": 21,
+    "name": "Jenazah",
+    "range": "1795 - 2062"
+  },
+  {
+    "id": 22,
+    "name": "Puasa",
+    "range": "2063 - 2391"
+  },
+  {
+    "id": 23,
+    "name": "Zakat",
+    "range": "2392 - 2571"
+  },
+  {
+    "id": 24,
+    "name": "Manasik Haji",
+    "range": "2572 - 3034"
+  },
+  {
+    "id": 25,
+    "name": "Jihad",
+    "range": "3035 - 3144"
+  },
+  {
+    "id": 26,
+    "name": "Pernikahaan",
+    "range": "3145 - 3335"
+  },
+  {
+    "id": 27,
+    "name": "Talak",
+    "range": "3336 - 3504"
+  },
+  {
+    "id": 28,
+    "name": "Kuda Perang",
+    "range": "3505 - 3537"
+  },
+  {
+    "id": 29,
+    "name": "Waqaf",
+    "range": "3538 - 3552"
+  },
+  {
+    "id": 30,
+    "name": "Wasiat",
+    "range": "3553 - 3611"
+  },
+  {
+    "id": 31,
+    "name": "Pemberian",
+    "range": "3612 - 3627"
+  },
+  {
+    "id": 32,
+    "name": "Hibah",
+    "range": "3628 - 3645"
+  },
+  {
+    "id": 33,
+    "name": "Ruqba",
+    "range": "3646 - 3659"
+  },
+  {
+    "id": 34,
+    "name": "Umra",
+    "range": "3660 - 3700"
+  },
+  {
+    "id": 35,
+    "name": "Sumpah dan Nadzar",
+    "range": "3701 - 3877"
+  },
+  {
+    "id": 36,
+    "name": "Menggauli Wanita",
+    "range": "3878 - 3902"
+  },
+  {
+    "id": 37,
+    "name": "Kesucian Darah",
+    "range": "3903 - 4063"
+  },
+  {
+    "id": 38,
+    "name": "Pembagian Fa'i",
+    "range": "4064 - 4079"
+  },
+  {
+    "id": 39,
+    "name": "Baiah",
+    "range": "4080 - 4140"
+  },
+  {
+    "id": 40,
+    "name": "Aqiqoh",
+    "range": "4141 - 4149"
+  },
+  {
+    "id": 41,
+    "name": "Far' dan 'Athiroh",
+    "range": "4150 - 4189"
+  },
+  {
+    "id": 42,
+    "name": "Buruan dan Sembelihan",
+    "range": "4190 - 4284"
+  },
+  {
+    "id": 43,
+    "name": "Hewan Sembelihan",
+    "range": "4285 - 4372"
+  },
+  {
+    "id": 44,
+    "name": "Jual-Beli",
+    "range": "4373 - 4626"
+  },
+  {
+    "id": 45,
+    "name": "Qussamah",
+    "range": "4627 - 4786"
+  },
+  {
+    "id": 46,
+    "name": "Potong Tangan",
+    "range": "4787 - 4898"
+  },
+  {
+    "id": 47,
+    "name": "Iman dan Syariatnya",
+    "range": "4899 - 4953"
+  },
+  {
+    "id": 48,
+    "name": "Perhiasan",
+    "range": "4954 - 5283"
+  },
+  {
+    "id": 49,
+    "name": "Adab Hakim",
+    "range": "5284 - 5332"
+  },
+  {
+    "id": 50,
+    "name": "Meminta Perlindungan",
+    "range": "5333 - 5444"
+  },
+  {
+    "id": 51,
+    "name": "Minuman",
+    "range": "5445 - 5662"
+  }
+]

@@ -81,11 +81,22 @@ export const Playground = ({ baseUrl }) => {
               <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
-              Tips
+              Tips & Informasi Sumber
             </h4>
-            <p class="text-sm leading-relaxed text-emerald-700">
-              Gunakan playground ini untuk memahami struktur response JSON sebelum mengimplementasikannya di aplikasi Anda. Base URL yang digunakan adalah <code class="font-bold">{baseUrl}</code>.
-            </p>
+            <div class="space-y-3 text-sm leading-relaxed text-emerald-700">
+              <p>
+                Gunakan playground ini untuk memahami struktur response JSON sebelum mengimplementasikannya di aplikasi Anda.
+              </p>
+              <div class="pt-2 border-t border-emerald-200/50">
+                <p class="mb-1 font-bold">Sumber Data Terpercaya:</p>
+                <ul class="space-y-1 list-disc list-inside opacity-90">
+                  <li><strong>Al-Quran & Tafsir:</strong> Kemenag RI (Tahlili/Wajiz)</li>
+                  <li><strong>Tafsir Tambahan:</strong> Ibnu Katsir (ID/EN)</li>
+                  <li><strong>Hadits:</strong> Gading.dev (Kitab 9) & Otangid</li>
+                  <li><strong>Jadwal Sholat:</strong> MyQuran (Kemenag)</li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -219,7 +230,25 @@ export const Playground = ({ baseUrl }) => {
           quran: [
             { id: 'list-surah', path: '/surah', name: 'Daftar Surah', params: [] },
             { id: 'detail-surah', path: '/surah', name: 'Detail Surah', params: [{ name: 'surahId', placeholder: '1-114', type: 'number', default: '1', hint: 'Contoh: 1 (Al-Fatihah), 114 (An-Nas)' }] },
-            { id: 'tafsir', path: '/tafsir', name: 'Tafsir Kemenag', params: [{ name: 'surahId', placeholder: '1-114', type: 'number', default: '1', hint: 'ID Surah (1-114)' }] },
+            { 
+              id: 'tafsir', 
+              path: '/tafsir', 
+              name: 'Tafsir Al-Quran', 
+              params: [
+                { name: 'surahId', placeholder: '1-114', type: 'number', default: '1', hint: 'ID Surah (1-114)' },
+                { 
+                  name: 'source', 
+                  type: 'select', 
+                  default: 'kemenag', 
+                  options: [
+                    { value: 'kemenag', label: 'Kemenag (Indonesia)' },
+                    { value: 'ibn_katsir_id', label: 'Ibnu Katsir (Indonesia)' },
+                    { value: 'ibn_katsir_en', label: 'Ibn Kathir (English)' }
+                  ],
+                  hint: 'Pilih sumber tafsir'
+                }
+              ] 
+            },
             { id: 'ayah-surah', path: '/ayah/surah', name: 'Ayat by Surah', params: [{ name: 'surahId', placeholder: '1-114', type: 'number', default: '1', hint: 'ID Surah (1-114)' }] },
             { id: 'ayah-specific', path: '/ayah/specific', name: 'Spesifik Ayat', params: [{ name: 'surahId', placeholder: '1', type: 'number', default: '1', hint: 'ID Surah' }, { name: 'ayahId', placeholder: '1', type: 'number', default: '1', hint: 'Nomor Ayat' }] },
             { id: 'ayah-juz', path: '/ayah/juz', name: 'Ayat by Juz', params: [{ name: 'juzId', placeholder: '1-30', type: 'number', default: '30', hint: 'Nomor Juz (1-30)' }] },
@@ -267,15 +296,97 @@ export const Playground = ({ baseUrl }) => {
             { id: 'sholat-next', path: '/sholat/next', name: 'Waktu Sholat Terdekat', params: [{ name: 'lat', placeholder: '-6.1751', type: 'text', default: '-6.1751' }, { name: 'lon', placeholder: '106.8272', type: 'text', default: '106.8272' }] },
           ],
           hadits: [
-            { id: 'hadits-list', path: '/hadits', name: 'Daftar Hadits Arbain', params: [] },
-            { id: 'hadits-detail', path: '/hadits', name: 'Detail Hadits Arbain', params: [{ name: 'nomor', placeholder: '1-42', type: 'number', default: '1', hint: 'Nomor Hadits (1-42)' }] },
             { id: 'hadits-books', path: '/hadits/books', name: 'Daftar Kitab Hadits', params: [] },
-            { id: 'hadits-chapters', path: '/hadits/books/bukhari/chapters', name: 'Daftar Chapter (Bukhari/Muslim)', params: [] },
-            { id: 'hadits-by-book', path: '/hadits/books/bukhari', name: 'Hadits by Kitab', params: [
-              { name: 'chapter', placeholder: '1', type: 'number', default: '1', hint: 'Filter berdasarkan ID Chapter' },
-              { name: 'page', placeholder: '1', type: 'number', default: '1', hint: 'Halaman (limit 50 per halaman)' }
-            ] },
-            { id: 'hadits-cari', path: '/hadits/find', name: 'Cari Hadits (Query)', params: [{ name: 'query', placeholder: 'puasa', type: 'text', default: 'puasa' }] },
+            { 
+              id: 'hadits-chapters', 
+              path: '/hadits/books/:book/chapters', 
+              name: 'Daftar Chapter', 
+              params: [
+                { 
+                  name: 'book', 
+                  type: 'select', 
+                  default: 'bukhari', 
+                  options: [
+                    { value: 'bukhari', label: 'Sahih Bukhari' },
+                    { value: 'muslim', label: 'Sahih Muslim' },
+                    { value: 'abu-daud', label: 'Sunan Abu Daud' },
+                    { value: 'tirmidzi', label: 'Sunan Tirmidzi' },
+                    { value: 'nasai', label: 'Sunan Nasai' },
+                    { value: 'ibnu-majah', label: 'Sunan Ibnu Majah' },
+                    { value: 'ahmad', label: 'Musnad Ahmad' },
+                    { value: 'darimi', label: 'Sunan Darimi' },
+                    { value: 'malik', label: 'Muwatha Malik' },
+                    { value: 'ibnu-hibban', label: 'Sahih Ibnu Hibban' },
+                    { value: 'mustadrak', label: 'Al-Mustadrak' },
+                    { value: 'syafii', label: 'Musnad Syafii' },
+                    { value: 'ibnu-khuzaimah', label: 'Sahih Ibnu Khuzaimah' },
+                    { value: 'daruquthni', label: 'Sunan Daruquthni' }
+                  ] 
+                }
+              ] 
+            },
+            { 
+              id: 'hadits-by-book', 
+              path: '/hadits/books/:book', 
+              name: 'Hadits by Kitab (List)', 
+              params: [
+                { 
+                  name: 'book', 
+                  type: 'select', 
+                  default: 'bukhari', 
+                  options: [
+                    { value: 'bukhari', label: 'Sahih Bukhari' },
+                    { value: 'muslim', label: 'Sahih Muslim' },
+                    { value: 'abu-daud', label: 'Sunan Abu Daud' },
+                    { value: 'tirmidzi', label: 'Sunan Tirmidzi' },
+                    { value: 'nasai', label: 'Sunan Nasai' },
+                    { value: 'ibnu-majah', label: 'Sunan Ibnu Majah' },
+                    { value: 'ahmad', label: 'Musnad Ahmad' },
+                    { value: 'darimi', label: 'Sunan Darimi' },
+                    { value: 'malik', label: 'Muwatha Malik' },
+                    { value: 'ibnu-hibban', label: 'Sahih Ibnu Hibban' },
+                    { value: 'mustadrak', label: 'Al-Mustadrak' },
+                    { value: 'syafii', label: 'Musnad Syafii' },
+                    { value: 'ibnu-khuzaimah', label: 'Sahih Ibnu Khuzaimah' },
+                    { value: 'daruquthni', label: 'Sunan Daruquthni' }
+                  ] 
+                },
+                { name: 'chapter', placeholder: '1', type: 'number', hint: 'ID Chapter (opsional)' },
+                { name: 'page', placeholder: '1', type: 'number', default: '1', hint: 'Halaman (50 per hal)' }
+              ] 
+            },
+            {
+              id: 'hadits-specific',
+              path: '/hadits/books/:book/:number',
+              name: 'Spesifik Nomor Hadits',
+              params: [
+                { 
+                  name: 'book', 
+                  type: 'select', 
+                  default: 'bukhari', 
+                  options: [
+                    { value: 'bukhari', label: 'Sahih Bukhari' },
+                    { value: 'muslim', label: 'Sahih Muslim' },
+                    { value: 'abu-daud', label: 'Sunan Abu Daud' },
+                    { value: 'tirmidzi', label: 'Sunan Tirmidzi' },
+                    { value: 'nasai', label: 'Sunan Nasai' },
+                    { value: 'ibnu-majah', label: 'Sunan Ibnu Majah' },
+                    { value: 'ahmad', label: 'Musnad Ahmad' },
+                    { value: 'darimi', label: 'Sunan Darimi' },
+                    { value: 'malik', label: 'Muwatha Malik' },
+                    { value: 'ibnu-hibban', label: 'Sahih Ibnu Hibban' },
+                    { value: 'mustadrak', label: 'Al-Mustadrak' },
+                    { value: 'syafii', label: 'Musnad Syafii' },
+                    { value: 'ibnu-khuzaimah', label: 'Sahih Ibnu Khuzaimah' },
+                    { value: 'daruquthni', label: 'Sunan Daruquthni' }
+                  ] 
+                },
+                { name: 'number', placeholder: '1', type: 'number', default: '1', hint: 'Nomor Hadits' }
+              ]
+            },
+            { id: 'hadits-arbain-list', path: '/hadits', name: 'Hadits Arbain (Semua)', params: [] },
+            { id: 'hadits-arbain-detail', path: '/hadits', name: 'Hadits Arbain (Detail)', params: [{ name: 'nomor', placeholder: '1-42', type: 'number', default: '1', hint: 'Nomor (1-42)' }] },
+            { id: 'hadits-cari', path: '/hadits/find', name: 'Cari Hadits (Query)', params: [{ name: 'query', placeholder: 'puasa', type: 'text', default: 'puasa', hint: 'Cari di semua kitab' }] },
           ],
           murottal: [
             { id: 'murottal-qari', path: '/murotal/qari', name: 'Daftar Qari', params: [] },
@@ -352,15 +463,15 @@ export const Playground = ({ baseUrl }) => {
             { id: 'integrity-verify', path: '/integrity/verify/ayah', name: 'Verifikasi Ayah', params: [{ name: 'surahId', placeholder: '1', type: 'number', default: '1' }, { name: 'ayahId', placeholder: '1', type: 'number', default: '1' }] },
           ],
           other: [
-            { id: 'asma-list', path: '/asma', name: 'Semua Asmaul Husna', params: [] },
-            { id: 'asma-detail', path: '/asma', name: 'Detail Asmaul Husna', params: [{ name: 'id', placeholder: '1-99', type: 'number', default: '1', hint: 'Nomor 1-99' }] },
-            { id: 'doa-list', path: '/doa', name: 'Daftar Doa', params: [] },
-            { id: 'doa-detail', path: '/doa', name: 'Detail Doa', params: [{ name: 'id', placeholder: '1-30', type: 'number', default: '1', hint: 'ID Doa (1-30+)' }] },
+            { id: 'asma-list', path: '/asma', name: 'Asmaul Husna (List)', params: [] },
+            { id: 'asma-detail', path: '/asma', name: 'Asmaul Husna (Detail)', params: [{ name: 'id', placeholder: '1-99', type: 'number', default: '1', hint: 'Nomor 1-99' }] },
+            { id: 'doa-list', path: '/doa', name: 'Doa (List)', params: [] },
+            { id: 'doa-find', path: '/doa/find', name: 'Cari Doa (Query)', params: [{ name: 'query', placeholder: 'makan', type: 'text', default: 'makan' }] },
             { id: 'dzikir', path: '/dzikir', name: 'Dzikir Pagi Petang', params: [] },
-            { id: 'asbab-list', path: '/asbab', name: 'Daftar Asbabun Nuzul', params: [] },
-            { id: 'asbab-detail', path: '/asbab', name: 'Detail Asbabun Nuzul', params: [{ name: 'id', placeholder: 'ID', type: 'number', default: '1' }] },
+            { id: 'asbab-list', path: '/asbab', name: 'Asbabun Nuzul (List)', params: [] },
+            { id: 'asbab-detail', path: '/asbab', name: 'Asbabun Nuzul (Detail)', params: [{ name: 'id', placeholder: '1', type: 'number', default: '1' }] },
             { id: 'calendar-hijri', path: '/calendar/hijri', name: 'Konversi ke Hijriah', params: [{ name: 'date', placeholder: '2025-12-25', type: 'date', default: new Date().toISOString().split('T')[0], hint: 'Format: YYYY-MM-DD' }, { name: 'adj', placeholder: '0', type: 'number', default: '0', hint: 'Koreksi hari (-2 s/d 2)' }] },
-            { id: 'calendar-masehi', path: '/calendar/masehi', name: 'Konversi ke Masehi', params: [{ name: 'day', placeholder: '1', type: 'number', default: '1' }, { name: 'month', placeholder: '1', type: 'number', default: '1' }, { name: 'year', placeholder: '1447', type: 'number', default: '1447' }] },
+            { id: 'calendar-masehi', path: '/calendar/masehi', name: 'Konversi ke Masehi', params: [{ name: 'day', placeholder: '1', type: 'number', default: '1' }, { name: 'month', placeholder: '1', type: 'number', default: '1' }, { name: 'year', placeholder: '1447', type: 'number', default: '1447' }] }
           ]
         };
 

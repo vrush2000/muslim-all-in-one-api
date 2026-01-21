@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "name": "Kitab Thaharah (Wudhu)",
+    "range": "1 - 300"
+  },
+  {
+    "id": 2,
+    "name": "Kitab Shalat",
+    "range": "301 - 1100"
+  },
+  {
+    "id": 3,
+    "name": "Kitab Imam Dalam Shalat",
+    "range": "1101 - 1500"
+  },
+  {
+    "id": 4,
+    "name": "Kitab Jum'at",
+    "range": "1501 - 1808"
+  }
+]

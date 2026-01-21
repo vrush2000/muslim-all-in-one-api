@@ -1,0 +1,342 @@
+[
+  {
+    "id": 1,
+    "name": "Kitab Bagian Pembahasan tentang Wudhu",
+    "range": "1 - 79"
+  },
+  {
+    "id": 2,
+    "name": "Kitab Bagian Pembahasan tentang Menghadap Kiblat Saat Shalat",
+    "range": "80 - 186"
+  },
+  {
+    "id": 3,
+    "name": "Kitab Bagian Pembahasan tentang Amal pada Shalat",
+    "range": "189 - 213"
+  },
+  {
+    "id": 4,
+    "name": "Kitab Bagian Pembahasan tentang Kepemimpinan",
+    "range": "214 - 252"
+  },
+  {
+    "id": 5,
+    "name": "Kitab Bagian Pembahasan Tentang Kewajiban Jumat",
+    "range": "253 - 315"
+  },
+  {
+    "id": 6,
+    "name": "Kitab Pembahasan Tentang Dua Hari Raya",
+    "range": "316 - 378"
+  },
+  {
+    "id": 7,
+    "name": "Kitab Pembahasan Tentang Puasa dan Shalat Dua Hari Raya dan Shalat Istisqa dan yang Lainnya",
+    "range": "379 - 390"
+  },
+  {
+    "id": 8,
+    "name": "Kitab Pembahasan Tentang Zakat Dari Pertamanya Kecuali yang Dikembalikan",
+    "range": "391 - 464"
+  },
+  {
+    "id": 9,
+    "name": "Kitab Pembahasan Tentang Hukum Talak",
+    "range": "465 - 469"
+  },
+  {
+    "id": 10,
+    "name": "Kitab Pembahasan Tentang Puasa",
+    "range": "470 - 484"
+  },
+  {
+    "id": 11,
+    "name": "Kitab Pembahasan Tentang Manasik",
+    "range": "485 - 654"
+  },
+  {
+    "id": 12,
+    "name": "Kitab Pembahasan Tentang Jual Beli",
+    "range": "655 - 720"
+  },
+  {
+    "id": 13,
+    "name": "Kitab Pembahasan Tentang Gadai",
+    "range": "721 - 723"
+  },
+  {
+    "id": 14,
+    "name": "Kitab Pembahasan Tentang Sumpah Dengan Satu Saksi",
+    "range": "724 - 751"
+  },
+  {
+    "id": 15,
+    "name": "Kitab Pembahasan Tentang Perbedaan Hadits dan Yang Ditinggalkan oleh Mu'adz",
+    "range": "752 - 804"
+  },
+  {
+    "id": 16,
+    "name": "Kitab Bagian dari Juz ke 2 : Perbedaan Hadits dari Al-Ashlul Atiq",
+    "range": "805 - 945"
+  },
+  {
+    "id": 17,
+    "name": "Kitab Pembahasan Tentang Talaq",
+    "range": "187 - 188"
+  },
+  {
+    "id": 18,
+    "name": "Kitab Pembahasan Tentang Pembebasan Budak",
+    "range": "946 - 957"
+  },
+  {
+    "id": 19,
+    "name": "Kitab Pembahasan Tentang Melukai dengan Sengaja",
+    "range": "958 - 1000"
+  },
+  {
+    "id": 20,
+    "name": "Kitab Pembahasan Tentang Budak Munkatab",
+    "range": "1001 - 1002"
+  },
+  {
+    "id": 21,
+    "name": "Kitab Pembahasan Tentang Jizyah",
+    "range": "1003 - 1019"
+  },
+  {
+    "id": 22,
+    "name": "Kitab Pembahasan Tentang Perbedaan Malik dan Asy-Syafi'i Radliyallahu 'anhuma",
+    "range": "1020 - 1154"
+  },
+  {
+    "id": 23,
+    "name": "Kitab Pembahasan Tentang Risalah Kecuali Riwayat dari Muadz",
+    "range": "1155 - 1215"
+  },
+  {
+    "id": 24,
+    "name": "Kitab Pembahasan tentang Mahar dan Ila'",
+    "range": "1216 - 1231"
+  },
+  {
+    "id": 25,
+    "name": "Kitab Pembahasan Tentang Penukaran",
+    "range": "1232 - 1233"
+  },
+  {
+    "id": 26,
+    "name": "Kitab Pembahasan Tentang Rahn dan Ijarah",
+    "range": "1234 - 1241"
+  },
+  {
+    "id": 27,
+    "name": "Kitab Pembahasan Tentang Syighar",
+    "range": "1242 - 1254"
+  },
+  {
+    "id": 28,
+    "name": "Kitab Pembahasan Tentang Zhihar dan Li'an",
+    "range": "1255 - 1263"
+  },
+  {
+    "id": 29,
+    "name": "Kitab Pembahasan Tentang Khulu' dan Nusyuz",
+    "range": "1264 - 1274"
+  },
+  {
+    "id": 30,
+    "name": "Kitab Pembahasan Tentang Membatalkan Kebaikan",
+    "range": "1275 - 1277"
+  },
+  {
+    "id": 31,
+    "name": "Kitab Pembahasan Tentang Hukum Al-Qur'an",
+    "range": "1278 - 1337"
+  },
+  {
+    "id": 32,
+    "name": "Kitab Pembahasan Tentang Minuman dan Keutamaan Quraisy dan yang Lainnya",
+    "range": "1338 - 1351"
+  },
+  {
+    "id": 33,
+    "name": "Kitab Pembahasan Tentang Minuman",
+    "range": "1352 - 1383"
+  },
+  {
+    "id": 34,
+    "name": "Kitab Pembahasan Tentang Menggauli Wanita",
+    "range": "1384 - 1401"
+  },
+  {
+    "id": 35,
+    "name": "Kitab Pembahasan Tentang Mengungkapkan Redaksi Pelamaran",
+    "range": "1402 - 1404"
+  },
+  {
+    "id": 36,
+    "name": "Kitab Pembahasan Tentang Talaq dan Ruju'",
+    "range": "1405 - 1415"
+  },
+  {
+    "id": 37,
+    "name": "Kitab Pembahasan Tentang Hitungan Kecuali Riwayat dari Mu'adz",
+    "range": "1416 - 1452"
+  },
+  {
+    "id": 38,
+    "name": "Kitab Pembahasan Tentang Undian dan Nafkah Pada Kerabat",
+    "range": "1453 - 1455"
+  },
+  {
+    "id": 39,
+    "name": "Kitab Pembahasan Tentang Persusuan",
+    "range": "1456 - 1469"
+  },
+  {
+    "id": 40,
+    "name": "Kitab Pembahasan Tentang Dzikir Kepada Allah Ta'ala Tanpa Berwudhu dan Dalam Keadaan Haidh",
+    "range": "1470 - 1476"
+  },
+  {
+    "id": 41,
+    "name": "Kitab Pembahasan Tentang Memerangi Pelaku Pemberontakan",
+    "range": "1477 - 1478"
+  },
+  {
+    "id": 42,
+    "name": "Kitab Pembahasan Tentang Memerangi Kaum Musyrikin",
+    "range": "1479 - 1486"
+  },
+  {
+    "id": 43,
+    "name": "Kitab Pembahasan Tentang Tawanan, Curang dalam Harta Rampasan Perang dan Lainnya",
+    "range": "1487 - 1503"
+  },
+  {
+    "id": 44,
+    "name": "Kitab Pembahasan Tentang Pembagian Harta Fa'i (Rampasan Tanpa Peperangan)",
+    "range": "1504 - 1521"
+  },
+  {
+    "id": 45,
+    "name": "Kitab Pembahasan Tentang Sifat Larangan Nabi SAW dan Pembahasan Tentang Budak Mudabbar",
+    "range": "1522 - 1526"
+  },
+  {
+    "id": 46,
+    "name": "Kitab Pembahasan Tentang Bangkrut",
+    "range": "1527 - 1529"
+  },
+  {
+    "id": 47,
+    "name": "Kitab Pembahasan Tentang Dakwaan dan Bukti-Bukti",
+    "range": "1530 - 1536"
+  },
+  {
+    "id": 48,
+    "name": "Kitab Pembahasan Tentang Sifat Perintah Nabi SAW, Perwalian Anak Kecil dan Kesalahan Thabib serta yang Lainnya",
+    "range": "1537 - 1538"
+  },
+  {
+    "id": 49,
+    "name": "Kitab Pembahasan Tentang Muzara'ah dan Al Kara",
+    "range": "1539 - 1541"
+  },
+  {
+    "id": 50,
+    "name": "Kitab Pembahasan Tentang Potong Tangan Karena Pencurian dan Bab-Bab Lainnya",
+    "range": "1542 - 1559"
+  },
+  {
+    "id": 51,
+    "name": "Kitab Pembahasan Tentang Al-Bahirah dan As-Sa'ibah",
+    "range": "1560 - 1567"
+  },
+  {
+    "id": 52,
+    "name": "Kitab Pembahasan Tentang Berburu dan Menyembelih Hewan",
+    "range": "1568 - 1582"
+  },
+  {
+    "id": 53,
+    "name": "Kitab Pembahasan Tentang Diyat dan Qishash",
+    "range": "1583 - 1598"
+  },
+  {
+    "id": 54,
+    "name": "Kitab Pembahasan Tentang Jirah Al Khatha'",
+    "range": "1599 - 1606"
+  },
+  {
+    "id": 55,
+    "name": "Kitab Pembahasan Tentang Adu Cepat, Sumpah, Melempar Anak Panah dan Gerhana",
+    "range": "1607 - 1610"
+  },
+  {
+    "id": 56,
+    "name": "Kitab Pembahasan Tentang Gerhana",
+    "range": "1611 - 1614"
+  },
+  {
+    "id": 57,
+    "name": "Kitab Pembahasan Tentang Kafarat, Nadzar dan Sumpah",
+    "range": "1615 - 1616"
+  },
+  {
+    "id": 58,
+    "name": "Kitab Pembahasan Tentang Perjalanan Perang",
+    "range": "1617 - 1622"
+  },
+  {
+    "id": 59,
+    "name": "Kitab Pembahasan Tentang Pengumpul Ilmu",
+    "range": "1623 - 1623"
+  },
+  {
+    "id": 60,
+    "name": "Kitab Pembahasan Tentang Jenazah dan Hudud",
+    "range": "1624 - 1672"
+  },
+  {
+    "id": 61,
+    "name": "Kitab Pembahasan Tentang Haji, Ar-Rabi' Berkata pada semua periwayat Tersebut; Asy-Syafi'I Menceritakan Kepada Kami",
+    "range": "1673 - 1718"
+  },
+  {
+    "id": 62,
+    "name": "Kitab Pembahasan Tentang Haji Akbar, Sampai di sini Ar-Rabi' Mengatakan Asy-Syafi'I RA Menceritakan Kepada Kami",
+    "range": "1719 - 1733"
+  },
+  {
+    "id": 63,
+    "name": "Kitab Pembahasan Tentang Nikah Karena Takut Miskin",
+    "range": "1734 - 1736"
+  },
+  {
+    "id": 64,
+    "name": "Kitab Pembahasan Tentang Wasiat Yang Belum Pernah Didengar Darinya",
+    "range": "1737 - 1739"
+  },
+  {
+    "id": 65,
+    "name": "Kitab Pembahasan Tentang Adab Seorang Hakim",
+    "range": "1740 - 1746"
+  },
+  {
+    "id": 66,
+    "name": "Kitab Pembahasan Tentang Makanan, Minuman dan Memakmurkan Bumi",
+    "range": "1747 - 1761"
+  },
+  {
+    "id": 67,
+    "name": "Kitab Pembahasan Tentang Wasiat Yang Belum Pernah Didengar Dari Asy-Syafi'i RA",
+    "range": "1762 - 1764"
+  },
+  {
+    "id": 68,
+    "name": "Kitab Pembahasan Tentang Perbedaan Ali dan Abdullah Tentang Hal-Hal Yang Tidak Didengar Oleh Ar-Rabi' dari Asy-Syafi'i",
+    "range": "1765 - 1800"
+  }
+]

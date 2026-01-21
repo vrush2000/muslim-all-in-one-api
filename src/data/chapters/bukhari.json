@@ -1,95 +1,387 @@
 [
-  {"id": 1, "name": "Wahyu", "range": "1 - 6"},
-  {"id": 2, "name": "Iman", "range": "7 - 57"},
-  {"id": 3, "name": "Ilmu", "range": "58 - 133"},
-  {"id": 4, "name": "Wudhu", "range": "134 - 245"},
-  {"id": 5, "name": "Mandi", "range": "246 - 291"},
-  {"id": 6, "name": "Haidh", "range": "292 - 327"},
-  {"id": 7, "name": "Tayammum", "range": "328 - 342"},
-  {"id": 8, "name": "Shalat", "range": "343 - 505"},
-  {"id": 9, "name": "Waktu Shalat", "range": "506 - 588"},
-  {"id": 10, "name": "Adzan", "range": "589 - 835"},
-  {"id": 11, "name": "Jumat", "range": "836 - 905"},
-  {"id": 12, "name": "Shalat Khauf", "range": "906 - 911"},
-  {"id": 13, "name": "Dua Hari Raya", "range": "912 - 943"},
-  {"id": 14, "name": "Witir", "range": "944 - 952"},
-  {"id": 15, "name": "Istisqa", "range": "953 - 982"},
-  {"id": 16, "name": "Kusuf (Gerhana)", "range": "983 - 1011"},
-  {"id": 17, "name": "Sujud Tilawah", "range": "1012 - 1023"},
-  {"id": 18, "name": "Shalat Qashar", "range": "1024 - 1055"},
-  {"id": 19, "name": "Tahajjud", "range": "1056 - 1129"},
-  {"id": 20, "name": "Shalat di Masjid Makkah & Madinah", "range": "1130 - 1143"},
-  {"id": 21, "name": "Amalan dalam Shalat", "range": "1144 - 1181"},
-  {"id": 22, "name": "Sujud Sahwi", "range": "1182 - 1190"},
-  {"id": 23, "name": "Jenazah", "range": "1191 - 1341"},
-  {"id": 24, "name": "Zakat", "range": "1342 - 1436"},
-  {"id": 25, "name": "Haji", "range": "1437 - 1661"},
-  {"id": 26, "name": "Umrah", "range": "1662 - 1694"},
-  {"id": 27, "name": "Orang yang Terhalang (Haji)", "range": "1695 - 1709"},
-  {"id": 28, "name": "Mengganti Buruan", "range": "1710 - 1746"},
-  {"id": 29, "name": "Keutamaan Madinah", "range": "1747 - 1763"},
-  {"id": 30, "name": "Puasa", "range": "1764 - 1870"},
-  {"id": 31, "name": "Shalat Tarawih", "range": "1871 - 1878"},
-  {"id": 32, "name": "Keutamaan Lailatul Qadar", "range": "1879 - 1885"},
-  {"id": 33, "name": "Itikaf", "range": "1886 - 1900"},
-  {"id": 34, "name": "Jual Beli", "range": "1901 - 2077"},
-  {"id": 35, "name": "Salam", "range": "2078 - 2090"},
-  {"id": 36, "name": "Syuf'ah", "range": "2091 - 2093"},
-  {"id": 37, "name": "Sewa-Menyewa", "range": "2094 - 2116"},
-  {"id": 38, "name": "Wakalah (Perwakilan)", "range": "2117 - 2135"},
-  {"id": 39, "name": "Jaminan", "range": "2136 - 2145"},
-  {"id": 40, "name": "Pemindahan Utang", "range": "2146 - 2149"},
-  {"id": 41, "name": "Mengutus Hakim", "range": "2150 - 2153"},
-  {"id": 42, "name": "Persengketaan", "range": "2154 - 2166"},
-  {"id": 43, "name": "Barang Temuan", "range": "2167 - 2176"},
-  {"id": 44, "name": "Kedzaliman dan Perampasan", "range": "2177 - 2206"},
-  {"id": 45, "name": "Syarikat (Perseroan)", "range": "2207 - 2225"},
-  {"id": 46, "name": "Gadai", "range": "2226 - 2235"},
-  {"id": 47, "name": "Pembebasan Budak", "range": "2236 - 2259"},
-  {"id": 48, "name": "Hibah (Pemberian)", "range": "2260 - 2311"},
-  {"id": 49, "name": "Kesaksian", "range": "2312 - 2357"},
-  {"id": 50, "name": "Perdamaian", "range": "2358 - 2374"},
-  {"id": 51, "name": "Syarat-syarat", "range": "2375 - 2398"},
-  {"id": 52, "name": "Wasiat", "range": "2399 - 2462"},
-  {"id": 53, "name": "Jihad dan Perjalanan", "range": "2463 - 2761"},
-  {"id": 54, "name": "Khumus", "range": "2762 - 2812"},
-  {"id": 55, "name": "Jizyah dan Gencatan Senjata", "range": "2813 - 2847"},
-  {"id": 56, "name": "Permulaan Makhluk", "range": "2848 - 2956"},
-  {"id": 57, "name": "Hadits-hadits Para Nabi", "range": "2957 - 3151"},
-  {"id": 58, "name": "Keutamaan Sahabat", "range": "3152 - 3328"},
-  {"id": 59, "name": "Keutamaan Anshar", "range": "3329 - 3501"},
-  {"id": 60, "name": "Maghazi (Peperangan)", "range": "3502 - 4014"},
-  {"id": 61, "name": "Tafsir Al-Quran", "range": "4015 - 4477"},
-  {"id": 62, "name": "Keutamaan Al-Quran", "range": "4478 - 4563"},
-  {"id": 63, "name": "Nikah", "range": "4564 - 4681"},
-  {"id": 64, "name": "Thalaq (Perceraian)", "range": "4682 - 4763"},
-  {"id": 65, "name": "Nafkah", "range": "4764 - 4782"},
-  {"id": 66, "name": "Makanan", "range": "4783 - 4870"},
-  {"id": 67, "name": "Aqiqah", "range": "4871 - 4876"},
-  {"id": 68, "name": "Sembelihan dan Buruan", "range": "4877 - 4915"},
-  {"id": 69, "name": "Kurban", "range": "4916 - 4933"},
-  {"id": 70, "name": "Minuman", "range": "4934 - 4982"},
-  {"id": 71, "name": "Sakit", "range": "4983 - 5032"},
-  {"id": 72, "name": "Pengobatan", "range": "5033 - 5100"},
-  {"id": 73, "name": "Pakaian", "range": "5101 - 5207"},
-  {"id": 74, "name": "Adab", "range": "5208 - 5337"},
-  {"id": 75, "name": "Meminta Izin", "range": "5338 - 5395"},
-  {"id": 76, "name": "Doa", "range": "5396 - 5504"},
-  {"id": 77, "name": "Kata-kata Lembut", "range": "5505 - 5605"},
-  {"id": 78, "name": "Qadar (Takdir)", "range": "5606 - 5618"},
-  {"id": 79, "name": "Sumpah dan Nadzar", "range": "5619 - 5672"},
-  {"id": 80, "name": "Kafarat Sumpah", "range": "5673 - 5686"},
-  {"id": 81, "name": "Warisan", "range": "5687 - 5729"},
-  {"id": 82, "name": "Hudud (Hukuman)", "range": "5730 - 5794"},
-  {"id": 83, "name": "Diyat (Denda)", "range": "5795 - 5839"},
-  {"id": 84, "name": "Orang yang Murtad", "range": "5840 - 5848"},
-  {"id": 85, "name": "Paksaan", "range": "5849 - 5857"},
-  {"id": 86, "name": "Helah (Tipu Daya)", "range": "5858 - 5872"},
-  {"id": 87, "name": "Takwil Mimpi", "range": "5873 - 5920"},
-  {"id": 88, "name": "Fitnah (Bencana)", "range": "5921 - 5991"},
-  {"id": 89, "name": "Hukum-hukum", "range": "5992 - 6062"},
-  {"id": 90, "name": "Tamanni (Berangan-angan)", "range": "6063 - 6073"},
-  {"id": 91, "name": "Berita Ahad", "range": "6074 - 6094"},
-  {"id": 92, "name": "Berpegang Teguh", "range": "6095 - 6172"},
-  {"id": 93, "name": "Tauhid", "range": "6173 - 7008"}
+  {
+    "id": 1,
+    "name": "Permulaan Wahyu",
+    "range": "1 - 6"
+  },
+  {
+    "id": 2,
+    "name": "Iman",
+    "range": "7 - 56"
+  },
+  {
+    "id": 3,
+    "name": "Ilmu",
+    "range": "57 - 131"
+  },
+  {
+    "id": 4,
+    "name": "Wudlu",
+    "range": "132 - 239"
+  },
+  {
+    "id": 5,
+    "name": "Mandi",
+    "range": "240 - 284"
+  },
+  {
+    "id": 6,
+    "name": "Haidl",
+    "range": "285 - 321"
+  },
+  {
+    "id": 7,
+    "name": "Tayamum",
+    "range": "322 - 335"
+  },
+  {
+    "id": 8,
+    "name": "Shalat",
+    "range": "336 - 490"
+  },
+  {
+    "id": 9,
+    "name": "Waktu-waktu Shalat",
+    "range": "491 - 567"
+  },
+  {
+    "id": 10,
+    "name": "Adzan",
+    "range": "568 - 826"
+  },
+  {
+    "id": 11,
+    "name": "Jum'at",
+    "range": "827 - 1160"
+  },
+  {
+    "id": 12,
+    "name": "Jenazah",
+    "range": "1161 - 1307"
+  },
+  {
+    "id": 13,
+    "name": "Zakat",
+    "range": "1308 - 1416"
+  },
+  {
+    "id": 14,
+    "name": "Haji",
+    "range": "1417 - 1757"
+  },
+  {
+    "id": 15,
+    "name": "Shaum",
+    "range": "1758 - 1868"
+  },
+  {
+    "id": 16,
+    "name": "Shalat Tarawih",
+    "range": "1869 - 1884"
+  },
+  {
+    "id": 17,
+    "name": "Itikaf",
+    "range": "1885 - 1905"
+  },
+  {
+    "id": 18,
+    "name": "Jual Beli",
+    "range": "1906 - 2084"
+  },
+  {
+    "id": 19,
+    "name": "Jual Beli As Salam",
+    "range": "2085 - 2096"
+  },
+  {
+    "id": 20,
+    "name": "Asy Syuf'ah",
+    "range": "2097 - 2099"
+  },
+  {
+    "id": 21,
+    "name": "Al Ijarah (Sewa Menyewa dan Jasa)",
+    "range": "2100 - 2124"
+  },
+  {
+    "id": 22,
+    "name": "Al Hawalah (Pengalihan Hutang)",
+    "range": "2125 - 2134"
+  },
+  {
+    "id": 23,
+    "name": "Al Wakalah (Perwakilan)",
+    "range": "2135 - 2151"
+  },
+  {
+    "id": 24,
+    "name": "Al Muzara'ah (Pertanian)",
+    "range": "2152 - 2179"
+  },
+  {
+    "id": 25,
+    "name": "Al Musaqah (Mengairi Tanaman)",
+    "range": "2180 - 2209"
+  },
+  {
+    "id": 26,
+    "name": "Mencari Pinjaman dan Melunasi Hutang",
+    "range": "2210 - 2232"
+  },
+  {
+    "id": 27,
+    "name": "Persengkataan",
+    "range": "2233 - 2247"
+  },
+  {
+    "id": 28,
+    "name": "Barang Temuan",
+    "range": "2248 - 2259"
+  },
+  {
+    "id": 29,
+    "name": "Perbuatan-perbuatan Zalim dan Merampok",
+    "range": "2260 - 2302"
+  },
+  {
+    "id": 30,
+    "name": "Asy Syirkah (Perserikatan Usaha)",
+    "range": "2303 - 2324"
+  },
+  {
+    "id": 31,
+    "name": "Gadai",
+    "range": "2325 - 2332"
+  },
+  {
+    "id": 32,
+    "name": "Membebaskan Budak",
+    "range": "2333 - 2377"
+  },
+  {
+    "id": 33,
+    "name": "Hibah, Keutamaannya dan Anjuran Melakukannyanya",
+    "range": "2378 - 2442"
+  },
+  {
+    "id": 34,
+    "name": "Kesaksian",
+    "range": "2443 - 2492"
+  },
+  {
+    "id": 35,
+    "name": "Perdamaian",
+    "range": "2493 - 2511"
+  },
+  {
+    "id": 36,
+    "name": "Syarat-syarat",
+    "range": "2512 - 2532"
+  },
+  {
+    "id": 37,
+    "name": "Washiyat",
+    "range": "2533 - 2573"
+  },
+  {
+    "id": 38,
+    "name": "Jihad dan Penjelajahan",
+    "range": "2574 - 2860"
+  },
+  {
+    "id": 39,
+    "name": "Bagian Seperlima",
+    "range": "2861 - 2922"
+  },
+  {
+    "id": 40,
+    "name": "Jizyah",
+    "range": "2923 - 2951"
+  },
+  {
+    "id": 41,
+    "name": "Permulaan Penciptaan Makhluq",
+    "range": "2952 - 3078"
+  },
+  {
+    "id": 42,
+    "name": "Hadits-hadits Yang meriwayatkan Tentang Para nabi",
+    "range": "3079 - 3229"
+  },
+  {
+    "id": 43,
+    "name": "Perilaku Yang Terpuji",
+    "range": "3230 - 3654"
+  },
+  {
+    "id": 44,
+    "name": "Peperangan",
+    "range": "3655 - 4113"
+  },
+  {
+    "id": 45,
+    "name": "Tafsir Al-Qur'an",
+    "range": "4114 - 4595"
+  },
+  {
+    "id": 46,
+    "name": "Keutamaan Al-Qur'an",
+    "range": "4596 - 4674"
+  },
+  {
+    "id": 47,
+    "name": "Nikah",
+    "range": "4675 - 4849"
+  },
+  {
+    "id": 48,
+    "name": "Talaq",
+    "range": "4850 - 4931"
+  },
+  {
+    "id": 49,
+    "name": "Nafkah",
+    "range": "4932 - 4953"
+  },
+  {
+    "id": 50,
+    "name": "Makanan",
+    "range": "4954 - 5044"
+  },
+  {
+    "id": 51,
+    "name": "Aqiqah",
+    "range": "5045 - 5053"
+  },
+  {
+    "id": 52,
+    "name": "Penyembelihan dan Perburuan",
+    "range": "5054 - 5118"
+  },
+  {
+    "id": 53,
+    "name": "Kurban",
+    "range": "5119 - 5146"
+  },
+  {
+    "id": 54,
+    "name": "Minuman",
+    "range": "5147 - 5208"
+  },
+  {
+    "id": 55,
+    "name": "Sakit",
+    "range": "5209 - 5245"
+  },
+  {
+    "id": 56,
+    "name": "Pengobatan",
+    "range": "5246 - 5336"
+  },
+  {
+    "id": 57,
+    "name": "Pakaian",
+    "range": "5337 - 5512"
+  },
+  {
+    "id": 58,
+    "name": "Adab",
+    "range": "5513 - 5758"
+  },
+  {
+    "id": 59,
+    "name": "Meminta Izin",
+    "range": "5759 - 5828"
+  },
+  {
+    "id": 60,
+    "name": "Do'a",
+    "range": "5829 - 5932"
+  },
+  {
+    "id": 61,
+    "name": "Hal-hal Yang Melunakkan Hati",
+    "range": "5933 - 6104"
+  },
+  {
+    "id": 62,
+    "name": "Qadar",
+    "range": "6105 - 6130"
+  },
+  {
+    "id": 63,
+    "name": "Sumpah dan Nadzar",
+    "range": "6131 - 6213"
+  },
+  {
+    "id": 64,
+    "name": "Kafarah Sumpah",
+    "range": "6214 - 6227"
+  },
+  {
+    "id": 65,
+    "name": "Fara'idl",
+    "range": "6228 - 6273"
+  },
+  {
+    "id": 66,
+    "name": "Hukum Hudud",
+    "range": "6274 - 6353"
+  },
+  {
+    "id": 67,
+    "name": "Diyat",
+    "range": "6354 - 6406"
+  },
+  {
+    "id": 68,
+    "name": "Meminta Taubat Orang-orang Murtad dan para Pembangkang Serta memerangi Mereka",
+    "range": "6407 - 6426"
+  },
+  {
+    "id": 69,
+    "name": "Keterpaksaan",
+    "range": "6427 - 6438"
+  },
+  {
+    "id": 70,
+    "name": "Siasat Mengelak",
+    "range": "6439 - 6466"
+  },
+  {
+    "id": 71,
+    "name": "Ta'bir",
+    "range": "6467 - 6525"
+  },
+  {
+    "id": 72,
+    "name": "Fitnah",
+    "range": "6526 - 6603"
+  },
+  {
+    "id": 73,
+    "name": "Hukum-hukum",
+    "range": "6604 - 6684"
+  },
+  {
+    "id": 74,
+    "name": "Mengharap/Mengandai-andai",
+    "range": "6685 - 6704"
+  },
+  {
+    "id": 75,
+    "name": "Khabar Ahad",
+    "range": "6705 - 6725"
+  },
+  {
+    "id": 76,
+    "name": "Berpegang Teguh Terhadap Kitab Dan Sunnah",
+    "range": "6726 - 6822"
+  },
+  {
+    "id": 77,
+    "name": "Tauhid",
+    "range": "6823 - 7008"
+  }
 ]
