@@ -150,7 +150,17 @@ hadits.get('/books/:name', async (c) => {
       return c.json({ status: false, message: `Gagal memuat data kitab ${name}.` }, 500);
     }
 
-    let message = `Berhasil mendapatkan daftar hadits dari kitab ${bookDisplayNames[targetBookFile]}`;
+    // Normalisasi struktur data Arbain jika perlu (menggunakan field 'no' bukan 'number')
+    const displayName = bookDisplayNames[targetBookFile] || name;
+
+    if (name === 'arbain') {
+      allHadits = allHadits.map(h => ({
+        ...h,
+        number: h.number || parseInt(h.no || 0)
+      }));
+    }
+
+    let message = `Berhasil mendapatkan daftar hadits dari kitab ${displayName}`;
     let filteredInfo = null;
 
     // Filter by range if provided (e.g., range=1-6)
@@ -184,11 +194,10 @@ hadits.get('/books/:name', async (c) => {
     }
 
     const offset = range ? 0 : (page - 1) * limit; // If range, start from beginning
-    const displayName = bookDisplayNames[targetBookFile] || name;
     const paginatedData = allHadits.slice(offset, range ? allHadits.length : offset + limit).map(h => ({
       number: h.number,
       arab: h.arab,
-      id: h.id,
+      id: h.id || h.indo,
       name: `HR. ${displayName.replace('Sahih ', '').replace('Sunan ', '').replace('Musnad ', '').replace('Muwatha ', '')}`
     }));
 
@@ -220,9 +229,17 @@ hadits.get('/books/:name/:number', async (c) => {
       return c.json({ status: false, message: `Kitab ${name} tidak ditemukan.` }, 404);
     }
 
-    const allHadits = await getLocalHadits(targetBookFile);
+    let allHadits = await getLocalHadits(targetBookFile);
     if (!allHadits) {
       return c.json({ status: false, message: `Gagal memuat data kitab ${name}.` }, 500);
+    }
+
+    // Normalisasi struktur data Arbain jika perlu
+    if (name === 'arbain') {
+      allHadits = allHadits.map(h => ({
+        ...h,
+        number: h.number || parseInt(h.no || 0)
+      }));
     }
 
     const hadith = allHadits.find(h => h.number === number);
@@ -237,7 +254,7 @@ hadits.get('/books/:name/:number', async (c) => {
       data: {
         number: hadith.number,
         arab: hadith.arab,
-        id: hadith.id, // Bahasa Indonesia
+        id: hadith.id || hadith.indo, // Bahasa Indonesia
         name: `HR. ${displayName.replace('Sahih ', '').replace('Sunan ', '').replace('Musnad ', '').replace('Muwatha ', '')}`
       }
     });
